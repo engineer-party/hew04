@@ -12,7 +12,7 @@
 
 <!-- content -->
 @section('content')
-
+コンテンツ
 @endsection
 
 <!-- footer -->

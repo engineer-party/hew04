@@ -1,0 +1,122 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\Model\User;
+use Socialite;
+use Hash;
+
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+class AuthController extends Controller
+{
+    use AuthenticatesUsers;
+
+    /**
+     * ログイン関数
+     *
+     * @param Request $request
+     * @return /loginにリダイレクト
+     *
+     * @author Seiya
+     */
+    public function login(Request $req)
+    {
+        $email = $req->email;
+        $password = $req->password;
+
+        $valid = Validator::make($req->all(), [
+            'email' => 'required|email|max:191',
+            'password' => 'required|string|min:8|max:191',
+        ]);
+        if ($valid->fails()) {
+            $msg = '値が不正です。';
+            return redirect()->back()->with('message', $msg);
+        }
+        // ログイン処理
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            return redirect()->route('top');
+        } else {
+            $msg = 'ログインに失敗しました。';
+            return redirect()->back()->with('message', $msg);
+        }
+    }
+
+    /**
+     * 新規会員登録関数
+     *
+     * @param Request $request
+     * @return /topにリダイレクト
+     *
+     * @author Seiya
+     */
+    public function signup(Request $req)
+    {
+        $validator = Validator::make($req->all(), [
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|max:191|unique:users',
+            'password' => 'required|string|min:8|max:191',
+        ]);
+
+        if ($validator->fails()) {
+            $msg = '値が不正です。';
+            return redirect()->back()->with('message', $msg);;
+        }
+
+        $password = bcrypt($req->password);
+        $user = User::create([
+            'name'           => $req->name,
+            'email'          => $req->email,
+            'password'       => $password,
+        ]);
+
+        // ログイン処理
+        Auth::login($user);
+
+        return redirect()->route('top');
+    }
+
+    public function redirectTo($provider)
+    {
+        // Googleへのリダイレクト
+        return Socialite::driver($provider)->redirect();
+    }
+
+    public function handleProviderCallback($provider)
+    {
+        
+    }
+
+    /**
+     * Google で新規会員登録関数
+     *
+     * @param [type] $gUser
+     * @param [type] $userCodes
+     * @return $user
+     *
+     * @author Seiya
+     */
+    public function createUserByProvider($pUser, $userCode)
+    {
+       
+    }
+
+    /**
+     * ログアウト関数
+     *
+     * @return /loginにリダイレクト
+     *
+     * @author Seiya
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('auth.login');
+    }
+
+}
