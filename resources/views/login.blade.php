@@ -9,15 +9,14 @@
 @endsection
 @include('common.head')
 
+<div id="wrapper">
 <!-- header -->
 @include('common.user.header')
 
 <!-- content -->
 @section('content')
-<div id="signup">
-    <a href="signup">アカウントをお持ちでない方はこちら</a>
-    <a href="signup" id="signup-btn"><button type="button" class="btn btn-primary">新規会員登録</button></a>
-</div>
+<div id="content">
+
 
 <form id="login" action="{{ url('/login')}}" method="post">
     {{ csrf_field() }}
@@ -25,15 +24,72 @@
         <p>{{ session('message') }}</p>
     @endif
     <div class="form-group">
+       <p>メールアドレス</p>
         <input type="text" id="mail" class="form-control" placeholder="メールアドレス" name="email">
     </div>
     <div class="form-group">
+        <p>パスワード<a href="#">パスワードをお忘れの方</a></p>
         <input type="password" id="pass" class="form-control" placeholder="パスワード" name="password">
     </div>
     <p id="login-btn"><button type="submit" class="btn btn-danger">ログイン</button></p>
-    <a href="#">パスワードをお忘れの方</a>
 </form>
+
+<div id="signup">
+   <ul>
+     <li><a href="signup">会員ではありませんか？</a></li>
+     <li><a href="signup" id="signup-btn"><button type="button" class="btn btn-primary">新規会員登録</button></a></li>
+   </ul>
+</div>
+
+</div>
 @endsection
 
 <!-- footer -->
 @include('common.user.footer')
+</div>
+
+<style type="text/css">
+  #wrapper {
+    background-color: #fff6e9;
+  }
+  header {
+    background-color: aqua;
+    font-size: 3.0em;
+  }
+  
+  #content {
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+  }
+  #content form {
+    width: 100%;
+    padding-top: 60%;
+  }
+  #content form #login-btn{
+    text-align: center;
+  }
+  #content form button{
+    margin-top: 20px;
+    width: 100%;
+    line-height: 30px;
+  }
+  .form-group a{
+    margin-left: 20px;
+  }
+  .form-group p{
+    line-height: 40px;
+  }
+  #signup {
+    width: 100%;
+    height: auto;
+    margin-top: 15%;
+  }
+  #signup ul{
+    display: flex;
+    justify-content: space-around;
+  }
+  #signup li{
+    line-height: 60px;
+  }
+</style>

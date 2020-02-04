@@ -3,7 +3,7 @@
 ヘッダー
 <div id="login_btn">
   @if(Auth::check())
-  </- ログインしている場合 - />
+  </- ログインしている場合 -/>
     <a href="{{ action('AuthController@logout') }}"><button type="button" class="btn btn-danger">ログアウト</button></a>
   @else
     <a href="{{ action('AuthController@signup') }}"><button type="button" class="btn btn-danger">新規会員</button></a>
