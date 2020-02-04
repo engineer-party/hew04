@@ -34,3 +34,7 @@ Route::get('logout', 'AuthController@logout')->name('logout');
 // 認証ルート
 Route::post('login', 'AuthController@login')->name('auth.login');
 Route::post('signup', 'AuthController@signup')->name('auth.signup');
+
+// OAuth
+Route::get('login/{provider}', 'AuthController@redirectTo');
+Route::get('login/{provider}/callback', 'AuthController@handleProviderCallback');

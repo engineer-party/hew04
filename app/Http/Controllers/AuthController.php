@@ -89,21 +89,38 @@ class AuthController extends Controller
 
     public function handleProviderCallback($provider)
     {
-        
+        $pUser = Socialite::driver($provider)->stateless()->user();
+        // email が合致するユーザーを取得
+        $user = User::where('email', $pUser->getEmail())->first();
+        if ($user) {
+            // ログイン処理
+            Auth::login($user);
+            return redirect()->route('top');
+        } else {
+            // 見つからなければ新しくユーザーを作成
+            $user = $this->createUserByProvider($pUser);
+            Auth::login($user);
+            return redirect()->route('top');
+        }
     }
 
     /**
      * Google で新規会員登録関数
      *
-     * @param [type] $gUser
-     * @param [type] $userCodes
+     * @param [type] $pUser
      * @return $user
      *
      * @author Seiya
      */
-    public function createUserByProvider($pUser, $userCode)
+    public function createUserByProvider($pUser)
     {
-       
+        $user = User::create([
+            'name'           => $pUser->name,
+            'email'          => $pUser->email,
+            'password'       => Hash::make(uniqid()),
+        ]);
+
+        return $user;
     }
 
     /**

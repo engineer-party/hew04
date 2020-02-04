@@ -21,6 +21,7 @@
 
 <form id="login" action="{{ url('/login')}}" method="post">
     {{ csrf_field() }}
+    <a href="/login/google"><button type="button" class="btn btn-danger"><span class="fa fa-google"></span>Googleでログイン</button></a>
     @if(session('message'))
         <p>{{ session('message') }}</p>
     @endif
