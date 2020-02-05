@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="{{asset('css/bootstrap-social-gh-pages/bootstrap-social.css')}}" />
 <link rel="stylesheet" href="{{asset('css/flame.css')}}" />
-<link rel="stylesheet" href="{{asset('css/login.css')}}" />
 <link rel="stylesheet" href="{{asset('css/login_header.css')}}" />
 @endsection
 @include('common.head')
