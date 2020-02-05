@@ -5,7 +5,9 @@
 @section('style')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="{{asset('css/bootstrap-social-gh-pages/bootstrap-social.css')}}" />
+<link rel="stylesheet" href="{{asset('css/flame.css')}}" />
 <link rel="stylesheet" href="{{asset('css/login.css')}}" />
+<link rel="stylesheet" href="{{asset('css/login_header.css')}}" />
 @endsection
 @include('common.head')
 
@@ -49,14 +51,12 @@
 </div>
 
 <style type="text/css">
-  #wrapper {
-    background-color: #fff6e9;
-  }
-  header {
-    background-color: aqua;
-    font-size: 3.0em;
-  }
   
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
   #content {
     height: 100%;
     width: 90%;
