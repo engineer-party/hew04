@@ -4,6 +4,7 @@
 @section('title', 'Top')
 @section('style')
 <link rel="stylesheet" href="{{asset('css/top.css')}}" />
+
 @endsection
 @include('common.head')
 
@@ -12,7 +13,7 @@
 
 <!-- content -->
 @section('content')
-コンテンツ
+
 @endsection
 
 <!-- footer -->
