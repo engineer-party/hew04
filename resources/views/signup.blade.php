@@ -18,6 +18,7 @@
 <div id="signup">
     <a href="signup/form"><button type="button" class="btn btn-primary"><span class="fa fa-envelope"></span>メールで登録</button></a>
     <a href="login/google"><button type="button" class="btn btn-danger"><span class="fa fa-google"></span>Googleで登録</button></a>
+    <a href="login/twitter"><button type="button" class="btn btn-info"><span class="fa fa-twitter"></span>Twitterで登録</button></a>
 </div>
 @endsection
 
