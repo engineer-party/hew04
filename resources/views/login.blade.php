@@ -65,24 +65,6 @@
     bottom: 0;
     left: 0;
   }
-  #content {
-    height: 100vh;
-    width: 90%;
-    margin: 0 auto;
-  }
-  #content form {
-    width: 100%;
-/*    margin-top: 200px;*/
-    padding-top: 45%;
-  }
-  #content form #login-btn{
-    text-align: center;
-  }
-  #content form button{
-    margin-top: 20px;
-    width: 100%;
-    line-height: 30px;
-  }
   .form-group a{
     margin-left: 20px;
   }
@@ -93,7 +75,6 @@
     width: 100%;
     height: auto;
     margin-top: 30px;
-/*    background-color: aqua;*/
   }
   #signup ul{
     display: flex;
