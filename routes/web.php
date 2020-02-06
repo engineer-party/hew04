@@ -38,3 +38,6 @@ Route::post('signup', 'AuthController@signup')->name('auth.signup');
 // OAuth
 Route::get('login/{provider}', 'AuthController@redirectTo');
 Route::get('login/{provider}/callback', 'AuthController@handleProviderCallback');
+
+// MyPage
+Route::get('mypage/', 'MyPageController@index')->name('mypage');
