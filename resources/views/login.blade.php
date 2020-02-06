@@ -32,7 +32,7 @@
     </div>
     <div class="form-group">
         <p>パスワード<a href="#">パスワードをお忘れの方</a></p>
-        <input type="password" id="pass" class="form-control" placeholder="パスワード" name="password">
+        <input type="password" id="pass" class="form-control" placeholder="パスワード(8文字以上)" name="password">
     </div>
     <p id="login-btn"><button type="submit" class="btn btn-danger">ログイン</button></p>
 </form>
