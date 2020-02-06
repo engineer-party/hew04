@@ -5,6 +5,8 @@
 @section('style')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="{{asset('css/bootstrap-social-gh-pages/bootstrap-social.css')}}" />
+<link rel="stylesheet" href="{{asset('css/flame.css')}}" />
+<link rel="stylesheet" href="{{asset('css/login_header.css')}}" />
 <link rel="stylesheet" href="{{asset('css/signupForm.css')}}" />
 @endsection
 @include('common.head')
@@ -14,6 +16,7 @@
 
 <!-- content -->
 @section('content')
+<div id="content">
 <form action="{{ url('/signup/form') }}" method="post">
     {{ csrf_field() }}
     @if($errors)
@@ -34,11 +37,14 @@
         <p><input type="password" id="password" class="form-control" name="password" value="" placeholder="8文字以上の英数字" pattern="^[0-9A-Za-z]+$" required></p>
     </div>
 
-    <p><span>「会員登録」のボタンを押すことにより、利用規約に同意したものとみなします</span></p>
+    <p><span>登録された会員情報はEngineer Party(株)が責任を持って管理いたします。</span></p>
     <p><button type="submit" class="btn btn-danger">会員登録</button></p>
 </form>
-
+</div>
 @endsection
-
 <!-- footer -->
 @include('common.user.footer')
+
+<style type="text/css">
+  
+</style>

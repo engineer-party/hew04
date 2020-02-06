@@ -21,10 +21,8 @@
 
 <form id="login" action="{{ url('/login')}}" method="post">
     {{ csrf_field() }}
-    <a href="/login/google"><button type="button" class="btn btn-danger"><span class="fa fa-google"></span>Googleでログイン</button></a>
-    <a href="/login/twitter"><button type="button" class="btn btn-info"><span class="fa fa-twitter"></span>Twitterでログイン</button></a>
     @if(session('message'))
-        <p>{{ session('message') }}</p>
+        <p>{{ session('message') }}ok</p>
     @endif
     <div class="form-group">
        <p>メールアドレス</p>
@@ -37,12 +35,21 @@
     <p id="login-btn"><button type="submit" class="btn btn-danger">ログイン</button></p>
 </form>
 
+<div id="applogin">
+  <h2>お持ちのアカウントでログイン</h2>
+  <ul>
+    <li><a href="/login/google"><span class="comment">google</span><img src="{{ asset('img/google.png') }}" alt="google"></a></li>
+    <li><a href="/login/twitter"><span class="comment">twitter</span><img src="{{ asset('img/twitter.png') }}" alt="twitter"></a></li>
+  </ul>
+</div>
+
 <div id="signup">
    <ul>
      <li><a href="signup">会員ではありませんか？</a></li>
      <li><a href="signup" id="signup-btn"><button type="button" class="btn btn-primary">新規会員登録</button></a></li>
    </ul>
 </div>
+    
 
 </div>
 @endsection
@@ -58,23 +65,6 @@
     bottom: 0;
     left: 0;
   }
-  #content {
-    height: 100%;
-    width: 90%;
-    margin: 0 auto;
-  }
-  #content form {
-    width: 100%;
-    padding-top: 60%;
-  }
-  #content form #login-btn{
-    text-align: center;
-  }
-  #content form button{
-    margin-top: 20px;
-    width: 100%;
-    line-height: 30px;
-  }
   .form-group a{
     margin-left: 20px;
   }
@@ -84,7 +74,7 @@
   #signup {
     width: 100%;
     height: auto;
-    margin-top: 15%;
+    margin-top: 30px;
   }
   #signup ul{
     display: flex;
@@ -92,5 +82,39 @@
   }
   #signup li{
     line-height: 60px;
+  }
+  #applogin {
+    line-height: 100px;
+    margin-top: 40px;
+  }
+  #applogin h2{
+    padding: 10px;
+    
+  }
+  #applogin ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    border-top: solid gray 1px;
+    border-bottom: solid gray 1px;
+  }
+  #applogin li{
+    height: 80px;
+    width: 100px;
+/*    background-color: aqua;*/
+  }
+  #applogin ul li img{
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    height: 50px;
+  }
+  #applogin .comment{
+    margin-left: -50%;
+    position: relative;
+    top: 20px;
+    left: 75%;
   }
 </style>
