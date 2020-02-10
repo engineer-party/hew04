@@ -17,11 +17,15 @@ class UsersTableSeeder extends Seeder
                 'name' => '春太郎',
                 'email' => 'haltaro@gmail.com',
                 'password' => bcrypt('secretboy'),
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ],
             [
                 'name' => '春花子',
                 'email' => 'halhanako@gmail.com',
                 'password' => bcrypt('secretgirl'),
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ],
         ]);
     }

@@ -83,13 +83,26 @@ class AuthController extends Controller
 
     public function redirectTo($provider)
     {
-        // Googleへのリダイレクト
+        // ソーシャルへのリダイレクト
         return Socialite::driver($provider)->redirect();
     }
 
     public function handleProviderCallback($provider)
     {
-        $pUser = Socialite::driver($provider)->stateless()->user();
+        if($provider == 'google'){
+            $pUser = Socialite::driver($provider)->stateless()->user();
+        }
+        // ここがTwitterの処理エラーが出ます
+        else{
+            // $pUser = Socialite::driver($provider)->user();
+            // dd(Socialite::with($provider)->user());
+            try {
+                $pUser = Socialite::driver($provider)->user();
+            } catch(\Exception $e) {
+                return redirect('/login')->with('oauth_error', '予期せぬエラーが発生しました');
+            }
+        }
+        // ここまで
         // email が合致するユーザーを取得
         $user = User::where('email', $pUser->getEmail())->first();
         if ($user) {
