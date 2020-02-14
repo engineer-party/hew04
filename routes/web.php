@@ -51,7 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('mypage/', 'MyPageController@index')->name('mypage');
 
     // PlayList 2.プレイリスト
-    Route::get('playlist/', 'PlayListController@index')->name('playlist');
+    Route::get('playlist/', 'PlaylistController@index')->name('playlist');
 
     // Search 3.購入
     Route::get('search/', 'SearchController@index')->name('search');

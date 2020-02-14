@@ -18,7 +18,7 @@ class CreateMusicsTable extends Migration
             $table->unsignedBigInteger('artist_id');
             $table->unsignedBigInteger('genre_id');
             $table->string('name');
-            $table->string('time');
+            $table->time('time');
             $table->integer('price');
             $table->date('release_date');
             $table->timestamps();

@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class UsersTableSeeder extends Seeder
+class BuyPointsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,22 +11,18 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        DB::table('buy_points')->insert([
             [
-                'name'       => '春太郎',
-                'email'      => 'haltaro@gmail.com',
-                'password'   => bcrypt('secretboy'),
+                'user_id'    => '1',
+                'price'      => 500,
                 'point'      => 600,
-                'img_url'    => '1',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
-                'name'       => '春花子',
-                'email'      => 'halhanako@gmail.com',
-                'password'   => bcrypt('secretgirl'),
+                'user_id'    => '2',
+                'price'      => 1000,
                 'point'      => 1200,
-                'img_url'    => '2',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
