@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 
-class TopController extends Controller
+class MusicController extends Controller
 {
-    // TOPページ出力処理
     public function index()
     {
-        return view('top');
+        $user = Auth::user();
+        return view('music',compact('user'));
     }
 }
