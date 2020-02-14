@@ -1,9 +1,9 @@
 @extends('layout.layout')
 
 <!-- head -->
-@section('title', 'Mypage')
+@section('title', 'Report')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/mypage.css')}}" />
+<link rel="stylesheet" href="{{asset('css/report.css')}}" />
 
 @endsection
 @include('common.head')
@@ -13,7 +13,7 @@
 
 <!-- content -->
 @section('content')
-<h2>{{ $user->name }}さんのMyPage</h2>
+<h2>通報投稿フォーム</h2>
 @endsection
 
 <!-- footer -->

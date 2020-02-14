@@ -11,8 +11,10 @@
 |
 */
 
-// トップページ
-Route::get('/', 'TopController@index')->name('top');
+// 最初の画面
+Route::get('/', function () {
+    return view('login');
+})->name('login');
 
 // ログイン
 Route::get('login', function () {
@@ -28,9 +30,6 @@ Route::get('signup/form', function () {
 })->name('signup.form');
 Route::post('signup/form', 'AuthController@signup')->name('signup');
 
-// ログアウト
-Route::get('logout', 'AuthController@logout')->name('logout');
-
 // 認証ルート
 Route::post('login', 'AuthController@login')->name('auth.login');
 Route::post('signup', 'AuthController@signup')->name('auth.signup');
@@ -39,5 +38,35 @@ Route::post('signup', 'AuthController@signup')->name('auth.signup');
 Route::get('login/{provider}', 'AuthController@redirectTo');
 Route::get('login/{provider}/callback', 'AuthController@handleProviderCallback');
 
-// MyPage
-Route::get('mypage/', 'MyPageController@index')->name('mypage');
+// ログイン済みのみ
+Route::group(['middleware' => 'auth'], function () {
+    
+    // TOPページ
+    Route::get('top', 'TopController@index')->name('top');
+
+    // ログアウト
+    Route::get('logout', 'AuthController@logout')->name('logout');
+
+    // MyPage 1.会員情報
+    Route::get('mypage/', 'MyPageController@index')->name('mypage');
+
+    // PlayList 2.プレイリスト
+    Route::get('playlist/', 'PlayListController@index')->name('playlist');
+
+    // Search 3.購入
+    Route::get('search/', 'SearchController@index')->name('search');
+
+    // Music 4.再生
+    Route::get('music/', 'MusicController@index')->name('music');
+
+    // Hunt 5.ハント 
+    Route::get('hunt/', 'HuntController@index')->name('hunt');
+
+    // Report 6.通報
+    Route::get('report/', 'ReportController@index')->name('report');
+
+    // Admin 7.管理
+    Route::get('admin/', 'AdminController@index')->name('admin');
+
+
+});
