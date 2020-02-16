@@ -12,4 +12,12 @@ class Information extends Model
     ];
 
     protected $table = 'informations';
+
+    /**
+     * お知らせしたuserを取得
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User','user_informations');
+    }
 }
