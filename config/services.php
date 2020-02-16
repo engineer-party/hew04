@@ -39,7 +39,7 @@ return [
     'twitter' => [
         'client_id' => env('TWITTER_CLIENT_ID'),
         'client_secret' => env('TWITTER_CLIENT_SECRET'),
-        'redirect' => 'http://127.0.0.1:8000/login/twitter/callback',
+        'redirect' => 'http://ec2-13-113-224-224.ap-northeast-1.compute.amazonaws.com/login/twitter/callback',
     ],
 
 ];
