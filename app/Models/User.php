@@ -40,8 +40,16 @@ class User extends Authenticatable implements \Illuminate\Contracts\Auth\Authent
     /**
      * userの購入した曲を取得
      */
-    public function buyMusics()
+    public function musics()
     {
         return $this->belongsToMany('App\Models\Music','buy_musics');
+    }
+
+    /**
+     * userへのお知らせを取得
+     */
+    public function informations()
+    {
+        return $this->belongsToMany('App\Models\Information','user_informations');
     }
 }
