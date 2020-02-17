@@ -42,4 +42,10 @@ return [
         'redirect' => 'http://ec2-13-113-224-224.ap-northeast-1.compute.amazonaws.com/login/twitter/callback',
     ],
 
+    'stripe' => [
+        'model'  => App\User::class,
+        'key'    => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+    ],
+
 ];

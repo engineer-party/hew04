@@ -13,7 +13,6 @@
 
 <!-- content -->
 @section('content')
-<h2>{{ $user->name }}さんのプレイリスト</h2>
 @endsection
 
 <!-- footer -->
