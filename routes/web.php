@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Report 6.通報
     Route::get('report/', 'ReportController@index')->name('report');
+    Route::get('report/post', 'ReportController@post')->name('report_post');
 
     // Admin 7.管理
     Route::get('admin/', 'AdminController@index')->name('admin');
