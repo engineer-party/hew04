@@ -52,4 +52,20 @@ class User extends Authenticatable implements \Illuminate\Contracts\Auth\Authent
     {
         return $this->belongsToMany('App\Models\Information','user_informations');
     }
+
+    /**
+     * ユーザーの送信した通報を取得
+     */
+    public function sendReports()
+    {
+        return $this->hasMany('App\Models\Report','sender_id');
+    }
+
+    /**
+     * ユーザーに投稿された通報を取得
+     */
+    public function targetReports()
+    {
+        return $this->hasMany('App\Models\Report','target_id');
+    }
 }

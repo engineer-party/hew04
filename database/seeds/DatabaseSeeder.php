@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             UserInformationsTableSeeder::class,
             PlaylistsTableSeeder::class,
             PlaylistMusicsTableSeeder::class,
+            ReportCategoriesTableSeeder::class,
+            ReportsTableSeeder::class,
         ]);
     }
 }
