@@ -13,7 +13,6 @@
 
 <!-- content -->
 @section('content')
-<h2>{{ $user->name }}さんの音楽再生ページ</h2>
 @endsection
 
 <!-- footer -->

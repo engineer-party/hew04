@@ -58,6 +58,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Music 4.再生
     Route::get('music/', 'MusicController@index')->name('music');
+    Route::get('music/search', 'MusicController@search')->name('music_search');
+    Route::get('music/artist', 'MusicController@artist')->name('music_artist');
 
     // Hunt 5.ハント 
     Route::get('hunt/', 'HuntController@index')->name('hunt');
