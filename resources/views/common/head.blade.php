@@ -10,5 +10,13 @@
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <!-- CSS -->
 <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
+<!--Vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--jQuery-->
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<!--hammer.js-->
+<script src="{{ asset('js/hammer.min.js') }}"></script>
+<script src="{{ asset('js/jquery.hammer.js') }}"></script>
+
 @yield('style')
 @endsection

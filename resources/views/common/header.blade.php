@@ -1,6 +1,20 @@
 @section('header')
 <header>
-ヘッダー
+<div id="app">
+  <nav>
+    <a class="menu-trigger" href="#" @click="inputSleep">
+      <div class="topLine line"></div>
+      <div class="borderLine line"></div>
+      <div class="bottomLine line"></div>
+    </a>
+  </nav>
+  <p><input type="text" class="form" @click="inputActive" :placeholder="placeholder"></p>
+  <div id="link">
+    <div id="link-in">
+      
+    </div>
+  </div>
+</div>
 <div id="login_btn">
   @if(Auth::check())
   </- ログインしている場合 -/>
@@ -12,4 +26,7 @@
   @endif
 </div>
 </header>
+
+
+
 @endsection
