@@ -65,8 +65,9 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            $msg = '値が不正です。';
-            return redirect()->back()->with('message', $msg);;
+            //$msg = '値が不正です。';
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+            //return redirect()->back()->with('message', $msg);;
         }
 
         $password = bcrypt($req->password);
