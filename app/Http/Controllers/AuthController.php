@@ -35,8 +35,9 @@ class AuthController extends Controller
             'password' => 'required|string|min:8|max:191',
         ]);
         if ($valid->fails()) {
-            $msg = '値が不正です。';
-            return redirect()->back()->with('message', $msg);
+            //$msg = '値が不正です。';
+            return redirect()->back()->withErrors($valid->errors())->withInput();
+            //return redirect()->back()->with('message', $msg);
         }
         // ログイン処理
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
@@ -64,8 +65,9 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            $msg = '値が不正です。';
-            return redirect()->back()->with('message', $msg);;
+            //$msg = '値が不正です。';
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+            //return redirect()->back()->with('message', $msg);;
         }
 
         $password = bcrypt($req->password);

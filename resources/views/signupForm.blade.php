@@ -24,17 +24,20 @@
     @endif
     <div class="form-group">
         <label for="name">氏名：</label>
-        <input type="text" id="name" class="form-control" name="name" value="" required>
+        <input type="text" id="name" class="form-control" name="name" value="{{ old('name') }}">
+        <span class="form-text text-danger">{{$errors->first('name')}}</span>
     </div>
 
     <div class="form-group">
         <label for="email">メールアドレス：</label>
-        <input type="email" id="email" class="form-control" name="email" value="" required>
+        <input type="email" id="email" class="form-control" name="email" value="{{ old('email') }}">
+        <span class="form-text text-danger">{{$errors->first('email')}}</span>
     </div>
 
     <div class="form-group">
         <label for="password">Password：</label>
-        <p><input type="password" id="password" class="form-control" name="password" value="" placeholder="8文字以上の英数字" pattern="^[0-9A-Za-z]+$" required></p>
+        <p><input type="password" id="password" class="form-control" name="password" value="" placeholder="8文字以上の英数字" pattern="^[0-9A-Za-z]+$"></p>
+        <span class="form-text text-danger">{{$errors->first('password')}}</span>
     </div>
 
     <p><span>登録された会員情報はEngineer Party(株)が責任を持って管理いたします。</span></p>
