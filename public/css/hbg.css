@@ -8,9 +8,9 @@ nav .menu-trigger,
 }
 
 .menu-trigger {
-  position: relative;
-  top: 15px;
-  left: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 22px;
   height: 16px;
   display: block;

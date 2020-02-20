@@ -21,7 +21,7 @@
   
   <!-- 曲 -->
   <div class="content">
-    <p class="account"><span>・・・</span><span>アカウント名</span>さんが公開中<span>・・・</span></p>
+    <p class="account"><span class="dot">・・・</span><span>アカウント名</span>さんが公開中<span class="dot">・・・</span></p>
     <div class="music">
       <div class="icon">
         <span></span>
@@ -47,16 +47,18 @@ display: none;
 }
 #app {
 width: 100%;
-height: 9%;
+/*height: 10%;*/
 background-color: #ff5757;
 }
 #app .menu-trigger{
-top: 25px;
+  top: 22px;
+  left: 20px;
 }
 #app h1{
-position: absolute;
-top: 22px;
-left: 70px;
+  height: auto;
+  padding: 20px;
+  padding-left: 55px;
+/*  margin-bottom: -50px*/
 color: white;
 font-size: 1.2em;
 letter-spacing: 4px;
@@ -71,7 +73,7 @@ letter-spacing: 4px;
     width: 100%;
     font-size: 1.0em;
     text-align: center;
-    line-height: 80px;
+    line-height: 70px;
   }
   .content .music{
     display: flex;
@@ -104,9 +106,10 @@ letter-spacing: 4px;
     font-size: 0.8em;
     color: gray;
     text-align: center;
-    line-height: 50px;
+    line-height: 40px;
+    height: 40px;
   }
-  .content .account span{
+  .content .account .dot{
     margin-left: 10px;
     margin-right: 10px;
     letter-spacing: 5px;

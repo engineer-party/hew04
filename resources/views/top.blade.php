@@ -46,6 +46,10 @@
   #app h1{
     display: none;
   }
+  #app .menu-trigger {
+    top: 14px;
+    left: 15px;
+  }
 
 /*-----transition-----*/
   /* top */

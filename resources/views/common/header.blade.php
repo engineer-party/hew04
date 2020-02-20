@@ -3,11 +3,11 @@
 <div id="app">
   <h1>ホーム</h1>
   <nav>
-    <a class="menu-trigger" href="#" @click="inputSleep">
+    <div class="menu-trigger" href="#" @click="inputSleep">
       <div class="topLine line"></div>
       <div class="borderLine line"></div>
       <div class="bottomLine line"></div>
-    </a>
+    </div>
   </nav>
   <p><input type="text" class="form" @click="inputActive" :placeholder="placeholder"></p>
   <div id="link">

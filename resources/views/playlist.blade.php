@@ -47,16 +47,16 @@
   }
   #app {
     width: 100%;
-    height: 12%;
     background-color: #ff5757;
   }
   #app .menu-trigger{
-    top: 25px;
+    top: 22px;
+    left: 20px;
   }
   #app h1{
-    position: absolute;
-    top: 22px;
-    left: 70px;
+    padding: 20px;
+    padding-left: 55px;
+    padding-bottom: 40px;
     color: white;
     font-size: 1.2em;
     letter-spacing: 4px;
