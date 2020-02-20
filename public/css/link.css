@@ -21,10 +21,12 @@
 }
 
 #link-in {
+  position: relative;
   height: 100vh;
   width: 85%;
   background-color: white;
   overflow-y: scroll;
+  z-index: 101;
 }
 
 .form::placeholder {

@@ -51,11 +51,11 @@
   }
   #app .menu-trigger{
     top: 22px;
-    left: 20px;
+    left: 30px;
   }
   #app h1{
     padding: 20px;
-    padding-left: 55px;
+    padding-left: 65px;
     padding-bottom: 40px;
     color: white;
     font-size: 1.2em;

@@ -43,6 +43,7 @@
     text-decoration: none;
     list-style-type: none;
   }
+  
   #app h1{
     display: none;
   }
