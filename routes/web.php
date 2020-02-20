@@ -61,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('music/search', 'MusicController@search')->name('music_search');
     Route::get('music/artist', 'MusicController@artist')->name('music_artist');
 
-    // Hunt 5.ハント 
+    // Hunt 5.ハント
     Route::get('hunt/', 'HuntController@index')->name('hunt');
 
     // Report 6.通報
