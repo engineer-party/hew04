@@ -1,0 +1,88 @@
+#login_btn button {
+  background: none;
+  border: none;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  color: #ff5757;
+  line-height: 55px;
+  padding-left: 20px;
+}
+
+#link {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: -10px;
+  left: -100vw;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1) 0s;
+  z-index: 100;
+}
+
+#link-in {
+  height: 100vh;
+  width: 85%;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+.form::placeholder {
+  color: white;
+}
+
+#link-in #account {
+  height: 150px;
+  width: 100%;
+  background-color: aqua;
+}
+
+#link-in #account ul {
+  height: auto;
+  width: auto;
+  padding-top: 50px;
+  /*    background-color: aquamarine;*/
+}
+
+#link-in #account li:nth-child(1) {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  margin-left: 20px;
+  background-color: white;
+}
+
+#link-in #account li:nth-child(2) {
+  margin-left: 20px;
+  line-height: 50px;
+  font-size: 1.0em;
+}
+
+#link-list li {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  font-size: 0.9em;
+  padding-left: 50px;
+  /*    background: rgba(0,0,0,0.1);*/
+  font-weight: 530;
+}
+
+#link-list ul {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid rgba(0, 0, 0, 0.1) 1px;
+}
+
+#link-list ul li span {
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  background-color: blue;
+}
+
+/*-----link animate-----*/
+.link-active {
+  transform: translateX(100vw);
+  background: rgba(0, 0, 0, 0.6);
+}

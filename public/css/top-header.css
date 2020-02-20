@@ -1,0 +1,55 @@
+
+#app {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 100%;
+  height: 45px;
+  border-radius: 2px;
+  background-color: #ff5757;
+  display: flex;
+  z-index: 100;
+}
+#app nav{
+  width: auto;
+}
+#app p{
+    width: 70%;
+}
+#app .form{
+  height: 45px;
+  line-height: 45px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #ff5757;
+  color: white;
+  border: none;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  caret-color: yellow;
+  margin-left: 50px;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 90%;
+}
+
+/*------ hunberger animate ------*/
+.menu-trigger.active{
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.menu-trigger.active div:nth-of-type(1),
+.menu-trigger.active div:nth-of-type(3) {
+  width: 12px;
+}
+.menu-trigger.active div:nth-of-type(1) {
+  -webkit-transform: translate(-1px,3px) rotate(-45deg);
+  transform: translate(-1px,3px) rotate(-45deg);
+}
+.menu-trigger.active div:nth-of-type(3) {
+  -webkit-transform: translate(-1px,-3px) rotate(45deg);
+  transform: translate(-1px,-3px) rotate(45deg);
+}
