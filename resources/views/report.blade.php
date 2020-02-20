@@ -31,13 +31,13 @@
         <select name="category">
             <option value="">-</option>
             @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
+            <option value="{{ $category->id }}" @if(old('category')==$category->id) selected  @endif>{{ $category->name }}</option>
             @endforeach
         </select>
     </p>
 
     <label>詳細</label>
-    <p><textarea name="detail" rows="6" placeholder="詳細な説明（任意）例）位置情報を不正取得している。"></textarea></p>
+    <p><textarea name="detail" rows="6" placeholder="詳細な説明（任意）例）位置情報を不正取得している。">{{ old('detail') }}</textarea></p>
 
     <a href=""><button type="submit" class="btn btn-danger">通報する</button></a>
 </form>
