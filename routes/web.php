@@ -11,6 +11,12 @@
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| 1) 認証不要
+|--------------------------------------------------------------------------
+*/
+
 // 最初の画面
 Route::get('/', function () {
     return view('login');
@@ -38,7 +44,11 @@ Route::post('signup', 'AuthController@signup')->name('auth.signup');
 Route::get('login/{provider}', 'AuthController@redirectTo');
 Route::get('login/{provider}/callback', 'AuthController@handleProviderCallback');
 
-// ログイン済みのみ
+/*
+|--------------------------------------------------------------------------
+| 2) User認可済み
+|--------------------------------------------------------------------------
+*/
 Route::group(['middleware' => 'auth'], function () {
     
     // TOPページ
@@ -71,5 +81,14 @@ Route::group(['middleware' => 'auth'], function () {
     // Admin 7.管理
     Route::get('admin/', 'AdminController@index')->name('admin');
 
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| 3) Admin認可済み 予定
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'admin'], function () {
 
 });
