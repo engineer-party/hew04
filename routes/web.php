@@ -81,7 +81,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Admin 7.管理
     Route::get('admin/', 'AdminController@index')->name('admin');
 
-
+    // music-upload
+    Route::get('music_upload/','MusicUploadController@index')->name('music_upload');
 });
 
 /*
