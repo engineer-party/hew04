@@ -426,7 +426,7 @@ ul.sidebar-menu li a.active i {
     padding-right: 15px;
     padding-bottom: 15px;
     padding-top: 0px;
-    width: 100%;
+    /* width: 100%; 余白削除 */
 }
 
 a.logo {
@@ -3331,6 +3331,11 @@ ul.chat-available-user li a:hover {
 
 .credits, .credits a {
   color: #fff;
+  text-align: center;
+}
+
+.copy-center{
+    text-align: center;
 }
 
 .go-top {
@@ -3346,6 +3351,9 @@ ul.chat-available-user li a:hover {
 
 .go-top i {
     color: #2A3542;
+    position: relative;
+    top:-4px;
+    right:-1.5px;
 }
 
 .site-min-height {
