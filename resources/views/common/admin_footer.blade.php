@@ -14,7 +14,7 @@
       Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
     </div>
     <a href="#main-content" class="go-top">
-      <i class="fa fa-angle-up fa-2x"></i>
+      <i class="fa fa-angle-up"></i>
     </a>
   </div>
 </footer>
