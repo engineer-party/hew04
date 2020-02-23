@@ -8,25 +8,35 @@
 <body>
     <section id="container">
         @yield('admin_header')
+            <section id="main-content">
+            <section class="wrapper">
         @yield('content')
+            </section>
         @yield('admin_footer')
+            </section>
         <!-- JavaScript -->
     </section>
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="lib/jquery/jquery.min.js"></script>
 
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="lib/jquery.scrollTo.min.js"></script>
-    <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="lib/jquery.sparkline.js"></script>
+    <!-- Bootstrap -->
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<!--Vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js') }}"></script>
+
+    <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
+
+    <script src="{{ asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script class="include" type="text/javascript" src="{{ asset('lib/jquery.dcjqaccordion.2.7.js') }}"></script>
+    <script src="{{ asset('lib/jquery.scrollTo.min.js') }}"></script>
+    <script src="{{ asset('lib/jquery.nicescroll.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('lib/jquery.sparkline.js') }}"></script>
     <!--common script for all pages-->
-    <script src="lib/common-scripts.js"></script>
-    <script type="text/javascript" src="lib/gritter/js/jquery.gritter.js"></script>
-    <script type="text/javascript" src="lib/gritter-conf.js"></script>
+    <script src="{{ asset('lib/common-scripts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('lib/gritter/js/jquery.gritter.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('lib/gritter-conf.js') }}"></script>
     <!--script for this page-->
-    <script src="lib/sparkline-chart.js"></script>
-    <script src="lib/zabuto_calendar.js"></script>
+    <script src="{{ asset('lib/sparkline-chart.js') }}"></script>
+    <script src="{{ asset('lib/zabuto_calendar.js') }}"></script>
     <script type="application/javascript">
     $(document).ready(function() {
         $("#date-popover").popover({

@@ -11,7 +11,7 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 <!-- Bootstrap -->
-<link href="{{ asset('lib/boostrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <!--Vue-->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!--jQuery-->
