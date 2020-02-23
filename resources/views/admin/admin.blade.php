@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layout.admin')
 
 <!-- head -->
 @section('title', 'Admin')
@@ -6,10 +6,10 @@
 <link rel="stylesheet" href="{{asset('css/admin.css')}}" />
 
 @endsection
-@include('common.head')
+@include('common.admin_head')
 
 <!-- header -->
-@include('common.header')
+@include('common.admin_header')
 
 <!-- content -->
 @section('content')
@@ -17,4 +17,4 @@
 @endsection
 
 <!-- footer -->
-@include('common.footer')
+@include('common.admin_footer')

@@ -79,7 +79,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('report/store', 'ReportController@store')->name('report_store');
 
     // Admin 7.管理
-    Route::get('admin/', 'AdminController@index')->name('admin');
+    Route::get('admin/', 'Admin\AdminController@index')->name('admin');
 
 
 });
