@@ -60,13 +60,13 @@
       </div>
       <label>音楽ファイル</label>
       <div class="custom-file mb-2">
-        <input type="file" class="custom-file-input" id="customMfile" name="mfile" @change="mfileNameChange">
-        <label class="custom-file-label" for="customMfile" data-browse="参照">ファイル選択...</label>
+        <input type="file" class="custom-file-input" id="customMusicfile" name="musicfile" @change="musicFileNameChange">
+        <label class="custom-file-label" for="customMusicfile" data-browse="参照">ファイル選択...</label>
       </div>
       <label>画像ファイル</label>
       <div class="custom-file mb-2">
-        <input type="file" class="custom-file-input" id="customIfile" name="ifile" @change="ifileNameChange">
-        <label class="custom-file-label" for="customIfile" data-browse="参照">ファイル選択...</label>
+        <input type="file" class="custom-file-input" id="customImgfile" name="imgfile" @change="imgFileNameChange">
+        <label class="custom-file-label" for="customImgfile" data-browse="参照">ファイル選択...</label>
       </div>
       <button class="btn btn-primary" type="submit">登録</button>
     </form>
@@ -190,11 +190,11 @@
       isActive3:false,
     },
     methods: {
-      mfileNameChange(e) {
+      musicFileNameChange(e) {
         e.target.labels[0].innerText = e.target.files[0].name;
         this.musicName = e.target.files[0].name.split( '.' )[0];
       },
-      ifileNameChange(e) {
+      imgFileNameChange(e) {
         e.target.labels[0].innerText = e.target.files[0].name;
       },
       toggleChange(e) {

@@ -26,15 +26,18 @@ class MusicUploadController extends Controller
 
   public function musicStore(Request $request)
   {
-    $file_name = $request->file('file')->getClientOriginalName();
+    $mp3_file_name = $request->file('musicfile')->getClientOriginalName();
+    $img_file_name = $request->file('imgfile')->getClientOriginalName();
     if (app()->isLocal()) {
-      $request->file('file')->storeAs('public/music', $file_name);
+      $request->file('musicfile')->storeAs('public/music', $mp3_file_name);
+      $request->file('imgfile')->storeAs('public/image', $img_file_name);
     } else {
-      Storage::disk('s3')->putFileAs('music/', $request->file('file'), $file_name, 'public');
+      Storage::disk('s3')->putFileAs('music/', $request->file('musicfile'), $mp3_file_name, 'public');
+      Storage::disk('s3')->putFileAs('image/', $request->file('imgfile'), $img_file_name, 'public');
     }
     $getID3 = new getID3();
     $getID3->setOption(array('encoding' => 'UTF-8'));
-    $music_info = $getID3->analyze('storage/music/' . $file_name);
+    $music_info = $getID3->analyze('storage/music/' . $mp3_file_name);
     getid3_lib::CopyTagsToComments($music_info);
     /*
       $music = Music::create([
