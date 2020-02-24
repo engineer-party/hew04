@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             PlaylistMusicsTableSeeder::class,
             ReportCategoriesTableSeeder::class,
             ReportsTableSeeder::class,
+            GenreMusicTableSeeder::class,
         ]);
     }
 }

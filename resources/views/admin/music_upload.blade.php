@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 <!-- head -->
-@section('title', 'Admin')
+@section('title', 'Product')
 @section('style')
 
 @endsection
