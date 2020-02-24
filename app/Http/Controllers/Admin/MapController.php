@@ -9,6 +9,6 @@ class MapController extends Controller
 {
     public function index()
     {
-        return view('Admin\hunt',compact(''));
+        return view('Admin\map',compact(''));
     }
 }

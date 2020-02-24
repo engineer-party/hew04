@@ -29,7 +29,7 @@
       </ul>
       <div class="bar">
         <div class="title">JAN</div>
-        <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
+        <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">100%</div>
       </div>
       <div class="bar ">
         <div class="title">FEB</div>
