@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class ManagementController extends Controller
 {
     public function index()
     {
-        return view('Admin\management',compact(''));
+        $users = User::all();
+        return view('Admin\management',compact('users'));
     }
 }

@@ -18,6 +18,7 @@ class CreateBuyMusicsTable extends Migration
             $table->unsignedBigInteger('music_id');
             $table->primary(['user_id', 'music_id']);
             $table->integer('price');
+            $table->integer('point');
             $table->timestamps();
 
             //外部キー制約
