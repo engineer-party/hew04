@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGenreMusicTablesTable extends Migration
+class CreateGenreMusicTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGenreMusicTablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('genre_music_tables', function (Blueprint $table) {
+        Schema::create('genre_music', function (Blueprint $table) {
             $table->unsignedBigInteger('music_id');
             $table->unsignedBigInteger('genre_id');
             $table->primary(['music_id', 'genre_id']);

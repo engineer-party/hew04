@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 <!-- head -->
-@section('title', 'Collaboration')
+@section('title', 'suspension')
 @section('style')
 <!-- <link rel="stylesheet" href="{{asset('css/admin.css')}}" /> -->
 
@@ -12,18 +12,20 @@
 
 <!-- content -->
 @section('content')
-<h3><i class="fa fa-angle-right"></i> Users</h3>
-<div class="col-md-12">
+<h3><i class="fa fa-angle-right"></i> Suspensions</h3>
+<div class="row mt">
+  <div class="col-md-12">
     <div class="content-panel">
       <table class="table table-striped table-advance table-hover">
-        <h4><i class="fa fa-angle-right"></i> Users Table</h4>
+        <h4><i class="fa fa-angle-right"></i> Suspension Users Table</h4>
         <hr>
         <thead>
           <tr>
             <th><i class="fa fa-bullhorn"></i> Company</th>
             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
             <th><i class="fa fa-bookmark"></i> Profit</th>
-            <th><i class=" fa fa-edit"></i> Information</th>
+            <th><i class=" fa fa-edit"></i> Status</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -33,8 +35,11 @@
             </td>
             <td class="hidden-phone">Lorem Ipsum dolor</td>
             <td>12000.00$ </td>
+            <td><span class="label label-info label-mini">Due</span></td>
             <td>
+              <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
               <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+              <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
             </td>
           </tr>
           <tr>
@@ -45,8 +50,11 @@
             </td>
             <td class="hidden-phone">Lorem Ipsum dolor</td>
             <td>17900.00$ </td>
+            <td><span class="label label-warning label-mini">Due</span></td>
             <td>
+              <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
               <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+              <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
             </td>
           </tr>
           <tr>
@@ -57,8 +65,11 @@
             </td>
             <td class="hidden-phone">Lorem Ipsum dolor</td>
             <td>14400.00$ </td>
+            <td><span class="label label-success label-mini">Paid</span></td>
             <td>
+              <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
               <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+              <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
             </td>
           </tr>
           <tr>
@@ -67,8 +78,11 @@
             </td>
             <td class="hidden-phone">Lorem Ipsum dolor</td>
             <td>22000.50$ </td>
+            <td><span class="label label-success label-mini">Paid</span></td>
             <td>
+              <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
               <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+              <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
             </td>
           </tr>
           <tr>
@@ -77,8 +91,11 @@
             </td>
             <td class="hidden-phone">Lorem Ipsum dolor</td>
             <td>12120.00$ </td>
+            <td><span class="label label-warning label-mini">Due</span></td>
             <td>
+              <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
               <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+              <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
             </td>
           </tr>
         </tbody>
