@@ -31,6 +31,36 @@
     </section>
   </transition>
 -->
+
+<!-- 付近のプレイリスト（配信） -->
+
+<div id="playlist-link">
+ <button type="button">
+   <h2 class="title">近くでライブ中</h2>
+   <p class="detail">付近で配信中のプレイリストを表示</p>
+ </button>
+</div>
+<!-- END -->
+
+<!-- キャンペーン -->
+<div class="campaign">
+  <button>
+    <h2 class="title">キャンペーンタイトル</h2>
+    <p class="detail">キャンペーン内容</p>
+  </button>
+</div>
+<!-- END -->
+
+<!-- キャンペーン -->
+<div class="campaign">
+  <button>
+    <h2 class="title">キャンペーンタイトル</h2>
+    <p class="detail">キャンペーン内容</p>
+  </button>
+</div>
+<!-- END -->
+
+
 @endsection
 
 <!-- footer -->
@@ -43,7 +73,14 @@
     text-decoration: none;
     list-style-type: none;
   }
-  
+  #wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
   #app h1{
     display: none;
   }
@@ -51,7 +88,51 @@
     top: 14px;
     left: 15px;
   }
-
+  #playlist-link button{
+    background: none;
+    border: none;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    text-align: left;
+    width: 100%;
+    height: 300px;
+    background-color: aqua;
+  }
+  #playlist-link .title,
+  .campaign .title{
+    width: calc(100% - 20px);
+    position: relative;
+    top: 60px;
+    left: 20px;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+  #playlist-link .detail,
+  .campaign .detail{
+    width: calc(100% - 20px);
+    position: relative;
+    color: gray;
+    top: 70px;
+    left: 20px;
+    font-size: 0.7em;
+    letter-spacing: 2px;
+  }
+  .campaign button{
+    background: none;
+    border: none;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    text-align: left;
+    width: 100%;
+    height: 300px;
+    background-color: blueviolet;
+  }
+  
 /*-----transition-----*/
   /* top */
   .top-enter-active, .top-leave-active {

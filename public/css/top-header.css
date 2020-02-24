@@ -2,9 +2,7 @@
 #app {
   position: fixed;
   top: 10px;
-  left: 50%;
-  transform: translate(-50%);
-  width: 100%;
+  width: 100vw;
   height: 45px;
   border-radius: 2px;
   background-color: #ff5757;
@@ -12,10 +10,9 @@
   z-index: 100;
 }
 #app nav{
-  width: auto;
 }
 #app p{
-    width: 70%;
+  width: 70%;
 }
 #app .form{
   height: 45px;
