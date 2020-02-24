@@ -96,6 +96,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Users Management
         Route::get('management', 'ManagementController@index')->name('management');
         Route::get('report', 'ReportController@index')->name('report');
+        Route::get('suspension', 'SuspensionController@index')->name('suspension');
     });
 
 });
