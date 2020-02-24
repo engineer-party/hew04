@@ -40,11 +40,22 @@
       </div>
       <div class="form-group">
         <label>ジャンル</label>
-        <select class="custom-select" name="genre">
+        <select id="0" class="custom-select" name="genre[]" @change="selectChange">
+          <option value="0">選択してください</option>
           @foreach($genres as $genre)
           <option value="{{ $genre->id }}">{{ $genre->name }}</option>
           @endforeach
         </select>
+      </div>
+      <div v-for="(select, index) in selects">
+        <div class="form-group">
+          <select v-bind:id="index+1" class="custom-select" name="genre[]" @change="selectChange">
+            <option value="0">選択してください</option>
+            @foreach($genres as $genre)
+            <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+            @endforeach
+          </select>
+        </div>
       </div>
       <div class="form-group">
         <label>曲名…ファイルを選ぶと自動で入力されます</label>
@@ -60,7 +71,8 @@
       </div>
       <label>音楽ファイル</label>
       <div class="custom-file mb-2">
-        <input type="file" class="custom-file-input" id="customMusicfile" name="musicfile" @change="musicFileNameChange">
+        <input type="file" class="custom-file-input" id="customMusicfile" name="musicfile"
+          @change="musicFileNameChange">
         <label class="custom-file-label" for="customMusicfile" data-browse="参照">ファイル選択...</label>
       </div>
       <label>画像ファイル</label>
@@ -75,11 +87,9 @@
         <tr>
           <td>ID</td>
           <td>アーティスト</td>
-          <td>ジャンル</td>
           <td>曲名</td>
           <td>長さ</td>
           <td>値段</td>
-          <td>発売日</td>
         </tr>
       </thead>
       <tbody>
@@ -87,11 +97,9 @@
         <tr>
           <td>{{ $music->id }}</td>
           <td>{{ $artists[$music->artist_id - 1]->name }}</td>
-          <td>{{ $genres[$music->genre_id - 1]->name }}</td>
           <td>{{ $music->name }}</td>
           <td>{{ $music->time }}</td>
           <td>{{ $music->price }}</td>
-          <td>{{ $music->release_date }}</td>
         </tr>
         @endforeach
       </tbody>
@@ -152,7 +160,6 @@
       <thead>
         <tr>
           <td>ID</td>
-          <td>ジャンル</td>
           <td>アーティスト名</td>
           <td>説明</td>
         </tr>
@@ -161,7 +168,6 @@
         @foreach($artists as $artist)
         <tr>
           <td>{{ $artist->id }}</td>
-          <td>{{ $genres[$artist->genre_id - 1]->name }}</td>
           <td>{{ $artist->name }}</td>
           <td>{{ $artist->description }}</td>
         </tr>
@@ -188,6 +194,7 @@
       isActive1:true,
       isActive2:false,
       isActive3:false,
+      selects:[],
     },
     methods: {
       musicFileNameChange(e) {
@@ -213,6 +220,11 @@
           this.isActive2 = false;
           this.isActive3 = true;
           this.choice = 2;
+        }
+      },
+      selectChange(e){
+        if(!this.selects.some(item => item === e.target.value) && e.target.value !== "0"){
+          this.selects.splice(e.target.id,1,e.target.value);
         }
       }
     }

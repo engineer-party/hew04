@@ -41,12 +41,11 @@ class MusicUploadController extends Controller
     getid3_lib::CopyTagsToComments($music_info);
     /*
       $music = Music::create([
-        'artist_id'   => $request->artist,
-        'genre_id'    => $request->genre,
-        'name'        => $request->name,
-        'time'        => $music_info['playtime_string'],
-        'price'       => $request->price,
-        'release_date' => $request->data,
+        'artist_id'    => $request->artist,
+        'name'         => $request->name,
+        'time'         => $music_info['playtime_string'],
+        'price'        => $request->price,
+        'img_url'      => 
       ]);
       */
     return redirect()->route('music_upload')->with('message', 'musicアップロード成功！');
