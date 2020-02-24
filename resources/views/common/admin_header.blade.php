@@ -19,7 +19,7 @@
     <!-- sidebar menu start-->
     <ul class="sidebar-menu" id="nav-accordion">
       <li class="mt">
-        <a class="active" href="{{ action('Admin\AdminController@index') }}">
+        <a href="{{ action('Admin\AdminController@index') }}">
           <i class="fa fa-dashboard"></i>
           <span>Dashboard</span>
         </a>
@@ -30,16 +30,11 @@
           <span>Hunt Map</span>
         </a>
       </li>
-      <li class="sub-menu">
-        <a href="javascript:;">
+      <li class="mt">
+        <a href="{{ action('Admin\MusicUploadController@index') }}">
           <i class="fa fa-tasks"></i>
           <span>Product</span>
-          </a>
-        <ul class="sub">
-          <li><a href="{{ action('Admin\ArtistController@index') }}">Artists</a></li>
-          <li><a href="{{ action('Admin\MusicController@index') }}">Musics</a></li>
-          <li><a href="{{ action('Admin\GenreController@index') }}">Genres</a></li>
-        </ul>
+        </a>
       </li>
       <li class="sub-menu">
         <a href="javascript:;">

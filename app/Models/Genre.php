@@ -13,10 +13,10 @@ class Genre extends Model
     protected $table = 'genres';
 
     /**
-     * ジャンルのアーティストを取得
+     * このジャンルの曲を取得
      */
-    public function artists()
+    public function Musics()
     {
-        return $this->hasMany('App\Models\Artist');
+        return $this->belongsToMany('App\Models\Music','genre_music');
     }
 }
