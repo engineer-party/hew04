@@ -10,6 +10,7 @@ class BuyMusic extends Model
         'user_id',
         'music_id',
         'price',
+        'point',
     ];
 
     protected $table = 'buy_musics';
