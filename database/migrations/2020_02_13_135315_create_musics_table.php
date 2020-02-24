@@ -20,6 +20,8 @@ class CreateMusicsTable extends Migration
             $table->time('time');
             $table->integer('price');
             $table->string('img_url');
+            $table->string('music_url');
+            $table->string('sample_url');
             $table->timestamps();
 
             //外部キー制約

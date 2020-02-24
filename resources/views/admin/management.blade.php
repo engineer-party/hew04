@@ -20,67 +20,27 @@
         <hr>
         <thead>
           <tr>
-            <th><i class="fa fa-bullhorn"></i> Company</th>
-            <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
-            <th><i class="fa fa-bookmark"></i> Profit</th>
-            <th><i class=" fa fa-edit"></i> Information</th>
+            <th>#</th>
+            <th>Name</th>
+            <th>Profit</th>
+            <th>ReceiveReport</th>
+            <th>SendSendReport</th>
+            <th>Information</th>
           </tr>
         </thead>
         <tbody>
+        @foreach($users as $user)
           <tr>
-            <td>
-              <a href="basic_table.html#">Company Ltd</a>
-            </td>
-            <td class="hidden-phone">Lorem Ipsum dolor</td>
-            <td>12000.00$ </td>
+            <td>{{ $user->id }}</td>
+            <td>{{ $user->name }}</td>
+            <td>¥{{ $user->musics->sum('price') }}</td>
+            <td>{{ $user->targetReports->count()  }}</td>
+            <td>{{ $user->sendReports->count()  }}</td>
             <td>
               <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
             </td>
           </tr>
-          <tr>
-            <td>
-              <a href="basic_table.html#">
-                Dashio co
-                </a>
-            </td>
-            <td class="hidden-phone">Lorem Ipsum dolor</td>
-            <td>17900.00$ </td>
-            <td>
-              <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="basic_table.html#">
-                Another Co
-                </a>
-            </td>
-            <td class="hidden-phone">Lorem Ipsum dolor</td>
-            <td>14400.00$ </td>
-            <td>
-              <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="basic_table.html#">Dashio ext</a>
-            </td>
-            <td class="hidden-phone">Lorem Ipsum dolor</td>
-            <td>22000.50$ </td>
-            <td>
-              <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="basic_table.html#">Total Ltd</a>
-            </td>
-            <td class="hidden-phone">Lorem Ipsum dolor</td>
-            <td>12120.00$ </td>
-            <td>
-              <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-            </td>
-          </tr>
+        @endforeach
         </tbody>
       </table>
     </div>
