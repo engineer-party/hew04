@@ -10,6 +10,7 @@ use App\Models\Genre;
 use App\Models\Music;
 use getID3;
 use getid3_lib;
+use falahati\PHPMP3\MpegAudio;
 
 class MusicUploadController extends Controller
 {
@@ -28,12 +29,15 @@ class MusicUploadController extends Controller
   {
     $mp3_file_name = $request->file('musicfile')->getClientOriginalName();
     $img_file_name = $request->file('imgfile')->getClientOriginalName();
+    $mp3 = new MpegAudio();
     if (app()->isLocal()) {
       $request->file('musicfile')->storeAs('public/music', $mp3_file_name);
       $request->file('imgfile')->storeAs('public/image', $img_file_name);
+      $mp3->fromFile('storage/music/'.$mp3_file_name)->trim(10, 30)->saveFile('storage/sample/sample_'.$mp3_file_name);
     } else {
       Storage::disk('s3')->putFileAs('music/', $request->file('musicfile'), $mp3_file_name, 'public');
       Storage::disk('s3')->putFileAs('image/', $request->file('imgfile'), $img_file_name, 'public');
+      Storage::disk('s3')->putFileAs('sample/', $mp3->fromFile(Storage::disk('s3')->url('music/'.$mp3_file_name))->trim(10, 30), 'sample_'.$mp3_file_name, 'public');
     }
     $getID3 = new getID3();
     $getID3->setOption(array('encoding' => 'UTF-8'));
@@ -46,6 +50,8 @@ class MusicUploadController extends Controller
         'time'         => $music_info['playtime_string'],
         'price'        => $request->price,
         'img_url'      => 
+        'music_url'    => 
+        'sample_url'   => 
       ]);
       */
     return redirect()->route('music_upload')->with('message', 'musicアップロード成功！');
