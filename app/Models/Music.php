@@ -12,6 +12,9 @@ class Music extends Model
         'name',
         'time',
         'price',
+        'img_url',
+        'music_url',
+        'sample_url',
         'release_date',
     ];
 

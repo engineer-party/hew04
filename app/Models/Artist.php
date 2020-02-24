@@ -9,6 +9,7 @@ class Artist extends Model
     protected $fillable = [
         'name',
         'description',
+        'img_url',
     ];
 
     protected $table = 'artists';
