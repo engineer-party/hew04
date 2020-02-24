@@ -85,11 +85,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'AdminController@index')->name('admin');
         // MAP
         Route::get('map', 'MapController@index')->name('map');
+        //Product
         // music-upload
         Route::get('music_upload/','MusicUploadController@index')->name('music_upload');
         Route::post('music_upload/music_store','MusicUploadController@musicStore');
         Route::post('music_upload/genre_store','MusicUploadController@genreStore');
         Route::post('music_upload/artist_store','MusicUploadController@artistStore');
+        // sales
+        Route::get('sales/','SalesController@index')->name('sales');
         // Campagin
         Route::get('price', 'PriceController@index')->name('price');
         Route::get('collaboration', 'CollaborationController@index')->name('collaboration');

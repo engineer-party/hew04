@@ -20,14 +20,14 @@
     <div class="form-panel">
       <form role="form" class="form-horizontal style-form">
         <div class="form-group has-success">
-          <label class="col-lg-2 control-label">First Name</label>
+          <label class="col-lg-2 control-label">Artist Name</label>
           <div class="col-lg-10">
             <input type="text" placeholder="" id="f-name" class="form-control">
             <p class="help-block">Successfully done</p>
           </div>
         </div>
         <div class="form-group has-error">
-          <label class="col-lg-2 control-label">Last Name</label>
+          <label class="col-lg-2 control-label">Discount Price</label>
           <div class="col-lg-10">
             <input type="text" placeholder="" id="l-name" class="form-control">
             <p class="help-block">Aha you gave a wrong info</p>

@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 <!-- head -->
-@section('title', 'management')
+@section('title', 'sales')
 @section('style')
 <!-- <link rel="stylesheet" href="{{asset('css/admin.css')}}" /> -->
 
