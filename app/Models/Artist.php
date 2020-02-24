@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Artist extends Model
 {
     protected $fillable = [
-        'genre_id',
         'name',
         'description',
+        'img_url',
     ];
 
     protected $table = 'artists';

@@ -46,7 +46,7 @@ class User extends Authenticatable implements \Illuminate\Contracts\Auth\Authent
     public function musics()
     {
         return $this->belongsToMany('App\Models\Music','buy_musics')
-            ->withPivot('price');;
+            ->withPivot('price','point','created_at','updated_at');
     }
 
     /**
