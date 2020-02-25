@@ -30,11 +30,15 @@
           <span>Hunt Map</span>
         </a>
       </li>
-      <li class="mt">
-        <a href="{{ action('Admin\MusicUploadController@index') }}">
+      <li class="sub-menu">
+        <a href="javascript:;">
           <i class="fa fa-tasks"></i>
           <span>Product</span>
-        </a>
+          </a>
+        <ul class="sub">
+          <li><a href="{{ action('Admin\MusicUploadController@index') }}">Upload</a></li>
+          <li><a href="{{ action('Admin\SalesController@index') }}">Sales</a></li>
+        </ul>
       </li>
       <li class="sub-menu">
         <a href="javascript:;">

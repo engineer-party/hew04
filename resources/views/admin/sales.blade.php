@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 <!-- head -->
-@section('title', 'suspension')
+@section('title', 'sales')
 @section('style')
 <!-- <link rel="stylesheet" href="{{asset('css/admin.css')}}" /> -->
 
@@ -12,12 +12,11 @@
 
 <!-- content -->
 @section('content')
-<h3><i class="fa fa-angle-right"></i> Suspensions</h3>
-<div class="row mt">
-  <div class="col-md-12">
+<h3><i class="fa fa-angle-right"></i> Users</h3>
+<div class="col-md-12">
     <div class="content-panel">
       <table class="table table-striped table-advance table-hover">
-        <h4><i class="fa fa-angle-right"></i> Suspended Account</h4>
+        <h4><i class="fa fa-angle-right"></i> Users Table</h4>
         <hr>
         <thead>
           <tr>
@@ -26,7 +25,7 @@
             <th>Point</th>
             <th>Profit</th>
             <th>ReceiveReport</th>
-            <th>SendReport</th>
+            <th>SendSendReport</th>
             <th>Information</th>
           </tr>
         </thead>
@@ -35,7 +34,7 @@
           <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
-            <td>{{ $user->point }} HC</td>
+            <td>{{ $user->point }}HC</td>
             <td>¥{{ $user->musics->sum('price') + $user->buyPoints()->sum('price') }}</td>
             <td>{{ $user->targetReports->count()  }}</td>
             <td>{{ $user->sendReports->count()  }}</td>

@@ -92,28 +92,28 @@
       <div class="col-md-4 col-sm-4 mb">
         <div class="darkblue-panel pn">
           <div class="darkblue-header">
-            <h5>DROPBOX STATICS</h5>
+            <h5>Point or Cash</h5>
           </div>
           <canvas id="serverstatus02" height="120" width="120"></canvas>
           <script>
             var doughnutData = [{
-                value: 60,
+                value: {{ $pointOrCash['parCash'] }},
                 color: "#1c9ca7"
               },
               {
-                value: 40,
+                value: {{ $pointOrCash['parPoint'] }},
                 color: "#f68275"
               }
             ];
             var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
           </script>
-          <p>April 17, 2014</p>
+          <p>Total Payment ¥{{ number_format($pointOrCash['totalPay']) }}</p>
           <footer>
             <div class="pull-left">
-              <h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
+              <h5 style="color:#f68275">{{ $pointOrCash['parPoint'] }}<span style="font-size:0.6em;">%</span> Point</h5>
             </div>
             <div class="pull-right">
-              <h5>60% Used</h5>
+              <h5 style="color:#1c9ca7">{{ $pointOrCash['parCash'] }}<span style="font-size:0.6em;">%</span> Cash</h5>
             </div>
           </footer>
         </div>
