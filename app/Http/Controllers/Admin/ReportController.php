@@ -28,7 +28,6 @@ class ReportController extends Controller
             '位置情報改ざん',
             'その他',
         ];
-
         // 通報検索
         if ($category_id < 6){
             $where = [
@@ -49,9 +48,8 @@ class ReportController extends Controller
             ];
             $title = 'Send Reports';
         }
-
+        // レポート取得
         $reports = Report::where($where)->orderBy('created_at','desc')->get();
-
         $title = [
             'name' => User::withTrashed()->find($user_id)->name,
             'title' => $title,
