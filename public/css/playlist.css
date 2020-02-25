@@ -3,7 +3,7 @@
   height: auto;
   padding-top: 140px;
   display: grid;
-  grid-gap: 0px 10px;
+  grid-gap: 10px 10px;
   grid-template-columns: calc(50% - 5px) calc(50% - 5px);
 }
 .playlist-content {
