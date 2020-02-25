@@ -28,7 +28,7 @@
             <th>ReceiveReport</th>
             <th>SendReport</th>
             <th>Suspension Date</th>
-            <th>Information</th>
+            <th>Release</th>
           </tr>
         </thead>
         <tbody>
@@ -42,7 +42,7 @@
             <td>{{ $user->sendReports->count()  }}</td>
             <td>{{ $user->deleted_at  }}</td>
             <td>
-              <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+              <button class="btn btn-success btn-xs"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
             </td>
           </tr>
         @endforeach
