@@ -27,7 +27,7 @@
             <th>#2 Name</th>
             <th>#3 Data</th>
             <th>#4 Location</th>
-            <th>#5 OtherOther</th>
+            <th>#5 Other</th>
             <th>Total</th>
             <th>Send</th>
             <th>Suspension</th>
@@ -38,7 +38,7 @@
           <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
-            <td><a href="">{{ $user->targetReports->where('category_id','=',1)->count()  }}</a></td>
+            <td><a href="/admin/report/1/2">{{ $user->targetReports->where('category_id','=',1)->count()  }}</a></td>
             <td><a href="">{{ $user->targetReports->where('category_id','=',2)->count()  }}</a></td>
             <td><a href="">{{ $user->targetReports->where('category_id','=',3)->count()  }}</a></td>
             <td><a href="">{{ $user->targetReports->where('category_id','=',4)->count()  }}</a></td>
@@ -46,7 +46,7 @@
             <td><a href="">{{ $user->targetReports->count()  }}</a></td>
             <td><a href="">{{ $user->sendReports->count()  }}</a></td>
             <td>
-              <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+              <button class="btn btn-danger btn-xs"><i class="fa fa-lock" aria-hidden="true"></i></button>
             </td>
           </tr>
         @endforeach

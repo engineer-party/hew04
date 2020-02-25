@@ -10,7 +10,7 @@ class SuspensionController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::onlyTrashed()->get();
         return view('Admin\suspension',compact('users'));
     }
 }

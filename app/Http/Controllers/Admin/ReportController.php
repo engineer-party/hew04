@@ -16,4 +16,13 @@ class ReportController extends Controller
             ->get();
         return view('Admin\report',compact('users'));
     }
+
+    // レポート詳細
+    public function show($user_id,$category_id)
+    {
+        // User一覧通報数が多い順
+        $reports = User::find($user_id)->targetReports();
+        dd($reports);
+        return view('Admin\report_show',compact('reports'));
+    }
 }

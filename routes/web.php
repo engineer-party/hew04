@@ -102,6 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Users Management
         Route::get('management', 'ManagementController@index')->name('management');
         Route::get('report', 'ReportController@index')->name('report');
+        Route::get('report/{user_id}/{category_id}', 'ReportController@show');
         Route::get('suspension', 'SuspensionController@index')->name('suspension');
     });
   
