@@ -105,7 +105,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('report/{user_id}/{category_id}', 'ReportController@show');
         Route::get('suspension', 'SuspensionController@index')->name('suspension');
     });
-
+  
 });
 
 /*
