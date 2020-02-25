@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{asset('css/link.css')}}" />
 <link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
 <link rel="stylesheet" href="{{asset('css/playlist.css')}}" />
+<link rel="stylesheet" href="{{asset('css/music.css')}}" />
 
 <script src="{{ asset('js/library.js') }}" defer></script>
 <script src="{{ asset('js/hbg.js') }}" defer></script>
@@ -28,47 +29,38 @@
     </ul>
   </nav>
 
-  <section class="activeobj1 box" v-bind:class="[ activetab === 1 ? 'activeobj' : '' ]">
-    <!-- ajax -->
-    <div class="contents">
-      <!-- プレイリスト -->
-      <div class="playlist-content">
-        <div class="img">
-<!--
-          <ul>
-            <li><img src="{{ asset('img/cheep-trick.jpg') }}" alt=""></li>
-            <li><img src="{{ asset('img/joan-jett.jpg') }}" alt=""></li>
-            <li><img src="{{ asset('img/plus.jpg') }}" alt=""></li>
-            <li><img src="{{ asset('img/sex-pistols.jpg') }}" alt=""></li>
-          </ul>
--->
+  <section class="activeobj1 box">
+      <!-- ajax -->
+      <div id="playlist">
+        <!-- プレイリスト -->
+        <div class="playlist-content">
+          <div class="img">
+            <img src="{{ asset('img/cheep-trick.jpg') }}" alt="">
+            <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
+            <img src="{{ asset('img/plus.jpg') }}" alt="">
+            <img src="{{ asset('img/sex-pistols.jpg') }}" alt="">
+          </div>
+          <div class="text">
+            <p class="title">Rock-Hot</p>
+          </div>
+          <button class="play-btn"></button>
         </div>
-        <div class="text">
+        <!-- END -->
+
+        <!-- プレイリスト -->
+        <div class="playlist-content">
+          <div class="img">
+            <img src="{{ asset('img/cheep-trick.jpg') }}" alt="">
+            <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
+            <img src="{{ asset('img/plus.jpg') }}" alt="">
+            <img src="{{ asset('img/sex-pistols.jpg') }}" alt="">
+          </div>
           <p class="title">Rock-Hot</p>
+          <button class="play-btn"></button>
         </div>
+        <!-- END -->
       </div>
-      <!-- END -->
-      
-      <!-- プレイリスト -->
-      <div class="playlist-content">
-        <div class="img">
-          <ul>
-            <li><img src="{{ asset('img/cheep-trick.jpg') }}" alt=""></li>
-            <li><img src="{{ asset('img/joan-jett.jpg') }}" alt=""></li>
-            <li><img src="{{ asset('img/plus.jpg') }}" alt=""></li>
-            <li><img src="{{ asset('img/sex-pistols.jpg') }}" alt=""></li>
-          </ul>
-        </div>
-        <div class="text">
-          <p class="title">Rock-Hot</p>
-        </div>
-      </div>
-      <!-- END -->
-    </div>
   </section>
-  <section class="activeobj2 box" v-bind:class="[ activetab === 2 ? 'activeobj' : '' ]"></section>
-  <section class="activeobj3 box" v-bind:class="[ activetab === 3 ? 'activeobj' : '' ]"></section>
-  <section class="activeobj4 box" v-bind:class="[ activetab === 4 ? 'activeobj' : '' ]"></section>
 
 </div>
 @endsection
@@ -82,14 +74,12 @@
     padding: 0;
   }
 
-  /*
   #wrapper {
-    position: fixed;
     width: 100%;
     height: 100vh;
-    background-color: aliceblue;
+    background-color: #fbd160;
   }
-*/
+
   #app .form {
     display: none;
   }
@@ -98,6 +88,8 @@
     width: 100%;
     background-color: #ff5757;
     position: relative;
+    top: 0;
+    left: 0;
     z-index: 100;
   }
 
@@ -123,7 +115,12 @@
     justify-content: space-around;
     z-index: 1;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-/*    margin-bottom: -200px;*/
+    /*    margin-bottom: -200px;*/
+  }
+
+  #navber::-webkit-scrollbar {
+    /* Chrome, Safari 対応 */
+    display: none;
   }
 
   #navber ul {
@@ -149,7 +146,7 @@
     margin: 0;
     /*    border: solid black 1px;*/
     width: 100%;
-    font-size: 0.8em;
+    font-size: 0.9em;
     background-color: #ff5757;
     color: white;
     /*    left: 10px;*/
@@ -160,13 +157,14 @@
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(-200%);
+    /*    transform: translate(-200%);*/
+    transform: translate(-50%);
     height: 100vh;
     transition: transform 350ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   }
 
   .activeobj1 {
-    background-color: aqua;
+    /*    background-color: aqua;*/
   }
 
   .activeobj2 {
@@ -180,14 +178,19 @@
   .activeobj4 {
     background-color: darkorange;
   }
+
   .contents {
     width: 100%;
-    height: auto;
-    padding-top: 140px;
-    display: grid;
-    grid-gap: 0px 10px;
-    grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+    height: 100vh;
+    background-color: white;
+    overflow-y: scroll;
   }
+
+  .contents::-webkit-scrollbar {
+    /* Chrome, Safari 対応 */
+    display: none;
+  }
+
 
   /*----- addclass -----*/
   .active {

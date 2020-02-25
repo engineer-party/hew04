@@ -106,6 +106,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('suspension', 'SuspensionController@index')->name('suspension');
     });
   
+    //ajax
+    Route::get('/playlist' ,'LibraryController@ajaxplaylist_get');
+    Route::get('/music' ,'LibraryController@ajaxmusic_get');
+
 });
 
 /*
