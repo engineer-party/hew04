@@ -38,13 +38,13 @@
           <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
-            <td><a href="/admin/report/1/2">{{ $user->targetReports->where('category_id','=',1)->count()  }}</a></td>
-            <td><a href="">{{ $user->targetReports->where('category_id','=',2)->count()  }}</a></td>
-            <td><a href="">{{ $user->targetReports->where('category_id','=',3)->count()  }}</a></td>
-            <td><a href="">{{ $user->targetReports->where('category_id','=',4)->count()  }}</a></td>
-            <td><a href="">{{ $user->targetReports->where('category_id','=',5)->count()  }}</a></td>
-            <td><a href="">{{ $user->targetReports->count()  }}</a></td>
-            <td><a href="">{{ $user->sendReports->count()  }}</a></td>
+            <td><a href="/admin/report/{{ $user->id }}/1">{{ $user->targetReports->where('category_id','=',1)->count()  }}</a></td>
+            <td><a href="/admin/report/{{ $user->id }}/2">{{ $user->targetReports->where('category_id','=',2)->count()  }}</a></td>
+            <td><a href="/admin/report/{{ $user->id }}/3">{{ $user->targetReports->where('category_id','=',3)->count()  }}</a></td>
+            <td><a href="/admin/report/{{ $user->id }}/4">{{ $user->targetReports->where('category_id','=',4)->count()  }}</a></td>
+            <td><a href="/admin/report/{{ $user->id }}/5">{{ $user->targetReports->where('category_id','=',5)->count()  }}</a></td>
+            <td><a href="/admin/report/{{ $user->id }}/6">{{ $user->targetReports->count()  }}</a></td>
+            <td><a href="/admin/report/{{ $user->id }}/7">{{ $user->sendReports->count()  }}</a></td>
             <td>
               <button class="btn btn-danger btn-xs"><i class="fa fa-lock" aria-hidden="true"></i></button>
             </td>

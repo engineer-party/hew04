@@ -17,7 +17,7 @@
   <div class="col-md-12">
     <div class="content-panel">
       <table class="table table-striped table-advance table-hover">
-        <h4><i class="fa fa-angle-right"></i> Reports Table <span style="font-size:0.7em; font-style: italic">　　Click for details page</span></h4>
+        <h4><i class="fa fa-angle-right"></i> {{ $title['name'] }} <i class="fa fa-angle-right"></i> {{ $title['title'] }}</h4>
         <hr>
         <thead>
           <tr>
@@ -30,8 +30,8 @@
         <tbody>
         @foreach($reports as $report)
           <tr>
-            <td>{{ $report->sender() }}</td>
-            <td>{{ $report->category() }}</td>
+            <td>{{ $report->sender_id  }}</td>
+            <td>{{ $categories[$report->category_id-1]  }}</td>
             <td>{{ $report->detail  }}</a></td>
             <td>{{ $report->created_at  }}</a></td>
           </tr>

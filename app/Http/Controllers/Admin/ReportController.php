@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Report;
 
 class ReportController extends Controller
 {
@@ -20,9 +21,42 @@ class ReportController extends Controller
     // レポート詳細
     public function show($user_id,$category_id)
     {
-        // User一覧通報数が多い順
-        $reports = User::find($user_id)->targetReports();
-        dd($reports);
-        return view('Admin\report_show',compact('reports'));
+        $categories = [
+            '不適切な画像',
+            '不適切な名前',
+            'データの改ざん',
+            '位置情報改ざん',
+            'その他',
+        ];
+
+        // 通報検索
+        if ($category_id < 6){
+            $where = [
+                ['target_id','=',$user_id],
+                ['category_id','=',$category_id],
+            ];
+            $title = $categories[$category_id - 1];
+        } 
+        elseif ($category_id == 6){
+            $where = [
+                ['target_id','=',$user_id],
+            ];
+            $title = 'ALL Receive Reports';
+        }
+        else {
+            $where = [
+                ['sender_id','=',$user_id]
+            ];
+            $title = 'Send Reports';
+        }
+
+        $reports = Report::where($where)->orderBy('created_at','desc')->get();
+
+        $title = [
+            'name' => User::withTrashed()->find($user_id)->name,
+            'title' => $title,
+        ];
+
+        return view('Admin\report_show',compact('reports','categories','title'));
     }
 }

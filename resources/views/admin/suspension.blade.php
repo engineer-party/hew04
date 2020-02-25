@@ -38,8 +38,8 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->point }} HC</td>
             <td>¥{{ $user->musics->sum('price') + $user->buyPoints()->sum('price') }}</td>
-            <td>{{ $user->targetReports->count()  }}</td>
-            <td>{{ $user->sendReports->count()  }}</td>
+            <td><a href="/admin/report/{{ $user->id }}/6"> {{ $user->targetReports->count()  }}</a></td>
+            <td><a href="/admin/report/{{ $user->id }}/7">{{ $user->sendReports->count()  }}</a></td>
             <td>{{ $user->deleted_at  }}</td>
             <td>
               <button class="btn btn-success btn-xs"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
