@@ -27,6 +27,7 @@
             <th>Profit</th>
             <th>ReceiveReport</th>
             <th>SendReport</th>
+            <th>Suspension Date</th>
             <th>Information</th>
           </tr>
         </thead>
@@ -39,6 +40,7 @@
             <td>¥{{ $user->musics->sum('price') + $user->buyPoints()->sum('price') }}</td>
             <td>{{ $user->targetReports->count()  }}</td>
             <td>{{ $user->sendReports->count()  }}</td>
+            <td>{{ $user->deleted_at  }}</td>
             <td>
               <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
             </td>

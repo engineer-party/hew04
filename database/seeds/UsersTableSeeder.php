@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
                 'img_url'    => '1',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
+                'deleted_at' => NULL,
             ],
             [
                 'name'       => '春花子',
@@ -30,6 +31,7 @@ class UsersTableSeeder extends Seeder
                 'img_url'    => '2',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
+                'deleted_at' => NULL,
             ],
             [
                 'name'       => '悪太郎',
