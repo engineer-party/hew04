@@ -59,6 +59,7 @@
           <li><a href="{{ action('Admin\ManagementController@index') }}">Management</a></li>
           <li><a href="{{ action('Admin\ReportController@index') }}">Reports</a></li>
           <li><a href="{{ action('Admin\SuspensionController@index') }}">Suspensions</a></li>
+          <li><a href="{{ action('Admin\InformationController@index') }}">Information</a></li>
         </ul>
       </li>
     </ul>

@@ -104,6 +104,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('report', 'ReportController@index')->name('report');
         Route::get('report/{user_id}/{category_id}', 'ReportController@show');
         Route::get('suspension', 'SuspensionController@index')->name('suspension');
+        Route::get('information', 'InformationController@index')->name('information');
     });
   
     //ajax
