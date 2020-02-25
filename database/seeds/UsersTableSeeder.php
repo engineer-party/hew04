@@ -31,6 +31,16 @@ class UsersTableSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
+            [
+                'name'       => '悪太郎',
+                'email'      => 'warutaro@gmail.com',
+                'password'   => bcrypt('secretwaru'),
+                'point'      => 0,
+                'img_url'    => '3',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+                'deleted_at' => new DateTime(),
+            ],
         ]);
     }
 }

@@ -110,10 +110,10 @@
           <p>Total Payment ¥{{ number_format($pointOrCash['totalPay']) }}</p>
           <footer>
             <div class="pull-left">
-              <h5 style="color:#f68275">{{ $pointOrCash['parPoint'] }}% Point</h5>
+              <h5 style="color:#f68275">{{ $pointOrCash['parPoint'] }}<span style="font-size:0.6em;">%</span> Point</h5>
             </div>
             <div class="pull-right">
-              <h5 style="color:#1c9ca7">{{ $pointOrCash['parCash'] }}% Cash</h5>
+              <h5 style="color:#1c9ca7">{{ $pointOrCash['parCash'] }}<span style="font-size:0.6em;">%</span> Cash</h5>
             </div>
           </footer>
         </div>

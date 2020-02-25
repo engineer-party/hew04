@@ -24,8 +24,9 @@
             <th>Name</th>
             <th>Point</th>
             <th>Profit</th>
+            <th>Created</th>
             <th>ReceiveReport</th>
-            <th>SendSendReport</th>
+            <th>SendReport</th>
             <th>Information</th>
           </tr>
         </thead>
@@ -34,8 +35,9 @@
           <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
-            <td>{{ $user->point }}HC</td>
+            <td>{{ $user->point }} HC</td>
             <td>¥{{ $user->musics->sum('price') + $user->buyPoints()->sum('price') }}</td>
+            <td>{{ $user->created_at  }}</td>
             <td>{{ $user->targetReports->count()  }}</td>
             <td>{{ $user->sendReports->count()  }}</td>
             <td>
