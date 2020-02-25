@@ -104,7 +104,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('report', 'ReportController@index')->name('report');
         Route::get('suspension', 'SuspensionController@index')->name('suspension');
     });
-
+  
 });
 
 /*

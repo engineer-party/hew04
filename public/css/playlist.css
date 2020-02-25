@@ -1,0 +1,33 @@
+.playlist-content {
+  width: 100%;
+  height: ;
+  background-color: green;
+}
+.playlist-content .img{
+  
+}
+.playlist-content .img ul{
+  display: grid;
+  grid-gap: 0px 0px;
+  grid-template-columns: calc(100% / 2) calc(100% / 2);
+}
+.playlist-content .img li{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.playlist-content .img img{
+  width: 100%;
+}
+.playlist-content {
+  
+}
+.playlist-content {
+  
+}
+.playlist-content {
+  
+}
+.playlist-content {
+  
+}
