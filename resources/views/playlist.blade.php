@@ -17,15 +17,7 @@
 
 <!-- content -->
 @section('content')
-<nav id="navber">
-  <ul>
-    <li>プレイリスト</li>
-    <li>曲</li>
-    <li>アーティスト</li>
-    <li>アルバム</li>
-  </ul>
-</nav>
-
+<p>うんこ</p>
 @endsection
 
 <!-- footer -->
@@ -83,5 +75,11 @@
   }
   #navber li:nth-child(1){
     border-bottom: solid white 3px;
+  }
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
   }
 </style>
