@@ -9,21 +9,21 @@
       <div class="bottomLine line"></div>
     </div>
   </nav>
-  <p><input type="text" class="form" @click="inputActive" :placeholder="placeholder"></p>
+  <p><input type="text" id="form" @click="inputActive" :placeholder="placeholder"></p>
   <div id="link">
     <article id="link-in">
-      <section id="account">
+      <a id="account" type="button" href="{{ action('MyPageController@index') }}">
         <ul>
           <li><img src="" alt=""></li>
           <li>Cookie Man</li>
         </ul>
-      </section>
+      </a>
       <section id="link-list">
         <ul>
-          <li><span></span>ホーム</li>
-          <li><span></span>ハント</li>
-          <li><span></span>配信</li>
-          <li><span></span>音楽ライブラリ</li>
+          <li><a href="{{ action('TopController@index') }}">ホーム</a></li>
+          <li><a>ハント</a></li>
+          <li><a>配信</a></li>
+          <li><a>音楽ライブラリ</a></li>
         </ul>
       </section>
       <section id="login_btn">

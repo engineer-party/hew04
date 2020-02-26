@@ -90,7 +90,7 @@
     left: 0;
   }
 
-  #app .form {
+  #app #form {
     display: none;
   }
 

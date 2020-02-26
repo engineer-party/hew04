@@ -14,7 +14,7 @@
 #app p{
   width: 70%;
 }
-#app .form{
+#app #form{
   height: 45px;
   line-height: 45px;
   width: 100%;

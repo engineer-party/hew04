@@ -34,9 +34,18 @@
 }
 
 #link-in #account {
+  display: block;
   height: 150px;
   width: 100%;
-  background-color: aqua;
+  background-color: #ff5757;
+  color: white;
+  text-align: left;
+}
+#link-in #account:hover{
+  background: #BF3434;
+}
+#link-in #account{
+  text-decoration: none;
 }
 
 #link-in #account ul {
@@ -65,9 +74,20 @@
   height: 55px;
   line-height: 55px;
   font-size: 0.9em;
-  padding-left: 50px;
+/*  padding-left: 50px;*/
   /*    background: rgba(0,0,0,0.1);*/
   font-weight: 530;
+}
+#link-list li a{
+  display: block;
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  text-decoration: none;
+  color: black;
+}
+#link-list li a:hover{
+  background: rgba(0,0,0,0.2);
 }
 
 #link-list ul {
