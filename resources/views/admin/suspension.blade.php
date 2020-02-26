@@ -12,6 +12,9 @@
 
 <!-- content -->
 @section('content')
+@if(session('message'))
+  <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
+@endif
 <h3><i class="fa fa-angle-right"></i> 停止アカウント管理</h3>
 <div class="row mt">
   <div class="col-md-12">
@@ -36,13 +39,13 @@
           <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
-            <td>{{ $user->point }} HC</td>
-            <td>¥{{ $user->musics->sum('price') + $user->buyPoints()->sum('price') }}</td>
-            <td><a href="/admin/report/{{ $user->id }}/6"> {{ $user->targetReports->count()  }}</a></td>
-            <td><a href="/admin/report/{{ $user->id }}/7">{{ $user->sendReports->count()  }}</a></td>
+            <td>{{ number_format($user->point) }} HC</td>
+            <td>¥{{ number_format($user->musics->sum('price') + $user->buyPoints()->sum('price')) }}</td>
+            <td><a href="/admin/report/show/{{ $user->id }}/6"> {{ $user->targetReports->count()  }}</a></td>
+            <td><a href="/admin/report/show/{{ $user->id }}/7">{{ $user->sendReports->count()  }}</a></td>
             <td>{{ $user->deleted_at  }}</td>
             <td>
-              <button class="btn btn-success btn-xs"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
+              <a href="/admin/suspension/restore/{{ $user->id }}"><button class="btn btn-success btn-xs"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
             </td>
           </tr>
         @endforeach

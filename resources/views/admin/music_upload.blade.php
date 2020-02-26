@@ -30,7 +30,7 @@
   </div>
   <div v-if="choice == 0">
     <h1 class="mt-2 mb-2">楽曲登録</h1>
-    <form method="post" action="{{ url('music_upload/music_store') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ url('admin/music_upload/music_store') }}" enctype="multipart/form-data">
       @csrf
       <div class="form-group">
         <label>アーティスト</label>
@@ -110,7 +110,7 @@
 
   <div v-if="choice == 1">
     <h1 class="mb-2 mt-2">ジャンル登録</h1>
-    <form method="post" action="{{ url('music_upload/genre_store') }}">
+    <form method="post" action="{{ url('admin/music_upload/genre_store') }}">
       @csrf
       <div class="form-group">
         <label>ジャンル名</label>
@@ -138,7 +138,7 @@
 
   <div v-if="choice == 2">
     <h1 class="mb-2 mt-2">アーティスト登録</h1>
-    <form class="mb-2" method="post" action="{{ url('music_upload/artist_store') }}">
+    <form class="mb-2" method="post" action="{{ url('admin/music_upload/artist_store') }}">
       @csrf
       <div class="form-group">
         <label>ジャンル</label>

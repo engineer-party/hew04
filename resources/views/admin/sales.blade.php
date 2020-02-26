@@ -12,35 +12,31 @@
 
 <!-- content -->
 @section('content')
-<h3><i class="fa fa-angle-right"></i> Users</h3>
+<h3><i class="fa fa-angle-right"></i> 売上</h3>
 <div class="col-md-12">
     <div class="content-panel">
       <table class="table table-striped table-advance table-hover">
-        <h4><i class="fa fa-angle-right"></i> Users Table</h4>
+        <h4><i class="fa fa-angle-right"></i> 楽曲別売上</h4>
         <hr>
         <thead>
           <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Point</th>
-            <th>Profit</th>
-            <th>ReceiveReport</th>
-            <th>SendSendReport</th>
-            <th>Information</th>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>アーティスト</th>
+            <th>ジャンル</th>
+            <th>売上数</th>
+            <th>売上額</th>
           </tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
+        @foreach($musics as $music)
           <tr>
-            <td>{{ $user->id }}</td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->point }}HC</td>
-            <td>¥{{ $user->musics->sum('price') + $user->buyPoints()->sum('price') }}</td>
-            <td>{{ $user->targetReports->count()  }}</td>
-            <td>{{ $user->sendReports->count()  }}</td>
-            <td>
-              <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-            </td>
+            <td>{{ $music->id }}</td>
+            <td>{{ $music->name }}</td>
+            <td>{{ $music->genre }}HC</td>
+            <td>¥{{ $music->musics->sum('price') + $music->buyPoints()->sum('price') }}</td>
+            <td>{{ $music->targetReports->count()  }}</td>
+            <td>{{ $music->sendReports->count()  }}</td>
           </tr>
         @endforeach
         </tbody>

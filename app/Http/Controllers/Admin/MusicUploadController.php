@@ -82,6 +82,6 @@ class MusicUploadController extends Controller
       'name'        => $request->name,
       'description' => $request->detail,
     ]);
-    return redirect()->route('admin/music_upload')->with('message', 'アーティスト登録成功！');
+    return redirect()->route('/admin/music_upload')->with('message', 'アーティスト登録成功！');
   }
 }

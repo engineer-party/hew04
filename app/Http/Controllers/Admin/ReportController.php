@@ -18,6 +18,12 @@ class ReportController extends Controller
         return view('Admin\report',compact('users'));
     }
 
+    // アカウント停止処理
+    public function softdelete($user_id){
+        User::find($user_id)->delete();
+        return redirect()->route('report')->with('message', 'アカウント停止完了！');
+    }
+
     // レポート詳細
     public function show($user_id,$category_id)
     {
