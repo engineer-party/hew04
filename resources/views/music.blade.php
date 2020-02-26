@@ -1,4 +1,3 @@
-<div class="contents">
   <div id="music">
     <h2>すべての音楽を再生</h2>
 
@@ -156,4 +155,3 @@
     </div>
     <!-- END -->
   </div>
-</div>

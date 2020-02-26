@@ -1,4 +1,3 @@
-<div class="contents">
   <div id="playlist">
     <!-- プレイリスト -->
     <div class="playlist-content">
@@ -41,4 +40,3 @@
     </div>
     <!-- END -->
   </div>
-</div>
