@@ -31,36 +31,11 @@
 
   <section class="activeobj1 box">
       <!-- ajax -->
-      <div id="playlist">
-        <!-- プレイリスト -->
-        <div class="playlist-content">
-          <div class="img">
-            <img src="{{ asset('img/cheep-trick.jpg') }}" alt="">
-            <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
-            <img src="{{ asset('img/plus.jpg') }}" alt="">
-            <img src="{{ asset('img/sex-pistols.jpg') }}" alt="">
-          </div>
-          <div class="text">
-            <p class="title">Rock-Hot</p>
-          </div>
-          <button class="play-btn"></button>
-        </div>
-        <!-- END -->
-
-        <!-- プレイリスト -->
-        <div class="playlist-content">
-          <div class="img">
-            <img src="{{ asset('img/cheep-trick.jpg') }}" alt="">
-            <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
-            <img src="{{ asset('img/plus.jpg') }}" alt="">
-            <img src="{{ asset('img/sex-pistols.jpg') }}" alt="">
-          </div>
-          <p class="title">Rock-Hot</p>
-          <button class="play-btn"></button>
-        </div>
-        <!-- END -->
-      </div>
+    <div class="contents">
+    </div>
   </section>
+  
+  <p><img src="{{ asset('img/loading.gif') }}" alt="" class="loading"></p>
 
 </div>
 @endsection
@@ -184,6 +159,10 @@
     height: 100vh;
     background-color: white;
     overflow-y: scroll;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 5;
   }
 
   .contents::-webkit-scrollbar {
@@ -191,6 +170,15 @@
     display: none;
   }
 
+  .loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100px;
+    display: none;
+    z-index: 0;
+  }
 
   /*----- addclass -----*/
   .active {
