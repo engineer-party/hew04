@@ -48,6 +48,11 @@
     <img alt="" class="account-img">
     <input type="file" id="img-form">
   </label>
+  <ul>
+    <li><span class="title">表示名</span><br><input type="text" value="春太郎"></li>
+    <li><span class="title">メール</span><br><input type="text" value="bule.impulse1201@gmail.com"></li>
+    <li><span class="title">パスワード</span><br><input type="text" value="1919seiyaletsgo"></li>
+  </ul>
   </div>
 </div>
 
