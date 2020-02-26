@@ -12,22 +12,22 @@
 
 <!-- content -->
 @section('content')
-<h3><i class="fa fa-angle-right"></i> Users</h3>
+<h3><i class="fa fa-angle-right"></i> ユーザー一覧</h3>
 <div class="col-md-12">
     <div class="content-panel">
       <table class="table table-striped table-advance table-hover">
-        <h4><i class="fa fa-angle-right"></i> Users Table</h4>
+        <h4><i class="fa fa-angle-right"></i> ユーザー情報一覧</h4>
         <hr>
         <thead>
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Point</th>
-            <th>Profit</th>
-            <th>Created</th>
-            <th>ReceiveReport</th>
-            <th>SendReport</th>
-            <th>Information</th>
+            <th>ID</th>
+            <th>名前</th>
+            <th>ポイント残高</th>
+            <th>収益</th>
+            <th>作成日</th>
+            <th>通報受信</th>
+            <th>通報投稿</th>
+            <th>お知らせ</th>
           </tr>
         </thead>
         <tbody>
@@ -35,11 +35,11 @@
           <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
-            <td>{{ $user->point }} HC</td>
-            <td>¥{{ $user->musics->sum('price') + $user->buyPoints()->sum('price') }}</td>
+            <td>{{ number_format($user->point) }} HC</td>
+            <td>¥{{ number_format($user->musics->sum('price') + $user->buyPoints()->sum('price')) }}</td>
             <td>{{ $user->created_at  }}</td>
-            <td>{{ $user->targetReports->count()  }}</td>
-            <td>{{ $user->sendReports->count()  }}</td>
+            <td><a href="/admin/report/show/{{ $user->id }}/6">{{ $user->targetReports->count()  }}</a></td>
+            <td><a href="/admin/report/show/{{ $user->id }}/7">{{ $user->sendReports->count()  }}</a></td>
             <td>
               <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
             </td>

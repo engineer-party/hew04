@@ -29,8 +29,8 @@ class ReportsTableSeeder extends Seeder
                 'updated_at'  => new DateTime(),
             ],
             [
-                'target_id'   => '2',
-                'sender_id'   => '1',
+                'target_id'   => '1',
+                'sender_id'   => '2',
                 'category_id' => '1',
                 'detail'      => 'R18の画像',
                 'created_at'  => new DateTime(),

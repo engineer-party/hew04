@@ -12,25 +12,28 @@
 
 <!-- content -->
 @section('content')
-<h3><i class="fa fa-angle-right"></i> Report</h3>
+<h3><i class="fa fa-angle-right"></i> 通報管理</h3>
+@if(session('message'))
+  <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
+@endif
 <div class="row mt">
   <div class="col-md-12">
     <div class="content-panel">
       <table class="table table-striped table-advance table-hover">
-        <h4><i class="fa fa-angle-right"></i> Reports Table <span style="font-size:0.7em; font-style: italic">　　Click for details page</span></h4>
+        <h4><i class="fa fa-angle-right"></i> 通報情報一覧 <span style="font-size:0.7em; font-style: italic">　　数字をクリックで詳細表示</span></h4>
         <hr>
         <thead>
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>#1 Image</th>
-            <th>#2 Name</th>
-            <th>#3 Data</th>
-            <th>#4 Location</th>
-            <th>#5 Other</th>
-            <th>Total</th>
-            <th>Send</th>
-            <th>Suspension</th>
+            <th>ID</th>
+            <th>名前</th>
+            <th>画像</th>
+            <th>名前</th>
+            <th>データ</th>
+            <th>位置情報</th>
+            <th>その他</th>
+            <th>全て</th>
+            <th>投稿</th>
+            <th>アカウント停止</th>
           </tr>
         </thead>
         <tbody>
@@ -38,15 +41,15 @@
           <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
-            <td><a href="/admin/report/1/2">{{ $user->targetReports->where('category_id','=',1)->count()  }}</a></td>
-            <td><a href="">{{ $user->targetReports->where('category_id','=',2)->count()  }}</a></td>
-            <td><a href="">{{ $user->targetReports->where('category_id','=',3)->count()  }}</a></td>
-            <td><a href="">{{ $user->targetReports->where('category_id','=',4)->count()  }}</a></td>
-            <td><a href="">{{ $user->targetReports->where('category_id','=',5)->count()  }}</a></td>
-            <td><a href="">{{ $user->targetReports->count()  }}</a></td>
-            <td><a href="">{{ $user->sendReports->count()  }}</a></td>
+            <td><a href="/admin/report/show/{{ $user->id }}/1">{{ $user->targetReports->where('category_id','=',1)->count()  }}</a></td>
+            <td><a href="/admin/report/show/{{ $user->id }}/2">{{ $user->targetReports->where('category_id','=',2)->count()  }}</a></td>
+            <td><a href="/admin/report/show/{{ $user->id }}/3">{{ $user->targetReports->where('category_id','=',3)->count()  }}</a></td>
+            <td><a href="/admin/report/show/{{ $user->id }}/4">{{ $user->targetReports->where('category_id','=',4)->count()  }}</a></td>
+            <td><a href="/admin/report/show/{{ $user->id }}/5">{{ $user->targetReports->where('category_id','=',5)->count()  }}</a></td>
+            <td><a href="/admin/report/show/{{ $user->id }}/6">{{ $user->targetReports->count()  }}</a></td>
+            <td><a href="/admin/report/show/{{ $user->id }}/7">{{ $user->sendReports->count()  }}</a></td>
             <td>
-              <button class="btn btn-danger btn-xs"><i class="fa fa-lock" aria-hidden="true"></i></button>
+              <a href="/admin/report/delete/{{ $user->id }}"><button class="btn btn-danger btn-xs"><i class="fa fa-lock" aria-hidden="true"></i></button></a>
             </td>
           </tr>
         @endforeach

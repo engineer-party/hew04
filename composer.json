@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "falahati/php-mp3": "^0.9.5@alpha",
         "fideloper/proxy": "^4.0",
         "intervention/image": "^2.5",
         "james-heinrich/getid3": "^1.9",

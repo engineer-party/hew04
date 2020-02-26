@@ -102,8 +102,13 @@ Route::group(['middleware' => 'auth'], function () {
         // Users Management
         Route::get('management', 'ManagementController@index')->name('management');
         Route::get('report', 'ReportController@index')->name('report');
-        Route::get('report/{user_id}/{category_id}', 'ReportController@show');
+        Route::get('report/show/{user_id}/{category_id}', 'ReportController@show');
+        Route::get('report/delete/{user_id}', 'ReportController@softdelete');
         Route::get('suspension', 'SuspensionController@index')->name('suspension');
+        Route::get('suspension/restore/{user_id}', 'SuspensionController@restore');
+        Route::get('information', 'InformationController@index')->name('information');
+        // Aws test
+        Route::get('aws_test','AwsTestController@index')->name('aws_test');
     });
   
     //ajax

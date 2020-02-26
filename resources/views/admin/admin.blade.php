@@ -92,7 +92,7 @@
       <div class="col-md-4 col-sm-4 mb">
         <div class="darkblue-panel pn">
           <div class="darkblue-header">
-            <h5>Point or Cash</h5>
+            <h5>支払方法割合</h5>
           </div>
           <canvas id="serverstatus02" height="120" width="120"></canvas>
           <script>
@@ -107,7 +107,7 @@
             ];
             var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
           </script>
-          <p>Total Payment ¥{{ number_format($pointOrCash['totalPay']) }}</p>
+          <p>総支払額 ¥{{ number_format($pointOrCash['totalPay']) }}</p>
           <footer>
             <div class="pull-left">
               <h5 style="color:#f68275">{{ $pointOrCash['parPoint'] }}<span style="font-size:0.6em;">%</span> Point</h5>
