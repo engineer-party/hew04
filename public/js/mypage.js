@@ -1,6 +1,17 @@
 let headOpen = false;
 let linkOpen = false;
 
+let formAction = new Vue({
+  el: '#mypage',
+  data: function(){
+    return {
+      formActive: false
+    }
+  }
+  
+})
+
+
 $(function(){
   $('#img-form').change(function(e){
     //ファイルオブジェクトを取得する
@@ -26,3 +37,4 @@ $(function(){
  
   });
 });
+

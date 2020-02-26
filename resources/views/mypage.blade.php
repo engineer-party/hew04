@@ -19,12 +19,13 @@
 
 <!-- content -->
 @section('content')
-
+ <article id="mypage">
 <div class="contents">
   <div class="img">
-    <h2></h2>
   </div>
+  
   <div class="text">
+   <button class="form-button" v-on:click='formActive = true'>プロフィール編集</button>
     <ul>
       <li><span class="value">{{ $user->name }}</span><br><span class="text-in">表示名</span></li>
       <li><span class="value">bule.impulse@gmail.com</span><br><span class="text-in">メール</span></li>
@@ -33,9 +34,9 @@
     </ul>
   </div>
 </div>
-<div class="form">
+<div class="form" v-bind:class='{active:formActive}'>
   <div class="head">
-    <div class="back">
+    <div class="back" v-on:click='formActive = false'>
       <div class="topLine line"></div>
       <div class="borderLine line"></div>
       <div class="bottomLine line"></div>
@@ -55,8 +56,7 @@
   </ul>
   </div>
 </div>
-
-
+</article>
 @endsection
 
 <!-- footer -->
@@ -84,7 +84,7 @@
   #wrapper {
     width: 100%;
     height: 100vh;
-    background-color: #fbd160;
+    background-color: #FFEBE0;
     position: fixed;
     top: 0;
     left: 0;
