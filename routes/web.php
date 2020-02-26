@@ -105,6 +105,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('report/{user_id}/{category_id}', 'ReportController@show');
         Route::get('suspension', 'SuspensionController@index')->name('suspension');
         Route::get('information', 'InformationController@index')->name('information');
+        // Aws test
+        Route::get('aws_test','AwsTestController@index')->name('aws_test');
     });
   
     //ajax
