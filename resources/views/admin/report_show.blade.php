@@ -12,19 +12,19 @@
 
 <!-- content -->
 @section('content')
-<h3><i class="fa fa-angle-right"></i> ReportShow</h3>
+<h3><i class="fa fa-angle-right"></i> 通報内容</h3>
 <div class="row mt">
   <div class="col-md-12">
     <div class="content-panel">
       <table class="table table-striped table-advance table-hover">
-        <h4><i class="fa fa-angle-right"></i> {{ $title['name'] }} <i class="fa fa-angle-right"></i> {{ $title['title'] }}</h4>
+        <h4><i class="fa fa-angle-right"></i> {{ $title['name'] }} <i class="fa fa-angle-right"></i> {{ $title['title'] }}一覧</h4>
         <hr>
         <thead>
           <tr>
-            <th>Sender</th>
-            <th>Category</th>
-            <th>Detail</th>
-            <th>Created</th>
+            <th>送信者ID</th>
+            <th>カテゴリー</th>
+            <th>詳細</th>
+            <th>投稿日</th>
           </tr>
         </thead>
         <tbody>

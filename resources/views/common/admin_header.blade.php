@@ -9,7 +9,7 @@
   <!--logout start-->
   <div class="top-menu">
     <ul class="nav pull-right top-menu">
-      <li><a class="logout" href="{{ action('AuthController@logout') }}">Logout</a></li>
+      <li><a class="logout" href="{{ action('AuthController@logout') }}">ログアウト</a></li>
     </ul>
   </div>
   <!--logout end-->
@@ -21,45 +21,46 @@
       <li class="mt">
         <a href="{{ action('Admin\AdminController@index') }}">
           <i class="fa fa-dashboard"></i>
-          <span>Dashboard</span>
+          <span>ダッシュボード</span>
         </a>
       </li>
       <li class="mt">
         <a href="{{ action('Admin\MapController@index') }}">
           <i class="fa fa-desktop"></i>
-          <span>Hunt Map</span>
+          <span>ハントMAP</span>
         </a>
       </li>
       <li class="sub-menu">
         <a href="javascript:;">
           <i class="fa fa-tasks"></i>
-          <span>Product</span>
+          <span>商品</span>
           </a>
         <ul class="sub">
-          <li><a href="{{ action('Admin\MusicUploadController@index') }}">Upload</a></li>
-          <li><a href="{{ action('Admin\SalesController@index') }}">Sales</a></li>
+          <li><a href="{{ action('Admin\MusicUploadController@index') }}">アップロード
+          </a></li>
+          <li><a href="{{ action('Admin\SalesController@index') }}">売上</a></li>
         </ul>
       </li>
       <li class="sub-menu">
         <a href="javascript:;">
           <i class="fa fa-calendar"></i>
-          <span>Campaign</span>
+          <span>キャンペーン</span>
           </a>
         <ul class="sub">
-          <li><a href="{{ action('Admin\PriceController@index') }}">Price</a></li>
-          <li><a href="{{ action('Admin\CollaborationController@index') }}"">Collaboration</a></li>
+          <li><a href="{{ action('Admin\PriceController@index') }}">価格設定</a></li>
+          <li><a href="{{ action('Admin\CollaborationController@index') }}">コラボレーション</a></li>
         </ul>
       </li>
       <li class="sub-menu">
         <a href="javascript:;">
           <i class="fa fa-th"></i>
-          <span>Users Management</span>
+          <span>ユーザー管理</span>
           </a>
         <ul class="sub">
-          <li><a href="{{ action('Admin\ManagementController@index') }}">Management</a></li>
-          <li><a href="{{ action('Admin\ReportController@index') }}">Reports</a></li>
-          <li><a href="{{ action('Admin\SuspensionController@index') }}">Suspensions</a></li>
-          <li><a href="{{ action('Admin\InformationController@index') }}">Information</a></li>
+          <li><a href="{{ action('Admin\ManagementController@index') }}">ユーザー一覧</a></li>
+          <li><a href="{{ action('Admin\ReportController@index') }}">通報管理</a></li>
+          <li><a href="{{ action('Admin\SuspensionController@index') }}">停止アカウント管理</a></li>
+          <li><a href="{{ action('Admin\InformationController@index') }}">お知らせ</a></li>
         </ul>
       </li>
     </ul>

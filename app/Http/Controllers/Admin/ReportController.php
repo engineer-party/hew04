@@ -34,19 +34,19 @@ class ReportController extends Controller
                 ['target_id','=',$user_id],
                 ['category_id','=',$category_id],
             ];
-            $title = $categories[$category_id - 1];
+            $title = $categories[$category_id - 1] . 'の通報';
         } 
         elseif ($category_id == 6){
             $where = [
                 ['target_id','=',$user_id],
             ];
-            $title = 'ALL Receive Reports';
+            $title = '全ての通報';
         }
         else {
             $where = [
                 ['sender_id','=',$user_id]
             ];
-            $title = 'Send Reports';
+            $title = '投稿した通報';
         }
         // レポート取得
         $reports = Report::where($where)->orderBy('created_at','desc')->get();

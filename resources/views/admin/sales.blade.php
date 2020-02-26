@@ -20,7 +20,7 @@
         <hr>
         <thead>
           <tr>
-            <th>#</th>
+            <th></th>
             <th>Name</th>
             <th>Point</th>
             <th>Profit</th>

@@ -18,6 +18,12 @@
 <link href="{{ asset('css/admin/style-responsive.css') }}" rel="stylesheet">
 <script src="{{ asset('lib/chart-master/Chart.js') }}"></script>
 
+<style type="text/css">
+<!--
+/* body {font-family:"Meiryo"; } */
+-->
+</style>
+
 
 @yield('style')
 @endsection
