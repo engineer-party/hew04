@@ -12,11 +12,11 @@
 
 <!-- content -->
 @section('content')
-<h3><i class="fa fa-angle-right"></i> Information Form</h3>
+<h3><i class="fa fa-angle-right"></i> お知らせ</h3>
 <!-- BASIC FORM ELELEMNTS -->
 <div class="row mt">
   <div class="col-lg-6 col-md-6 col-sm-6">
-    <h4 class="title">Create New Information</h4>
+    <h4 class="title">新規お知らせ作成</h4>
     <div id="message"></div>
     <form class="contact-form php-mail-form" role="form" action="contactform/contactform.php" method="POST">
 

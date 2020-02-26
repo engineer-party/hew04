@@ -12,25 +12,25 @@
 
 <!-- content -->
 @section('content')
-<h3><i class="fa fa-angle-right"></i> Report</h3>
+<h3><i class="fa fa-angle-right"></i> 通報管理</h3>
 <div class="row mt">
   <div class="col-md-12">
     <div class="content-panel">
       <table class="table table-striped table-advance table-hover">
-        <h4><i class="fa fa-angle-right"></i> Reports Table <span style="font-size:0.7em; font-style: italic">　　Click for details page</span></h4>
+        <h4><i class="fa fa-angle-right"></i> 通報情報一覧 <span style="font-size:0.7em; font-style: italic">　　数字をクリックで詳細表示</span></h4>
         <hr>
         <thead>
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>#1 Image</th>
-            <th>#2 Name</th>
-            <th>#3 Data</th>
-            <th>#4 Location</th>
-            <th>#5 Other</th>
-            <th>Total</th>
-            <th>Send</th>
-            <th>Suspension</th>
+            <th>ID</th>
+            <th>名前</th>
+            <th>画像</th>
+            <th>名前</th>
+            <th>データ</th>
+            <th>位置情報</th>
+            <th>その他</th>
+            <th>全て</th>
+            <th>投稿</th>
+            <th>アカウント停止</th>
           </tr>
         </thead>
         <tbody>
