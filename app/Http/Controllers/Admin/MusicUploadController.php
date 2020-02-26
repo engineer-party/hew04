@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Artist;
 use Illuminate\Http\Request;
@@ -8,6 +8,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Genre;
 use App\Models\Music;
+use App\Http\Controllers\Controller;
 use getID3;
 use getid3_lib;
 use falahati\PHPMP3\MpegAudio;
@@ -21,7 +22,7 @@ class MusicUploadController extends Controller
     $artists = Artist::all();
     //楽曲(ry
     $musics = Music::all();
-    return view('music_upload', compact('genres', 'artists', 'musics'));
+    return view('Admin/music_upload', compact('genres', 'artists', 'musics'));
   }
 
   public function musicStore(Request $request)
@@ -63,7 +64,7 @@ class MusicUploadController extends Controller
         'sample_url'   => 
       ]);
       */
-    return redirect()->route('music_upload')->with('message', 'musicアップロード成功！');
+    return redirect()->route('admin/music_upload')->with('message', 'musicアップロード成功！');
   }
 
   public function genreStore(Request $request)
@@ -71,7 +72,7 @@ class MusicUploadController extends Controller
     Genre::create([
       'name' => $request->name,
     ]);
-    return redirect()->route('music_upload')->with('message', 'ジャンル登録成功！');
+    return redirect()->route('admin/music_upload')->with('message', 'ジャンル登録成功！');
   }
 
   public function artistStore(Request $request)
@@ -81,6 +82,6 @@ class MusicUploadController extends Controller
       'name'        => $request->name,
       'description' => $request->detail,
     ]);
-    return redirect()->route('music_upload')->with('message', 'アーティスト登録成功！');
+    return redirect()->route('admin/music_upload')->with('message', 'アーティスト登録成功！');
   }
 }

@@ -13,16 +13,16 @@ class ArtistsTableSeeder extends Seeder
     {
         DB::table('artists')->insert([
             [
-                'genre_id'    => '1',
                 'name'        => 'あいみょん',
                 'description' => 'あいみょんの説明です',
+                'img_url' => 'artist_1',
                 'created_at'  => new DateTime(),
                 'updated_at'  => new DateTime(),
             ],
             [
-                'genre_id'    => '2',
                 'name'        => 'BTS',
                 'description' => 'BTSの説明です',
+                'img_url' => 'artist_2',
                 'created_at'  => new DateTime(),
                 'updated_at'  => new DateTime(),
             ],

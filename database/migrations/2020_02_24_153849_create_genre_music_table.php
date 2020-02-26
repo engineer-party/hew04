@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBuyMusicsTable extends Migration
+class CreateGenreMusicTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,20 @@ class CreateBuyMusicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('buy_musics', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
+        Schema::create('genre_music', function (Blueprint $table) {
             $table->unsignedBigInteger('music_id');
-            $table->primary(['user_id', 'music_id']);
-            $table->integer('price');
-            $table->integer('point');
+            $table->unsignedBigInteger('genre_id');
+            $table->primary(['music_id', 'genre_id']);
             $table->timestamps();
 
             //外部キー制約
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
             $table->foreign('music_id')
                 ->references('id')
                 ->on('musics')
+                ->onDelete('cascade');
+            $table->foreign('genre_id')
+                ->references('id')
+                ->on('genres')
                 ->onDelete('cascade');
         });
     }
@@ -40,6 +38,6 @@ class CreateBuyMusicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buy_musics');
+        Schema::dropIfExists('genre_music_tables');
     }
 }

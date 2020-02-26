@@ -73,16 +73,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Hunt 5.ハント
     Route::get('hunt/', 'HuntController@index')->name('hunt');
+  
+    // 音楽ライブラリ
+    Route::get('library/', 'LibraryController@index')->name('library');
 
     // Report 6.通報
     Route::get('report/', 'ReportController@index')->name('report');
     Route::post('report/store', 'ReportController@store')->name('report_store');
-  
-    // music-upload
-    Route::get('music_upload/','MusicUploadController@index')->name('music_upload');
-    Route::post('music_upload/music_store','MusicUploadController@musicStore');
-    Route::post('music_upload/genre_store','MusicUploadController@genreStore');
-    Route::post('music_upload/artist_store','MusicUploadController@artistStore');
+
     
     // Admin 7.管理
     Route::prefix('admin')->namespace('Admin')->group(function () {
@@ -90,17 +88,28 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'AdminController@index')->name('admin');
         // MAP
         Route::get('map', 'MapController@index')->name('map');
-        // Product
-        Route::get('artist', 'ArtistController@index')->name('artist');
-        Route::get('music', 'MusicController@index')->name('music');
-        Route::get('genre', 'GenreController@index')->name('genre');
+        //Product
+        // music-upload
+        Route::get('music_upload/','MusicUploadController@index')->name('music_upload');
+        Route::post('music_upload/music_store','MusicUploadController@musicStore');
+        Route::post('music_upload/genre_store','MusicUploadController@genreStore');
+        Route::post('music_upload/artist_store','MusicUploadController@artistStore');
+        // sales
+        Route::get('sales/','SalesController@index')->name('sales');
         // Campagin
         Route::get('price', 'PriceController@index')->name('price');
         Route::get('collaboration', 'CollaborationController@index')->name('collaboration');
         // Users Management
         Route::get('management', 'ManagementController@index')->name('management');
         Route::get('report', 'ReportController@index')->name('report');
+        Route::get('report/{user_id}/{category_id}', 'ReportController@show');
+        Route::get('suspension', 'SuspensionController@index')->name('suspension');
+        Route::get('information', 'InformationController@index')->name('information');
     });
+  
+    //ajax
+    Route::get('/playlist' ,'LibraryController@ajaxplaylist_get');
+    Route::get('/music' ,'LibraryController@ajaxmusic_get');
 
 });
 

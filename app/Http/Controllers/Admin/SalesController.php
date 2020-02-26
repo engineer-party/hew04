@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
-class ArtistController extends Controller
+class SalesController extends Controller
 {
     public function index()
     {
-        return view('Admin\artist',compact(''));
+        $users = User::all();
+        return view('Admin\sales',compact('users'));
     }
 }

@@ -17,7 +17,7 @@
   top: -10px;
   left: -100vw;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1) 0s;
-  z-index: 100;
+  z-index: 101;
 }
 
 #link-in {
@@ -26,7 +26,7 @@
   width: 85%;
   background-color: white;
   overflow-y: scroll;
-  z-index: 101;
+  z-index: 100;
 }
 
 .form::placeholder {

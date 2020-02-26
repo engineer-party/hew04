@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 <!-- head -->
-@section('title', 'management')
+@section('title', 'suspension')
 @section('style')
 <!-- <link rel="stylesheet" href="{{asset('css/admin.css')}}" /> -->
 
@@ -12,11 +12,12 @@
 
 <!-- content -->
 @section('content')
-<h3><i class="fa fa-angle-right"></i> Users</h3>
-<div class="col-md-12">
+<h3><i class="fa fa-angle-right"></i> Suspensions</h3>
+<div class="row mt">
+  <div class="col-md-12">
     <div class="content-panel">
       <table class="table table-striped table-advance table-hover">
-        <h4><i class="fa fa-angle-right"></i> Users Table</h4>
+        <h4><i class="fa fa-angle-right"></i> Suspended Account</h4>
         <hr>
         <thead>
           <tr>
@@ -24,10 +25,10 @@
             <th>Name</th>
             <th>Point</th>
             <th>Profit</th>
-            <th>Created</th>
             <th>ReceiveReport</th>
             <th>SendReport</th>
-            <th>Information</th>
+            <th>Suspension Date</th>
+            <th>Release</th>
           </tr>
         </thead>
         <tbody>
@@ -37,11 +38,11 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->point }} HC</td>
             <td>¥{{ $user->musics->sum('price') + $user->buyPoints()->sum('price') }}</td>
-            <td>{{ $user->created_at  }}</td>
-            <td>{{ $user->targetReports->count()  }}</td>
-            <td>{{ $user->sendReports->count()  }}</td>
+            <td><a href="/admin/report/{{ $user->id }}/6"> {{ $user->targetReports->count()  }}</a></td>
+            <td><a href="/admin/report/{{ $user->id }}/7">{{ $user->sendReports->count()  }}</a></td>
+            <td>{{ $user->deleted_at  }}</td>
             <td>
-              <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+              <button class="btn btn-success btn-xs"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
             </td>
           </tr>
         @endforeach

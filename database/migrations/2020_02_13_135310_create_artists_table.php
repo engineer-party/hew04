@@ -15,15 +15,10 @@ class CreateArtistsTable extends Migration
     {
         Schema::create('artists', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('genre_id');
             $table->string('name');
             $table->text('description');
+            $table->string('img_url');
             $table->timestamps();
-
-            $table->foreign('genre_id')
-                ->references('id')
-                ->on('genres')
-                ->onDelete('cascade');
         });
     }
 

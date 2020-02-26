@@ -19,7 +19,7 @@
     <!-- sidebar menu start-->
     <ul class="sidebar-menu" id="nav-accordion">
       <li class="mt">
-        <a class="active" href="{{ action('Admin\AdminController@index') }}">
+        <a href="{{ action('Admin\AdminController@index') }}">
           <i class="fa fa-dashboard"></i>
           <span>Dashboard</span>
         </a>
@@ -36,9 +36,8 @@
           <span>Product</span>
           </a>
         <ul class="sub">
-          <li><a href="{{ action('Admin\ArtistController@index') }}">Artists</a></li>
-          <li><a href="{{ action('Admin\MusicController@index') }}">Musics</a></li>
-          <li><a href="{{ action('Admin\GenreController@index') }}">Genres</a></li>
+          <li><a href="{{ action('Admin\MusicUploadController@index') }}">Upload</a></li>
+          <li><a href="{{ action('Admin\SalesController@index') }}">Sales</a></li>
         </ul>
       </li>
       <li class="sub-menu">
@@ -47,7 +46,7 @@
           <span>Campaign</span>
           </a>
         <ul class="sub">
-          <li><a href="{{ action('Admin\PriceController@index') }}"">Price</a></li>
+          <li><a href="{{ action('Admin\PriceController@index') }}">Price</a></li>
           <li><a href="{{ action('Admin\CollaborationController@index') }}"">Collaboration</a></li>
         </ul>
       </li>
@@ -57,8 +56,10 @@
           <span>Users Management</span>
           </a>
         <ul class="sub">
-          <li><a href="{{ action('Admin\ManagementController@index') }}"">Management</a></li>
-          <li><a href="{{ action('Admin\ReportController@index') }}"">Reports</a></li>
+          <li><a href="{{ action('Admin\ManagementController@index') }}">Management</a></li>
+          <li><a href="{{ action('Admin\ReportController@index') }}">Reports</a></li>
+          <li><a href="{{ action('Admin\SuspensionController@index') }}">Suspensions</a></li>
+          <li><a href="{{ action('Admin\InformationController@index') }}">Information</a></li>
         </ul>
       </li>
     </ul>

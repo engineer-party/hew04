@@ -18,8 +18,6 @@
     </section>
     <!-- js placed at the end of the document so the pages load faster -->
 
-    <!-- Bootstrap -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <!--Vue-->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js') }}"></script>
 
@@ -37,6 +35,7 @@
     <!--script for this page-->
     <script src="{{ asset('lib/sparkline-chart.js') }}"></script>
     <script src="{{ asset('lib/zabuto_calendar.js') }}"></script>
+
     <script type="application/javascript">
     $(document).ready(function() {
         $("#date-popover").popover({

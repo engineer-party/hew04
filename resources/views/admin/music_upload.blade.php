@@ -1,11 +1,13 @@
-@extends('layout.layout')
+@extends('layout.admin')
 
 <!-- head -->
-@section('title', 'Admin')
+@section('title', 'Product')
 @section('style')
 
 @endsection
-@include('common.head')
+@include('common.admin_head')
+<!-- header -->
+@include('common.admin_header')
 
 <!-- header -->
 
@@ -233,4 +235,4 @@
 @endsection
 
 <!-- footer -->
-@include('common.footer')
+@include('common.admin_footer')

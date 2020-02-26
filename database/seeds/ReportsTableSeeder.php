@@ -28,6 +28,38 @@ class ReportsTableSeeder extends Seeder
                 'created_at'  => new DateTime(),
                 'updated_at'  => new DateTime(),
             ],
+            [
+                'target_id'   => '1',
+                'sender_id'   => '2',
+                'category_id' => '1',
+                'detail'      => 'R18の画像',
+                'created_at'  => new DateTime(),
+                'updated_at'  => new DateTime(),
+            ],
+            [
+                'target_id'   => '3',
+                'sender_id'   => '1',
+                'category_id' => '1',
+                'detail'      => '卑猥な画像',
+                'created_at'  => new DateTime(),
+                'updated_at'  => new DateTime(),
+            ],
+            [
+                'target_id'   => '3',
+                'sender_id'   => '1',
+                'category_id' => '2',
+                'detail'      => '悪質な名前',
+                'created_at'  => new DateTime(),
+                'updated_at'  => new DateTime(),
+            ],
+            [
+                'target_id'   => '3',
+                'sender_id'   => '2',
+                'category_id' => '2',
+                'detail'      => '悪そう',
+                'created_at'  => new DateTime(),
+                'updated_at'  => new DateTime(),
+            ],
         ]);
     }
 }

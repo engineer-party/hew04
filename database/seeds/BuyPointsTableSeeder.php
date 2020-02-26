@@ -14,8 +14,8 @@ class BuyPointsTableSeeder extends Seeder
         DB::table('buy_points')->insert([
             [
                 'user_id'    => '1',
-                'price'      => 500,
-                'point'      => 600,
+                'price'      => 200,
+                'point'      => 220,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],

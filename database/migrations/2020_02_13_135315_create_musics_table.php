@@ -16,21 +16,18 @@ class CreateMusicsTable extends Migration
         Schema::create('musics', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('artist_id');
-            $table->unsignedBigInteger('genre_id');
             $table->string('name');
             $table->time('time');
             $table->integer('price');
-            $table->date('release_date');
+            $table->string('img_url');
+            $table->string('music_url');
+            $table->string('sample_url');
             $table->timestamps();
 
             //外部キー制約
             $table->foreign('artist_id')
                 ->references('id')
                 ->on('artists')
-                ->onDelete('cascade');
-            $table->foreign('genre_id')
-                ->references('id')
-                ->on('genres')
                 ->onDelete('cascade');
         });
     }

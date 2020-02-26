@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements \Illuminate\Contracts\Auth\Authenticatable
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'email',
@@ -42,7 +45,8 @@ class User extends Authenticatable implements \Illuminate\Contracts\Auth\Authent
      */
     public function musics()
     {
-        return $this->belongsToMany('App\Models\Music','buy_musics');
+        return $this->belongsToMany('App\Models\Music','buy_musics')
+            ->withPivot('price','point','created_at','updated_at');
     }
 
     /**

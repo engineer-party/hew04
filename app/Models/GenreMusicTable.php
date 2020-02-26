@@ -4,14 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BuyMusic extends Model
+class GenreMusicTable extends Model
 {
     protected $fillable = [
-        'user_id',
         'music_id',
-        'price',
-        'point',
+        'genre_id',
     ];
 
-    protected $table = 'buy_musics';
+    protected $table = 'genre_music';
 }

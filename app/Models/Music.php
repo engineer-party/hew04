@@ -12,6 +12,9 @@ class Music extends Model
         'name',
         'time',
         'price',
+        'img_url',
+        'music_url',
+        'sample_url',
         'release_date',
     ];
 
@@ -31,5 +34,13 @@ class Music extends Model
     public function buyMusics()
     {
         return $this->belongsToMany('App\Models\User','buy_musics');
+    }
+
+    /**
+     * 曲のジャンルを取得
+     */
+    public function Genres()
+    {
+        return $this->belongsToMany('App\Models\Genre','genre_music');
     }
 }

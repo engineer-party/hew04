@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
-class ManagementController extends Controller
+class SuspensionController extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        return view('Admin\management',compact('users'));
+        $users = User::onlyTrashed()->get();
+        return view('Admin\suspension',compact('users'));
     }
 }
