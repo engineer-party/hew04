@@ -34,7 +34,21 @@
   </div>
 </div>
 <div class="form">
-  
+  <div class="head">
+    <div class="back">
+      <div class="topLine line"></div>
+      <div class="borderLine line"></div>
+      <div class="bottomLine line"></div>
+    </div>
+    <h2>プロフィールを編集</h2>
+    <button>保存</button>
+  </div>
+  <div class="profile">
+  <label for="img-form">
+    <img alt="" class="account-img">
+    <input type="file" id="img-form">
+  </label>
+  </div>
 </div>
 
 
@@ -42,6 +56,10 @@
 
 <!-- footer -->
 @include('common.footer')
+
+<script>
+  
+</script>
 
 
 <style>
