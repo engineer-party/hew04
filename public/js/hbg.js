@@ -1,5 +1,5 @@
 
-$('.form').hammer().on('tap', function () {
+$('#form').hammer().on('tap', function () {
   if (headOpen == false) {
     headOpen = true;
     console.log('head-open');
