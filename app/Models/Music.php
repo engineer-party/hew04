@@ -31,9 +31,10 @@ class Music extends Model
     /**
      * 曲を購入したユーザーを取得
      */
-    public function buyMusics()
+    public function buyUsers()
     {
-        return $this->belongsToMany('App\Models\User','buy_musics');
+        return $this->belongsToMany('App\Models\User','buy_musics')
+            ->withPivot('price AS buy_price','point AS buy_point','created_at','updated_at');
     }
 
     /**

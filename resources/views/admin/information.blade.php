@@ -29,7 +29,7 @@
         @endif
       </div>
       <div class="form-group">
-        <input type="name" name="to" class="form-control" id="to" value="{{ old('to') }}" placeholder="宛先コード" value="{{ session('user_id') }}">
+        <input type="name" name="to" class="form-control" id="to" value="{{ session('user_id') ? session('user_id') :old ('title') }}" placeholder="宛先コード" >
         @if($errors)
         <p class="help-block">{{$errors->first('to')}}</p>
         @endif
