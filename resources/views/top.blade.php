@@ -132,6 +132,30 @@
     height: 300px;
     background-color: blueviolet;
   }
+  #form::placeholder {
+    color: white;
+  }
+  
+  #link-list li:nth-child(1){
+    background: rgba(0,0,0,0.1);
+  }
+  #link-list li:nth-child(1) .link-title{
+    color: #ff5757;
+  }
+  #link-list li:nth-child(1)::before{
+    background-image: url({{ asset('img/home-active.png') }});
+  }
+  #link-list li:nth-child(2)::before{
+    background-image: url({{ asset('img/hunt.png') }});
+  }
+  #link-list li:nth-child(3)::before{
+    background-image: url({{ asset('img/streaming.png') }});
+  }
+  #link-list li:nth-child(4)::before{
+    background-image: url({{ asset('img/playlist.png') }});
+  }
+  
+  
   
 /*-----transition-----*/
   /* top */

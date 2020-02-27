@@ -69,6 +69,19 @@
 
 <style>
   
+  #link-list li:nth-child(1)::before{
+    background-image: url({{ asset('img/home.png') }});
+  }
+  #link-list li:nth-child(2)::before{
+    background-image: url({{ asset('img/hunt.png') }});
+  }
+  #link-list li:nth-child(3)::before{
+    background-image: url({{ asset('img/streaming.png') }});
+  }
+  #link-list li:nth-child(4)::before{
+    background-image: url({{ asset('img/playlist.png') }});
+  }
+  
   .img {
     background-image: url({{ asset('img/joan-jett.jpg') }});
   }
