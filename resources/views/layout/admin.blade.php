@@ -19,7 +19,7 @@
     <!-- js placed at the end of the document so the pages load faster -->
 
 <!--Vue-->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
 
