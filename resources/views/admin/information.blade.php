@@ -61,7 +61,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>ALL</td>
+              <td>all</td>
               <td>全ユーザー</td>
             </tr>
             <tr>

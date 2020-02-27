@@ -32,7 +32,7 @@ class InformationController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator->errors())->withInput($req->all);
         }
-        if (!($req->to == 'ALL' || is_numeric($req->to))) {
+        if (!($req->to == 'all' || is_numeric($req->to))) {
             return redirect()->back()->withErrors($validator->errors())->withInput($req->all)->with('message', '宛先コードが存在しません！');
         }
         // お知らせ保存)
@@ -41,7 +41,7 @@ class InformationController extends Controller
         $information->content = $req->content;
         $information->save();
         // リレーション
-        if ($req->to == 'ALL'){
+        if ($req->to == 'all'){
             $count = User::withTrashed()->count();
             for ($i=1; $i <= $count ; $i++) { 
                 $userInformation = new UserInformation;
