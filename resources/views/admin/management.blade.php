@@ -41,7 +41,7 @@
             <td><a href="/admin/report/show/{{ $user->id }}/6">{{ $user->targetReports->count()  }}</a></td>
             <td><a href="/admin/report/show/{{ $user->id }}/7">{{ $user->sendReports->count()  }}</a></td>
             <td>
-              <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+            <a href="/admin/information/send/{{ $user->id }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
             </td>
           </tr>
         @endforeach

@@ -17,6 +17,7 @@ class CreateUserInformationsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('information_id');
             $table->primary(['user_id', 'information_id']);
+            $table->timestamps();
 
             //外部キー制約
             $table->foreign('user_id')

@@ -15,14 +15,20 @@ class UserInformationsTableSeeder extends Seeder
             [
                 'user_id'        => '1',
                 'information_id' => '1',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ],
             [
                 'user_id'        => '2',
                 'information_id' => '1',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ],
             [
                 'user_id'        => '2',
                 'information_id' => '2',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ],
         ]);
     }
