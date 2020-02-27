@@ -18,5 +18,12 @@
 <script src="{{ asset('js/hammer.min.js') }}"></script>
 <script src="{{ asset('js/jquery.hammer.js') }}"></script>
 
+<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script src="https://unpkg.com/vue-ls"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+-->
+
 @yield('style')
 @endsection
