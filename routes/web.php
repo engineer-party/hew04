@@ -50,7 +50,7 @@ Route::get('login/{provider}/callback', 'AuthController@handleProviderCallback')
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => 'auth'], function () {
-    
+
     // TOPページ
     Route::get('top', 'TopController@index')->name('top');
 
@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // MyPage 1.会員情報
     Route::get('mypage/', 'MyPageController@index')->name('mypage');
+    Route::get('userinformation/', 'UserInformationController@index')->name('information');
 
     // PlayList 2.プレイリスト
     Route::get('playlist/', 'PlaylistController@index')->name('playlist');
@@ -73,7 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Hunt 5.ハント
     Route::get('hunt/', 'HuntController@index')->name('hunt');
-  
+
     // 音楽ライブラリ
     Route::get('library/', 'LibraryController@index')->name('library');
 
@@ -81,7 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('report/', 'ReportController@index')->name('report');
     Route::post('report/store', 'ReportController@store')->name('report_store');
 
-    
+
     // Admin 7.管理
     Route::prefix('admin')->namespace('Admin')->group(function () {
         // TOP
