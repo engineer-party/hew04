@@ -20,10 +20,10 @@
       </a>
       <section id="link-list">
         <ul>
-          <li><a href="{{ action('TopController@index') }}">ホーム</a></li>
-          <li><a>ハント</a></li>
-          <li><a>配信</a></li>
-          <li><a>音楽ライブラリ</a></li>
+          <li><a href="{{ action('TopController@index') }}"><span class="link-title">ホーム</span></a></li>
+          <li><a><span class="link-title">ハント</span></a></li>
+          <li><a><span class="link-title">配信</span></a></li>
+          <li><a href="{{ action('LibraryController@index') }}"><span class="link-title">音楽ライブラリ</span></a></li>
         </ul>
       </section>
       <section id="login_btn">

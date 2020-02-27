@@ -19,17 +19,17 @@ let app = new Vue({
 })
 
 $(function(){
-  $('.form').css('background-image', 'url(img/headerImg.png)');
+  $('#form').css('background-image', 'url(img/headerImg.png)');
   
-  $('.form').hammer().on('tap', function (){
+  $('#form').hammer().on('tap', function (){
     if(headOpen == true){
-      $('.form').css('background-image', 'none');
+      $('#form').css('background-image', 'none');
     }
   });
   
   $('.menu-trigger').hammer().on('tap', function (){
     if(headOpen == false){
-      $('.form').css('background-image', 'url(img/headerImg.png)');
+      $('#form').css('background-image', 'url(img/headerImg.png)');
     }
   });
 

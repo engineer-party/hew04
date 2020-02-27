@@ -104,11 +104,11 @@ $(function () {
   
   $('.library-link').click(function(){
 //    $('.contents').slideUp(100);
-    $('.contents').animate({left: '-100vw'}, 200);
+    $('.contents').animate({top: '100vh'}, 200);
     $('.loading').fadeIn(50);
     setTimeout(function(){
 //        $('.contents').slideDown(100);
-        $('.contents').animate({left: '50%'}, 200);
+        $('.contents').animate({top: '0%'}, 200);
         $('.loading').fadeOut(50);
       }, 400);
   });

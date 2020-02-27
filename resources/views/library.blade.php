@@ -44,6 +44,26 @@
 @include('common.footer')
 
 <style type="text/css">
+  
+  #link-list li:nth-child(4){
+    background: rgba(0,0,0,0.1);
+  }
+  #link-list li:nth-child(4) .link-title{
+    color: #ff5757;
+  }
+  #link-list li:nth-child(1)::before{
+    background-image: url({{ asset('img/home.png') }});
+  }
+  #link-list li:nth-child(2)::before{
+    background-image: url({{ asset('img/hunt.png') }});
+  }
+  #link-list li:nth-child(3)::before{
+    background-image: url({{ asset('img/streaming.png') }});
+  }
+  #link-list li:nth-child(4)::before{
+    background-image: url({{ asset('img/playlist-active.png') }});
+  }
+  
   * {
     margin: 0;
     padding: 0;
@@ -52,10 +72,10 @@
   #wrapper {
     width: 100%;
     height: 100vh;
-    background-color: #fbd160;
+    background-color: #FFEBE0;
   }
 
-  #app .form {
+  #app #form {
     display: none;
   }
 
