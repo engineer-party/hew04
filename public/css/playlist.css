@@ -75,8 +75,9 @@
   height: 100vh;
   background-color: aqua;
   z-index: 100;
-/*  transform: translate(0,100vh);*/
+  transform: translate(0,100vh);
   transition: all 0.2s ease-out 0s;
+  overflow-y: scroll;
 }
 .activeplaylist {
   transform: translate(0,0);
