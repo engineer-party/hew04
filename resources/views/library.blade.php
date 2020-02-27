@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
 <link rel="stylesheet" href="{{asset('css/playlist.css')}}" />
 <link rel="stylesheet" href="{{asset('css/music.css')}}" />
+<link rel="stylesheet" href="{{asset('css/playlist-in.css')}}" />
 
 <script src="{{ asset('js/library.js') }}" defer></script>
 <script src="{{ asset('js/hbg.js') }}" defer></script>
@@ -31,12 +32,10 @@
 
   <section class="activeobj1 box">
       <!-- ajax -->
-    <div class="contents">
-    </div>
   </section>
   
   <p><img src="{{ asset('img/loading.gif') }}" alt="" class="loading"></p>
-
+  <div class="playlist-in"></div>
 </div>
 @endsection
 
@@ -148,14 +147,13 @@
   }
 
   .box {
-    width: 95%;
-    position: absolute;
+    width: 100%;
+    position: fixed;
     top: 0;
-    left: 50%;
-    /*    transform: translate(-200%);*/
-    transform: translate(-50%);
+    left: 0;
     height: 100vh;
     transition: transform 350ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    overflow-y: scroll;
   }
 
   .activeobj1 {
@@ -174,7 +172,8 @@
     background-color: darkorange;
   }
 
-  .contents {
+/*
+  .contents {box
     width: 100%;
     height: 100vh;
     background-color: white;
@@ -184,6 +183,7 @@
     transform: translate(-50%);
     z-index: 5;
   }
+*/
 
   .contents::-webkit-scrollbar {
     /* Chrome, Safari 対応 */

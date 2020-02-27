@@ -3,7 +3,6 @@
 
     <!-- 曲 -->
     <div class="music-content">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
@@ -14,7 +13,6 @@
 
     <!-- 曲 -->
     <div class="music-content">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
@@ -25,7 +23,6 @@
 
     <!-- 曲 -->
     <div class="music-content">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
@@ -36,7 +33,6 @@
 
     <!-- 曲 -->
     <div class="music-content">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
@@ -47,7 +43,6 @@
 
     <!-- 曲 -->
     <div class="music-content">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
@@ -58,7 +53,6 @@
 
     <!-- 曲 -->
     <div class="music-content">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
@@ -69,7 +63,6 @@
 
     <!-- 曲 -->
     <div class="music-content">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
@@ -80,7 +73,6 @@
 
     <!-- 曲 -->
     <div class="music-content">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
@@ -91,7 +83,6 @@
 
     <!-- 曲 -->
     <div class="music-content">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
@@ -100,58 +91,4 @@
     </div>
     <!-- END -->
 
-    <!-- 曲 -->
-    <div class="music-content">
-      <div class="musicIcon"></div>
-      <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
-      <ul>
-        <li class="title">title</li>
-        <li class="artist">artist</li>
-      </ul>
-    </div>
-    <!-- END -->
-
-    <!-- 曲 -->
-    <div class="music-content">
-      <div class="musicIcon"></div>
-      <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
-      <ul>
-        <li class="title">title</li>
-        <li class="artist">artist</li>
-      </ul>
-    </div>
-    <!-- END -->
-
-    <!-- 曲 -->
-    <div class="music-content">
-      <div class="musicIcon"></div>
-      <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
-      <ul>
-        <li class="title">title</li>
-        <li class="artist">artist</li>
-      </ul>
-    </div>
-    <!-- END -->
-
-    <!-- 曲 -->
-    <div class="music-content">
-      <div class="musicIcon"></div>
-      <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
-      <ul>
-        <li class="title">title</li>
-        <li class="artist">artist</li>
-      </ul>
-    </div>
-    <!-- END -->
-
-    <!-- 曲 -->
-    <div class="music-content">
-      <div class="musicIcon"></div>
-      <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
-      <ul>
-        <li class="title">title</li>
-        <li class="artist">artist</li>
-      </ul>
-    </div>
-    <!-- END -->
   </div>
