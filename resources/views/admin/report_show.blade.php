@@ -21,7 +21,13 @@
         <hr>
         <thead>
           <tr>
-            <th>送信者ID</th>
+            <th>
+              @if (!($title['title'] == '投稿した通報'))
+                投稿ユーザーID
+              @else
+                通報ユーザーID
+              @endif
+            </th>
             <th>カテゴリー</th>
             <th>詳細</th>
             <th>投稿日</th>
@@ -30,7 +36,13 @@
         <tbody>
         @foreach($reports as $report)
           <tr>
-            <td>{{ $report->sender_id  }}</td>
+            <td>
+              @if (!($title['title'] == '投稿した通報'))
+                {{ $report->sender_id }}  
+              @else
+                {{ $report->target_id }}
+              @endif
+            </td>
             <td>{{ $categories[$report->category_id-1]  }}</td>
             <td>{{ $report->detail  }}</a></td>
             <td>{{ $report->created_at  }}</a></td>

@@ -107,6 +107,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('suspension', 'SuspensionController@index')->name('suspension');
         Route::get('suspension/restore/{user_id}', 'SuspensionController@restore');
         Route::get('information', 'InformationController@index')->name('information');
+        Route::get('information/send/{user_id}', 'InformationController@send');
+        Route::post('information/store', 'InformationController@store')->name('information_store');
         // Aws test
         Route::get('aws_test','AwsTestController@index')->name('aws_test');
     });

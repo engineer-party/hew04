@@ -12,50 +12,77 @@
 
 <!-- content -->
 @section('content')
-<h3><i class="fa fa-angle-right"></i> お知らせ</h3>
 <!-- BASIC FORM ELELEMNTS -->
+<h3><i class="fa fa-angle-right"></i> お知らせ</h3>
+@if(session('message'))
+  <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
+@endif
 <div class="row mt">
   <div class="col-lg-6 col-md-6 col-sm-6">
     <h4 class="title">新規お知らせ作成</h4>
     <div id="message"></div>
-    <form class="contact-form php-mail-form" role="form" action="contactform/contactform.php" method="POST">
-
+    <form class="contact-form php-mail-form" role="form" action="information/store" method="POST">
       <div class="form-group">
-        <input type="name" name="title" class="form-control" id="information-title" placeholder="Information Title" >
-        <div class="validate"></div>
+        <input type="name" name="title" class="form-control" id="title" value="{{ old('title') }}"  placeholder="お知らせタイトル" >
+        @if($errors)
+        <p class="help-block">{{$errors->first('title')}}</p>
+        @endif
       </div>
       <div class="form-group">
-        <select name="category" class="form-control" id="information-to">
-          <option value="">ALL</option>
-        </select>
-        <div class="validate"></div>
+        <input type="name" name="to" class="form-control" id="to" value="{{ old('to') }}" placeholder="宛先コード" value="{{ session('user_id') }}">
+        @if($errors)
+        <p class="help-block">{{$errors->first('to')}}</p>
+        @endif
       </div>
       <div class="form-group">
-        <textarea class="form-control" name="contetn" id="contact-message" placeholder="Information Content" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
-        <div class="validate"></div>
+        <textarea class="form-control" name="content" id="content" placeholder="お知らせ内容" rows="5">{{ old('content') }}</textarea>
+        @if($errors)
+        <p class="help-block">{{$errors->first('content')}}</p>
+        @endif
       </div>
-      
-      <div class="loading"></div>
-      <div class="error-message"></div>
-      <div class="sent-message">Your message has been sent. Thank you!</div>
 
       <div class="form-send">
-        <button type="submit" class="btn btn-large btn-primary">Send Message</button>
+        <button type="submit" class="btn btn-large btn-primary">送信する</button>
       </div>
 
     </form>
   </div>
 
   <div class="col-lg-6 col-md-6 col-sm-6">
-    <h4 class="title">Information Log</h4>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-    <ul class="contact_details">
-      <li><i class="fa fa-envelope-o"></i> info@yoursite.com</li>
-      <li><i class="fa fa-phone-square"></i> +34 5565 6555</li>
-      <li><i class="fa fa-home"></i> Some Fine Address, 887, Madrid, Spain.</li>
-    </ul>
-    <!-- contact_details -->
+    <div class="content-panel">
+      <h4>宛先コード</h4>
+      <section id="unseen">
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <th>コード</th>
+              <th>宛先</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>all</td>
+              <td>全ユーザー</td>
+            </tr>
+            <tr>
+              <td>(対象ユーザーのID)</td>
+              <td>対象ユーザー</td>
+            </tr>
+            <tr>
+              <td>profit-(金額)</td>
+              <td>(金額)以上の決済利用済みのユーザー</td>
+            </tr>
+            <tr>
+              <td>music-(数字)</td>
+              <td>(数字)以上の楽曲を購入済みのユーザー</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+    <!-- /content-panel -->
   </div>
+  <!-- /col-lg-4 -->
 </div>
 <!-- /row -->
 @endsection
