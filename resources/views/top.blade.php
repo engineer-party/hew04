@@ -67,6 +67,18 @@
 @include('common.footer')
 
 <style type="text/css">
+  
+  /*
+  red: #ff5757
+  brown: #613b3b
+  black: #404040
+  
+  pink: #ff9e85
+  bule-middle: #49ada4
+  bule-light: #b3e6e0
+  bule-heavy: #436d6c
+  */
+  
   * {
     padding: 0;
     margin: 0;

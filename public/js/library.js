@@ -35,19 +35,22 @@ let modal = new Vue({
         }
       ],
       animate: 'left',
-      activetab: 1
+      activetab: 1,
+      playlistActive: false,
+      headerBrade: false
     }
   }
 });
 
 $(function () {
 
+  
   $.ajax({
     type: 'GET', //GETかPOSTか
     url: 'playlist', //url+ファイル名 .htmlは省略可
     dataType: 'html', //他にjsonとか選べるとのこと
   }).done(function (results) {
-    $('.contents').html(results); //展開したいタグのidを指定
+    $('.box').html(results); //展開したいタグのidを指定
   }).fail(function (jqXHR, textStatus, errorThrown) {
     alert('ファイルの取得に失敗しました。');
     console.log("ajax通信に失敗しました")
@@ -56,7 +59,6 @@ $(function () {
     console.log(errorThrown.message);
   });
 
-
   $('.ajax-action1').click( //起動するボタンなどのid名を指定
     function () {
       $.ajax({
@@ -64,7 +66,7 @@ $(function () {
         url: 'playlist', //url+ファイル名 .htmlは省略可
         dataType: 'html', //他にjsonとか選べるとのこと
       }).done(function (results) {
-        $('.contents').html(results); //展開したいタグのidを指定
+        $('.box').html(results); //展開したいタグのidを指定
       }).fail(function (jqXHR, textStatus, errorThrown) {
         alert('ファイルの取得に失敗しました。');
         console.log("ajax通信に失敗しました");
@@ -82,7 +84,7 @@ $(function () {
         url: 'music', //url+ファイル名 .htmlは省略可
         dataType: 'html', //他にjsonとか選べるとのこと
       }).done(function (results) {
-        $('.contents').html(results); //展開したいタグのidを指定
+        $('.box').html(results); //展開したいタグのidを指定
       }).fail(function (jqXHR, textStatus, errorThrown) {
         alert('ファイルの取得に失敗しました。');
         console.log("ajax通信に失敗しました")
@@ -94,7 +96,7 @@ $(function () {
   );
 
 
-  $('.contents').scroll(function () {
+  $('.box').scroll(function () {
 
     let scrollValue = $(this).scrollTop();
     console.log(scrollValue);
@@ -103,16 +105,15 @@ $(function () {
   });
   
   $('.library-link').click(function(){
-//    $('.contents').slideUp(100);
-    $('.contents').animate({top: '100vh'}, 200);
+    $('.box').animate({top: '100vh'}, 200);
     $('.loading').fadeIn(50);
     setTimeout(function(){
-//        $('.contents').slideDown(100);
-        $('.contents').animate({top: '0%'}, 200);
+        $('.box').animate({top: '0%'}, 200);
         $('.loading').fadeOut(50);
       }, 400);
   });
   
+    
 });
 
 /*------- headerSlide関数 -------*/

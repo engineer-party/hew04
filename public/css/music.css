@@ -1,14 +1,17 @@
 #music {
-  width: 100%;
+  width: 95%;
   height: auto;
   padding-top: 140px;
+  margin: 0 auto;
+  background-color: white;
 }
 .music-content {
   display: flex;
   width: 90%;
   margin: 0 auto;
-  margin-bottom: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 15px;
+/*  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);*/
+/*  background-color: #FFEBE0;*/
 }
 
 .music-content .musicIcon {
@@ -25,7 +28,7 @@
 .music-content img {
   width: 50px;
   height: 50px;
-  margin-left: 5px;
+  margin-left: 2px;
 }
 
 .music-content ul {
