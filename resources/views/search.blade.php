@@ -5,6 +5,7 @@
 @section('style')
 <link rel="stylesheet" href="{{asset('css/link.css')}}" />
 <link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
+<link rel="stylesheet" href="{{asset('css/top-header.css')}}" />
 <link rel="stylesheet" href="{{asset('css/search.css')}}" />
 
 <script src="{{ asset('js/search.js') }}" defer></script>
@@ -173,9 +174,6 @@
 
 
 <style>
-  #app .search{
-    display: none;
-  }
   #app h1{
     display: none;
   }
