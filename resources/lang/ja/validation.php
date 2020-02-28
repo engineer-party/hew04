@@ -149,6 +149,12 @@ return [
         'title' => 'タイトル',
         'to' => '宛先コード',
         'content' => 'お知らせ内容',
+        'artist' => 'アーティスト名',
+        'artist_discount' => '値引額',
+        'artist_end_date_time' => 'キャンペーン期間選択',
+        'music' => '楽曲名',
+        'music_discount' => '値引額',
+        'music_end_date_time' => 'キャンペーン期間選択',
     ],
 
 ];

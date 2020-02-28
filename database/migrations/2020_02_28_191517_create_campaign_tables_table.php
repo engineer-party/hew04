@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCampaignTablesTable extends Migration
+class CreateCampaigsnTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCampaignTablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('campaign_tables', function (Blueprint $table) {
+        Schema::create('campaigns', function (Blueprint $table) {
             $table->unsignedBigInteger('music_id');
             $table->integer('discount');
             $table->dateTime('end_date_time');
@@ -32,6 +32,6 @@ class CreateCampaignTablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('campaign_tables');
+        Schema::dropIfExists('campaigns');
     }
 }
