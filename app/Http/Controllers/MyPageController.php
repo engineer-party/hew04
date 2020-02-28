@@ -17,20 +17,13 @@ class MyPageController extends Controller
   public function index()
   {
     $user = Auth::user();
-    $img_path = Storage::disk('s3')->url('image/user/'.$user->img_url);
-    return view('mypage', compact('user','img_path'));
+    $img_path = Storage::disk('s3')->url('image/user/' . $user->img_url);
+    return view('mypage', compact('user', 'img_path'));
   }
 
   public function update(Request $request)
   {
-    /*
-    $img_file_name = $request->file('file')->getClientOriginalName();
-    if (app()->isLocal()) {
-      $request->file('file')->storeAs('public/image/user', $img_file_name);
-    } else {
-      Storage::disk('s3')->putFileAs('image/user', $request->file('imgfile'), $img_file_name, 'public');
-    }
-    */
+    $img_url = Auth::user()->img_url;
     $validator = Validator::make($request->all(), [
       'name' => 'required|string|max:100',
       'email' => 'required|email|max:191|unique:users,email,' . Auth::user()->id,
@@ -56,13 +49,14 @@ class MyPageController extends Controller
         });
       // S3に保存。ファイル名は$storePathで定義したとおり
       Storage::disk('s3')->put($storePath, (string) $image->encode(), 'public');
+      $img_url = Auth::user()->id . "." . $extension;
     }
 
     $user = User::where('id', Auth::user()->id)
       ->update([
         'name'    => $request->name,
         'email'   => $request->email,
-        'img_url' => Auth::user()->id . "." . $extension,
+        'img_url' => $img_url,
       ]);
 
     return redirect()->route('mypage')->with('message', '変更完了');
