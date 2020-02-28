@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Illuminate\Http\File;
+use File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
@@ -17,7 +17,8 @@ class MyPageController extends Controller
   public function index()
   {
     $user = Auth::user();
-    return view('mypage', compact('user'));
+    $img_path = Storage::disk('s3')->url('image/user/'.$user->img_url);
+    return view('mypage', compact('user','img_path'));
   }
 
   public function update(Request $request)
@@ -44,12 +45,10 @@ class MyPageController extends Controller
     if ($request['image']) {
       // 画像ファイルを変数に取り込む
       $imagefile = $request->file('image');
-      // ファイル名のタイムスタンプに使う
-      $now = date_format(Carbon::now(), 'YmdHis');
-      // アップロードされたファイル名を取得
-      $name = $imagefile->getClientOriginalName();
+      // アップロードされた拡張子を取得
+      $extension = File::extension($imagefile->getClientOriginalName());
       // S3の保存先のパスを生成
-      $storePath = "image/user/" . $now . "_" . $name;
+      $storePath = "image/user/" . Auth::user()->id . "." . $extension;
       // 画像を横幅は300px、縦幅はアスペクト比維持の自動サイズへリサイズ
       $image = Image::make($imagefile)
         ->resize(300, null, function ($constraint) {
@@ -61,8 +60,9 @@ class MyPageController extends Controller
 
     $user = User::where('id', Auth::user()->id)
       ->update([
-        'name'  => $request->name,
-        'email' => $request->email,
+        'name'    => $request->name,
+        'email'   => $request->email,
+        'img_url' => Auth::user()->id . "." . $extension,
       ]);
 
     return redirect()->route('mypage')->with('message', '変更完了');

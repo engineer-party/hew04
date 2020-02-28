@@ -93,7 +93,7 @@
   }
   
   .img {
-    background-image: url({{ asset('img/joan-jett.jpg') }});
+    background-image: url({{ $img_path }});
   }
   .img::before{
     content: '{{ $user->name }}';
