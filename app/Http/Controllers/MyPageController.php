@@ -17,12 +17,14 @@ class MyPageController extends Controller
   public function index()
   {
     $user = Auth::user();
+    //usersテーブルに設定されているimg_urlを元にS3のパスを生成
     $img_path = Storage::disk('s3')->url('image/user/' . $user->img_url);
     return view('mypage', compact('user', 'img_path'));
   }
 
   public function update(Request $request)
   {
+    //元々登録されているimg_urlを代入
     $img_url = Auth::user()->img_url;
     $validator = Validator::make($request->all(), [
       'name' => 'required|string|max:100',
