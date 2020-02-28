@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
     // MyPage 1.会員情報
     Route::get('mypage/', 'MyPageController@index')->name('mypage');
     Route::get('userinformation/', 'UserInformationController@index')->name('information');
+    Route::put('mypage/update','MyPageController@update')->name('update');
 
     // PlayList 2.プレイリスト
     Route::get('playlist/', 'PlaylistController@index')->name('playlist');
