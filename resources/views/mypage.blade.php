@@ -54,7 +54,7 @@
     <div class="profile">
     <label for="img-form">
       <img alt="" class="account-img">
-      <input type="file" id="img-form" name="file">
+      <input type="file" id="img-form" name="image">
     </label>
     <ul>
       <li><span class="title">表示名</span><br><input type="text" value="{{ $user->name }}" name="name"></li>
