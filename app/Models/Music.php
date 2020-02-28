@@ -40,8 +40,16 @@ class Music extends Model
     /**
      * 曲のジャンルを取得
      */
-    public function Genres()
+    public function genres()
     {
         return $this->belongsToMany('App\Models\Genre','genre_music');
+    }
+
+    /**
+     * 曲のcampaign情報
+     */
+    public function campaign()
+    {
+        return $this->hasOne('App\Campaign');
     }
 }

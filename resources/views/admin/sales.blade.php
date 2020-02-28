@@ -69,8 +69,8 @@
           <th>#</th>
           <th>名前</th>
           <th>楽曲数</th>
-          <th>売上数</th>
-          <th>売上額</th>
+          <th>総売上数</th>
+          <th>総売上額</th>
         </tr>
       </thead>
       <tbody>
@@ -78,9 +78,29 @@
         <tr>
           <td>{{ $artist->id }}</td>
           <td>{{ $artist->name }}</td>
-          <td>{{ $music->musics_count }}</td>
-          <td></td>
-          <td>{{ number_format(1000) }} </td>
+          <td>{{ $artist->musics_count }}</td>
+          <td>
+            @php
+              $sumMusics = 0;
+            @endphp
+            @foreach ($artist->musics()->get() as $music)
+              @php
+              $sumMusics += $music->buyUsers()->count();
+              @endphp
+            @endforeach
+            {{ number_format($sumMusics) }}
+          </td>
+          <td>
+            @php
+              $sumPrice = 0;
+            @endphp
+            @foreach ($artist->musics()->get() as $music)
+              @php
+              $sumPrice += $music->buyUsers()->get()->sum('buy_point') + $music->buyUsers()->get()->sum('buy_price');
+              @endphp
+            @endforeach
+            {{ number_format($sumPrice) }}
+          </td>
         </tr>
       @endforeach
       </tbody>

@@ -14,14 +14,10 @@ class SalesController extends Controller
     {
         $musics = Music::withCount('buyUsers')->orderBy('buy_users_count','DESC')
             ->paginate(10, ["*"], 'musics')->appends(["itempage" => Input::get('artists')]);
-        $artists = Artist::withCount('musics')
+        $artists = Artist::withCount('musics')->orderBy('musics_count','DESC')
             ->paginate(10, ["*"], 'artists')->appends(["itempage" => Input::get('musics')]);
         
-       foreach ($artists as $artist){
-           foreach ($artist->musics()->get() as $music){
-                var_dump($music->buyUsers()->get()->sum('buy_point') + $music->buyUsers()->get()->sum('buy_price'));
-           }
-       }
-        // return view('Admin\sales',compact('musics','artists'));
+
+        return view('Admin\sales',compact('musics','artists'));
     }
 }
