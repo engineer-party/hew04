@@ -187,6 +187,7 @@
     white-space: nowrap;
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript">
   new Vue({
     el: '#app',
@@ -207,6 +208,7 @@
         e.target.labels[0].innerText = e.target.files[0].name;
       },
       toggleChange(e) {
+        console.log("1");
         if(e.target.value == 1){
           this.isActive1 = true;
           this.isActive2 = false;
@@ -236,3 +238,4 @@
 
 <!-- footer -->
 @include('common.admin_footer')
+

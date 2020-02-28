@@ -9,8 +9,6 @@
 <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 <!-- Bootstrap -->
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<!--Vue-->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!--external css-->
 <link href="{{ asset('lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 <link href="{{ asset('css/admin/zabuto_calendar.css') }}" rel="stylesheet">
