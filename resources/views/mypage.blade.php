@@ -27,9 +27,11 @@
   
   <div class="text">
    <button class="form-button" v-on:click='formActive = true'>プロフィール編集</button>
-   @if(session('message'))
+    @if(session('message'))
     <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
     @endif
+    <span class="form-text text-danger">{{$errors->first('name')}}</span>
+    <span class="form-text text-danger">{{$errors->first('email')}}</span>
     <ul>
       <li><span class="value">{{ $user->name }}</span><br><span class="text-in">表示名</span></li>
       <li><span class="value">{{ $user->email }}</span><br><span class="text-in">メール</span></li>
@@ -58,9 +60,7 @@
     </label>
     <ul>
       <li><span class="title">表示名</span><br><input type="text" value="{{ $user->name }}" name="name"></li>
-      <span class="form-text text-danger">{{$errors->first('name')}}</span>
       <li><span class="title">メール</span><br><input type="text" value="{{ $user->email }}" name="email"></li>
-      <span class="form-text text-danger">{{$errors->first('email')}}</span>
       <li><span class="title">パスワード</span><br><input type="text" value="1919seiyaletsgo"></li>
     </ul>
     </div>
