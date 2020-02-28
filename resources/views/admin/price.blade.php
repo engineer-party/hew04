@@ -34,7 +34,12 @@
           @endif
         </div>
         <div class="form-group">
-          <input type="num" name="artist_discount" class="form-control" id="artist_discount" value="{{ old ('artist_discount') }}" placeholder="値引額" >
+          <select name="artist_discount" class="form-control">
+            <option value="">割引率選択</option>
+            @foreach ($pars as $par)
+          <option value="{{ $par }}" @if(old('artist_discount')==$par) selected  @endif>{{ $par }}%</option>
+            @endforeach
+          </select>
           @if($errors)
           <p class="help-block">{{$errors->first('artist_discount')}}</p>
           @endif
@@ -70,6 +75,7 @@
         <div class="form-group">
           <select name="music" class="form-control">
             <option value="">楽曲名選択</option>
+            <option value="{{ 'all' }}" @if(old('music')=='all') selected  @endif>#ALL　全ての楽曲</option>
             @foreach ($musics as $music)
             <option value="{{ $music->id }}" @if(old('music')==$music->id) selected  @endif>{{ '#' . $music->id . '　' . $music->name }}</option>
             @endforeach
@@ -79,7 +85,12 @@
           @endif
         </div>
         <div class="form-group">
-          <input type="num" name="music_discount" class="form-control" id="music_discount" value="{{ old ('music_discount') }}" placeholder="値引額" >
+          <select name="music_discount" class="form-control">
+            <option value="">割引率選択</option>
+            @foreach ($pars as $par)
+          <option value="{{ $par }}" @if(old('music_discount')==$par) selected  @endif>{{ $par }}%</option>
+            @endforeach
+          </select>
           @if($errors)
           <p class="help-block">{{$errors->first('music_discount')}}</p>
           @endif

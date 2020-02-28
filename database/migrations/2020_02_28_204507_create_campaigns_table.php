@@ -17,6 +17,9 @@ class CreateCampaignsTable extends Migration
             $table->unsignedBigInteger('music_id');
             $table->integer('discount');
             $table->dateTime('end_date_time');
+            $table->timestamps();
+
+            $table->primary('music_id');
 
             $table->foreign('music_id')
                 ->references('id')
