@@ -67,6 +67,10 @@
 @include('common.footer')
 
 <style type="text/css">
+  #app .search{
+    display: none;
+  }
+  
 #wrapper {
 height: 100vh;
 width: 100%;

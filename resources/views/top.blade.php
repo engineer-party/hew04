@@ -19,18 +19,6 @@
 
 <!-- content -->
 @section('content')
-<!--
-  <transition :name="transition">
-    <section id="search" v-if="searchOpen">
-     <!--
-      <div id="app-search" v-if="searchOpen">
-        <ul>
-          <li v-for="item in items"><span>Logo</span>@{{ item.message }}</li>
-        </ul>
-      </div>
-    </section>
-  </transition>
--->
 
 <!-- 付近のプレイリスト（配信） -->
 
@@ -166,8 +154,6 @@
   #link-list li:nth-child(4)::before{
     background-image: url({{ asset('img/playlist.png') }});
   }
-  
-  
   
 /*-----transition-----*/
   /* top */

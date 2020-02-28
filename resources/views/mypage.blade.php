@@ -82,7 +82,9 @@
   #link-list li:nth-child(4)::before{
     background-image: url({{ asset('img/playlist.png') }});
   }
-  
+  #app .search{
+    display: none;
+  }
   .img {
     background-image: url({{ asset('img/joan-jett.jpg') }});
   }

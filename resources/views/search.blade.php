@@ -21,7 +21,10 @@
 @section('content')
 <div id="contents">
   <section id="artist">
-    <h2>アーティスト</h2>
+    <ul class="contents-head">
+      <li>アーティスト</li>
+      <li><button class="btn ajax-active">+30件</button></li>
+    </ul>
     <div class="artist-contents">
 
     <!--繰り返し要素・アーティスト ※最初の4つ-->
@@ -76,7 +79,10 @@
   </section>
 -->
   <section id="music">
-    <h2>曲</h2>
+    <ul class="contents-head">
+    <li>曲</li>
+      <li><button class="btn ajax-active">+20件</button></li>
+    </ul>
     <div class="music-contents">
       
       <!--繰り返し要素・曲 ※最初の5つ-->
@@ -167,7 +173,9 @@
 
 
 <style>
-  
+  #app .search{
+    display: none;
+  }
   #app h1{
     display: none;
   }
