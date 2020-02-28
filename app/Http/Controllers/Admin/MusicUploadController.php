@@ -22,7 +22,9 @@ class MusicUploadController extends Controller
     $artists = Artist::all();
     //楽曲(ry
     $musics = Music::all();
-    return view('Admin/music_upload', compact('genres', 'artists', 'musics'));
+
+    $page = true;
+    return view('Admin/music_upload', compact('genres', 'artists', 'musics','page'));
   }
 
   public function musicStore(Request $request)

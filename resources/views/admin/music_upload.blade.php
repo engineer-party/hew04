@@ -187,7 +187,6 @@
     white-space: nowrap;
   }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript">
   new Vue({
     el: '#app',
