@@ -9,7 +9,7 @@
       <div class="bottomLine line"></div>
     </div>
   </nav>
-  <p><input type="text" id="form" @click="inputActive" :placeholder="placeholder"></p>
+  <p><input type="text" id="form" @click="inputActive" :placeholder="placeholder" :value='value'></p>
   <div id="link">
     <article id="link-in">
       <a id="account" type="button" href="{{ action('MyPageController@index') }}">
@@ -21,7 +21,7 @@
       <section id="link-list">
         <ul>
           <li><a href="{{ action('TopController@index') }}"><span class="link-title">ホーム</span></a></li>
-          <li><a><span class="link-title">ハント</span></a></li>
+          <li><a href="{{ action('HuntController@index') }}"><span class="link-title">ハント</span></a></li>
           <li><a><span class="link-title">配信</span></a></li>
           <li><a href="{{ action('LibraryController@index') }}"><span class="link-title">音楽ライブラリ</span></a></li>
         </ul>

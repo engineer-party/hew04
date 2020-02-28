@@ -6,6 +6,7 @@ let app = new Vue({
   data: function(){
     return {
       placeholder: '',
+      value: ''
     }
   },
   methods: {

@@ -8,18 +8,18 @@
   left: 0;
   z-index: -1;
 }
-/*
+
 .playlist-img::before{
   content: '';
   display: block;
   width: 100vw;
   height: 100vw;
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   background-color: rgba(0,0,0,0.2);
 }
-*/
+
 .playlist-img img{
   width: 100%;
 }
