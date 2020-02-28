@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CampaignTable extends Model
+class Campaign extends Model
 {
     /**
      * campaignの曲

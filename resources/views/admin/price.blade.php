@@ -29,23 +29,29 @@
             <option value="{{ $artist->id }}" @if(old('artist')==$artist->id) selected  @endif>{{ '#' . $artist->id . '　' . $artist->name }}</option>
             @endforeach
           </select>
-        </div>
-        <div class="form-group">
-          <input type="num" name="price" class="form-control" id="price" value="{{ old ('price') }}" placeholder="値引額" >
           @if($errors)
-          <p class="help-block">{{$errors->first('price')}}</p>
+          <p class="help-block">{{$errors->first('artist')}}</p>
           @endif
         </div>
         <div class="form-group">
-          <select name="period" class="form-control">
-            <option value="">アーティスト名選択</option>
-            <option value="5d">5日</option>
-            <option value="7d">7日</option>
-            <option value="10d">10日</option>
-            <option value="30d">30日</option>
-            <option value="1m">実演用 - 1分</option>
-            <option value="3m">実演用 - 3分</option>
+          <input type="num" name="artist_discount" class="form-control" id="artist_discount" value="{{ old ('artist_discount') }}" placeholder="値引額" >
+          @if($errors)
+          <p class="help-block">{{$errors->first('artist_discount')}}</p>
+          @endif
+        </div>
+        <div class="form-group">
+          <select name="artist_period" class="form-control">
+            <option value="">キャンペーン期間選択</option>
+            <option value="5d" @if(old('artist_period')=='5d') selected  @endif>5日</option>
+            <option value="7d" @if(old('artist_period')=='7d') selected  @endif>7日</option>
+            <option value="10d" @if(old('artist_period')=='10d') selected  @endif>10日</option>
+            <option value="30d" @if(old('artist_period')=='30d') selected  @endif>30日</option>
+            <option value="1m" @if(old('artist_period')=='1m') selected  @endif>実演用 - 1分</option>
+            <option value="3m" @if(old('artist_period')=='3m') selected  @endif>実演用 - 3分</option>
           </select>
+          @if($errors)
+          <p class="help-block">{{$errors->first('artist_period')}}</p>
+          @endif
         </div>
 
         <div class="form-send">
@@ -68,23 +74,29 @@
             <option value="{{ $music->id }}" @if(old('music')==$music->id) selected  @endif>{{ '#' . $music->id . '　' . $music->name }}</option>
             @endforeach
           </select>
-        </div>
-        <div class="form-group">
-          <input type="num" name="price" class="form-control" id="price" value="{{ old ('price') }}" placeholder="値引額" >
           @if($errors)
-          <p class="help-block">{{$errors->first('price')}}</p>
+          <p class="help-block">{{$errors->first('music')}}</p>
           @endif
         </div>
         <div class="form-group">
-          <select name="period" class="form-control">
+          <input type="num" name="music_discount" class="form-control" id="music_discount" value="{{ old ('music_discount') }}" placeholder="値引額" >
+          @if($errors)
+          <p class="help-block">{{$errors->first('music_discount')}}</p>
+          @endif
+        </div>
+        <div class="form-group">
+          <select name="music_period" class="form-control">
             <option value="">キャンペーン期間選択</option>
-            <option value="5d">5日</option>
-            <option value="7d">7日</option>
-            <option value="10d">10日</option>
-            <option value="30d">30日</option>
-            <option value="1m">実演用 - 1分</option>
-            <option value="3m">実演用 - 3分</option>
+            <option value="5d" @if(old('music_period')=='5d') selected  @endif>5日</option>
+            <option value="7d" @if(old('music_period')=='7d') selected  @endif>7日</option>
+            <option value="10d" @if(old('music_period')=='10d') selected  @endif>10日</option>
+            <option value="30d" @if(old('music_period')=='30d') selected  @endif>30日</option>
+            <option value="1m" @if(old('music_period')=='1m') selected  @endif>実演用 - 1分</option>
+            <option value="3m" @if(old('music_period')=='3m') selected  @endif>実演用 - 3分</option>
           </select>
+          @if($errors)
+          <p class="help-block">{{$errors->first('music_period')}}</p>
+          @endif
         </div>
 
         <div class="form-send">
