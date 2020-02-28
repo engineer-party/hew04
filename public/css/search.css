@@ -1,36 +1,4 @@
-#app {
-  position: absolute;
-  top: 10px;
-  width: 100vw;
-  height: 45px;
-  border-radius: 2px;
-  background-color: #ff5757;
-  display: flex;
-  z-index: 100;
-}
-#app nav{
-}
-#app p{
-  width: 70%;
-}
-#app #form{
-  height: 45px;
-  line-height: 45px;
-  width: 100%;
-  border-radius: 10px;
-  background-color: transparent;
-  color: white;
-  border: none;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  outline: none;
-  caret-color: yellow;
-  margin-left: 50px;
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: 90%;
-}
+
 #contents {
   width: 95%;
   height: auto;
