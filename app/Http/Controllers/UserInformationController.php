@@ -12,7 +12,9 @@ class UserInformationController extends Controller
 {
     public function index()
     {
-        $data = Information::select()->join('user_informations','user_informations.information_id','=','informations.id')->where('user_informations.user_id',Auth::user()->id)->orwhere('user_informations.user_id',0)->get();
-        return view('userinformation');
+        //$data = Information::select()->join('user_informations','user_informations.information_id','=','informations.id')->where('user_informations.user_id',Auth::user()->id)->get();
+        //$data = Information::All();
+        $data = User::find(Auth::user()->id)->informations()->get();
+        return view('userinformation',compact('data'));
     }
 }

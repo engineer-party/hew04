@@ -24,10 +24,13 @@
 @section('content')
 <div id="message">
     <h2 class="uk-text-center uk-text-small uk-text-danger">お知らせ</h2>
-    <ul class="uk-list uk-list-striped uk-list-large">
-        @for($i = 1; $i <= 10; $i++)
-        <li>tes{{$i}}</li>
-        @endfor
+    <ul uk-accordion class="uk-list uk-list-striped uk-list-large">
+        @foreach($data as $message)
+        <li>
+          <a href='#' class="uk-accordion-title">{{$message->title}}</a>
+          <div class="uk-accordion-content uk-text-small">{!!nl2br(str_replace('\r\n',"\r\n",$message->content))!!}</div>
+        </li>
+        @endforeach
     </ul>
 </div>
 @endsection
@@ -39,6 +42,9 @@
 * {
     margin: 0;
     padding: 0;
+  }
+  #form{
+    display:none;
   }
   #wrapper {
     position: fixed;
