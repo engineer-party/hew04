@@ -2,38 +2,11 @@ let headOpen = false;
 let linkOpen = false;
 let startValue = 0;
 
-/*
-export default {
-  data(){
-    return {
-      isActive01: false
-    }
-  }
-}
-*/
 
 let modal = new Vue({
   el: '#contents',
   data: function () {
     return {
-      items: [
-        {
-          name: 'プレイリスト',
-          open: false
-        },
-        {
-          name: '曲',
-          open: false
-        },
-        {
-          name: 'アーティスト',
-          open: false
-        },
-        {
-          name: 'アルバム',
-          open: false
-        }
-      ],
       animate: 'left',
       activetab: 1,
       playlistActive: false,
@@ -42,9 +15,11 @@ let modal = new Vue({
   }
 });
 
+
+
 $(function () {
 
-  
+
   $.ajax({
     type: 'GET', //GETかPOSTか
     url: 'playlist', //url+ファイル名 .htmlは省略可
@@ -103,17 +78,24 @@ $(function () {
     headerSlide(scrollValue);
 
   });
-  
-  $('.library-link').click(function(){
-    $('.box').animate({top: '100vh'}, 200);
+
+  $('.library-link').click(function () {
+    $('.box').animate({
+      top: '100vh'
+    }, 200);
     $('.loading').fadeIn(50);
-    setTimeout(function(){
-        $('.box').animate({top: '0%'}, 200);
-        $('.loading').fadeOut(50);
-      }, 400);
+    setTimeout(function () {
+      $('.box').animate({
+        top: '0%'
+      }, 200);
+      $('.loading').fadeOut(50);
+    }, 400);
   });
-  
-    
+
+  $('.back').click(function(){
+    $('.playlist-in').removeClass('activeplaylist');
+  });
+
 });
 
 /*------- headerSlide関数 -------*/

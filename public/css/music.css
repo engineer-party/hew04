@@ -16,10 +16,11 @@
 
 .music-content .musicIcon {
   margin-top: 21px;
-  margin-left: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
   border-bottom: solid gray 2px;
   border-top: solid gray 2px;
-  width: 15px;
+  width: 18px;
   height: 8px;
   display: block;
   z-index: 2;
@@ -37,7 +38,7 @@
 }
 
 .music-content .title {
-  font-size: 1.1em;
+  font-size: 1.0em;
   line-height: 30px;
 }
 
