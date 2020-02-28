@@ -1,4 +1,3 @@
-
 $('#form').hammer().on('tap', function () {
   if (headOpen == false) {
     headOpen = true;
@@ -18,7 +17,16 @@ $('.menu-trigger').hammer().on('tap', function () {
   }
 });
 $('#link').hammer().on('swipe', function () {
-  linkOpen = false;
-  console.log('link-close');
-  $(this).removeClass("link-active");
+  if (linkOpen == true) {
+    linkOpen = false;
+    console.log('link-close');
+    $(this).removeClass("link-active");
+  }
+});
+$('#link').hammer().on('tap', function () {
+  if (linkOpen == true) {
+    linkOpen = false;
+    console.log('link-close');
+    $(this).removeClass("link-active");
+  }
 });

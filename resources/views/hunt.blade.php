@@ -76,7 +76,7 @@ left: 0;
 background-color:aliceblue;
   overflow-y: scroll;
 }
-#app .form {
+#app #form {
 display: none;
 }
 #app {
