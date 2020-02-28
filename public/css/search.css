@@ -211,4 +211,24 @@
   font-size: 0.8em;
   color: gray;
 }
-
+.contents-head {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.contents-head .ajax-active{
+  background-color: #ff5757;
+  color: white;
+  height: 30px;
+  line-height: 15px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.contents-head li:nth-child(1){
+  color: white;
+  font-size: 1.3em;
+  line-height: 50px;
+  margin-left: 20px;
+}

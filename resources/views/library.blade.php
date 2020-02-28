@@ -208,6 +208,10 @@
     background-image: url({{ asset('img/playlist-active.png')}});
   }
   
+  #app .search{
+    display: none;
+  }
+  
   * {
     margin: 0;
     padding: 0;
