@@ -6,13 +6,22 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Music;
 use App\Models\Artist;
+use Illuminate\Support\Facades\Input;
 
 class SalesController extends Controller
 {
     public function index()
     {
-        $musics = Music::withCount('buyUsers')->orderBy('buy_users_count','DESC')->paginate(10, ["*"], 'musics');
-
-        return view('Admin\sales',compact('musics'));
+        $musics = Music::withCount('buyUsers')->orderBy('buy_users_count','DESC')
+            ->paginate(10, ["*"], 'musics')->appends(["itempage" => Input::get('artists')]);
+        $artists = Artist::withCount('musics')
+            ->paginate(10, ["*"], 'artists')->appends(["itempage" => Input::get('musics')]);
+        
+       foreach ($artists as $artist){
+           foreach ($artist->musics()->get() as $music){
+                var_dump($music->buyUsers()->get()->sum('buy_point') + $music->buyUsers()->get()->sum('buy_price'));
+           }
+       }
+        // return view('Admin\sales',compact('musics','artists'));
     }
 }
