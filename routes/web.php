@@ -99,14 +99,19 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('sales/','SalesController@index')->name('sales');
         // Campagin
         Route::get('price', 'PriceController@index')->name('price');
+        Route::post('price/artist','PriceController@artist');
+        Route::post('price/music','PriceController@music');
         Route::get('collaboration', 'CollaborationController@index')->name('collaboration');
         // Users Management
         Route::get('management', 'ManagementController@index')->name('management');
+
         Route::get('report', 'ReportController@index')->name('report');
         Route::get('report/show/{user_id}/{category_id}', 'ReportController@show');
         Route::get('report/delete/{user_id}', 'ReportController@softdelete');
+
         Route::get('suspension', 'SuspensionController@index')->name('suspension');
         Route::get('suspension/restore/{user_id}', 'SuspensionController@restore');
+
         Route::get('information', 'InformationController@index')->name('information');
         Route::get('information/send/{user_id}', 'InformationController@send');
         Route::post('information/store', 'InformationController@store')->name('information_store');
