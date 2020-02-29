@@ -49,11 +49,109 @@
     </div>
   </div>
 
-  
+<script>
+let test = new Vue({
+el: '#contents',
+data: function () {
+  return {
+    links: [
+      {
+        class: 0,
+        active: true,
+        name: 'プレイリスト'
+      },
+      {
+        class: 1,
+        active: false,
+        name: '曲'
+      },
+      {
+        class: 2,
+        active: false,
+        name: 'アーティスト'
+      }
+          ],
+    playlists: [
+      {
+        //name: プレイリスト名,img1.2.3.4:ランダムな画像4つ
+        id:0,
+        name: 'Rock-Hot',
+        option: false,
+        img1: "{{ asset('img/cheep-trick.jpg')}}",
+        img2: "{{ asset('img/cheep-trick.jpg')}}",
+        img3: "{{ asset('img/cheep-trick.jpg')}}",
+        img4: "{{ asset('img/cheep-trick.jpg')}}",
+      },
+      {
+        id:1,
+        name: 'Rock-Hot',
+        option: false,
+        img1: "{{ asset('img/cheep-trick.jpg')}}",
+        img2: "{{ asset('img/cheep-trick.jpg')}}",
+        img3: "{{ asset('img/cheep-trick.jpg')}}",
+        img4: "{{ asset('img/cheep-trick.jpg')}}",
+      },
+      {
+        id:2,
+        name: 'Rock-Hot',
+        option: false,
+        img1: "{{ asset('img/cheep-trick.jpg')}}",
+        img2: "{{ asset('img/cheep-trick.jpg')}}",
+        img3: "{{ asset('img/cheep-trick.jpg')}}",
+        img4: "{{ asset('img/cheep-trick.jpg')}}",
+      },
+      {
+        id:3,
+        name: 'Rock-Hot',
+        option: false, 
+        img1: "{{ asset('img/cheep-trick.jpg')}}",
+        img2: "{{ asset('img/cheep-trick.jpg')}}",
+        img3: "{{ asset('img/cheep-trick.jpg')}}",
+        img4: "{{ asset('img/cheep-trick.jpg')}}",
+      },
+    ],
+    playlistInActive: false,
+    activePL: true,
+    activeMusic: false
+  }
+},
+methods: {
+  playlistActive: function (index) {
+    this.playlists[index].option = true;
+    this.playlists.splice();
+  },
+  activetab: function (index) {
+    console.log(this.links[index].class);
+    if (index == 0) {
+      this.links[1].active = false;
+      this.links[2].active = false;
+      this.activeMusic = false;
+      this.activePL = true;
+    } else if (index == 1) {
+      this.links[0].active = false;
+      this.links[2].active = false;
+      this.activePL = false;
+      this.activeMusic = true;
+    } else if (index == 2) {
+      this.links[0].active = false;
+      this.links[1].active = false;
+    }
+    this.links[index].active = true;
+
+    this.links.splice();
+  }
+}
+})
+
+
+</script>
+
 @endsection
 
 <!-- footer -->
 @include('common.footer')
+
+
 
 <style type="text/css">
   #link-list li:nth-child(4) {
