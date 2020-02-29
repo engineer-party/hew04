@@ -73,13 +73,12 @@
       </div>
       <label>音楽ファイル</label>
       <div class="custom-file mb-2">
-        <input type="file" class="custom-file-input" id="customMusicfile" name="musicfile"
-          @change="musicFileNameChange">
+        <input type="file" class="custom-file-input" id="customMusicfile" name="files[]" @change="musicFileNameChange">
         <label class="custom-file-label" for="customMusicfile" data-browse="参照">ファイル選択...</label>
       </div>
       <label>画像ファイル</label>
       <div class="custom-file mb-2">
-        <input type="file" class="custom-file-input" id="customImgfile" name="imgfile" @change="imgFileNameChange">
+        <input type="file" class="custom-file-input" id="customImgfile" name="files[]" @change="imgFileNameChange">
         <label class="custom-file-label" for="customImgfile" data-browse="参照">ファイル選択...</label>
       </div>
       <button class="btn btn-primary" type="submit">登録</button>
@@ -237,4 +236,3 @@
 
 <!-- footer -->
 @include('common.admin_footer')
-
