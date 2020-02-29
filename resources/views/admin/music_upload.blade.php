@@ -206,7 +206,6 @@
         e.target.labels[0].innerText = e.target.files[0].name;
       },
       toggleChange(e) {
-        console.log("1");
         if(e.target.value == 1){
           this.isActive1 = true;
           this.isActive2 = false;
