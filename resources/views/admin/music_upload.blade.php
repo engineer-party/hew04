@@ -42,7 +42,7 @@
       </div>
       <div class="form-group">
         <label>ジャンル</label>
-        <select id="0" class="custom-select" name="genre[]" @change="selectChange">
+        <select id="0" class="custom-select" name="genres[]" @change="selectChange">
           <option value="0">選択してください</option>
           @foreach($genres as $genre)
           <option value="{{ $genre->id }}">{{ $genre->name }}</option>
