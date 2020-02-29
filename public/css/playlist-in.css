@@ -93,22 +93,6 @@ h2 {
   height: 25px;
   font-size: 0.9em;
 }
-.playlist-info .info-btn{
-  width: 20px;
-  height: 50px;
-/*  background-color: darkorange;*/
-}
-.playlist-info .info-btn div{
-  width: 6px;
-  height: 6px;
-  border-radius: 3px;
-  background-color: gray;
-  margin: 0 auto;
-  margin-bottom: 3px;
-/*  position: relative;*/
-/*  left: 50%;*/
-/*  transform: translate(-50%);*/
-}
 .playlist-info .info-btn div:nth-child(1){
   margin-top: 13px;
 }

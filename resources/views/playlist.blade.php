@@ -1,7 +1,7 @@
   <div id="playlist">
     <!-- プレイリスト -->
     <div class="playlist-content">
-      <div class="img">
+      <div class="img" @click="playlistinAct = true">
         <img src="{{ asset('img/cheep-trick.jpg') }}" alt="">
         <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
         <img src="{{ asset('img/plus.jpg') }}" alt="">
@@ -9,35 +9,20 @@
       </div>
       <div class="text">
         <p class="title">Rock-Hot</p>
+        <div class="info-btn" @click="playlistActive">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
       <button class="play-btn"></button>
+      <div class="playlist-option" v-if="option">
+        <ul>
+          <li class="add-music"><button>曲を追加</button></li>
+          <li class="del-playlist"><button>プレイリストを削除</button></li>
+        </ul>
+      </div>
     </div>
-    <!-- END -->
-
-    <!-- プレイリスト -->
-    <a class="playlist-content">
-      <div class="img">
-        <img src="{{ asset('img/cheep-trick.jpg') }}" alt="">
-        <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
-        <img src="{{ asset('img/plus.jpg') }}" alt="">
-        <img src="{{ asset('img/sex-pistols.jpg') }}" alt="">
-      </div>
-      <p class="title">Rock-Hot</p>
-      <button class="play-btn"></button>
-    </a>
-    <!-- END -->
-
-    <!-- プレイリスト -->
-    <a class="playlist-content">
-      <div class="img">
-        <img src="{{ asset('img/cheep-trick.jpg') }}" alt="">
-        <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
-        <img src="{{ asset('img/plus.jpg') }}" alt="">
-        <img src="{{ asset('img/sex-pistols.jpg') }}" alt="">
-      </div>
-      <p class="title">Rock-Hot</p>
-      <button class="play-btn"></button>
-    </a>
     <!-- END -->
     
 <!--      <div class="playlist-in" v-bind:class='{activeplaylist:playlistActive}'></div>-->
@@ -46,20 +31,25 @@
 
 
   <script>
-    /*
+    
     let playlist = new Vue({
-      el: '#playlist',
+      el: '#contents',
       data: function() {
         return {
-          playlistActive: false
+          option: false,
         }
+      },
+      methods: {
+        playlistActive: function(){
+          this.option = true;
+        },
       }
-    })
-    */
-    
+    });
+    /*
     $('.playlist-content').click(function(){
       $('.playlist-in').addClass('activeplaylist');
     });
+    */
     
     
   </script>
