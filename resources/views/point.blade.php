@@ -22,6 +22,7 @@
 
 <div id="contents">
 <!--繰り返し要素・ポイント-->
+
 <div class="point" v-for="(item, index) in values" :key="item.id">
   <ul>
     <li class="point-icon">P</li>
@@ -41,13 +42,17 @@
     </ul>
     <p class="pay-value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}</p>
     <button class="btn back-btn" @click="item.checked = false">戻る</button>
-    <button class="btn pay-btn" @click="item.checked = false">購入</button>
+    <form method="post" action="">
+    @csrf
+      <button type="submit" class="btn pay-btn" name="point" :value="item.value + item.survice" @click="item.checked = false">購入</button>
+    </form>
   </div>
   </transition>
 </div>
+
 <!-- END -->
 </div>
- 
+
 <script>
   let point = new Vue({
     el: '#contents',
