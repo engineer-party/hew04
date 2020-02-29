@@ -183,6 +183,9 @@
     line-height: 50px;
 /*    background-color: coral;*/
   }
+  .point label{
+    font-size: 0.9em;
+  }
   .point .point-survice{
     height: 50px;
     width: 25%;
@@ -223,6 +226,7 @@
     background-color: #ff5757;
     color: white;
     border-radius: 5px;
+    font-size: 0.8em;
   }
   .point .point-buy h3{
     color: rgba(0,0,0,0.4);

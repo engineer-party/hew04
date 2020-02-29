@@ -94,6 +94,8 @@
   #app .search{
     display: none;
   }
+  
+  
   .img {
     background-image: url({{ $img_path }});
   }

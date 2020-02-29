@@ -71,6 +71,26 @@
     display: none;
   }
   
+  #link-list li:nth-child(1)::before{
+    background-image: url({{ asset('img/home.png') }});
+  }
+  #link-list li:nth-child(2)::before{
+    background-image: url({{ asset('img/hunt-active.png') }});
+  }
+  #link-list li:nth-child(3)::before{
+    background-image: url({{ asset('img/streaming.png') }});
+  }
+  #link-list li:nth-child(4)::before{
+    background-image: url({{ asset('img/playlist.png') }});
+  }
+  #link-list li:nth-child(2) {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  #link-list li:nth-child(2) .link-title {
+    color: #ff5757;
+  }
+  
 #wrapper {
 height: 100vh;
 width: 100%;
