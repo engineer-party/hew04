@@ -1,7 +1,7 @@
   <div id="playlist">
     <!-- プレイリスト -->
     <div class="playlist-content">
-      <div class="img" @click="playlistinAct = true">
+      <div class="img" @click="playlistInActive = true">
         <img src="{{ asset('img/cheep-trick.jpg') }}" alt="">
         <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
         <img src="{{ asset('img/plus.jpg') }}" alt="">
@@ -28,28 +28,3 @@
 <!--      <div class="playlist-in" v-bind:class='{activeplaylist:playlistActive}'></div>-->
     
   </div>
-
-
-  <script>
-    
-    let playlist = new Vue({
-      el: '#contents',
-      data: function() {
-        return {
-          option: false,
-        }
-      },
-      methods: {
-        playlistActive: function(){
-          this.option = true;
-        },
-      }
-    });
-    /*
-    $('.playlist-content').click(function(){
-      $('.playlist-in').addClass('activeplaylist');
-    });
-    */
-    
-    
-  </script>

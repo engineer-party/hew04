@@ -3,20 +3,6 @@ let linkOpen = false;
 let startValue = 0;
 
 
-let modal = new Vue({
-  el: '#contents',
-  data: function () {
-    return {
-      animate: 'left',
-      activetab: 1,
-      playlistActive: false,
-      headerBrade: false
-    }
-  }
-});
-
-
-
 $(function () {
 
 
@@ -26,6 +12,25 @@ $(function () {
     dataType: 'html', //他にjsonとか選べるとのこと
   }).done(function (results) {
     $('.box').html(results); //展開したいタグのidを指定
+    /*
+    $('.img').click(function () {
+      $('.playlist-in').addClass('activeplaylist');
+    });
+    */
+    let test = new Vue({
+      el: '#contents',
+      data: function () {
+        return {
+          option: false,
+          playlistInActive: false
+        }
+      },
+      methods: {
+        playlistActive: function () {
+          this.option = true;
+        },
+      }
+    });
   }).fail(function (jqXHR, textStatus, errorThrown) {
     alert('ファイルの取得に失敗しました。');
     console.log("ajax通信に失敗しました")
@@ -92,11 +97,24 @@ $(function () {
     }, 400);
   });
 
-  $('.back').click(function(){
-    $('.playlist-in').removeClass('activeplaylist');
-  });
-
 });
+
+let modal = new Vue({
+  el: '#navber',
+  data: function () {
+    return {
+      animate: 'left',
+      activetab: 1,
+      headerBrade: false,
+      playlistinAct: false,
+    }
+  },
+  methods: {
+    
+  }
+});
+
+
 
 /*------- headerSlide関数 -------*/
 function headerSlide(nowValue) {

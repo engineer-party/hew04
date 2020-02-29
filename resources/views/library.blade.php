@@ -11,7 +11,7 @@
 
 
 
-<script src="{{ asset('js/library.js') }}" defer></script>
+<script src="{{ asset('js/library.js') }}" defer type="application/javascript"></script>
 <script src="{{ asset('js/hbg.js') }}" defer></script>
 
 @endsection
@@ -38,14 +38,15 @@
   </section>
 
   <p><img src="{{ asset('img/loading.gif') }}" alt="" class="loading"></p>
-    <div class="playlist-in" :class="{activeplaylist:playlistinAct}">
-      <div class="back">
+    <div class="playlist-in" :class="{activeplaylist:playlistInActive}">
+      <div class="back" @click="playlistInActive = false">
         <div class="topLine line"></div>
         <div class="borderLine line"></div>
         <div class="bottomLine line"></div>
       </div>
     </div>
   </div>
+
   
 @endsection
 
