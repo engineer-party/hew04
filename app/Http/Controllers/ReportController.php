@@ -38,6 +38,6 @@ class ReportController extends Controller
         $report->detail = $req->detail;
         $report->save();
 
-        return view('report_end');
+        return redirect()->route('report')->with('message', '通報完了');
     }
 }

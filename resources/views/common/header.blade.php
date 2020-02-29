@@ -31,8 +31,8 @@
       <article id="link-in">
         <a id="account" type="button" href="{{ action('MyPageController@index') }}">
           <ul>
-            <li><img src="" alt=""></li>
-            <li>Cookie Man</li>
+          <li><img src="{{ Storage::disk('s3')->url('image/user/' . Auth::User()->img_url) }}" alt=""></li>
+          <li>{{ Auth::User()->name }}</li>
           </ul>
         </a>
         <section id="link-list">
@@ -46,7 +46,7 @@
         <section id="point">
           <ul>
             <li><a href="{{ action('PointController@index') }}">ポイント購入</a></li>
-            <li><span class="point-icon">P</span>99999</li>
+          <li><span class="point-icon">P</span>{{ number_format(Auth::User()->point) }}</li>
           </ul>
         </section>
         <section id="login_btn">
