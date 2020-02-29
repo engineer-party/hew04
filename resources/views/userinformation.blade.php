@@ -52,7 +52,10 @@
     height: 100vh;
     background-color: aliceblue;
   }
-  #app .form {
+  #app #form {
+    display: none;
+  }
+  #app .search {
     display: none;
   }
   #app {
