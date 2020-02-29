@@ -28,8 +28,8 @@
     <li class="point-value">@{{ String( item.point ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }} P</li>
   </ul>
   <p class="point-survice">+@{{ String( item.survice ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}P</p>
-  <label for="checkbox">
-    <input type="checkbox" id="checkbox" v-model="checked" v-bind:value="item.value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}
+  <label class="item.id">
+    <input type="checkbox" :class="item.id" @click="buyEvent(item.id)" v-bind:value="item.value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}
   </label>
   <transition :name="animate">
   <div class="point-buy" v-if="item.checked">
@@ -54,13 +54,13 @@
     data:{
       values: [
         //point:ポイント value:値段 survice:プラスで得られるポイント
-        {id:1,checked:false,point:1000,value:1000,survice:100},    //0.10
-        {id:2,checked:false,point:1500,value:1500,survice:200},    //0.13  1.5  0.3
-        {id:3,checked:false,point:2000,value:2000,survice:300},    //0.15  1.3  0.2
-        {id:4,checked:false,point:3000,value:3000,survice:600},    //0.20  1.5  0.5
-        {id:5,checked:false,point:5000,value:5000,survice:1200},   //0.24  1.6  0.4
-        {id:6,checked:false,point:7500,value:7500,survice:2250},   //0.30  1.5  0.6
-        {id:7,checked:false,point:10000,value:10000,survice:3500}  //0.35  1.3  0.5
+        {id:0,checked:false,point:1000,value:1000,survice:100},    //0.10
+        {id:1,checked:false,point:1500,value:1500,survice:200},    //0.13  1.5  0.3
+        {id:2,checked:false,point:2000,value:2000,survice:300},    //0.15  1.3  0.2
+        {id:3,checked:false,point:3000,value:3000,survice:600},    //0.20  1.5  0.5
+        {id:4,checked:false,point:5000,value:5000,survice:1200},   //0.24  1.6  0.4
+        {id:5,checked:false,point:7500,value:7500,survice:2250},   //0.30  1.5  0.6
+        {id:6,checked:false,point:10000,value:10000,survice:3500}  //0.35  1.3  0.5
 
       ],
       animate: 'bottom'
@@ -70,6 +70,7 @@
         this.values[index].checked = true;
         this.values.splice();
         console.log(this.values[index].checked);
+        console.log(index);
       }
     }
   })
