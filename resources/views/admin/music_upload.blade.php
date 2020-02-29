@@ -67,10 +67,6 @@
         <label>価格</label>
         <input class="form-control" type="number" name="price" value="{{ old('price') }}">
       </div>
-      <div class="form-group">
-        <label>発売日</label>
-        <input class="form-control" type="date" name="data" value="{{ old('day') }}">
-      </div>
       <label>音楽ファイル</label>
       <div class="custom-file mb-2">
         <input type="file" class="custom-file-input" id="customMusicfile" name="files[]" @change="musicFileNameChange">

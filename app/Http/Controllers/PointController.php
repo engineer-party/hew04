@@ -8,6 +8,7 @@ use Stripe\Stripe;
 use Stripe\Customer;
 use Stripe\Charge;
 use App\Models\User;
+use App\Models\BuyPoint;
 
 class PointController extends Controller
 {
@@ -41,6 +42,13 @@ class PointController extends Controller
       ->update([
         'point' => $point,
       ]);
+
+      $buy_point = new BuyPoint;
+      $buy_point->user_id = Auth::user()->id;
+      $buy_point->price = $request->value;
+      $buy_point->point = $request->point;
+      $buy_point->save();
+
 
       return redirect()->route('point')->with('message', '購入完了');
     } catch (\Exception $ex) {

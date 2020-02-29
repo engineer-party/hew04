@@ -40,7 +40,7 @@
     <h3>Hunc</h3>
     <ul>
       <li class="icon"></li>
-      <li class="point-value">@{{ String( item.point ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }} P</li>
+      <li class="point-value">@{{ String( item.point + item.survice ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }} P</li>
       <li class="point-icon">P</li>
     </ul>
     <p class="pay-value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}</p>
