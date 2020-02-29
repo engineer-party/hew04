@@ -49,6 +49,9 @@
           <li><span class="point-icon">P</span>{{ number_format(Auth::User()->point) }}</li>
           </ul>
         </section>
+        <section id="userinfo">
+          <p><a href="{{ action('UserInformationController@index') }}">お知らせ</a></p>
+        </section>
         <section id="login_btn">
           @if(Auth::check())
           <!-- ログインしている場合 -->
