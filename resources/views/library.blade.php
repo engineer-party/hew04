@@ -47,6 +47,17 @@
         <div class="bottomLine line"></div>
       </div>
     </div>
+    <div class="add-playlist" @click="addPlaylist = true"></div>
+    <transition>
+      <div id="add-playlist" v-if="addPlaylist">
+        <h3>新しいプレイリスト</h3>
+        <p><input type="text"></p>
+        <ul>
+          <li><button class="btn cancel-btn"></button></li>
+          <li><button class="btn add-btn"></button></li>
+        </ul>
+      </div>
+    </transition>
   </div>
 
 <script>
@@ -112,7 +123,8 @@ data: function () {
     ],
     playlistInActive: false,
     activePL: true,
-    activeMusic: false
+    activeMusic: false,
+    addPlaylist: true,
   }
 },
 methods: {
@@ -207,7 +219,7 @@ methods: {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 50;
   }
 
   #app .menu-trigger {
@@ -327,25 +339,48 @@ methods: {
   .info-btn{
     width: 20px;
     height: 50px;
-/*    position: relative;*/
-/*    top: -30px;*/
-/*    left: 50%;*/
   }
-.info-btn div{
-  background-color: gray;
-  margin: 0 auto;
-}
+  .info-btn div{
+    background-color: gray;
+    margin: 0 auto;
+  }
   .playlists,
   .music {
     position: absolute;
     top: 135px;
     left: 0;
     width: 100%;
-/*
-  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transform: translate(-100vw,0);
-*/
-}
+  }
+  .add-playlist {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 51;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url({{ asset('img/playlist-add.png') }});
+  }
+  #add-playlist {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height: auto;
+    background-color: white;
+    border-radius: 3px;
+  }
+  #add-playlist h3{
+    font-size: 1.2em;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding: 20px;
+  }
   
   /* bottom */
 .bottom-enter-active, .bottom-leave-active {
