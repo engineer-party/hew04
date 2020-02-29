@@ -21,6 +21,9 @@
 @section('content')
 
 <div id="contents">
+  @if(session('message'))
+  <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
+  @endif
 <!--繰り返し要素・ポイント-->
 
 <div class="point" v-for="(item, index) in values" :key="item.id">
@@ -42,21 +45,23 @@
     </ul>
     <p class="pay-value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}</p>
     <button class="btn back-btn" @click="item.checked = false">戻る</button>
-    <form method="post" action="">
+    <form method="post" action="{{ url('point/charge') }}">
     @csrf
-      <script
+      <div is="script"
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         data-key="{{ env('STRIPE_KEY') }}"
-        data-amount="1000"
-        data-name="Stripe Demo"
-        data-label="決済をする"
-        data-description="Online course about integrating Stripe"
-        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        :data-amount="item.value"
+        data-name="Hunting Music"
+        data-label="購入"
+        data-description="ポイントの購入"
+        data-image="{{ asset('img/Hunc Logo')}}"
         data-locale="auto"
         data-currency="JPY">
-      </script>
+      </div>
+      <input type="hidden" name="value" :value="item.value">
+      <input type="hidden" name="point" :value="item.value + item.survice">
     </form>
-    <button class="btn pay-btn" name="point" :value="item.value + item.survice" @click="item.checked = false" disabled>購入</button>
+    <!--<button class="btn pay-btn" name="point" :value="item.value + item.survice" @click="item.checked = false" disabled>購入</button>-->
   </div>
   </transition>
 </div>
