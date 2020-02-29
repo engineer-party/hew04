@@ -58,7 +58,7 @@ class MusicUploadController extends Controller
       ]);*/
 
     Storage::disk('s3')->putFileAs('music/', $request->file('musicfile'), $mp3_file_name, 'public');
-    Storage::disk('s3')->putFileAs('image/', $request->file('imgfile'), $img_file_name, 'public');
+    Storage::disk('s3')->putFileAs('image/music/', $request->file('imgfile'), $img_file_name, 'public');
     Storage::disk('s3')->putFileAs('sample/', $mp3->fromFile(Storage::disk('s3')->url('music/' . $mp3_file_name))->trim(10, 30), 'sample_' . $mp3_file_name, 'public');
 
     return redirect()->route('admin/music_upload')->with('message', 'musicアップロード成功！');
