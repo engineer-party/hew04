@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
   
     //ポイント購入
     Route::get('point/', 'PointController@index')->name('point');
+    Route::post('point/charge', 'PointController@charge')->name('charge');
 
     // Music 4.再生
     Route::get('music/', 'MusicController@index')->name('music');
