@@ -25,21 +25,21 @@
 <div class="point" v-for="(item, index) in values" :key="item.id">
   <ul>
     <li class="point-icon">P</li>
-    <li class="point-value">@{{ item.point }} P</li>
+    <li class="point-value">@{{ String( item.point ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }} P</li>
   </ul>
-  <p class="point-survice">+@{{ item.survice }}P</p>
-  <label :for="index">
-    <input type="checkbox" :id="index" @click="buyEvent(index)" v-bind:value="item.value">¥@{{ item.value }}
+  <p class="point-survice">+@{{ String( item.survice ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}P</p>
+  <label for="checkbox">
+    <input type="checkbox" id="checkbox" v-model="checked" v-bind:value="item.value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}
   </label>
   <transition :name="animate">
   <div class="point-buy" v-if="item.checked">
     <h3>Hunc</h3>
     <ul>
       <li class="icon"></li>
-      <li class="point-value">@{{ item.point }} P</li>
+      <li class="point-value">@{{ String( item.point ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }} P</li>
       <li class="point-icon">P</li>
     </ul>
-    <p class="pay-value">¥@{{ item.value }}</p>
+    <p class="pay-value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}</p>
     <button class="btn back-btn" @click="item.checked = false">戻る</button>
     <button class="btn pay-btn" @click="item.checked = false">購入</button>
   </div>
@@ -54,8 +54,13 @@
     data:{
       values: [
         //point:ポイント value:値段 survice:プラスで得られるポイント
-        {id:1,checked:false,point:200,value:220,survice:1000},
-        {id:2,checked:false,point:500,value:550,survice:1000}
+        {id:1,checked:false,point:1000,value:1000,survice:100},    //0.10
+        {id:2,checked:false,point:1500,value:1500,survice:200},    //0.13  1.5  0.3
+        {id:3,checked:false,point:2000,value:2000,survice:300},    //0.15  1.3  0.2
+        {id:4,checked:false,point:3000,value:3000,survice:600},    //0.20  1.5  0.5
+        {id:5,checked:false,point:5000,value:5000,survice:1200},   //0.24  1.6  0.4
+        {id:6,checked:false,point:7500,value:7500,survice:2250},   //0.30  1.5  0.6
+        {id:7,checked:false,point:10000,value:10000,survice:3500}  //0.35  1.3  0.5
 
       ],
       animate: 'bottom'

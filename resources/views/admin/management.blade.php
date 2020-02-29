@@ -35,7 +35,7 @@
           <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
-            <td>{{ number_format($user->point) }} HC</td>
+            <td>{{ number_format($user->point) }} P</td>
             <td>¥{{ number_format($user->musics->sum('price') + $user->buyPoints()->sum('price')) }}</td>
             <td>{{ $user->created_at  }}</td>
             <td><a href="/admin/report/show/{{ $user->id }}/6">{{ $user->targetReports->count()  }}</a></td>

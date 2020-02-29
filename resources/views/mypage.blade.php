@@ -27,36 +27,45 @@
   
   <div class="text">
    <button class="form-button" v-on:click='formActive = true'>プロフィール編集</button>
+    @if(session('message'))
+    <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
+    @endif
+    <span class="form-text text-danger">{{$errors->first('name')}}</span>
+    <span class="form-text text-danger">{{$errors->first('email')}}</span>
     <ul>
       <li><span class="value">{{ $user->name }}</span><br><span class="text-in">表示名</span></li>
-      <li><span class="value">bule.impulse@gmail.com</span><br><span class="text-in">メール</span></li>
-      <li><span class="value">4545seiyaletsgo</span><br><span class="text-in">パスワード</span></li>
-      <li><span class="value">2pt</span><br><span class="text-in">ポイント</span></li>
+      <li><span class="value">{{ $user->email }}</span><br><span class="text-in">メール</span></li>
+      <li><span class="value">パスワード</span><br><span class="text-in">パスワード</span></li>
+      <li><span class="value">{{ $user->point }}</span><br><span class="text-in">ポイント</span></li>
     </ul>
   </div>
 </div>
-<div class="form" v-bind:class='{active:formActive}'>
-  <div class="head">
-    <div class="back" v-on:click='formActive = false'>
-      <div class="topLine line"></div>
-      <div class="borderLine line"></div>
-      <div class="bottomLine line"></div>
+<form action="{{ url('mypage/update') }}" method="post" enctype="multipart/form-data">
+  @csrf
+  @method('PUT')
+  <div class="form" v-bind:class='{active:formActive}'>
+    <div class="head">
+      <div class="back" v-on:click='formActive = false'>
+        <div class="topLine line"></div>
+        <div class="borderLine line"></div>
+        <div class="bottomLine line"></div>
+      </div>
+      <h2>プロフィールを編集</h2>
+      <button type="submit">保存</button>
     </div>
-    <h2>プロフィールを編集</h2>
-    <button>保存</button>
+    <div class="profile">
+    <label for="img-form">
+      <img alt="" class="account-img">
+      <input type="file" id="img-form" name="image">
+    </label>
+    <ul>
+      <li><span class="title">表示名</span><br><input type="text" value="{{ $user->name }}" name="name"></li>
+      <li><span class="title">メール</span><br><input type="text" value="{{ $user->email }}" name="email"></li>
+      <li><span class="title">パスワード</span><br><input type="text" value="パスワード"></li>
+    </ul>
+    </div>
   </div>
-  <div class="profile">
-  <label for="img-form">
-    <img alt="" class="account-img">
-    <input type="file" id="img-form">
-  </label>
-  <ul>
-    <li><span class="title">表示名</span><br><input type="text" value="春太郎"></li>
-    <li><span class="title">メール</span><br><input type="text" value="bule.impulse1201@gmail.com"></li>
-    <li><span class="title">パスワード</span><br><input type="text" value="1919seiyaletsgo"></li>
-  </ul>
-  </div>
-</div>
+</form>
 </article>
 @endsection
 
@@ -86,7 +95,7 @@
     display: none;
   }
   .img {
-    background-image: url({{ asset('img/joan-jett.jpg') }});
+    background-image: url({{ $img_path }});
   }
   .img::before{
     content: '{{ $user->name }}';

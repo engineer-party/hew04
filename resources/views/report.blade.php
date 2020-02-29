@@ -14,6 +14,9 @@
 <!-- content -->
 @section('content')
 <h1 id="title">通報フォーム</h1>
+@if(session('message'))
+    <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
+@endif
 <form action="/report/store" method="POST" id="report-form">
     {{ csrf_field() }}
 
