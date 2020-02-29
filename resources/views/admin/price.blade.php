@@ -26,7 +26,9 @@
           <select name="artist" class="form-control">
             <option value="">アーティスト名選択</option>
             @foreach ($artists as $artist)
-            <option value="{{ $artist->id }}" @if(old('artist')==$artist->id) selected  @endif>{{ '#' . $artist->id . '　' . $artist->name }}</option>
+            <option value="{{ $artist->id }}" @if(old('artist')==$artist->id || session('artist_id') == $artist->id) selected  @endif>
+              {{ '#' . $artist->id . '　' . $artist->name }}
+            </option>
             @endforeach
           </select>
           @if($errors)
@@ -77,7 +79,9 @@
             <option value="">楽曲名選択</option>
             <option value="{{ 'all' }}" @if(old('music')=='all') selected  @endif>#ALL　全ての楽曲</option>
             @foreach ($musics as $music)
-            <option value="{{ $music->id }}" @if(old('music')==$music->id) selected  @endif>{{ '#' . $music->id . '　' . $music->name }}</option>
+            <option value="{{ $music->id }}" @if(old('music')==$music->id || session('music_id') == $music->id) selected  @endif>
+              {{ '#' . $music->id . '　' . $music->name }}
+            </option>
             @endforeach
           </select>
           @if($errors)

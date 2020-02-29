@@ -1,7 +1,32 @@
 @section('header')
 <header>
   <div id="app">
-    <h1>ホーム</h1>
+    <h1>
+      @php
+      switch (Route::current() -> getName()) {
+        case 'mypage':
+          echo "マイページ";
+          break;
+        case 'hunt':
+          echo "ハント";
+          break;
+        case 'library':
+          echo "音楽ライブラリ";
+          break;
+        case 'report':
+          echo "通報";
+          break;
+        case 'point':
+          echo "ポイント購入";
+          break;
+        case 'information':
+          echo "お知らせ";
+          break;
+        default:
+          echo "ナビ";
+      }
+      @endphp
+    </h1>
     <nav>
       <div class="menu-trigger" href="#" @click="inputSleep">
         <div class="topLine line"></div>
