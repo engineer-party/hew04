@@ -44,8 +44,19 @@
     <button class="btn back-btn" @click="item.checked = false">戻る</button>
     <form method="post" action="">
     @csrf
-      <button type="submit" class="btn pay-btn" name="point" :value="item.value + item.survice" @click="item.checked = false">購入</button>
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="{{ env('STRIPE_KEY') }}"
+        data-amount="1000"
+        data-name="Stripe Demo"
+        data-label="決済をする"
+        data-description="Online course about integrating Stripe"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-currency="JPY">
+      </script>
     </form>
+    <button class="btn pay-btn" name="point" :value="item.value + item.survice" @click="item.checked = false" disabled>購入</button>
   </div>
   </transition>
 </div>
@@ -298,6 +309,71 @@
 
 .bottom-enter, .bottom-leave-to {
   transform: translateX(0px) translateY(200vh);
+}
+
+.stripe-button-el {
+  display: inline-block !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  height: 50px !important;
+  background-color: #ff5757 !important;
+  color: white !important;
+  border-radius: 0px !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  border: 1px solid transparent !important;
+  padding: .375rem .75rem !important;
+  font-size: .9rem !important;
+  line-height: 1.6 !important;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out !important;
+  background-image: none !important;
+  background: #ff5757 !important;
+  font-weight: normal !important;
+  text-shadow: none !important;
+  font-size: 16px !important;
+  background-image: -webkit-linear-gradient(#ff5757) !important;
+  background-image: linear-gradient(#ff5757) !important;
+  z-index: 1 !important;
+  position:static !important;
+}
+
+.stripe-button-el > span {
+  display: inline-block !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  height: 50px !important;
+  background-color: #ff5757 !important;
+  color: white !important;
+  border-radius: 0px !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  border: 1px solid transparent !important;
+  padding: .375rem .75rem !important;
+  font-size: .9rem !important;
+  line-height: 1.6 !important;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out !important;
+  background-image: none !important;
+  background: #ff5757 !important;
+  font-weight: normal !important;
+  text-shadow: none !important;
+  font-size: 16px !important;
+  background-image: -webkit-linear-gradient(#ff5757) !important;
+  background-image: linear-gradient(#ff5757) !important;
+  z-index: 1 !important;
+  position:static !important;
+  box-shadow: none !important;
 }
 /* end */
 </style>
