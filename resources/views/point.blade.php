@@ -181,7 +181,7 @@
     color: #ff5757;
   }
   .point .point-buy{
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: auto;
     bottom: 0;
@@ -266,9 +266,11 @@
     height: 50px;
     background-color: #ff5757;
     color: white;
+    border-radius: 0px;
   }
   .point .point-buy .back-btn {
     background-color: #404040;
+    border-radius: 0px;
   }
   
   /* left */
