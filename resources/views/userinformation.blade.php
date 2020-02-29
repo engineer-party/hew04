@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{asset('css/link.css')}}" />
 <link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
 
+<script src="{{ asset('js/userinformation.js') }}" defer></script>
 <script src="{{ asset('js/hbg.js') }}" defer></script>
 
 <!-- UIkit CSS -->
