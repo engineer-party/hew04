@@ -4,14 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Artist;
 use Illuminate\Http\Request;
-use Illuminate\Http\File;
+use File;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Genre;
 use App\Models\Music;
+use App\Models\GenreMusicTable;
 use App\Http\Controllers\Controller;
 use getID3;
 use getid3_lib;
 use falahati\PHPMP3\MpegAudio;
+
 class MusicUploadController extends Controller
 {
   public function index()
@@ -22,29 +24,30 @@ class MusicUploadController extends Controller
     $artists = Artist::all();
     //楽曲(ry
     $musics = Music::all();
-    return view('Admin/music_upload', compact('genres', 'artists', 'musics'));
+    //力技
+    $page = true;
+    return view('Admin/music_upload', compact('genres', 'artists', 'musics', 'page'));
   }
 
   public function musicStore(Request $request)
   {
     //それぞれのファイル名を取得
-    $mp3_file_name = $request->file('musicfile')->getClientOriginalName();
-    $img_file_name = $request->file('imgfile')->getClientOriginalName();
+    $mp3_file = $request->file('files')[0];
+    $mp3_file_name = $mp3_file->getClientOriginalName();
+    $img_file = $request->file('files')[1];
+    $img_file_name = $img_file->getClientOriginalName();
+
+    // アップロードされた拡張子を取得
+    $mp3_extension = File::extension($mp3_file_name);
+    $img_extension = File::extension($img_file_name);
 
     //sampleを取得するためのやつ
     $mp3 = new MpegAudio();
 
-    //local環境と本番環境で処理を変える
-    //本番環境の方はまだ動くか分かりません
-    if (app()->isLocal()) {
-      $request->file('musicfile')->storeAs('public/music', $mp3_file_name);
-      $request->file('imgfile')->storeAs('public/image', $img_file_name);
-      $mp3->fromFile('storage/music/'.$mp3_file_name)->trim(10, 30)->saveFile('storage/sample/sample_'.$mp3_file_name);
-    } else {
-      Storage::disk('s3')->putFileAs('music/', $request->file('musicfile'), $mp3_file_name, 'public');
-      Storage::disk('s3')->putFileAs('image/', $request->file('imgfile'), $img_file_name, 'public');
-      Storage::disk('s3')->putFileAs('sample/', $mp3->fromFile(Storage::disk('s3')->url('music/'.$mp3_file_name))->trim(10, 30), 'sample_'.$mp3_file_name, 'public');
-    }
+    //一旦ローカルに保存
+    $request->file('files')[0]->storeAs('public/music/', $mp3_file_name);
+    $request->file('files')[1]->storeAs('public/image/music/', $img_file_name);
+    $mp3->fromFile('storage/music/'.$mp3_file_name)->trim(10, 30)->saveFile('storage/sample/sample_'.$mp3_file_name);
 
     //mp3から再生時間の取得
     $getID3 = new getID3();
@@ -52,19 +55,49 @@ class MusicUploadController extends Controller
     $music_info = $getID3->analyze('storage/music/' . $mp3_file_name);
     getid3_lib::CopyTagsToComments($music_info);
 
+    $id = Music::orderby('id', 'desc')->first()->id + 1;
+
     //DBにぶち込む
-    /*
-      $music = Music::create([
-        'artist_id'    => $request->artist,
-        'name'         => $request->name,
-        'time'         => $music_info['playtime_string'],
-        'price'        => $request->price,
-        'img_url'      => 
-        'music_url'    => 
-        'sample_url'   => 
+    $music = Music::create([
+      'artist_id'    => $request->artist,
+      'name'         => $request->name,
+      'time'         => $music_info['playtime_string'],
+      'price'        => $request->price,
+      'img_url'      => $id . "." . $img_extension,
+      'music_url'    => $id . "." . $mp3_extension,
+      'sample_url'   => "sample_" . $id . "." . $mp3_extension,
+    ]);
+
+    foreach ($request->genres as $genre) {
+      $genre_music = new GenreMusicTable;
+      $genre_music->fill([
+        'music_id' => $music->id,
+        'genre_id' => $genre,
       ]);
-      */
-    return redirect()->route('admin/music_upload')->with('message', 'musicアップロード成功！');
+      $genre_music->save();
+    }
+
+    //S3のパス
+    $mp3_storePath = "music/" . $music->id . "." . $mp3_extension;
+    $img_storePath = "image/music/" . $music->id . "." . $img_extension;
+    $sample_storePath = "music/sample/sample_" . $music->id . "." . $mp3_extension;
+
+    //一旦ローカルに上げたファイルの読み込み
+    $mp3_storefile = Storage::get('public/music', $mp3_file_name);
+    $img_storefile = Storage::get('public/image/music/', $img_file_name);
+    $sample_storefile = Storage::get('public/sample/sample_'.$mp3_file_name);
+
+    //S3にぶち込む
+    Storage::disk('s3')->put($mp3_storePath, $mp3_storefile, 'public');
+    Storage::disk('s3')->put($img_storePath, $img_storefile, 'public');
+    Storage::disk('s3')->put($sample_storePath, $sample_storefile, 'public');
+
+    //一旦ローカルに上げたファイルの削除
+    File::delete('storage/music/' . $mp3_file_name);
+    File::delete('storage/image/music/' . $img_file_name);
+    File::delete('storage/sample/sample_' . $mp3_file_name);
+
+    return redirect()->route('music_upload')->with('message', 'musicアップロード成功！');
   }
 
   public function genreStore(Request $request)
