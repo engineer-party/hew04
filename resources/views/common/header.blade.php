@@ -31,7 +31,7 @@
       <article id="link-in">
         <a id="account" type="button" href="{{ action('MyPageController@index') }}">
           <ul>
-            <li><img src="" alt=""></li>
+            <li><img src="{{ asset('img/joan-jett.jpg') }}" alt=""></li>
             <li>Cookie Man</li>
           </ul>
         </a>

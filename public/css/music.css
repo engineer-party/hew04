@@ -1,7 +1,7 @@
 #music {
   width: 95%;
   height: auto;
-  padding-top: 140px;
+  padding-top: 120px;
   margin: 0 auto;
   background-color: white;
 }
@@ -48,12 +48,12 @@
 }
 
 #music h2{
-  line-height: 60px;
+  line-height: 40px;
   width:90%;
   margin: 0 auto;
   text-align: center;
   color: #ff5757;
-  font-size: 1.1em;
+  font-size: 1.0em;
   border-bottom: solid rgba(0,0,0,0.1) 1px;
   margin-bottom: 20px;
 }

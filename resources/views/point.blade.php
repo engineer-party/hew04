@@ -22,17 +22,17 @@
 
 <div id="contents">
 <!--繰り返し要素・ポイント-->
-<div class="point" v-for="item in values">
+<div class="point" v-for="(item, index) in values" :key="item.id">
   <ul>
     <li class="point-icon">P</li>
     <li class="point-value">@{{ item.point }} P</li>
   </ul>
   <p class="point-survice">+@{{ item.survice }}P</p>
-  <label for="checkbox">
-    <input type="checkbox" id="checkbox" v-model="checked" v-bind:value="item.value">¥@{{ item.value }}
+  <label :for="index">
+    <input type="checkbox" :id="index" @click="buyEvent(index)" v-bind:value="item.value">¥@{{ item.value }}
   </label>
   <transition :name="animate">
-  <div class="point-buy" v-if="checked">
+  <div class="point-buy" v-if="item.checked">
     <h3>Hunc</h3>
     <ul>
       <li class="icon"></li>
@@ -40,8 +40,8 @@
       <li class="point-icon">P</li>
     </ul>
     <p class="pay-value">¥@{{ item.value }}</p>
-    <button class="btn back-btn" @click="checked = false">戻る</button>
-    <button class="btn pay-btn" @click="checked = false">購入</button>
+    <button class="btn back-btn" @click="item.checked = false">戻る</button>
+    <button class="btn pay-btn" @click="item.checked = false">購入</button>
   </div>
   </transition>
 </div>
@@ -54,12 +54,18 @@
     data:{
       values: [
         //point:ポイント value:値段 survice:プラスで得られるポイント
-        {point:200,value:220,survice:1000},
-        {point:500,value:550,survice:1000}
+        {id:1,checked:false,point:200,value:220,survice:1000},
+        {id:2,checked:false,point:500,value:550,survice:1000}
 
       ],
-      checked: false,
       animate: 'bottom'
+    },
+    methods: {
+      buyEvent: function(index){
+        this.values[index].checked = true;
+        this.values.splice();
+        console.log(this.values[index].checked);
+      }
     }
   })
 </script>
