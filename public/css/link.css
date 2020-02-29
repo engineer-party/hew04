@@ -6,8 +6,9 @@
   border-radius: 0;
   outline: none;
   color: #ff5757;
-  line-height: 55px;
+  line-height: 50px;
   padding-left: 20px;
+  font-size: 0.9em;
 }
 
 #link {
@@ -127,6 +128,57 @@
 /*  top: -25px;*/
   left: 80px;
 }
+#link #point {
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+/*  background-color: aqua;*/
+}
+#link #point:hover{
+  background: rgba(0,0,0,0.2);
+}
+#link #point ul{
+  width: 100%;
+  height: 50px;
+/*  background-color: blueviolet;*/
+  display: flex;
+  justify-content: space-between;
+}
+#link #point li:nth-child(1){
+  width: 50%;
+  height: 50px;
+/*  background-color: coral;*/
+  margin-left: 20px;
+}
+#link #point li:nth-child(2){
+  height: 50px;
+  line-height: 50px;
+  margin-right: 20px;
+  font-size: 0.9em;
+}
+#link #point li a{
+  display: block;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  color: black;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+#link #point .point-icon{
+    background-color: goldenrod;
+/*    width: 30px;*/
+/*    height: 30px;*/
+  padding: 1px 6px 1px 6px;
+    border-radius: 15px;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 600;
+    border: solid gold 2px;
+    color: gold;
+  margin-right: 10px;
+  }
 
 /*-----link animate-----*/
 .link-active {

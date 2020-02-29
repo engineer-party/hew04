@@ -43,6 +43,12 @@
             <li><a href="{{ action('LibraryController@index') }}"><span class="link-title">音楽ライブラリ</span></a></li>
           </ul>
         </section>
+        <section id="point">
+          <ul>
+            <li><a href="{{ action('PointController@index') }}">ポイント購入</a></li>
+            <li><span class="point-icon">P</span>99999</li>
+          </ul>
+        </section>
         <section id="login_btn">
           @if(Auth::check())
           <!-- ログインしている場合 -->
