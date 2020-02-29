@@ -14,7 +14,8 @@ class PointController extends Controller
   public function index()
   {
     $user = Auth::user();
-    return view('point', compact('user'));
+    $image_path = 'https://leshu-firstbucket.s3-ap-northeast-1.amazonaws.com/Hunc+Logo.png';
+    return view('point', compact('user','image_path'));
   }
 
   /*単発決済用のコード*/

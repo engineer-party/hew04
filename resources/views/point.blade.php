@@ -54,7 +54,7 @@
         data-name="Hunting Music"
         data-label="購入"
         data-description="ポイントの購入"
-        data-image="{{ asset('img/Hunc Logo')}}"
+        data-image="{{ $image_path }}"
         data-locale="auto"
         data-currency="JPY">
       </div>
