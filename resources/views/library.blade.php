@@ -26,17 +26,19 @@
 <div id="contents">
   <nav id="navber">
     <ul>
-      <li><a class="library-link ajax-action1" v-on:click='activetab=1' v-bind:class="[ activetab === 1 ? 'active' : '' ]">プレイリスト</a></li>
-      <li><a class="library-link ajax-action2" v-on:click='activetab=2' v-bind:class="[ activetab === 2 ? 'active' : '' ]">曲</a></li>
-      <li><a class="library-link ajax-action3" v-on:click='activetab=3' v-bind:class="[ activetab === 3 ? 'active' : '' ]">アーティスト</a></li>
-      <li><a class="library-link ajax-action4" v-on:click='activetab=4' v-bind:class="[ activetab === 4 ? 'active' : '' ]">アルバム</a></li>
+      <li v-for="item in links" :key="item.class"><a class="library-link" :class="{ active:item.active }" v-on:click='activetab(item.class)'>@{{ item.name }}</a></li>
     </ul>
   </nav>
-
-  <section class="activeobj1 box">
-    <!-- ajax -->
-  </section>
-
+  <transition name="bottom">
+  <div class="playlists" v-if="activePL">
+  @include('playlist')
+  </div>
+  </transition>
+  <transition name="bottom">
+  <div class="music" v-if="activeMusic">
+  @include('music')
+  </div>
+  </transition>
   <p><img src="{{ asset('img/loading.gif') }}" alt="" class="loading"></p>
     <div class="playlist-in" :class="{activeplaylist:playlistInActive}">
       <div class="back" @click="playlistInActive = false">
@@ -91,6 +93,10 @@
     width: 100%;
     height: 100vh;
     background-color: #FFEBE0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: scroll;
   }
 
   #app #form {
@@ -100,7 +106,7 @@
   #app {
     width: 100%;
     background-color: #ff5757;
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
@@ -121,7 +127,8 @@
   }
 
   #navber {
-    position: relative;
+    position: fixed;
+    top: 80px;
     width: 100%;
     background-color: #ff5757;
     overflow-x: scroll;
@@ -230,7 +237,28 @@
   background-color: gray;
   margin: 0 auto;
 }
+  .playlists,
+  .music {
+    position: absolute;
+    top: 135px;
+    left: 0;
+    width: 100%;
+/*
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transform: translate(-100vw,0);
+*/
+}
   
+  /* bottom */
+.bottom-enter-active, .bottom-leave-active {
+  transform: translate(0px, 0px);
+  transition: transform 350ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+.bottom-enter, .bottom-leave-to {
+  transform: translateX(0px) translateY(100vh);
+}
+/* end */
 
 
   /*----- addclass -----*/
@@ -239,6 +267,6 @@
   }
 
   .activeobj {
-    transform: translate(-50%);
+    transform: translate(0,0);
   }
 </style>

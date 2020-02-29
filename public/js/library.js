@@ -3,6 +3,61 @@ let linkOpen = false;
 let startValue = 0;
 
 
+let test = new Vue({
+el: '#contents',
+data: function () {
+  return {
+    links: [
+      {
+        class: 0,
+        active: true,
+        name: 'プレイリスト'
+      },
+      {
+        class: 1,
+        active: false,
+        name: '曲'
+      },
+      {
+        class: 2,
+        active: false,
+        name: 'アーティスト'
+      }
+          ],
+    option: false,
+    playlistInActive: false,
+    activePL: true,
+    activeMusic: false
+  }
+},
+methods: {
+  playlistActive: function () {
+    this.option = true;
+  },
+  activetab: function (index) {
+    console.log(this.links[index].class);
+    if (index == 0) {
+      this.links[1].active = false;
+      this.links[2].active = false;
+      this.activeMusic = false;
+      this.activePL = true;
+    } else if (index == 1) {
+      this.links[0].active = false;
+      this.links[2].active = false;
+      this.activePL = false;
+      this.activeMusic = true;
+    } else if (index == 2) {
+      this.links[0].active = false;
+      this.links[1].active = false;
+    }
+    this.links[index].active = true;
+
+    this.links.splice();
+  }
+}
+})
+
+/*
 $(function () {
 
 
@@ -12,25 +67,7 @@ $(function () {
     dataType: 'html', //他にjsonとか選べるとのこと
   }).done(function (results) {
     $('.box').html(results); //展開したいタグのidを指定
-    /*
-    $('.img').click(function () {
-      $('.playlist-in').addClass('activeplaylist');
-    });
-    */
-    let test = new Vue({
-      el: '#contents',
-      data: function () {
-        return {
-          option: false,
-          playlistInActive: false
-        }
-      },
-      methods: {
-        playlistActive: function () {
-          this.option = true;
-        },
-      }
-    });
+    
   }).fail(function (jqXHR, textStatus, errorThrown) {
     alert('ファイルの取得に失敗しました。');
     console.log("ajax通信に失敗しました")
@@ -39,7 +76,7 @@ $(function () {
     console.log(errorThrown.message);
   });
 
-  $('.ajax-action1').click( //起動するボタンなどのid名を指定
+  $('.1').click( //起動するボタンなどのid名を指定
     function () {
       $.ajax({
         type: 'GET', //GETかPOSTか
@@ -75,7 +112,10 @@ $(function () {
     }
   );
 
-
+  
+  
+  
+/*
   $('.box').scroll(function () {
 
     let scrollValue = $(this).scrollTop();
@@ -96,9 +136,9 @@ $(function () {
       $('.loading').fadeOut(50);
     }, 400);
   });
-
 });
 
+/*
 let modal = new Vue({
   el: '#navber',
   data: function () {
@@ -110,13 +150,13 @@ let modal = new Vue({
     }
   },
   methods: {
-    
+
   }
 });
 
+*/
 
-
-/*------- headerSlide関数 -------*/
+/*------- headerSlide関数 -------
 function headerSlide(nowValue) {
 
   //スクロール量増減判定
@@ -133,3 +173,4 @@ function headerSlide(nowValue) {
 
   return;
 }
+*/
