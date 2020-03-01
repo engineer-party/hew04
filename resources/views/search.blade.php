@@ -29,56 +29,16 @@
     <div class="artist-contents">
 
     <!--繰り返し要素・アーティスト ※最初の4つ-->
+    @foreach ($artists as $artist)
     <div class="artist-content">
-      <div class="artist-img"><img src="{{ asset('img/joan-jett.jpg') }}" alt=""></div>
-      <h3>アーチスト名</h3>
+      <div class="artist-img"><img src="{{ Storage::disk('s3')->url('image/artist/' . $artist->img_url) }}" alt=""></div>
+    <h3>{{ $artist->name }}</h3>
     </div>
+    @endforeach
     <!-- END -->
-    
-    <!--繰り返し要素・アーティスト ※最初の4つ-->
-    <div class="artist-content">
-      <div class="artist-img"><img src="{{ asset('img/joan-jett.jpg') }}" alt=""></div>
-      <h3>アーチスト名</h3>
-    </div>
-    <!-- END -->
-    
-    <!--繰り返し要素・アーティスト ※最初の4つ-->
-    <div class="artist-content">
-      <div class="artist-img"><img src="{{ asset('img/joan-jett.jpg') }}" alt=""></div>
-      <h3>アーチスト名</h3>
-    </div>
-    <!-- END -->
-    
-    <!--繰り返し要素・アーティスト ※最初の4つ-->
-    <div class="artist-content">
-      <div class="artist-img"><img src="{{ asset('img/joan-jett.jpg') }}" alt=""></div>
-      <h3>アーチスト名</h3>
-    </div>
-    <!-- END -->
-    
     </div>
   </section>
-<!--
-  <section id="album">
-    <h2>アルバム</h2>
-    <div class="album-contents">
-    
-    <!--繰り返し要素・アルバム ※最初の4つ
-    <div class="album-content">
-      <div class="album-img">
-        <img src="{{ asset('img/cheep-trick.jpg') }}" alt="">
-      </div>
-      <ul>
-        <li>アルバム名</li>
-        <li>アーティスト名</li>
-      </ul>
-    </div>
-    <!-- END -->
-    
-<!--
-    </div>
-  </section>
--->
+
   <section id="music">
     <ul class="contents-head">
     <li>曲</li>
@@ -87,57 +47,16 @@
     <div class="music-contents">
       
       <!--繰り返し要素・曲 ※最初の5つ-->
+      @foreach ($musics as $music)
       <div class="music-content">
-        <p><img src="{{ asset('img/cheep-trick.jpg') }}" alt=""></p>
+        <p><img src="{{ Storage::disk('s3')->url('image/artist/' . $artist->img_url) }}" alt=""></p>
         <ul>
-          <li class="title">title</li>
-          <li class="artist">artist</li>
+        <li class="title">{{ $music->name }}</li>
+        <li class="artist">{{ $music->artist()->first()->name }}</li>
         </ul>
       </div>
-      <!-- END -->
-      
-      <!--繰り返し要素・曲 ※最初の5つ-->
-      <div class="music-content">
-        <p><img src="{{ asset('img/cheep-trick.jpg') }}" alt=""></p>
-        <ul>
-          <li class="title">title</li>
-          <li class="artist">artist</li>
-        </ul>
-      </div>
-      <!-- END -->
-      
-      <!--繰り返し要素・曲 ※最初の5つ-->
-      <div class="music-content">
-        <p><img src="{{ asset('img/cheep-trick.jpg') }}" alt=""></p>
-        <ul>
-          <li class="title">title</li>
-          <li class="artist">artist</li>
-        </ul>
-      </div>
-      <!-- END -->
-      
-      <!--繰り返し要素・曲 ※最初の5つ-->
-      <div class="music-content">
-        <p><img src="{{ asset('img/cheep-trick.jpg') }}" alt=""></p>
-        <ul>
-          <li class="title">title</li>
-          <li class="artist">artist</li>
-        </ul>
-      </div>
-      <!-- END -->
-      
-      <!--繰り返し要素・曲 ※最初の5つ-->
-      <div class="music-content">
-        <p><img src="{{ asset('img/cheep-trick.jpg') }}" alt=""></p>
-        <ul>
-          <li class="title">title</li>
-          <li class="artist">artist</li>
-        </ul>
-      </div>
-      <!-- END -->
-      
-      
-      
+      @endforeach
+      <!-- END -->    
     </div>
   </section>
 </div>
@@ -154,7 +73,7 @@
   data: function(){
     return {
       placeholder: 'Musicを検索',
-      value: 'コレサワ'
+      value: '{{ $req->search }}'
     }
   },
   methods: {

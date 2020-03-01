@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Music;
 use App\Models\Campaign;
+use App\Models\Artist;
 use Carbon\Carbon;
 
 class SearchController extends Controller
 {
-    public function index()
+    public function index(Request $req)
     {
-        $user = Auth::user();
-        $musics = Music::All();
+        $artists = Artist::where('name', 'LIKE', "%$req->search%")->take(4)->get();
+        $musics = Music::where('name', 'LIKE', "%$req->search%")->take(5)->get();
 
         // 割引適用処理
         foreach ($musics as $music){
@@ -31,7 +32,8 @@ class SearchController extends Controller
                 }
             }
         }
+        
 
-        return view('search',compact('user'));
+        return view('search',compact('musics','artists','req'));
     }
 }

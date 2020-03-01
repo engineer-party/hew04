@@ -66,7 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('playlist/', 'PlaylistController@index')->name('playlist');
 
     // Search 3.購入
-    Route::get('search/', 'SearchController@index')->name('search');
+    Route::post('search/', 'SearchController@index')->name('search');
   
     //ポイント購入
     Route::get('point/', 'PointController@index')->name('point');
@@ -82,6 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // 音楽ライブラリ
     Route::get('library/', 'LibraryController@index')->name('library');
+    Route::post('library/playlist', 'LibraryController@playlist');
 
     // Report 6.通報
     Route::get('report/', 'ReportController@index')->name('report');
@@ -125,10 +126,6 @@ Route::group(['middleware' => 'auth'], function () {
         // Aws test
         Route::get('aws_test','AwsTestController@index')->name('aws_test');
     });
-  
-    //ajax
-    Route::get('/playlist' ,'LibraryController@ajaxplaylist_get');
-    Route::get('/music' ,'LibraryController@ajaxmusic_get');
 
 });
 
