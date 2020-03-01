@@ -12,9 +12,9 @@ class AwsTestController extends Controller
     $region_set = putenv('AWS_DEFAULT_REGION=' . $region);
 
     //計測開始時間
-    $start_time = '2020-02-19T00:00:00Z';
+    $start_time = '2020-03-01T00:00:00';
     //計測終了時間
-    $end_time = '2020-02-20T00:00:00Z';
+    $end_time = '2020-03-01T03:00:00';
     //計測間隔 例)600 = 10分
     $period = '600';
     //ローカルでも動きます。
