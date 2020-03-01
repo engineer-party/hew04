@@ -60,6 +60,13 @@
       </div>
       </div>
     </transition>
+    <div class="playlist-lists">
+      <ul>
+        <li>Rovk-Hot</li>
+        <li>Rovk-Hot</li>
+        <li>Rovk-Hot</li>
+      </ul>
+    </div>
   </div>
 
 <script>
@@ -77,11 +84,6 @@ data: function () {
         class: 1,
         active: false,
         name: '曲'
-      },
-      {
-        class: 2,
-        active: false,
-        name: 'アーティスト'
       }
           ],
     playlists: [
@@ -97,7 +99,7 @@ data: function () {
       },
       {
         id:1,
-        name: 'Rock-Hot',
+        name: 'Cheep-Trick',
         option: false,
         img1: "{{ asset('img/cheep-trick.jpg')}}",
         img2: "{{ asset('img/cheep-trick.jpg')}}",
@@ -106,7 +108,7 @@ data: function () {
       },
       {
         id:2,
-        name: 'Rock-Hot',
+        name: 'Sex-Pistols',
         option: false,
         img1: "{{ asset('img/cheep-trick.jpg')}}",
         img2: "{{ asset('img/cheep-trick.jpg')}}",
@@ -115,12 +117,31 @@ data: function () {
       },
       {
         id:3,
-        name: 'Rock-Hot',
+        name: 'Joan-Jett',
         option: false, 
         img1: "{{ asset('img/cheep-trick.jpg')}}",
         img2: "{{ asset('img/cheep-trick.jpg')}}",
         img3: "{{ asset('img/cheep-trick.jpg')}}",
         img4: "{{ asset('img/cheep-trick.jpg')}}",
+      },
+    ],
+    musics: [
+      //id: 曲id, title: 曲タイトル, artist: アーティスト, img: 曲画像, time: 再生時間(分:秒)
+      {
+        option:false,
+        id: 12345,
+        title: 'I Want You to Want Me',
+        artist: 'Cheep Trick',
+        img: "{{ asset('img/cheep-trick.jpg') }}",
+        time: '3:36',
+      },
+      {
+        option:false,
+        id: 12345,
+        title: 'I Want You to Want Me',
+        artist: 'Cheep Trick',
+        img: "{{ asset('img/cheep-trick.jpg') }}",
+        time: '3:36',
       },
     ],
     playlistInActive: false,
@@ -138,21 +159,21 @@ methods: {
     console.log(this.links[index].class);
     if (index == 0) {
       this.links[1].active = false;
-      this.links[2].active = false;
       this.activeMusic = false;
       this.activePL = true;
     } else if (index == 1) {
       this.links[0].active = false;
-      this.links[2].active = false;
       this.activePL = false;
       this.activeMusic = true;
-    } else if (index == 2) {
-      this.links[0].active = false;
-      this.links[1].active = false;
     }
     this.links[index].active = true;
 
     this.links.splice();
+  },
+  musicOption: function(index){
+    console.log(index);
+    this.musics[index].option = true;
+    this.playlists.splice();  
   }
 }
 })
@@ -235,7 +256,7 @@ methods: {
     padding-bottom: 40px;
     color: white;
     font-size: 1.2em;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
   }
 
   #navber {
@@ -440,6 +461,33 @@ methods: {
     left: 0;
     z-index: 60;
     background-color: rgba(0,0,0,0.4);
+  }
+  .playlist-lists {
+    position: absolute;
+    height: 200px;
+    width: 50%;
+    background-color: aqua;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
+    z-index: 100;
+    margin-left: calc(-100% - 50px);
+    margin-bottom: -50px;
+    z-index: 10;
+  }
+  
+. playlist-lists ul{
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+  }
+  .playlist-lists li{
+    width: 100%;
+    height: 50px;
+    border-bottom: solid rgba(0,0,0,0.1) 1px;
   }
   
   /* bottom */
