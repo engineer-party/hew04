@@ -23,34 +23,45 @@
 <!-- content -->
 @section('content')
 <div id="contents">
-<div class="add-playlist" @click="addPlaylist = true"></div>
+  <div class="add-playlist" @click="addPlaylist = true"></div>
+  <transition name="fade">
+    <div class="playlist-lists" v-if="playlistAdd">
+      <ul class="playlist-lists-in">
+        <li class="title">プレイリストに追加</li>
+        <li v-for="item in playlists">
+          <button type="button" :value="item.name">@{{ item.name }}</button>
+        </li>
+        <li class="cansel" @click="addCansel">キャンセル</li>
+      </ul>
+    </div>
+  </transition>
   <nav id="navber">
     <ul>
       <li v-for="item in links" :key="item.class"><a class="library-link" :class="{ active:item.active }" v-on:click='activetab(item.class)'>@{{ item.name }}</a></li>
     </ul>
   </nav>
   <transition name="bottom">
-  <div class="playlists" v-if="activePL">
-  @include('playlist')
-  </div>
+    <div class="playlists" v-if="activePL">
+      @include('playlist')
+    </div>
   </transition>
   <transition name="bottom">
-  <div class="music" v-if="activeMusic">
-  @include('music')
-  </div>
+    <div class="music" v-if="activeMusic">
+      @include('music')
+    </div>
   </transition>
   <p><img src="{{ asset('img/loading.gif') }}" alt="" class="loading"></p>
-    <div class="playlist-in" :class="{activeplaylist:playlistInActive}">
-      <div class="back" @click="playlistInActive = false">
-        <div class="topLine line"></div>
-        <div class="borderLine line"></div>
-        <div class="bottomLine line"></div>
-      </div>
+  <div class="playlist-in" :class="{activeplaylist:playlistInActive}">
+    <div class="back" @click="playlistInActive = false">
+      <div class="topLine line"></div>
+      <div class="borderLine line"></div>
+      <div class="bottomLine line"></div>
     </div>
-    <div class="add-playlist-bg" v-if="addPlaylist" @click="addPlaylist = false"></div>
-    <transition name="fade">
-      <div id="add-playlist" v-if="addPlaylist">
-       <div class="add-playlist-in">
+  </div>
+  <div class="add-playlist-bg" v-if="addPlaylist" @click="addPlaylist = false"></div>
+  <transition name="fade">
+    <div id="add-playlist" v-if="addPlaylist">
+      <div class="add-playlist-in">
         <h3>新しいプレイリスト</h3>
         <p><input type="text" placeholder="タイトル"></p>
         <ul>
@@ -58,9 +69,9 @@
           <li><button class="btn add-btn" @click="addPlaylist = false">追加</button></li>
         </ul>
       </div>
-      </div>
-    </transition>
-  </div>
+    </div>
+  </transition>
+</div>
 
 <script>
 let test = new Vue({
@@ -77,11 +88,6 @@ data: function () {
         class: 1,
         active: false,
         name: '曲'
-      },
-      {
-        class: 2,
-        active: false,
-        name: 'アーティスト'
       }
           ],
     playlists: [
@@ -97,7 +103,7 @@ data: function () {
       },
       {
         id:1,
-        name: 'Rock-Hot',
+        name: 'Cheep-Trick',
         option: false,
         img1: "{{ asset('img/cheep-trick.jpg')}}",
         img2: "{{ asset('img/cheep-trick.jpg')}}",
@@ -106,7 +112,7 @@ data: function () {
       },
       {
         id:2,
-        name: 'Rock-Hot',
+        name: 'Sex-Pistols',
         option: false,
         img1: "{{ asset('img/cheep-trick.jpg')}}",
         img2: "{{ asset('img/cheep-trick.jpg')}}",
@@ -115,7 +121,7 @@ data: function () {
       },
       {
         id:3,
-        name: 'Rock-Hot',
+        name: 'Joan-Jett',
         option: false, 
         img1: "{{ asset('img/cheep-trick.jpg')}}",
         img2: "{{ asset('img/cheep-trick.jpg')}}",
@@ -123,10 +129,30 @@ data: function () {
         img4: "{{ asset('img/cheep-trick.jpg')}}",
       },
     ],
+    musics: [
+      //id: 曲id, title: 曲タイトル, artist: アーティスト, img: 曲画像, time: 再生時間(分:秒)
+      {
+        option:false,
+        id: 12345,
+        title: 'I Want You to Want Me',
+        artist: 'Cheep Trick',
+        img: "{{ asset('img/cheep-trick.jpg') }}",
+        time: '3:36',
+      },
+      {
+        option:false,
+        id: 12345,
+        title: 'I Want You to Want Me',
+        artist: 'Cheep Trick',
+        img: "{{ asset('img/cheep-trick.jpg') }}",
+        time: '3:36',
+      },
+    ],
     playlistInActive: false,
     activePL: true,
     activeMusic: false,
     addPlaylist: false,
+    playlistAdd: false,
   }
 },
 methods: {
@@ -138,21 +164,24 @@ methods: {
     console.log(this.links[index].class);
     if (index == 0) {
       this.links[1].active = false;
-      this.links[2].active = false;
       this.activeMusic = false;
       this.activePL = true;
     } else if (index == 1) {
       this.links[0].active = false;
-      this.links[2].active = false;
       this.activePL = false;
       this.activeMusic = true;
-    } else if (index == 2) {
-      this.links[0].active = false;
-      this.links[1].active = false;
     }
     this.links[index].active = true;
 
     this.links.splice();
+  },
+  musicOption: function(index){
+    console.log(index);
+    this.musics[index].option = true;
+    this.playlists.splice();
+  },
+  addCansel: function(){
+    this.playlistAdd = false;
   }
 }
 })
@@ -235,7 +264,7 @@ methods: {
     padding-bottom: 40px;
     color: white;
     font-size: 1.2em;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
   }
 
   #navber {
@@ -440,6 +469,63 @@ methods: {
     left: 0;
     z-index: 60;
     background-color: rgba(0,0,0,0.4);
+  }
+  .playlist-lists {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+/*    background-color: aqua;*/
+    background: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+    border-radius: 3px;
+    overflow: hidden;
+    z-index: 100;
+  }
+  
+  .playlist-lists-in {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .playlist-lists-in li{
+    width: 100%;
+    height: 50px;
+    border-bottom: solid rgba(0,0,0,0.1) 1px;
+  }
+  .playlist-lists-in button{
+    background: none;
+    border: none;
+    padding-left: 10px;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    padding-left: 20px;
+  }
+  .playlist-lists-in .title{
+    font-size: 1.2em;
+    text-align: left;
+    line-height: 60px;
+    padding-left: 20px;
+    height: 60px;
+/*    padding-top: 20px;*/
+  }
+  .playlist-lists-in .cansel{
+    line-height: 50px;
+    padding-left: 20px;
+    text-align: center;
+    color: #ff5757;
   }
   
   /* bottom */
