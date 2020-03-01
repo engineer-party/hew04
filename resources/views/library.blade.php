@@ -50,12 +50,14 @@
     <div class="add-playlist" @click="addPlaylist = true"></div>
     <transition>
       <div id="add-playlist" v-if="addPlaylist">
+       <div class="add-playlist-in">
         <h3>新しいプレイリスト</h3>
         <p><input type="text"></p>
         <ul>
-          <li><button class="btn cancel-btn"></button></li>
-          <li><button class="btn add-btn"></button></li>
+          <li><button class="btn cancel-btn">キャンセル</button></li>
+          <li><button class="btn add-btn">追加</button></li>
         </ul>
+      </div>
       </div>
     </transition>
   </div>
@@ -369,7 +371,7 @@ methods: {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 50%;
+    width: 70%;
     height: auto;
     background-color: white;
     border-radius: 3px;
@@ -379,7 +381,51 @@ methods: {
     width: 100%;
     height: 50px;
     line-height: 50px;
-    padding: 20px;
+/*    padding: 20px;*/
+/*    background-color: aqua;*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  #add-playlist input{
+    background: none;
+    border: none;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    width: 100%;
+    margin: 0 auto;
+/*    margin-left: 20px;*/
+    height: 50px;
+    font-size: 1.0em;
+    border-bottom: solid rgba(0,0,0,0.5) 2px;
+    margin-bottom: 40px;
+  }
+  #add-playlist ul{
+    display: flex;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+  }
+  #add-playlist li{
+    width: 47%;
+  }
+  #add-playlist button{
+    width: 100%;
+    height: 40px;
+    line-height: 20px;
+    color: #ff5757;
+    background-color: white;
+  }
+  #add-playlist .cancel-btn{
+    
+  }
+  #add-playlist .add-btn{
+  }
+  .add-playlist-in{
+    width: 85%;
+    height: auto;
+    margin: 0 auto;
   }
   
   /* bottom */
