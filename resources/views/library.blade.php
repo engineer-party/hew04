@@ -22,8 +22,8 @@
 
 <!-- content -->
 @section('content')
-
 <div id="contents">
+<div class="add-playlist" @click="addPlaylist = true"></div>
   <nav id="navber">
     <ul>
       <li v-for="item in links" :key="item.class"><a class="library-link" :class="{ active:item.active }" v-on:click='activetab(item.class)'>@{{ item.name }}</a></li>
@@ -47,15 +47,15 @@
         <div class="bottomLine line"></div>
       </div>
     </div>
-    <div class="add-playlist" @click="addPlaylist = true"></div>
-    <transition>
+    <div class="add-playlist-bg" v-if="addPlaylist" @click="addPlaylist = false"></div>
+    <transition name="fade">
       <div id="add-playlist" v-if="addPlaylist">
        <div class="add-playlist-in">
         <h3>新しいプレイリスト</h3>
-        <p><input type="text"></p>
+        <p><input type="text" placeholder="タイトル"></p>
         <ul>
-          <li><button class="btn cancel-btn">キャンセル</button></li>
-          <li><button class="btn add-btn">追加</button></li>
+          <li><button class="btn cancel-btn" @click="addPlaylist = false">キャンセル</button></li>
+          <li><button class="btn add-btn" @click="addPlaylist = false">追加</button></li>
         </ul>
       </div>
       </div>
@@ -126,7 +126,7 @@ data: function () {
     playlistInActive: false,
     activePL: true,
     activeMusic: false,
-    addPlaylist: true,
+    addPlaylist: false,
   }
 },
 methods: {
@@ -357,17 +357,18 @@ methods: {
     width: 40px;
     height: 40px;
     border-radius: 20px;
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 20px;
-    z-index: 51;
+    z-index: 55;
+/*    background-color: blueviolet;*/
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url({{ asset('img/playlist-add.png') }});
   }
   #add-playlist {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -375,6 +376,7 @@ methods: {
     height: auto;
     background-color: white;
     border-radius: 3px;
+    z-index: 70;
   }
   #add-playlist h3{
     font-size: 1.2em;
@@ -389,7 +391,7 @@ methods: {
   #add-playlist input{
     background: none;
     border: none;
-    padding: 0;
+    padding-left: 10px;
     border: none;
     border-radius: 0;
     outline: none;
@@ -400,6 +402,9 @@ methods: {
     font-size: 1.0em;
     border-bottom: solid rgba(0,0,0,0.5) 2px;
     margin-bottom: 40px;
+  }
+  #add-playlist input:focus{
+    border-bottom: solid #ff5757 2px;
   }
   #add-playlist ul{
     display: flex;
@@ -426,6 +431,15 @@ methods: {
     width: 85%;
     height: auto;
     margin: 0 auto;
+  }
+  .add-playlist-bg {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 60;
+    background-color: rgba(0,0,0,0.4);
   }
   
   /* bottom */

@@ -111,7 +111,7 @@
   transform: translate(0,0);
 }
 .playlist-option{
-  position: absolute;
+  position: fixed;
   height: auto;
   width: 50%;
   background-color: white;
@@ -127,7 +127,7 @@
   width: 100vw;
   height: 100vh;
 /*  background-color: aqua;*/
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 }
