@@ -27,6 +27,7 @@
           <th>定価</th>
           <th>売上数</th>
           <th>売上額</th>
+          <th>割引</th>
         </tr>
       </thead>
       <tbody>
@@ -45,7 +46,10 @@
           </td>
           <td>{{ number_format($music->price) }}</td>
           <td>{{ $music->buy_users_count }}</td>
-          <td>{{ number_format($music->buyUsers()->get()->sum('buy_point') + $music->buyUsers()->get()->sum('buy_price')) }} </td>
+          <td>{{ number_format($music->buyUsers()->get()->sum('buy_point') + $music->buyUsers()->get()->sum('buy_price')) }}</td>
+          <td>
+            <a href="/admin/price/sales/music/{{ $music->id }}"><button class="btn btn-success btn-xs"><i class="fa fa-percent" aria-hidden="true"></i></button>
+          </td>
         </tr>
       @endforeach
       </tbody>
@@ -71,6 +75,7 @@
           <th>楽曲数</th>
           <th>総売上数</th>
           <th>総売上額</th>
+          <th>割引</th>
         </tr>
       </thead>
       <tbody>
@@ -100,6 +105,9 @@
               @endphp
             @endforeach
             {{ number_format($sumPrice) }}
+          </td>
+          <td>
+            <a href="/admin/price/sales/artist/{{ $artist->id }}"><button class="btn btn-success btn-xs"><i class="fa fa-percent" aria-hidden="true"></i></button>
           </td>
         </tr>
       @endforeach

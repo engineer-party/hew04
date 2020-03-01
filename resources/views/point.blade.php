@@ -21,7 +21,11 @@
 @section('content')
 
 <div id="contents">
+  @if(session('message'))
+  <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
+  @endif
 <!--繰り返し要素・ポイント-->
+
 <div class="point" v-for="(item, index) in values" :key="item.id">
   <ul>
     <li class="point-icon">P</li>
@@ -36,18 +40,35 @@
     <h3>Hunc</h3>
     <ul>
       <li class="icon"></li>
-      <li class="point-value">@{{ String( item.point ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }} P</li>
+      <li class="point-value">@{{ String( item.point + item.survice ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }} P</li>
       <li class="point-icon">P</li>
     </ul>
     <p class="pay-value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}</p>
     <button class="btn back-btn" @click="item.checked = false">戻る</button>
-    <button class="btn pay-btn" @click="item.checked = false">購入</button>
+    <form method="post" action="{{ url('point/charge') }}">
+    @csrf
+      <div is="script"
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="{{ env('STRIPE_KEY') }}"
+        :data-amount="item.value"
+        data-name="Hunting Music"
+        data-label="購入"
+        data-description="ポイントの購入"
+        data-image="{{ $image_path }}"
+        data-locale="auto"
+        data-currency="JPY">
+      </div>
+      <input type="hidden" name="value" :value="item.value">
+      <input type="hidden" name="point" :value="item.value + item.survice">
+    </form>
+    <!--<button class="btn pay-btn" name="point" :value="item.value + item.survice" @click="item.checked = false" disabled>購入</button>-->
   </div>
   </transition>
 </div>
+
 <!-- END -->
 </div>
- 
+
 <script>
   let point = new Vue({
     el: '#contents',
@@ -297,6 +318,71 @@
 
 .bottom-enter, .bottom-leave-to {
   transform: translateX(0px) translateY(200vh);
+}
+
+.stripe-button-el {
+  display: inline-block !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  height: 50px !important;
+  background-color: #ff5757 !important;
+  color: white !important;
+  border-radius: 0px !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  border: 1px solid transparent !important;
+  padding: .375rem .75rem !important;
+  font-size: .9rem !important;
+  line-height: 1.6 !important;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out !important;
+  background-image: none !important;
+  background: #ff5757 !important;
+  font-weight: normal !important;
+  text-shadow: none !important;
+  font-size: 16px !important;
+  background-image: -webkit-linear-gradient(#ff5757) !important;
+  background-image: linear-gradient(#ff5757) !important;
+  z-index: 1 !important;
+  position:static !important;
+}
+
+.stripe-button-el > span {
+  display: inline-block !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  height: 50px !important;
+  background-color: #ff5757 !important;
+  color: white !important;
+  border-radius: 0px !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  border: 1px solid transparent !important;
+  padding: .375rem .75rem !important;
+  font-size: .9rem !important;
+  line-height: 1.6 !important;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out !important;
+  background-image: none !important;
+  background: #ff5757 !important;
+  font-weight: normal !important;
+  text-shadow: none !important;
+  font-size: 16px !important;
+  background-image: -webkit-linear-gradient(#ff5757) !important;
+  background-image: linear-gradient(#ff5757) !important;
+  z-index: 1 !important;
+  position:static !important;
+  box-shadow: none !important;
 }
 /* end */
 </style>

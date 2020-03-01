@@ -18,12 +18,10 @@
     </section>
     <!-- js placed at the end of the document so the pages load faster -->
 
-<!--Vue-->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
     <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
-
+    @if(!isset($page))
     <script src="{{ asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
+    @endif
     <script class="include" type="text/javascript" src="{{ asset('lib/jquery.dcjqaccordion.2.7.js') }}"></script>
     <script src="{{ asset('lib/jquery.scrollTo.min.js') }}"></script>
     <script src="{{ asset('lib/jquery.nicescroll.js') }}" type="text/javascript"></script>

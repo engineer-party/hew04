@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 <!-- head -->
-@section('title', 'PlayList')
+@section('title', 'information')
 @section('style')
 <link rel="stylesheet" href="{{asset('css/link.css')}}" />
 <link rel="stylesheet" href="{{asset('css/hbg.css')}}" />

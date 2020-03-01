@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
   
     //ポイント購入
     Route::get('point/', 'PointController@index')->name('point');
+    Route::post('point/charge', 'PointController@charge')->name('charge');
 
     // Music 4.再生
     Route::get('music/', 'MusicController@index')->name('music');
@@ -103,6 +104,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('sales/','SalesController@index')->name('sales');
         // Campagin
         Route::get('price', 'PriceController@index')->name('price');
+        Route::get('price/sales/artist/{artist_id}', 'PriceController@salesArtist')->name('price_artist');
+        Route::get('price/sales/music/{music_id}', 'PriceController@salesMusic')->name('price_music');
         Route::post('price/artist','PriceController@artist');
         Route::post('price/music','PriceController@music');
         Route::get('collaboration', 'CollaborationController@index')->name('collaboration');

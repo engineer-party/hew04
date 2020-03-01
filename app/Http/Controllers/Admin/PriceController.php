@@ -20,6 +20,16 @@ class PriceController extends Controller
         return view('Admin\price',compact('artists','musics','pars'));
     }
 
+    public function salesArtist($artist_id)
+    {
+        return redirect()->route('price')->with('artist_id', $artist_id);
+    }
+
+    public function salesMusic($music_id)
+    {
+        return redirect()->route('price')->with('music_id', $music_id);
+    }
+
     public function artist(Request $req)
     {
         $validator = Validator::make($req->all(), [
