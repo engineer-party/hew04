@@ -3,59 +3,6 @@ let linkOpen = false;
 let startValue = 0;
 
 
-let test = new Vue({
-el: '#contents',
-data: function () {
-  return {
-    links: [
-      {
-        class: 0,
-        active: true,
-        name: 'プレイリスト'
-      },
-      {
-        class: 1,
-        active: false,
-        name: '曲'
-      },
-      {
-        class: 2,
-        active: false,
-        name: 'アーティスト'
-      }
-          ],
-    option: false,
-    playlistInActive: false,
-    activePL: true,
-    activeMusic: false
-  }
-},
-methods: {
-  playlistActive: function () {
-    this.option = true;
-  },
-  activetab: function (index) {
-    console.log(this.links[index].class);
-    if (index == 0) {
-      this.links[1].active = false;
-      this.links[2].active = false;
-      this.activeMusic = false;
-      this.activePL = true;
-    } else if (index == 1) {
-      this.links[0].active = false;
-      this.links[2].active = false;
-      this.activePL = false;
-      this.activeMusic = true;
-    } else if (index == 2) {
-      this.links[0].active = false;
-      this.links[1].active = false;
-    }
-    this.links[index].active = true;
-
-    this.links.splice();
-  }
-}
-})
 
 /*
 $(function () {
