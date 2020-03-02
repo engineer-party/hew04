@@ -41,7 +41,7 @@ class LibraryController extends Controller
          $cnt++;
         }
         for ($cnt; $cnt <= 4; $cnt++) { 
-          $playlist['img'. $cnt] = asset('img/cheep-trick.jpg');
+          $playlist['img'. $cnt] = asset('img/playlists.png');
         }
       }
 
