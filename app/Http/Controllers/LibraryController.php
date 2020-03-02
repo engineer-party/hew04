@@ -7,6 +7,7 @@ use Auth;
 use App\Models\User;
 use App\Models\Campaign;
 use App\Models\Playlist;
+use App\Models\PlaylistMusic;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
@@ -56,6 +57,18 @@ class LibraryController extends Controller
       $playlist->save();
       
       return redirect()->route('library')->with('message', 'プレイリスト作成完了');
+    }
+
+    public function add($playlist_id,$music_id)
+    {
+      dd($playlist_id,$music_id);
+      // $playlistMusic = new PlaylistMusic;
+      // $playlistMusic->playlist_id = $playlist_id;
+      // $playlistMusic->music_id = $music_id;
+      // $playlistMusic->order = PlaylistMusic::where('playlist_id',$playlist_id)->count() + 1;
+      // $playlistMusic->save();
+      
+      // return redirect()->route('library')->with('message', 'プレイリスト追加完了');
     }
     
 }

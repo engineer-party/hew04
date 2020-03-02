@@ -83,6 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // 音楽ライブラリ
     Route::get('library/', 'LibraryController@index')->name('library');
+    Route::get('library/add/{playlist_id}/{music_id}', 'LibraryController@add');
     Route::post('library/playlist', 'LibraryController@playlist');
 
     // Report 6.通報

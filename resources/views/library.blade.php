@@ -29,7 +29,7 @@
       <ul class="playlist-lists-in">
         <li class="title">プレイリストに追加</li>
         <li v-for="item in playlists">
-          <button type="button" :value="item.name">@{{ item.name }}</button>
+          <a v-bind:href="`/library/add/${item.id}/ここに入れたい`"><button type="button" :value="item.name">@{{ item.name }}</button></a>
         </li>
         <li class="cansel" @click="addCansel">キャンセル</li>
       </ul>
