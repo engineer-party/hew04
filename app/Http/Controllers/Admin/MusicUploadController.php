@@ -105,16 +105,28 @@ class MusicUploadController extends Controller
     Genre::create([
       'name' => $request->name,
     ]);
-    return redirect()->route('admin/music_upload')->with('message', 'ジャンル登録成功！');
+    return redirect()->route('music_upload')->with('message', 'ジャンル登録成功！');
   }
 
   public function artistStore(Request $request)
   {
+    $img_file = $request->file('file');
+    $img_file_name = $img_file->getClientOriginalName();
+
+    $img_extension = File::extension($img_file_name);
+
+    $id = Artist::orderby('id', 'desc')->first()->id + 1;
+
+    $filename = 'artist_'.$id.'.'.$img_extension;
     Artist::create([
       'genre_id'    => $request->genre,
       'name'        => $request->name,
       'description' => $request->detail,
+      'img_url'     => $filename,
     ]);
-    return redirect()->route('/admin/music_upload')->with('message', 'アーティスト登録成功！');
+    
+    $path = Storage::disk('s3')->putFileAs('artist/image',$img_file,$filename,'public');
+    
+    return redirect()->route('music_upload')->with('message', 'アーティスト登録成功！');
   }
 }

@@ -154,7 +154,7 @@
     <div class="col-md-12">
       <div class="form-panel">
         <h1 class="mb-2 mt-2"><i class="fa fa-angle-right"></i> アーティスト登録</h1>
-        <form class="mb-2" method="post" action="{{ url('admin/music_upload/artist_store') }}">
+        <form class="mb-2" method="post" action="{{ url('admin/music_upload/artist_store') }}" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
             <label>ジャンル</label>
@@ -171,6 +171,11 @@
           <div class="form-group">
             <label>アーティストの説明</label>
             <textarea class="form-control" rows="3" name="detail">{{ old('detail') }}</textarea>
+          </div>
+          <label>画像ファイル</label>
+          <div class="custom-file mb-2">
+            <input type="file" class="custom-file-input" id="Imgfile" name="file" @change="imgFileNameChange">
+            <label class="custom-file-label" for="Imgfile" data-browse="参照">ファイル選択...</label>
           </div>
           <button class="btn btn-primary" type="submit">登録</button>
         </form>
