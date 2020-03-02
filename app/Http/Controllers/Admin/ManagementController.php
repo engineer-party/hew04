@@ -11,6 +11,6 @@ class ManagementController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('Admin\management',compact('users'));
+        return view('admin/management',compact('users'));
     }
 }

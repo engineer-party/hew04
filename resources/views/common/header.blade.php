@@ -39,18 +39,9 @@
     </form>
     <div class="search">
       <div class="category-link">
-        <button class="btn category">カテゴリ</button>
-        <button class="btn category"></button>
-        <button class="btn category"></button>
-        <button class="btn category"></button>
-        <button class="btn category"></button>
-        <button class="btn category"></button>
-        <button class="btn category"></button>
-        <button class="btn category"></button>
-        <button class="btn category"></button>
-        <button class="btn category"></button>
-        <button class="btn category"></button>
-        <button class="btn category"></button>
+        @foreach (App\Models\Genre::All() as $genre)
+          <a href="/search/genre/{{ $genre->id }}"><button class="btn category">{{ $genre->name }}</button></a>
+        @endforeach 
       </div>
     </div>
 

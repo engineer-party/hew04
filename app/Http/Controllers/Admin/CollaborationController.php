@@ -9,6 +9,6 @@ class CollaborationController extends Controller
 {
     public function index()
     {
-        return view('Admin\collaboration',compact(''));
+        return view('admin/collaboration',compact(''));
     }
 }

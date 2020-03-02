@@ -17,7 +17,7 @@ class PriceController extends Controller
         $pars = [5,10,15,20,25,30,35,40,45,50];
         $artists = Artist::All();
         $musics = Music::All();
-        return view('Admin\price',compact('artists','musics','pars'));
+        return view('admin/price',compact('artists','musics','pars'));
     }
 
     public function salesArtist($artist_id)

@@ -15,7 +15,7 @@ class ReportController extends Controller
         $users = User::withCount('targetReports')
             ->orderBy('target_reports_count', 'desc')
             ->get();
-        return view('Admin\report',compact('users'));
+        return view('admin/report',compact('users'));
     }
 
     // アカウント停止処理
@@ -61,6 +61,6 @@ class ReportController extends Controller
             'title' => $title,
         ];
 
-        return view('Admin\report_show',compact('reports','categories','title'));
+        return view('admin/report_show',compact('reports','categories','title'));
     }
 }

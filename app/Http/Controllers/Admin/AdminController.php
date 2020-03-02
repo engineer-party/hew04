@@ -24,7 +24,7 @@ class AdminController extends Controller
             'parCash' => $this->funcNumPar($totalCash,$totalPay),
         ];
 
-        return view('Admin\admin',compact('pointOrCash'));
+        return view('admin/admin',compact('pointOrCash'));
     }
 
     // パーセント計算

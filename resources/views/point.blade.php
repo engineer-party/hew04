@@ -49,6 +49,7 @@
     @csrf
       <div is="script"
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        Stripe.setPublishableKey('PUBLISHABLE_KEY');
         data-key="{{ env('STRIPE_KEY') }}"
         :data-amount="item.value"
         data-name="Hunting Music"

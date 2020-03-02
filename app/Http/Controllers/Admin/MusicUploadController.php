@@ -26,7 +26,7 @@ class MusicUploadController extends Controller
     $musics = Music::all();
     //力技
     $page = true;
-    return view('Admin/music_upload', compact('genres', 'artists', 'musics', 'page'));
+    return view('admin/music_upload', compact('genres', 'artists', 'musics', 'page'));
   }
 
   public function musicStore(Request $request)

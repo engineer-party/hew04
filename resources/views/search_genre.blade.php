@@ -21,25 +21,6 @@
 <!-- content -->
 @section('content')
 <div id="contents">
-  <section id="artist">
-    <ul class="contents-head">
-      <li>アーティスト</li>
-      <li><button class="btn ajax-active">+30件</button></li>
-    </ul>
-    <div class="artist-contents">
-
-    <!--繰り返し要素・アーティスト ※最初の4つ-->
-    @foreach ($artists as $artist)
-    <div class="artist-content">
-      <div class="artist-img"><img src="{{ Storage::disk('s3')->url('image/artist/' . $artist->img_url) }}" alt=""></div>
-    <h3>{{ $artist->name }}</h3>
-    </div>
-    @endforeach
-    <!-- END -->
-    </div>
-  </section>
-
-
   <section id="music">
     <ul class="contents-head">
     <li>曲</li>
@@ -74,7 +55,7 @@
   data: function(){
     return {
       placeholder: 'Musicを検索',
-      value: '{{ $req->search }}'
+      value: '{{ $genre }}'
     }
   },
   methods: {

@@ -11,7 +11,7 @@ class SuspensionController extends Controller
     public function index()
     {
         $users = User::onlyTrashed()->get();
-        return view('Admin\suspension',compact('users'));
+        return view('admin/suspension',compact('users'));
     }
 
     // アカウント停止解除
