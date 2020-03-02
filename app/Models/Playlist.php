@@ -20,4 +20,12 @@ class Playlist extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    /**
+     * プレイリストの曲一覧
+     */
+    public function musics()
+    {
+        return $this->belongsToMany('App\Models\Music','playlist_musics')->withPivot('order');
+    }
 }

@@ -93,43 +93,18 @@ data: function () {
       }
           ],
     playlists: [
+      @foreach ($playlists as $playlist)
       {
         //name: プレイリスト名,img1.2.3.4:ランダムな画像4つ
-        id:0,
-        name: 'Rock-Hot',
+        id:{{ $playlist->id }},
+        name: '{{ $playlist->name }}',
         option: false,
-        img1: "{{ asset('img/cheep-trick.jpg')}}",
-        img2: "{{ asset('img/cheep-trick.jpg')}}",
-        img3: "{{ asset('img/cheep-trick.jpg')}}",
-        img4: "{{ asset('img/cheep-trick.jpg')}}",
+        img1: "{{ $playlist->img1 }}",
+        img2: "{{ $playlist->img2 }}",
+        img3: "{{ $playlist->img3 }}",
+        img4: "{{ $playlist->img4 }}",
       },
-      {
-        id:1,
-        name: 'Cheep-Trick',
-        option: false,
-        img1: "{{ asset('img/cheep-trick.jpg')}}",
-        img2: "{{ asset('img/cheep-trick.jpg')}}",
-        img3: "{{ asset('img/cheep-trick.jpg')}}",
-        img4: "{{ asset('img/cheep-trick.jpg')}}",
-      },
-      {
-        id:2,
-        name: 'Sex-Pistols',
-        option: false,
-        img1: "{{ asset('img/cheep-trick.jpg')}}",
-        img2: "{{ asset('img/cheep-trick.jpg')}}",
-        img3: "{{ asset('img/cheep-trick.jpg')}}",
-        img4: "{{ asset('img/cheep-trick.jpg')}}",
-      },
-      {
-        id:3,
-        name: 'Joan-Jett',
-        option: false, 
-        img1: "{{ asset('img/cheep-trick.jpg')}}",
-        img2: "{{ asset('img/cheep-trick.jpg')}}",
-        img3: "{{ asset('img/cheep-trick.jpg')}}",
-        img4: "{{ asset('img/cheep-trick.jpg')}}",
-      },
+      @endforeach
     ],
     musics: [
       //id: 曲id, title: 曲タイトル, artist: アーティスト, img: 曲画像, time: 再生時間(分:秒)

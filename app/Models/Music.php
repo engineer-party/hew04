@@ -52,4 +52,12 @@ class Music extends Model
     {
         return $this->hasOne('App\Campaign');
     }
+
+    /**
+     * 曲のplaylist
+     */
+    public function playlists()
+    {
+        return $this->belongsToMany('App\Models\Playlist','playlist_playlists')->withPivot('order');
+    }
 }
