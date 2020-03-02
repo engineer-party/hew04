@@ -6,6 +6,7 @@ use App\Models\Artist;
 use Illuminate\Http\Request;
 use File;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Models\Genre;
 use App\Models\Music;
 use App\Models\GenreMusicTable;
@@ -105,16 +106,36 @@ class MusicUploadController extends Controller
     Genre::create([
       'name' => $request->name,
     ]);
-    return redirect()->route('admin/music_upload')->with('message', 'ジャンル登録成功！');
+    return redirect()->route('music_upload')->with('message', 'ジャンル登録成功！');
   }
 
   public function artistStore(Request $request)
   {
-    Artist::create([
+    // 画像ファイルを変数に取り込む
+    $imagefile = $request->file('file');
+    // アップロードされた拡張子を取得
+    $extension = File::extension($imagefile->getClientOriginalName());
+
+    $id = Artist::orderby('id', 'desc')->first()->id + 1;
+
+    $filename = 'artist_'.$id.'.'.$extension;
+    $artist = Artist::create([
       'genre_id'    => $request->genre,
       'name'        => $request->name,
       'description' => $request->detail,
+      'img_url'     => $filename,
     ]);
-    return redirect()->route('/admin/music_upload')->with('message', 'アーティスト登録成功！');
+
+    // S3の保存先のパスを生成
+    $storePath = "artist/image/artist_" . $artist->id . "." . $extension;
+    // 画像を横幅は300px、縦幅はアスペクト比維持の自動サイズへリサイズ
+    $image = Image::make($imagefile)
+      ->resize(300, null, function ($constraint) {
+        $constraint->aspectRatio();
+      });
+    // S3に保存。ファイル名は$storePathで定義したとおり
+    Storage::disk('s3')->put($storePath, (string) $image->encode(), 'public');
+    
+    return redirect()->route('music_upload')->with('message', 'アーティスト登録成功！');
   }
 }
