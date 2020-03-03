@@ -10,10 +10,8 @@ class PlaylistController extends Controller
 {
     public function index()
     {
-        // ログイン中のユーザーが作成したプレイリスト一覧
-        $playlists = User::find(Auth::user()->id)->playlists;
-
-        return view('playlist',compact('playlists'));
+        $playlist = 1;
+        return view('playlist_musics',compact('playlist'));
     }
 
 }
