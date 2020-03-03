@@ -44,9 +44,12 @@
 .playlist-content .title {
   width: 80%;
   height: 50px;
+  overflow: hidden;
   line-height: 50px;
   text-decoration: none;
   color: black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 /*  background-color: blueviolet;*/
   padding-left: 20px;
 }
@@ -156,6 +159,9 @@
   font-size: 0.9em;
   text-align: center;
   line-height: 50px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .playlist-option{
 
