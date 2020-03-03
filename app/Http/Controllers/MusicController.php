@@ -52,4 +52,9 @@ class MusicController extends Controller
         
         return view('music-detail',compact('musics-detail'));
     }
+  
+    public function rtmp()
+    {
+      return view('rtmp');
+    }
 }
