@@ -100,7 +100,8 @@ h2 {
   width: 100%;
   height: auto;
   margin-top: 100vw;
-  background-color: #ff9e85;
+/*  background-color: #ff9e85;*/
+  background-color: #FFEBE0;
   height: auto;
 /*  position: fixed;*/
 /*  top: -300px;*/
@@ -110,7 +111,29 @@ h2 {
   background-color: white;
   padding: 5px;
   margin-bottom: 0;
+  display: flex;
 }
+.music-content img {
+  width: 50px;
+  height: 50px;
+  margin-left: 2px;
+}
+
+.music-content ul {
+  margin-left: 10px;
+  height: 50px;
+}
+
+.music-content .title {
+  font-size: 1.0em;
+  line-height: 30px;
+}
+
+.music-content .artist {
+  font-size: 0.8em;
+  color: gray;
+}
+
 #play-lists {
   margin-top: 30px;
   width: 100%;

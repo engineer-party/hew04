@@ -11,7 +11,6 @@
 <script src="{{ asset('js/hbg.js') }}" defer></script>
 
 
-<script src="{{ asset('js/hbg.js') }}" defer></script>
 @endsection
 @include('common.head')
 
