@@ -8,7 +8,7 @@
 </head>
 <body>
   <audio preload="metadata" controls>
-    <source src="example.mp3" type="audio/mp3">
+    <source src="rtmp://18.180.27.172/testing" type="rtmp/mp3">
   </audio>
 </body>
 </html>
