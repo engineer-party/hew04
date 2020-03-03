@@ -13,7 +13,7 @@ class InformationController extends Controller
 {
     public function index()
     {
-        return view('Admin\information',compact(''));
+        return view('admin\information',compact(''));
     }
 
     public function send($user_id)

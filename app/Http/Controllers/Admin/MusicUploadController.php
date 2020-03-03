@@ -6,6 +6,7 @@ use App\Models\Artist;
 use Illuminate\Http\Request;
 use File;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Models\Genre;
 use App\Models\Music;
 use App\Models\GenreMusicTable;
@@ -26,7 +27,7 @@ class MusicUploadController extends Controller
     $musics = Music::all();
     //力技
     $page = true;
-    return view('Admin/music_upload', compact('genres', 'artists', 'musics', 'page'));
+    return view('admin/music_upload', compact('genres', 'artists', 'musics', 'page'));
   }
 
   public function musicStore(Request $request)
@@ -46,8 +47,7 @@ class MusicUploadController extends Controller
 
     //一旦ローカルに保存
     $request->file('files')[0]->storeAs('public/music/', $mp3_file_name);
-    $request->file('files')[1]->storeAs('public/image/music/', $img_file_name);
-    $mp3->fromFile('storage/music/'.$mp3_file_name)->trim(10, 30)->saveFile('storage/sample/sample_'.$mp3_file_name);
+    $mp3->fromFile('storage/music/' . $mp3_file_name)->trim(10, 30)->saveFile('storage/sample/sample_' . $mp3_file_name);
 
     //mp3から再生時間の取得
     $getID3 = new getID3();
@@ -79,22 +79,27 @@ class MusicUploadController extends Controller
 
     //S3のパス
     $mp3_storePath = "music/" . $music->id . "." . $mp3_extension;
-    $img_storePath = "image/music/" . $music->id . "." . $img_extension;
+    $img_storePath = "image/music" . $music->id . "." . $img_extension;
     $sample_storePath = "music/sample/sample_" . $music->id . "." . $mp3_extension;
 
     //一旦ローカルに上げたファイルの読み込み
     $mp3_storefile = Storage::get('public/music', $mp3_file_name);
-    $img_storefile = Storage::get('public/image/music/', $img_file_name);
-    $sample_storefile = Storage::get('public/sample/sample_'.$mp3_file_name);
+    $sample_storefile = Storage::get('public/sample/sample_' . $mp3_file_name);
+
+    // 画像を横幅は300px、縦幅はアスペクト比維持の自動サイズへリサイズ
+    $image = Image::make($img_file)
+      ->resize(300, null, function ($constraint) {
+        $constraint->aspectRatio();
+      });
 
     //S3にぶち込む
     Storage::disk('s3')->put($mp3_storePath, $mp3_storefile, 'public');
-    Storage::disk('s3')->put($img_storePath, $img_storefile, 'public');
     Storage::disk('s3')->put($sample_storePath, $sample_storefile, 'public');
+
+    Storage::disk('s3')->put($img_storePath, (string) $image->encode(), 'public');
 
     //一旦ローカルに上げたファイルの削除
     File::delete('storage/music/' . $mp3_file_name);
-    File::delete('storage/image/music/' . $img_file_name);
     File::delete('storage/sample/sample_' . $mp3_file_name);
 
     return redirect()->route('music_upload')->with('message', 'musicアップロード成功！');
@@ -105,16 +110,36 @@ class MusicUploadController extends Controller
     Genre::create([
       'name' => $request->name,
     ]);
-    return redirect()->route('admin/music_upload')->with('message', 'ジャンル登録成功！');
+    return redirect()->route('music_upload')->with('message', 'ジャンル登録成功！');
   }
 
   public function artistStore(Request $request)
   {
-    Artist::create([
+    // 画像ファイルを変数に取り込む
+    $imagefile = $request->file('file');
+    // アップロードされた拡張子を取得
+    $extension = File::extension($imagefile->getClientOriginalName());
+
+    $id = Artist::orderby('id', 'desc')->first()->id + 1;
+
+    $filename = 'artist_' . $id . '.' . $extension;
+    $artist = Artist::create([
       'genre_id'    => $request->genre,
       'name'        => $request->name,
       'description' => $request->detail,
+      'img_url'     => $filename,
     ]);
-    return redirect()->route('/admin/music_upload')->with('message', 'アーティスト登録成功！');
+
+    // S3の保存先のパスを生成
+    $storePath = "artist/image/artist_" . $artist->id . "." . $extension;
+    // 画像を横幅は300px、縦幅はアスペクト比維持の自動サイズへリサイズ
+    $image = Image::make($imagefile)
+      ->resize(300, null, function ($constraint) {
+        $constraint->aspectRatio();
+      });
+    // S3に保存。ファイル名は$storePathで定義したとおり
+    Storage::disk('s3')->put($storePath, (string) $image->encode(), 'public');
+
+    return redirect()->route('music_upload')->with('message', 'アーティスト登録成功！');
   }
 }

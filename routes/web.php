@@ -65,8 +65,13 @@ Route::group(['middleware' => 'auth'], function () {
     // PlayList 2.プレイリスト
     Route::get('playlist/', 'PlaylistController@index')->name('playlist');
 
-    // Search 3.購入
-    Route::get('search/', 'SearchController@index')->name('search');
+    // Search 3.検索・購入
+    Route::post('search/', 'SearchController@index')->name('search');
+    Route::get('search/genre/{genre_id}', 'SearchController@genre')->name('search');
+    Route::get('search/genre/more/{genre_id}', 'SearchController@genreMore')->name('search');
+    Route::get('search/artist/{req_name}', 'SearchController@artist')->name('search');
+    Route::get('search/music/{req_name}', 'SearchController@music')->name('search');
+    
   
     //ポイント購入
     Route::get('point/', 'PointController@index')->name('point');
@@ -82,6 +87,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // 音楽ライブラリ
     Route::get('library/', 'LibraryController@index')->name('library');
+    Route::get('library/add/{playlist_id}/{music_id}', 'LibraryController@add');
+    Route::post('library/playlist', 'LibraryController@playlist');
 
     // Report 6.通報
     Route::get('report/', 'ReportController@index')->name('report');
@@ -125,10 +132,6 @@ Route::group(['middleware' => 'auth'], function () {
         // Aws test
         Route::get('aws_test','AwsTestController@index')->name('aws_test');
     });
-  
-    //ajax
-    Route::get('/playlist' ,'LibraryController@ajaxplaylist_get');
-    Route::get('/music' ,'LibraryController@ajaxmusic_get');
 
 });
 

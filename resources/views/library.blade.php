@@ -29,7 +29,7 @@
       <ul class="playlist-lists-in">
         <li class="title">プレイリストに追加</li>
         <li v-for="item in playlists">
-          <button type="button" :value="item.name">@{{ item.name }}</button>
+        <a v-bind:href="`/library/add/${item.id}/{{  }}`"><button type="button" :value="item.name">@{{ item.name }}</button></a>
         </li>
         <li class="cansel" @click="addCansel">キャンセル</li>
       </ul>
@@ -63,11 +63,13 @@
     <div id="add-playlist" v-if="addPlaylist">
       <div class="add-playlist-in">
         <h3>新しいプレイリスト</h3>
-        <p><input type="text" placeholder="タイトル"></p>
-        <ul>
-          <li><button class="btn cancel-btn" @click="addPlaylist = false">キャンセル</button></li>
-          <li><button class="btn add-btn" @click="addPlaylist = false">追加</button></li>
-        </ul>
+        <form action="/library/playlist" method="POST" id="playlist-form">
+          <p><input type="text" name="name" placeholder="タイトル"></p>
+          <ul>
+            <li><button class="btn cancel-btn" @click="addPlaylist = false">キャンセル</button></li>
+            <li><button class="btn add-btn" @click="addPlaylist = false">追加</button></li>
+          </ul>
+        </form>
       </div>
     </div>
   </transition>
@@ -91,62 +93,31 @@ data: function () {
       }
           ],
     playlists: [
+      @foreach ($playlists as $playlist)
       {
         //name: プレイリスト名,img1.2.3.4:ランダムな画像4つ
-        id:0,
-        name: 'Rock-Hot',
+        id:{{ $playlist->id }},
+        name: '{{ $playlist->name }}',
         option: false,
-        img1: "{{ asset('img/cheep-trick.jpg')}}",
-        img2: "{{ asset('img/cheep-trick.jpg')}}",
-        img3: "{{ asset('img/cheep-trick.jpg')}}",
-        img4: "{{ asset('img/cheep-trick.jpg')}}",
+        img1: "{{ $playlist->img1 }}",
+        img2: "{{ $playlist->img2 }}",
+        img3: "{{ $playlist->img3 }}",
+        img4: "{{ $playlist->img4 }}",
       },
-      {
-        id:1,
-        name: 'Cheep-Trick',
-        option: false,
-        img1: "{{ asset('img/cheep-trick.jpg')}}",
-        img2: "{{ asset('img/cheep-trick.jpg')}}",
-        img3: "{{ asset('img/cheep-trick.jpg')}}",
-        img4: "{{ asset('img/cheep-trick.jpg')}}",
-      },
-      {
-        id:2,
-        name: 'Sex-Pistols',
-        option: false,
-        img1: "{{ asset('img/cheep-trick.jpg')}}",
-        img2: "{{ asset('img/cheep-trick.jpg')}}",
-        img3: "{{ asset('img/cheep-trick.jpg')}}",
-        img4: "{{ asset('img/cheep-trick.jpg')}}",
-      },
-      {
-        id:3,
-        name: 'Joan-Jett',
-        option: false, 
-        img1: "{{ asset('img/cheep-trick.jpg')}}",
-        img2: "{{ asset('img/cheep-trick.jpg')}}",
-        img3: "{{ asset('img/cheep-trick.jpg')}}",
-        img4: "{{ asset('img/cheep-trick.jpg')}}",
-      },
+      @endforeach
     ],
     musics: [
       //id: 曲id, title: 曲タイトル, artist: アーティスト, img: 曲画像, time: 再生時間(分:秒)
+      @foreach ($musics as $music)
       {
         option:false,
-        id: 12345,
-        title: 'I Want You to Want Me',
-        artist: 'Cheep Trick',
-        img: "{{ asset('img/cheep-trick.jpg') }}",
-        time: '3:36',
+        id: {{ $music->id }},
+        title: '{{ $music->name }}',
+        artist: '{{ $music->artist()->first()->name }}',
+        img: "{{ Storage::disk('s3')->url('image/music/' . $music->img_url) }}",
+        time: '{{ substr($music->time, 0, 5) }}',
       },
-      {
-        option:false,
-        id: 12345,
-        title: 'I Want You to Want Me',
-        artist: 'Cheep Trick',
-        img: "{{ asset('img/cheep-trick.jpg') }}",
-        time: '3:36',
-      },
+      @endforeach
     ],
     playlistInActive: false,
     activePL: true,

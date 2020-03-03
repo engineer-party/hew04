@@ -18,6 +18,6 @@ class SalesController extends Controller
             ->paginate(10, ["*"], 'artists')->appends(["itempage" => Input::get('musics')]);
         
 
-        return view('Admin\sales',compact('musics','artists'));
+        return view('admin/sales',compact('musics','artists'));
     }
 }
