@@ -10,28 +10,13 @@ use App\Models\Playlist;
 use App\Models\PlaylistMusic;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class LibraryController extends Controller
 {
     public function index()
     {
       $musics = User::find(Auth::user()->id)->musics()->orderBy('created_at','DESC')->get();
-      // 割引適用処理
-      foreach ($musics as $music){
-        // この曲の割引情報が存在するか
-        if (Campaign::where('music_id',$music->id)->exists()) {
-            // キャンペーン情報を取得
-            $campaign = Campaign::where('music_id',$music->id)->first();
-            // キャンペーン期間中であるか
-            if ($campaign->end_date_time > Carbon::now()){
-                $music->price -= round($music->price * ($campaign->discount / 100),-1);
-            }
-            // キャンペーンが終了している場合レコード物理削除
-            else {
-                Campaign::where('music_id',$music->id)->delete();
-            }
-        }
-      }
 
       // ログイン中のユーザーが作成したプレイリスト一覧
       $playlists = User::find(Auth::user()->id)->playlists()->withCount('musics')->get();
@@ -51,24 +36,31 @@ class LibraryController extends Controller
 
     public function playlist(Request $req)
     {
+
+      $validator = Validator::make($req->all(), [
+        'playlist_name' => 'required',
+      ]);
+      if ($validator->fails()) {
+          return redirect()->back()->withErrors($validator->errors())->withInput($req->all);
+      }
+
       $playlist = new Playlist;
       $playlist->user_id = Auth::user()->id;
-      $playlist->name = $req->name;
+      $playlist->name = $req->playlist_name;
       $playlist->save();
       
       return redirect()->route('library')->with('message', 'プレイリスト作成完了');
     }
 
-    public function add($playlist_id,$music_id)
+    public function add(Request $req)
     {
-      dd($playlist_id,$music_id);
-      // $playlistMusic = new PlaylistMusic;
-      // $playlistMusic->playlist_id = $playlist_id;
-      // $playlistMusic->music_id = $music_id;
-      // $playlistMusic->order = PlaylistMusic::where('playlist_id',$playlist_id)->count() + 1;
-      // $playlistMusic->save();
+      $playlistMusic = new PlaylistMusic;
+      $playlistMusic->playlist_id = $req->playlist_id;
+      $playlistMusic->music_id = $req->music_id;
+      $playlistMusic->order = PlaylistMusic::where('playlist_id',$req->playlist_id)->count() + 1;
+      $playlistMusic->save();
       
-      // return redirect()->route('library')->with('message', 'プレイリスト追加完了');
+      return redirect()->route('library')->with('message', 'プレイリスト追加完了');
     }
     
 }

@@ -15,13 +15,13 @@
         <div></div>
       </div>
     </div>
-    <button class="play-btn"></button>
+    <button type="button"class="play-btn"></button>
     <div class="playlist-option-bg" v-if="item.option" @click="item.option = false"></div>
     <transition name="fade">
       <ul class="playlist-option item.id" v-if="item.option">
         <li class="name">@{{ item.name }}</li>
-        <li class="playlist-edit"><button>プレイリストを編集</button></li>
-        <li class="del-playlist"><button>プレイリストを削除</button></li>
+        <li class="playlist-edit"><button type="button">プレイリストを編集</button></li>
+        <li class="del-playlist"><button type="button">プレイリストを削除</button></li>
       </ul>
     </transition>
   </div>

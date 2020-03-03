@@ -35,7 +35,7 @@
     <ul>
       <li><span class="value">{{ $user->name }}</span><br><span class="text-in">表示名</span></li>
       <li><span class="value">{{ $user->email }}</span><br><span class="text-in">メール</span></li>
-      <li><span class="value">パスワード</span><br><span class="text-in">パスワード</span></li>
+      {{-- <li><span class="value">パスワード</span><br><span class="text-in">パスワード</span></li> --}}
       <li><span class="value">{{ $user->point }}</span><br><span class="text-in">ポイント残高</span></li>
     </ul>
   </div>
@@ -61,7 +61,7 @@
     <ul>
       <li><span class="title">表示名</span><br><input type="text" value="{{ $user->name }}" name="name"></li>
       <li><span class="title">メール</span><br><input type="text" value="{{ $user->email }}" name="email"></li>
-      <li><span class="title">パスワード</span><br><input type="text" value="パスワード"></li>
+      {{-- <li><span class="title">パスワード</span><br><input type="text" value="パスワード"></li> --}}
     </ul>
     </div>
   </div>

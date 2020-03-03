@@ -20,7 +20,7 @@
       <ul>
       <!--チェックボックス name: music に曲のidをvalueに入れてます-->
       <!--"プレイリストに追加" を押すとプレイリスト選択画面へ遷移-->
-        <li><label for="music-check" @click="playlistAdd = true"><input type="checkbox" :value="item.id" name="music" id="music-check">プレイリストに追加</label></li>
+        <li><label for="music-check" @click="playlistAdd = true"><input type="checkbox" :value="item.id" name="music_id" id="music-check">プレイリストに追加</label></li>
         <li><button>アーティストに移動</button></li>
       </ul>
     </div>
