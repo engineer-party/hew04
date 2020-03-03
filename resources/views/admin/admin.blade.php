@@ -14,48 +14,45 @@
 @section('content')
 <div class="row">
   <div class="col-lg-9 main-chart">
-    <!--CUSTOM CHART START -->
-    <div class="border-head">
-      <h3>USER VISITS</h3>
-    </div>
-    <div class="custom-bar-chart">
-      <ul class="y-axis">
-        <li><span>10.000</span></li>
-        <li><span>8.000</span></li>
-        <li><span>6.000</span></li>
-        <li><span>4.000</span></li>
-        <li><span>2.000</span></li>
-        <li><span>0</span></li>
-      </ul>
-      <div class="bar">
-        <div class="title">JAN</div>
-        <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">100%</div>
-      </div>
-      <div class="bar ">
-        <div class="title">FEB</div>
-        <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
-      </div>
-      <div class="bar ">
-        <div class="title">MAR</div>
-        <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
-      </div>
-      <div class="bar ">
-        <div class="title">APR</div>
-        <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
-      </div>
-      <div class="bar">
-        <div class="title">MAY</div>
-        <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
-      </div>
-      <div class="bar ">
-        <div class="title">JUN</div>
-        <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
-      </div>
-      <div class="bar">
-        <div class="title">JUL</div>
-        <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+    <div class="row mt">
+      <div class="col-lg-12">
+        <div class="content-panel" style=" margin-top: -45px;">
+        <h4><i class="fa fa-angle-right"></i> サーバー稼働チャート <span style="font-size:0.9em;">({{ date('m月d日H時i分',strtotime("-24 hour")). '～' . date('m月d日H時i分',strtotime("-30 minute")) }})</span></h4>
+          <div class="panel-body text-center" id="canvasBox">
+            <canvas id="line" height="300" width="800" style=" display: block;"></canvas>
+          </div>
+        </div>
       </div>
     </div>
+    <script>
+      var lineChartData = {
+        labels : [
+          @foreach ($vals as $val)
+            "{{ date('G:i',strtotime($val['Timestamp'])) }}",
+          @endforeach
+        ],
+                // foreach ($val_new as $val){
+        //   var_dump(date('G:i',strtotime($val['Timestamp'])));
+        // }
+        datasets : [
+          {
+              fillColor : "rgba(151,187,205,0.5)",
+              strokeColor : "rgba(151,187,205,1)",
+              pointColor : "rgba(151,187,205,1)",
+              pointStrokeColor : "#fff",
+              data : [
+                @foreach ($vals as $val)
+                  {{ round($val['Average'], 3) }},
+                @endforeach
+              ]
+          }
+        ]
+
+      };
+
+      new Chart(document.getElementById("line").getContext("2d")).Line(lineChartData);
+
+    </script>
     <!--custom chart end-->
     <div class="row mt">
       <!-- SERVER STATUS PANELS -->
@@ -161,9 +158,7 @@
   <!-- /col-lg-3 -->
 </div>
 <!-- /row -->
-<script>
-      
-</script>
+
 @endsection
 
 <!-- footer -->
