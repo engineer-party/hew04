@@ -79,7 +79,7 @@
   height: auto;
   width: 50%;
   background-color: white;
-  right: 10px;
+  right: -60px;
   top: 50px;
   border-radius: 3px;
   overflow: hidden;
@@ -87,6 +87,7 @@
   z-index: 100;
   margin-left: calc(-100% - 50px);
   margin-bottom: -50px;
+  margin-right: 62px;
   z-index: 2;
 }
 .music-option li{

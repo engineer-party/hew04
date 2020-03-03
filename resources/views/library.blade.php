@@ -73,7 +73,7 @@
             <p id="error">{{$errors->first('playlist_name')}}</p>
           @endif
           <ul>
-            <li><button class="btn cancel-btn" @click="addPlaylist = false">キャンセル</button></li>
+            <li><button class="btn cancel-btn" type="button" @click="addPlaylist = false">キャンセル</button></li>
             <li><button class="btn add-btn" @click="addPlaylist = false">追加</button></li>
           </ul>
         </form>
