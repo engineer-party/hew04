@@ -68,6 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Search 3.検索・購入
     Route::post('search/', 'SearchController@index')->name('search');
     Route::get('search/genre/{genre_id}', 'SearchController@genre')->name('search');
+    Route::get('search/genre/more/{genre_id}', 'SearchController@genreMore')->name('search');
     Route::get('search/artist/{req_name}', 'SearchController@artist')->name('search');
     Route::get('search/music/{req_name}', 'SearchController@music')->name('search');
     

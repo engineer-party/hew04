@@ -21,7 +21,9 @@ class SearchController extends Controller
             $req->search = 'ALL MUSICS';
         }
 
-        return view('search',compact('musics','artists','req'));
+        $more = 'no';
+
+        return view('search',compact('musics','artists','req','more'));
     }
 
     public function genre($genre_id)
@@ -29,7 +31,19 @@ class SearchController extends Controller
         $musics = Genre::find($genre_id)->musics()->take(10)->get();
         $genre = Genre::find($genre_id)->first()->name;
 
-        return view('search_genre',compact('musics','genre'));
+        $more = 'genre';
+
+        return view('search',compact('musics','genre','more','genre_id'));
+    }
+
+    public function genreMore($genre_id)
+    {
+        $musics = Genre::find($genre_id)->musics()->get();
+        $genre = Genre::find($genre_id)->first()->name;
+
+        $more = 'genreMore';
+
+        return view('search',compact('musics','genre','more'));
     }
 
     public function artist($name)
@@ -42,7 +56,7 @@ class SearchController extends Controller
 
         $more = 'artist';
 
-        return view('search_more',compact('artists','name','more'));
+        return view('search',compact('artists','name','more'));
     }
 
     public function music($name)
@@ -71,6 +85,6 @@ class SearchController extends Controller
         }
         $more = 'music';
 
-        return view('search_more',compact('musics','name','more'));
+        return view('search',compact('musics','name','more'));
     }
 }
