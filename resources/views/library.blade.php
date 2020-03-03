@@ -23,33 +23,37 @@
 <!-- content -->
 @section('content')
 <div id="contents">
-  <div class="add-playlist" @click="addPlaylist = true"></div>
-  <transition name="fade">
-    <div class="playlist-lists" v-if="playlistAdd">
-      <ul class="playlist-lists-in">
-        <li class="title">プレイリストに追加</li>
-        <li v-for="item in playlists">
-        <a v-bind:href="`/library/add/${item.id}/{{  }}`"><button type="button" :value="item.name">@{{ item.name }}</button></a>
-        </li>
-        <li class="cansel" @click="addCansel">キャンセル</li>
+  <form action="/library/add" method="POST" id="playlist-form">
+    {{ csrf_field() }}
+    <div class="add-playlist" @click="addPlaylist = true"></div>
+    <transition name="fade">
+      <div class="playlist-lists" v-if="playlistAdd">
+        <ul class="playlist-lists-in">
+          <li class="title">プレイリストに追加</li>
+          <li v-for="item in playlists">
+            <button type="submit" name="playlist_id" :value="item.id">@{{ item.name }}</button>
+          </li>
+          <li class="cansel" @click="addCansel">キャンセル</li>
+        </ul>
+      </div>
+    </transition>
+    <nav id="navber">
+      <ul>
+        <li v-for="item in links" :key="item.class"><a class="library-link" :class="{ active:item.active }" v-on:click='activetab(item.class)'>@{{ item.name }}</a></li>
       </ul>
-    </div>
-  </transition>
-  <nav id="navber">
-    <ul>
-      <li v-for="item in links" :key="item.class"><a class="library-link" :class="{ active:item.active }" v-on:click='activetab(item.class)'>@{{ item.name }}</a></li>
-    </ul>
-  </nav>
-  <transition name="bottom">
-    <div class="playlists" v-if="activePL">
-      @include('playlist')
-    </div>
-  </transition>
-  <transition name="bottom">
-    <div class="music" v-if="activeMusic">
-      @include('music')
-    </div>
-  </transition>
+    </nav>
+    <transition name="bottom">
+      <div class="playlists" v-if="activePL">
+        @include('playlist')
+      </div>
+    </transition>
+    <transition name="bottom">
+      <div class="music" v-if="activeMusic">
+        @include('music')
+      </div>
+    </transition>
+  </form>
+
   <p><img src="{{ asset('img/loading.gif') }}" alt="" class="loading"></p>
   <div class="playlist-in" :class="{activeplaylist:playlistInActive}">
     <div class="back" @click="playlistInActive = false">
@@ -64,7 +68,10 @@
       <div class="add-playlist-in">
         <h3>新しいプレイリスト</h3>
         <form action="/library/playlist" method="POST" id="playlist-form">
-          <p><input type="text" name="name" placeholder="タイトル"></p>
+          <p><input type="text" name="playlist_name" placeholder="タイトル"></p>
+          @if($errors)
+            <p id="error">{{$errors->first('playlist_name')}}</p>
+          @endif
           <ul>
             <li><button class="btn cancel-btn" @click="addPlaylist = false">キャンセル</button></li>
             <li><button class="btn add-btn" @click="addPlaylist = false">追加</button></li>

@@ -155,6 +155,7 @@ return [
         'music' => '楽曲名',
         'music_discount' => '割引率',
         'music_period' => 'キャンペーン期間選択',
+        'playlist_name' => 'プレイリスト名',
     ],
 
 ];
