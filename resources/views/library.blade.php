@@ -73,7 +73,7 @@
             <p id="error">{{$errors->first('playlist_name')}}</p>
           @endif
           <ul>
-            <li><button class="btn cancel-btn" @click="addPlaylist = false">キャンセル</button></li>
+            <li><button class="btn cancel-btn" type="button" @click="addPlaylist = false">キャンセル</button></li>
             <li><button class="btn add-btn" @click="addPlaylist = false">追加</button></li>
           </ul>
         </form>
@@ -361,11 +361,11 @@ methods: {
     width: 100%;
   }
   .add-playlist {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
     position: fixed;
-    top: 10px;
+    top: 12px;
     right: 20px;
     z-index: 55;
 /*    background-color: blueviolet;*/
