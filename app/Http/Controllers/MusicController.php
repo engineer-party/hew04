@@ -43,7 +43,16 @@ class MusicController extends Controller
         // dd($artist->name);
         return view('music',compact('musics'));
     }
+  
+    public function detail()
+    {
+        // ログイン中のユーザーが購入した曲一覧
+        $musics = User::find(Auth::user()->id)->musics()->get();
 
+        
+        return view('music-detail',compact('musics-detail'));
+    }
+  
     public function rtmp()
     {
       return view('rtmp');
