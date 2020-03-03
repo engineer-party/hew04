@@ -23,7 +23,6 @@
   <div class="content">
     <p class="account"><span class="dot">・・・</span><span>アカウント名</span>さんが公開中<span class="dot">・・・</span></p>
     <div class="music">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
@@ -37,7 +36,6 @@
   <div class="content">
     <p class="account"><span class="dot">・・・</span><span>アカウント名</span>さんが公開中<span class="dot">・・・</span></p>
     <div class="music">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
@@ -51,7 +49,6 @@
   <div class="content">
     <p class="account"><span class="dot">・・・</span><span>アカウント名</span>さんが公開中<span class="dot">・・・</span></p>
     <div class="music">
-      <div class="musicIcon"></div>
       <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
       <ul>
         <li class="title">title</li>
