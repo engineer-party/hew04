@@ -115,4 +115,22 @@
     letter-spacing: 4px;
   }
   
+  .buy-btn {
+    width: 90%;
+/*    margin: 0 auto;*/
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    line-height: 50px;
+    height: 50px;
+    color: #ff5757;
+    background-color: white;
+    margin-top: 50px;
+    font-size: 1.0em;
+  }
+  
+  .text {
+    padding-top: 10px;
+  }
+  
 </style>

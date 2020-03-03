@@ -25,7 +25,7 @@
   </div>
   
   <div class="text">
-   <button class="form-button" v-on:click='formActive = true'>プロフィール編集</button>
+  <button class="form-button" v-on:click='formActive = true'>プロフィール編集</button>
     @if(session('message'))
     <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
     @endif
