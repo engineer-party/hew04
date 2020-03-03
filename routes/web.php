@@ -90,6 +90,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('library/add', 'LibraryController@add');
     Route::post('library/playlist', 'LibraryController@playlist');
 
+    Route::get('playlist/', 'PlaylistController@index')->name('playlist');
+
     // Report 6.通報
     Route::get('report/', 'ReportController@index')->name('report');
     Route::post('report/store', 'ReportController@store')->name('report_store');
