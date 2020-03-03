@@ -54,6 +54,7 @@
   </form>
 
   <p><img src="{{ asset('img/loading.gif') }}" alt="" class="loading"></p>
+  <!--
   <div class="playlist-in" :class="{activeplaylist:playlistInActive}">
     <div class="back" @click="playlistInActive = false">
       <div class="topLine line"></div>
@@ -61,6 +62,7 @@
       <div class="bottomLine line"></div>
     </div>
   </div>
+  -->
   <div class="add-playlist-bg" v-if="addPlaylist" @click="addPlaylist = false"></div>
   <transition name="fade">
     <div id="add-playlist" v-if="addPlaylist">

@@ -96,6 +96,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('report/', 'ReportController@index')->name('report');
     Route::post('report/store', 'ReportController@store')->name('report_store');
 
+    // 音楽詳細
+    Route::get('music-detail/', 'MusicController@detail')->name('music-detail');
+
 
     // Admin 7.管理
     Route::prefix('admin')->namespace('Admin')->group(function () {
