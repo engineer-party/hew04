@@ -65,9 +65,12 @@ Route::group(['middleware' => 'auth'], function () {
     // PlayList 2.プレイリスト
     Route::get('playlist/', 'PlaylistController@index')->name('playlist');
 
-    // Search 3.購入
+    // Search 3.検索・購入
     Route::post('search/', 'SearchController@index')->name('search');
     Route::get('search/genre/{genre_id}', 'SearchController@genre')->name('search');
+    Route::get('search/artist/{req_name}', 'SearchController@artist')->name('search');
+    Route::get('search/music/{req_name}', 'SearchController@music')->name('search');
+    
   
     //ポイント購入
     Route::get('point/', 'PointController@index')->name('point');
