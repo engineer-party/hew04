@@ -43,4 +43,9 @@ class MusicController extends Controller
         // dd($artist->name);
         return view('music',compact('musics'));
     }
+
+    public function rtmp()
+    {
+      return view('rtmp');
+    }
 }
