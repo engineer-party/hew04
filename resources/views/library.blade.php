@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
 <link rel="stylesheet" href="{{asset('css/playlist.css')}}" />
 <link rel="stylesheet" href="{{asset('css/music.css')}}" />
-<link rel="stylesheet" href="{{asset('css/playlist-in.css')}}" />
 
 
 
