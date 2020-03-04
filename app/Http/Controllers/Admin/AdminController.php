@@ -15,12 +15,14 @@ class AdminController extends Controller
         // AWSサーバー稼働率 チャート
         $vals = $this->awsGet();
         // ポイントキャッシュ割合 割合グラフ
-        // $buyPoints = BuyPoint::All();
-        // $buyPointGraph = [
-
-        // ]
-        // $totalBuyPointPrice = $buyPoints->sum('price');
-        // $totalBuyPoint = $totalBuyPointPrice + $buyPoints->sum('point');
+        $buyPoints = BuyPoint::All();
+        $totalBuyPointPrice = $buyPoints->sum('price');
+        $totalBuyPoint = $buyPoints->sum('point');
+        $buyPointGraph = [
+            'totalBuyPointPrice' => $totalBuyPointPrice,
+            'totalBuyPoint' => $totalBuyPoint,
+            'buyPointPar' => $this->funcNumPar($totalBuyPoint - $totalBuyPointPrice,$totalBuyPoint),
+        ];
         // 支払方法割合 円グラフ
         $buyMusic = BuyMusic::All();
         $totalPoint = $buyMusic->sum('point');
@@ -33,8 +35,16 @@ class AdminController extends Controller
             'parPoint' => $this->funcNumPar($totalPoint,$totalPay),
             'parCash' => $this->funcNumPar($totalCash,$totalPay),
         ];
+        // 1週間の売り上げ
+        $days = [];
+        for ($i=6; $i >= 0; $i--) {
+            $date = $i * -1 .' day';
+            $dayPoint = BuyMusic::whereDate('created_at', date('Y-m-d',strtotime($date)))->sum('price');
+            $dayCash = BuyPoint::whereDate('created_at', date('Y-m-d',strtotime($date)))->sum('price');;
+            $days[] = $dayPoint + $dayCash;
+        }
 
-        return view('admin/admin',compact('pointOrCash','vals'));
+        return view('admin/admin',compact('pointOrCash','vals','buyPointGraph','days'));
     }
 
     // パーセント計算
@@ -48,7 +58,7 @@ class AdminController extends Controller
         $region = "ap-northeast-1";
         $region_set = putenv('AWS_DEFAULT_REGION=' . $region);
         //計測開始時間
-        $start_time = date('Y-m-d',strtotime("-14 hour")).'T'.date('H:i:s',strtotime("-14 hour"));
+        $start_time = date('Y-m-d',strtotime("-15 hour")).'T'.date('H:i:s',strtotime("-15 hour"));
         //計測終了時間
         $end_time = date('Y-m-d',strtotime("-9 hour")).'T'.date('H:i:s',strtotime("-9 hour"));
         //計測間隔 例)600 = 10分
