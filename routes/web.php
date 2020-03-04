@@ -111,6 +111,8 @@ Route::group(['middleware' => 'auth'], function () {
         // music-upload
         Route::get('music_upload/','MusicUploadController@index')->name('music_upload');
         Route::post('music_upload/music_store','MusicUploadController@musicStore');
+        Route::put('music_upload/music_update','MusicUploadController@musicUpdate');
+        Route::put('music_upload/music_delete','MusicUploadController@musicDelete');
         Route::post('music_upload/genre_store','MusicUploadController@genreStore');
         Route::post('music_upload/artist_store','MusicUploadController@artistStore');
         // sales

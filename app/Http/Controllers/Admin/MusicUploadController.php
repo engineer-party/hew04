@@ -68,7 +68,7 @@ class MusicUploadController extends Controller
     getid3_lib::CopyTagsToComments($music_info);
     */
 
-    $remotefilename = 'https://leshu-firstbucket.s3-ap-northeast-1.amazonaws.com/'.$mp3_path;
+    $remotefilename = 'https://leshu-firstbucket.s3-ap-northeast-1.amazonaws.com/' . $mp3_path;
     if ($fp_remote = fopen($remotefilename, 'rb')) {
       $localtempfilename = @tempnam('/tmp', 'getID3');
       if ($fp_local = fopen($localtempfilename, 'wb')) {
@@ -164,5 +164,25 @@ class MusicUploadController extends Controller
     Storage::disk('s3')->put($storePath, (string) $image->encode(), 'public');
 
     return redirect()->route('music_upload')->with('message', 'アーティスト登録成功！');
+  }
+
+  public function musicUpdate(Request $request)
+  {
+    $music = Music::where('id', $request->id)->update([
+      'name'         => $request->name,
+      'price'        => $request->price,
+    ]);
+    return redirect()->route('music_upload')->with('message', 'music更新成功！');
+  }
+
+  public function musicDelete(Request $request)
+  {
+    /*
+    $music = Music::where('id', $request->id)->update([
+      'name'         => $request->name,
+      'price'        => $request->price,
+    ]);
+    */
+    return redirect()->route('music_upload')->with('message', 'music削除成功！');
   }
 }

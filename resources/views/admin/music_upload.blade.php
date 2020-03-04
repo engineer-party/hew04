@@ -51,7 +51,7 @@
           </div>
           <div class="form-group">
             <label>ジャンル</label>
-            <select id="0" class="custom-select" name="genres[]" @change="selectChange">
+            <select class="custom-select" name="genres[]" @change="selectChange">
               <option value="0">選択してください</option>
               @foreach($genres as $genre)
               <option value="{{ $genre->id }}">{{ $genre->name }}</option>
@@ -78,7 +78,8 @@
           </div>
           <label>音楽ファイル</label>
           <div class="custom-file mb-2">
-            <input type="file" class="custom-file-input" id="customMusicfile" name="files[]" @change="musicFileNameChange">
+            <input type="file" class="custom-file-input" id="customMusicfile" name="files[]"
+              @change="musicFileNameChange">
             <label class="custom-file-label" for="customMusicfile" data-browse="参照">ファイル選択...</label>
           </div>
           <label>画像ファイル</label>
@@ -104,21 +105,54 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($musics as $music)
+          @foreach($musics as $key => $music)
           <tr>
             <td>{{ $music->id }}</td>
             <td>{{ $artists[$music->artist_id - 1]->name }}</td>
             <td>{{ $music->name }}</td>
             <td>{{ $music->time }}</td>
             <td>{{ $music->price }}</td>
-            <td><button class="btn btn-primary">編集</button></td>
-            <td><button class="btn btn-danger">削除</button></td>
+            <td><button value="{{ $key }}" class="btn btn-primary modal_show" @click="editButton">編集</button></td>
+            <td><form method="post" action="{{ url("music_upload/music_delete") }}">@csrf @method('PUT')<input type="hidden" name="id" value="{{ $music->id }}"><button type="submit" class="btn btn-danger">削除</button></form></td>
           </tr>
+          <div class="modal my_modal" tabindex="-1" role="dialog" id="{{ $key }}">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">編集</h5>
+                  <button value="{{ $key }}" type="button" class="close" data-dismiss="modal" aria-label="閉じる"
+                    @click="closeButton">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div><!-- /.modal-header -->
+                <div class="modal-body">
+                  <form method="post" action="{{ url("music_upload/music_update") }}">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="id" value="{{ $music->id }}">
+                    <div class="form-group">
+                      <label for="曲名">曲名</label>
+                      <input id="曲名" class="form-control" type="text" name="name" value="{{ $music->name }}">
+                    </div>
+                    <div class="form-group">
+                      <label for="値段">値段</label>
+                      <input id="値段" class="form-control" type="text" name="price" value="{{ $music->price }}">
+                    </div>
+                  </div><!-- /.modal-body -->
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary modal-close">更新</button>
+                  </div><!-- /.modal-footer -->
+                </form>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
           @endforeach
         </tbody>
       </table>
     </div>
   </div>
+
+
 
   <div v-if="choice == 1">
     <div class="col-md-12">
@@ -158,7 +192,8 @@
     <div class="col-md-12">
       <div class="form-panel">
         <h1 class="mb-2 mt-2"><i class="fa fa-angle-right"></i> アーティスト登録</h1>
-        <form class="mb-2" method="post" action="{{ url('admin/music_upload/artist_store') }}" enctype="multipart/form-data">
+        <form class="mb-2" method="post" action="{{ url('admin/music_upload/artist_store') }}"
+          enctype="multipart/form-data">
           @csrf
           <div class="form-group">
             <label>アーティスト名</label>
@@ -249,6 +284,12 @@
         if(!this.selects.some(item => item === e.target.value) && e.target.value !== "0"){
           this.selects.splice(e.target.id,1,e.target.value);
         }
+      },
+      editButton(e){
+        document.getElementById(e.target.value).style.display = "block";
+      },
+      closeButton(e){
+        document.getElementById(e.target.value).style.display = "none";
       }
     }
   });
