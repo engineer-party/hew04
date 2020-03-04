@@ -48,7 +48,7 @@
       <li class="point-icon">P</li>
     </ul>
     <p class="pay-value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}</p>
-    <button class="btn back-btn" @click="downBuy(index)">戻る</button>
+    <button class="btn back-btn" @click="downBuy(index)">キャンセル</button>
     <form method="post" action="{{ url('point/charge') }}">
     @csrf
       <div is="script"

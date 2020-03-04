@@ -30,23 +30,7 @@
 </div>
 <!-- END -->
 
-<!-- キャンペーン -->
-<div class="campaign">
-  <button>
-    <h2 class="title">キャンペーンタイトル</h2>
-    <p class="detail">キャンペーン内容</p>
-  </button>
-</div>
-<!-- END -->
 
-<!-- キャンペーン -->
-<div class="campaign">
-  <button>
-    <h2 class="title">キャンペーンタイトル</h2>
-    <p class="detail">キャンペーン内容</p>
-  </button>
-</div>
-<!-- END -->
 
 
 @endsection
@@ -80,6 +64,7 @@
     width: 100%;
     height: 100vh;
     overflow-y: scroll;
+    background-color: #404040;
   }
   #app h1{
     display: none;
@@ -87,6 +72,9 @@
   #app .menu-trigger {
     top: 14px;
     left: 15px;
+  }
+  #playlist-link {
+    
   }
   #playlist-link button{
     background: none;
@@ -98,7 +86,10 @@
     text-align: left;
     width: 100%;
     height: 300px;
-    background-color: aqua;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url({{ asset('img/streaming-bg.png') }});
   }
   #playlist-link .title,
   .campaign .title{
@@ -114,13 +105,14 @@
   .campaign .detail{
     width: calc(100% - 20px);
     position: relative;
-    color: gray;
+    color: white;
     top: 70px;
     left: 20px;
     font-size: 0.7em;
     letter-spacing: 2px;
   }
-  .campaign button{
+  .campaign button,
+  campaign button{
     background: none;
     border: none;
     padding: 0;
@@ -130,11 +122,20 @@
     text-align: left;
     width: 100%;
     height: 300px;
-    background-color: blueviolet;
+  }
+  .type1 {
+    background-color: #f8a8c5;
+  }
+  .type2 {
+    background-color: #fbd160;
+  }
+  .type3 {
+    background-color: #de5e97;
   }
   #form::placeholder {
     color: white;
   }
+  
   
   #link-list li:nth-child(1){
     background: rgba(0,0,0,0.1);
