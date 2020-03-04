@@ -75,7 +75,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('point/charge', 'PointController@charge')->name('charge');
 
     // Music 4.music詳細
-    Route::get('music/detail/{music_id}', 'MusicController@index')->name('music');
+    Route::get('detail/music/{music_id}', 'MusicController@index')->name('music');
     Route::get('music/rtmp', 'MusicController@rtmp')->name('rtmp');
 
     // Hunt 5.ハント

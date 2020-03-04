@@ -33,10 +33,12 @@
 
       <!--繰り返し要素・アーティスト ※最初の4つ-->
       @foreach ($artists as $artist)
-      <div class="artist-content">
-        <div class="artist-img"><img src="{{ Storage::disk('s3')->url('image/artist/' . $artist->img_url) }}" alt=""></div>
-      <h3>{{ $artist->name }}</h3>
-      </div>
+      <a href="">
+        <div class="artist-content">
+          <div class="artist-img"><img src="{{ Storage::disk('s3')->url('image/artist/' . $artist->img_url) }}" alt=""></div>
+        <h3>{{ $artist->name }}</h3>
+        </div>
+      </a>
       @endforeach
       <!-- END -->
       </div>
@@ -58,13 +60,15 @@
         
         <!--繰り返し要素・曲 ※最初の5つ-->
         @foreach ($musics as $music)
-        <div class="music-content">
-          <p><img src="{{ Storage::disk('s3')->url('image/music/' . $music->img_url) }}" alt=""></p>
-          <ul>
-          <li class="title">{{ $music->name }}</li>
-          <li class="artist">{{ $music->artist()->first()->name }}</li>
-          </ul>
-        </div>
+        <a href="/detail/music/{{ $music->id }}">
+          <div class="music-content">
+            <p><img src="{{ Storage::disk('s3')->url('image/music/' . $music->img_url) }}" alt=""></p>
+            <ul>
+            <li class="title">{{ $music->name }}</li>
+            <li class="artist">{{ $music->artist()->first()->name }}</li>
+            </ul>
+          </div>
+        </a>
         @endforeach
         <!-- END -->    
       </div>
