@@ -35,8 +35,12 @@
   <label class="item.id">
     <input type="checkbox" :class="item.id" @click="buyEvent(item.id)" v-bind:value="item.value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}
   </label>
+  <transition name="fade">
+   <div class="point-buy-bg" v-if="bg"></div>
+    </transition>
   <transition :name="animate">
   <div class="point-buy" v-if="item.checked">
+  
     <h3>Hunc</h3>
     <ul>
       <li class="icon"></li>
@@ -44,7 +48,7 @@
       <li class="point-icon">P</li>
     </ul>
     <p class="pay-value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}</p>
-    <button class="btn back-btn" @click="item.checked = false">戻る</button>
+    <button class="btn back-btn" @click="downBuy(index)">戻る</button>
     <form method="post" action="{{ url('point/charge') }}">
     @csrf
       <div is="script"
@@ -84,11 +88,20 @@
         {id:6,checked:false,point:10000,value:10000,survice:3500}  //0.35  1.3  0.5
 
       ],
-      animate: 'bottom'
+      animate: 'bottom',
+      bg: false
     },
     methods: {
       buyEvent: function(index){
         this.values[index].checked = true;
+        this.bg = true;
+        this.values.splice();
+        console.log(this.values[index].checked);
+        console.log(index);
+      },
+      downBuy: function(index){
+        this.values[index].checked = false;
+        this.bg = false;
         this.values.splice();
         console.log(this.values[index].checked);
         console.log(index);
@@ -223,17 +236,16 @@
     bottom: 0;
     left: 0;
     background-color: white;
+    z-index: 2;
   }
-  .point .point-buy::before{
+  .point .point-buy-bg{
     width: 100%;
     height: 100vh;
     position: absolute;
-    top: -100vh;
+    top: 0;
     left: 0;
-/*    z-index: -1;*/
-    background: rgba(0,0,0,0.3);
-    display: block;
-    content: '';
+    z-index: 1;
+    background: rgba(0,0,0,0.2);
   }
   .point input{
     display: none;
@@ -318,6 +330,14 @@
 
 .bottom-enter, .bottom-leave-to {
   transform: translateX(0px) translateY(200vh);
+}
+  /* fade */
+.fade-enter-active, .fade-leave-active {
+  will-change: opacity;
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0
 }
 
 .stripe-button-el {
