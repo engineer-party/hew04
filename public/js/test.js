@@ -1,14 +1,14 @@
 let headOpen = false;
 let linkOpen = false;
 
-
+/*
 $(function(){
   audiojs.events.ready(function() {
     var as = audiojs.createAll();
   });
 });
+*/
 
-/*
 jQuery(function($){
     var clicked;  //クリックされた li 要素を格納する変数
     var a = audiojs.createAll({
@@ -43,7 +43,7 @@ jQuery(function($){
     audio.load(first);
     
     // プレイヤー（再生バー）と曲の情報は最初は非表示に  
-//    $('div.audiojs, div.track-details').css('display', 'none');
+    $('div.audiojs, div.track-details').css('display', 'none');
  
     //クリックされた曲をロードして再生
     $('ol li').click(function(e) {
@@ -51,12 +51,11 @@ jQuery(function($){
         e.preventDefault();
         $('div.track-details').html($(this).closest('li').text()).appendTo($(this).closest('div')).fadeIn('slow');
       
-//        $('div.audiojs, div.track-details').appendTo($(this).closest('div')).fadeIn('slow');
+        $('div.audiojs, div.track-details').appendTo($(this).closest('div')).fadeIn('slow');
          //プレイヤーをリストの直後に入れる場合
          //$('div.audiojs, div.track-details').insertAfter(next.closest('div').find('ol')).fadeIn('slow');
-//        $(this).addClass('playing').siblings().removeClass('playing');
+        $(this).addClass('playing').siblings().removeClass('playing');
         audio.load($('a', this).attr('data-src'));
         audio.play();
     });
 });
-*/
