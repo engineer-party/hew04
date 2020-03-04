@@ -94,11 +94,13 @@
       <table class="table table-striped table-advance table-hover">
         <thead>
           <tr>
-            <td>ID</td>
-            <td>アーティスト</td>
-            <td>曲名</td>
-            <td>長さ</td>
-            <td>値段</td>
+            <td scope="col-sm-1">ID</td>
+            <td scope="col-sm-2">アーティスト</td>
+            <td scope="col-sm-3">曲名</td>
+            <td scope="col-sm-2">長さ</td>
+            <td scope="col-sm-2">値段</td>
+            <td scope="col-sm-1"></td>
+            <td scope="col-sm-1"></td>
           </tr>
         </thead>
         <tbody>
@@ -109,6 +111,8 @@
             <td>{{ $music->name }}</td>
             <td>{{ $music->time }}</td>
             <td>{{ $music->price }}</td>
+            <td><button class="btn btn-primary">編集</button></td>
+            <td><button class="btn btn-danger">削除</button></td>
           </tr>
           @endforeach
         </tbody>
