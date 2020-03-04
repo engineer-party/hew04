@@ -3,20 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class AwsTestController extends Controller
 {
   public function index()
   {
+
+  
     $region = "ap-northeast-1";
     $region_set = putenv('AWS_DEFAULT_REGION=' . $region);
 
     //計測開始時間
-    $start_time = '2020-03-01T00:00:00';
+    $start_time = '2020-03-02T00:00:00Z';
     //計測終了時間
-    $end_time = '2020-03-01T03:00:00';
+    $end_time = '2020-03-03T00:00:00Z';
     //計測間隔 例)600 = 10分
-    $period = '600';
+    $period = '1800';
     //ローカルでも動きます。
     if (app()->isLocal()) {
       $cmd = '"C:\Program Files\Amazon\AWSCLI\aws.exe" cloudwatch get-metric-statistics --metric-name CPUUtilization --start-time '.$start_time.' --end-time '.$end_time.' --period '.$period.' --namespace AWS/EC2 --statistics Average --dimensions Name=InstanceId,Value=i-0b73d4b0c1fea8a15 --query "sort_by(Datapoints,&Timestamp)[*]" 2>&1';
@@ -46,8 +49,5 @@ class AwsTestController extends Controller
       }
       $val_new[$cnt][strstr($val,":",true)] = ltrim(strstr($val,":"),":");
     }
-
-    //結果発表～(cv浜田雅功)
-    dd($val_new);
   }
 }
