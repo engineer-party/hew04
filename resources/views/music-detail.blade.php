@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 <!-- head -->
-@section('title', 'Mypage')
+@section('title', 'MusicDeail')
 @section('style')
 <link rel="stylesheet" href="{{asset('css/mypage.css')}}" />
 <link rel="stylesheet" href="{{asset('css/link.css')}}" />
@@ -26,12 +26,12 @@
   
   <div class="text">
     <ul>
-      <li><span class="value">I LOVE ROCK'N ROLL</span><br><span class="text-in">タイトル</span></li>
-      <li><span class="value">Joan Jett</span><br><span class="text-in">アーティスト</span></li>
-      <li><span class="value">3:36</span><br><span class="text-in">再生時間</span></li>
+    <li><span class="value">{{ $music->name }}</span><br><span class="text-in">タイトル</span></li>
+    <li><span class="value">{{ $music->artist()->first()->name }}</span><br><span class="text-in">アーティスト</span></li>
+    <li><span class="value">{{ substr($music->time, 0, 5) }}</span><br><span class="text-in">再生時間</span></li>
     </ul>
   </div>
-  <button class="btn buy-btn"><span class="point-icon">P</span>250</button>
+<button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
   </div>
 </article>
 @endsection
@@ -61,13 +61,17 @@
   #app .search{
     display: none;
   }
+
+  h1{
+    display: none;
+  }
   
   
   .img {
-    background-image: url({{ asset('img/joan-jett.jpg') }});
+    background-image: url({{ $music->img_url }});
   }
   .img::before{
-    content: "I LOVE ROCK'N ROLL";
+    content: "{{ $music->name }}";
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
