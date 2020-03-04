@@ -62,9 +62,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('userinformation/', 'UserInformationController@index')->name('information');
     Route::put('mypage/update','MyPageController@update')->name('update');
 
-    // PlayList 2.プレイリスト
-    Route::get('playlist/', 'PlaylistController@index')->name('playlist');
-
     // Search 3.検索・購入
     Route::post('search/', 'SearchController@index')->name('search');
     Route::get('search/genre/{genre_id}', 'SearchController@genre')->name('search');

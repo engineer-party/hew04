@@ -17,9 +17,11 @@
     <div class="row mt">
       <div class="col-lg-12">
         <div class="content-panel" style=" margin-top: -45px;">
-        <h4><i class="fa fa-angle-right"></i> サーバー稼働チャート <span style="font-size:0.9em;">({{ date('m月d日H時i分',strtotime("-24 hour")). '～' . date('m月d日H時i分',strtotime("-30 minute")) }})</span></h4>
+        <h4><i class="fa fa-angle-right"></i> サーバー稼働チャート 
+          <span style="font-size:0.9em;">({{ date('m月d日H時i分',strtotime("-6 hour")). '~' . date('m月d日H時i分',strtotime("-10 minute")) }})</span>
+        </h4>
           <div class="panel-body text-center" id="canvasBox">
-            <canvas id="line" height="300" width="800" style=" display: block;"></canvas>
+            <canvas id="line" height="300" width="800" style=" text-align: center;"></canvas>
           </div>
         </div>
       </div>
@@ -31,9 +33,6 @@
             "{{ date('G:i',strtotime($val['Timestamp'])) }}",
           @endforeach
         ],
-                // foreach ($val_new as $val){
-        //   var_dump(date('G:i',strtotime($val['Timestamp'])));
-        // }
         datasets : [
           {
               fillColor : "rgba(151,187,205,0.5)",
@@ -59,16 +58,16 @@
       <div class="col-md-4 col-sm-4 mb">
         <div class="grey-panel pn donut-chart">
           <div class="grey-header">
-            <h5>ポイント購入額</h5>
+            <h5>ポイントサービス率</h5>
           </div>
           <canvas id="serverstatus01" height="120" width="120"></canvas>
           <script>
             var doughnutData = [{
-                value: 1500,
+                value: {{ $buyPointGraph['totalBuyPointPrice'] }},
                 color: "#FF6B6B"
               },
               {
-                value: 900,
+                value: {{ $buyPointGraph['totalBuyPoint'] - $buyPointGraph['totalBuyPointPrice'] }},
                 color: "#fdfdfd"
               }
             ];
@@ -76,10 +75,10 @@
           </script>
           <div class="row">
             <div class="col-sm-6 col-xs-6 goleft">
-              <p>ポイント内<br/>支払い割合:</p>
+              <p>サービス割合 :</p>
             </div>
             <div class="col-sm-6 col-xs-6">
-              <h2>21%</h2>
+              <h2>{{ $buyPointGraph['buyPointPar'] }}%</h2>
             </div>
           </div>
         </div>
@@ -121,12 +120,21 @@
         <!-- REVENUE PANEL -->
         <div class="green-panel pn">
           <div class="green-header">
-            <h5>REVENUE</h5>
+            <h5>{{ date('m月d日',strtotime("-7 day")) .'~'. date('m月d日')}}の売上額</h5>
           </div>
           <div class="chart mt">
-            <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"></div>
+            <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4"
+              data-data="[
+                @foreach ($days as $day)
+                  {{ $day }}
+                  @if (!$loop->last)
+                    ,
+                  @endif
+                @endforeach 
+              ]">
+            </div>
           </div>
-          <p class="mt"><b>$ 17,980</b><br/>Month Income</p>
+          <p class="mt"><b>¥ {{ number_format(array_sum($days)) }}</b><br/>1週間の売上総額</p>
         </div>
       </div>
       <!-- /col-md-4 -->
