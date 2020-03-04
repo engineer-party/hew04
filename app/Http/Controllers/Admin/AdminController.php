@@ -6,14 +6,22 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\BuyMusic;
+use App\Models\BuyPoint;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        // AWSグラフ
+        // AWSサーバー稼働率 チャート
         $vals = $this->awsGet();
-        // Point OR Cash 円グラフ
+        // ポイントキャッシュ割合 割合グラフ
+        // $buyPoints = BuyPoint::All();
+        // $buyPointGraph = [
+
+        // ]
+        // $totalBuyPointPrice = $buyPoints->sum('price');
+        // $totalBuyPoint = $totalBuyPointPrice + $buyPoints->sum('point');
+        // 支払方法割合 円グラフ
         $buyMusic = BuyMusic::All();
         $totalPoint = $buyMusic->sum('point');
         $totalCash = $buyMusic->sum('price');
@@ -40,11 +48,11 @@ class AdminController extends Controller
         $region = "ap-northeast-1";
         $region_set = putenv('AWS_DEFAULT_REGION=' . $region);
         //計測開始時間
-        $start_time = date('Y-m-d',strtotime("-33 hour")).'T'.date('H:i:s',strtotime("-33 hour"));
+        $start_time = date('Y-m-d',strtotime("-14 hour")).'T'.date('H:i:s',strtotime("-14 hour"));
         //計測終了時間
         $end_time = date('Y-m-d',strtotime("-9 hour")).'T'.date('H:i:s',strtotime("-9 hour"));
         //計測間隔 例)600 = 10分
-        $period = '1800';
+        $period = '600';
         //ローカルでも動きます。
         if (app()->isLocal()) {
         $cmd = '"C:\Program Files\Amazon\AWSCLI\aws.exe" cloudwatch get-metric-statistics --metric-name CPUUtilization --start-time '.$start_time.' --end-time '.$end_time.' --period '.$period.' --namespace AWS/EC2 --statistics Average --dimensions Name=InstanceId,Value=i-0b73d4b0c1fea8a15 --query "sort_by(Datapoints,&Timestamp)[*]" 2>&1';
