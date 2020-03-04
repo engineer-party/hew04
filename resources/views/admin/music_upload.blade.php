@@ -157,14 +157,6 @@
         <form class="mb-2" method="post" action="{{ url('admin/music_upload/artist_store') }}" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
-            <label>ジャンル</label>
-            <select class="custom-select" name="genre">
-              @foreach($genres as $genre)
-              <option value="{{ $genre->id }}">{{ $genre->name }}</option>
-              @endforeach
-            </select>
-          </div>
-          <div class="form-group">
             <label>アーティスト名</label>
             <input class="form-control" type="text" name="name" value="{{ old('name') }}">
           </div>

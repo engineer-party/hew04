@@ -148,7 +148,6 @@ class MusicUploadController extends Controller
 
     $filename = 'artist_' . $id . '.' . $extension;
     $artist = Artist::create([
-      'genre_id'    => $request->genre,
       'name'        => $request->name,
       'description' => $request->detail,
       'img_url'     => $filename,

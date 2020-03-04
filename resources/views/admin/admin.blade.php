@@ -14,64 +14,60 @@
 @section('content')
 <div class="row">
   <div class="col-lg-9 main-chart">
-    <!--CUSTOM CHART START -->
-    <div class="border-head">
-      <h3>USER VISITS</h3>
-    </div>
-    <div class="custom-bar-chart">
-      <ul class="y-axis">
-        <li><span>10.000</span></li>
-        <li><span>8.000</span></li>
-        <li><span>6.000</span></li>
-        <li><span>4.000</span></li>
-        <li><span>2.000</span></li>
-        <li><span>0</span></li>
-      </ul>
-      <div class="bar">
-        <div class="title">JAN</div>
-        <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">100%</div>
-      </div>
-      <div class="bar ">
-        <div class="title">FEB</div>
-        <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
-      </div>
-      <div class="bar ">
-        <div class="title">MAR</div>
-        <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
-      </div>
-      <div class="bar ">
-        <div class="title">APR</div>
-        <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
-      </div>
-      <div class="bar">
-        <div class="title">MAY</div>
-        <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
-      </div>
-      <div class="bar ">
-        <div class="title">JUN</div>
-        <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
-      </div>
-      <div class="bar">
-        <div class="title">JUL</div>
-        <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+    <div class="row mt">
+      <div class="col-lg-12">
+        <div class="content-panel" style=" margin-top: -45px;">
+        <h4><i class="fa fa-angle-right"></i> サーバー稼働チャート 
+          <span style="font-size:0.9em;">({{ date('m月d日H時i分',strtotime("-6 hour")). '~' . date('m月d日H時i分',strtotime("-10 minute")) }})</span>
+        </h4>
+          <div class="panel-body text-center" id="canvasBox">
+            <canvas id="line" height="300" width="800" style=" text-align: center;"></canvas>
+          </div>
+        </div>
       </div>
     </div>
+    <script>
+      var lineChartData = {
+        labels : [
+          @foreach ($vals as $val)
+            "{{ date('G:i',strtotime($val['Timestamp'])) }}",
+          @endforeach
+        ],
+        datasets : [
+          {
+              fillColor : "rgba(151,187,205,0.5)",
+              strokeColor : "rgba(151,187,205,1)",
+              pointColor : "rgba(151,187,205,1)",
+              pointStrokeColor : "#fff",
+              data : [
+                @foreach ($vals as $val)
+                  {{ round($val['Average'], 3) }},
+                @endforeach
+              ]
+          }
+        ]
+
+      };
+
+      new Chart(document.getElementById("line").getContext("2d")).Line(lineChartData);
+
+    </script>
     <!--custom chart end-->
     <div class="row mt">
       <!-- SERVER STATUS PANELS -->
       <div class="col-md-4 col-sm-4 mb">
         <div class="grey-panel pn donut-chart">
           <div class="grey-header">
-            <h5>SERVER LOAD</h5>
+            <h5>ポイントサービス率</h5>
           </div>
           <canvas id="serverstatus01" height="120" width="120"></canvas>
           <script>
             var doughnutData = [{
-                value: 70,
+                value: {{ $buyPointGraph['totalBuyPointPrice'] }},
                 color: "#FF6B6B"
               },
               {
-                value: 30,
+                value: {{ $buyPointGraph['totalBuyPoint'] - $buyPointGraph['totalBuyPointPrice'] }},
                 color: "#fdfdfd"
               }
             ];
@@ -79,10 +75,10 @@
           </script>
           <div class="row">
             <div class="col-sm-6 col-xs-6 goleft">
-              <p>Usage<br/>Increase:</p>
+              <p>サービス割合 :</p>
             </div>
             <div class="col-sm-6 col-xs-6">
-              <h2>21%</h2>
+              <h2>{{ $buyPointGraph['buyPointPar'] }}%</h2>
             </div>
           </div>
         </div>
@@ -124,12 +120,21 @@
         <!-- REVENUE PANEL -->
         <div class="green-panel pn">
           <div class="green-header">
-            <h5>REVENUE</h5>
+            <h5>{{ date('m月d日',strtotime("-7 day")) .'~'. date('m月d日')}}の売上額</h5>
           </div>
           <div class="chart mt">
-            <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"></div>
+            <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4"
+              data-data="[
+                @foreach ($days as $day)
+                  {{ $day }}
+                  @if (!$loop->last)
+                    ,
+                  @endif
+                @endforeach 
+              ]">
+            </div>
           </div>
-          <p class="mt"><b>$ 17,980</b><br/>Month Income</p>
+          <p class="mt"><b>¥ {{ number_format(array_sum($days)) }}</b><br/>1週間の売上総額</p>
         </div>
       </div>
       <!-- /col-md-4 -->
@@ -161,9 +166,7 @@
   <!-- /col-lg-3 -->
 </div>
 <!-- /row -->
-<script>
-      
-</script>
+
 @endsection
 
 <!-- footer -->
