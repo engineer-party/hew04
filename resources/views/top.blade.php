@@ -103,7 +103,7 @@
   .campaign ul{
     position: relative;
     top: 60%;
-    left: 20px;
+    margin-left: 20px;
   }
   #playlist-link .title,
   .campaign .title{
