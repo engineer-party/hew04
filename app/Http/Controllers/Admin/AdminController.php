@@ -65,11 +65,11 @@ class AdminController extends Controller
         $period = '600';
         //ローカルでも動きます。
         if (app()->isLocal()) {
-        $cmd = '"C:\Program Files\Amazon\AWSCLI\aws.exe" cloudwatch get-metric-statistics --metric-name CPUUtilization --start-time '.$start_time.' --end-time '.$end_time.' --period '.$period.' --namespace AWS/EC2 --statistics Average --dimensions Name=InstanceId,Value=i-0b73d4b0c1fea8a15 --query "sort_by(Datapoints,&Timestamp)[*]" 2>&1';
+        $cmd = '"C:\Program Files\Amazon\AWSCLI\aws.exe" cloudwatch get-metric-statistics --metric-name CPUUtilization --start-time '.$start_time.' --end-time '.$end_time.' --period '.$period.' --namespace AWS/EC2 --statistics Average --dimensions Name=InstanceId,Value=i-0359d4d97c4e4c85f --query "sort_by(Datapoints,&Timestamp)[*]" 2>&1';
         exec($cmd, $val_array, $var);
         mb_convert_variables('UTF-8','SJIS-win',$val);
         } else {
-        $cmd = '/usr/bin/aws cloudwatch get-metric-statistics --metric-name CPUUtilization --start-time '.$start_time.' --end-time '.$end_time.' --period '.$period.' --namespace AWS/EC2 --statistics Average --dimensions Name=InstanceId,Value=i-0b73d4b0c1fea8a15 --query "sort_by(Datapoints,&Timestamp)[*]" 2>&1';
+        $cmd = '/usr/bin/aws cloudwatch get-metric-statistics --metric-name CPUUtilization --start-time '.$start_time.' --end-time '.$end_time.' --period '.$period.' --namespace AWS/EC2 --statistics Average --dimensions Name=InstanceId,Value=i-0359d4d97c4e4c85f --query "sort_by(Datapoints,&Timestamp)[*]" 2>&1';
         exec($cmd, $val_array, $var);
         }
 
