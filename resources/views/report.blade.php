@@ -17,6 +17,7 @@
 
 <!-- content -->
 @section('content')
+<div id="contents">
 <h1 id="title">通報フォーム</h1>
 @if(session('message'))
     <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
@@ -48,6 +49,7 @@
 
     <a href=""><button type="submit" class="btn btn-danger">通報する</button></a>
 </form>
+</div>
 <script>
   let headOpen = false;
 </script>
@@ -125,5 +127,14 @@
     color: white;
     font-size: 1.2em;
     letter-spacing: 2px;
+  }
+  #contents {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    top: 0;
+    left: 0;
+    overflow-y: scroll;
+    padding-top: 100px;
   }
 </style>
