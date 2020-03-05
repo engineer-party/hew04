@@ -84,6 +84,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Hunt 5.ハント
     Route::get('hunt/', 'HuntController@index')->name('hunt');
+  
+    //配信
+    Route::get('streaming/', 'StreamingController@index')->name('streaming');
 
     // 音楽ライブラリ
     Route::get('library/', 'LibraryController@index')->name('library');

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="{{asset('css/music.css',$is_production)}}" />
 
 
-<script src="{{ asset('js/library.js',$is_production) }}" defer type="application/javascript"></script>
+<!--<script src="{{ asset('js/library.js',$is_production) }}" defer type="application/javascript"></script>-->
 <!--<script src="{{ asset('js/test.js',$is_production) }}" defer type="application/javascript"></script>-->
 <script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 
@@ -84,6 +84,8 @@
 </div>
 
 <script>
+  let headOpen = false;
+  
 let test = new Vue({
 el: '#contents',
 data: function () {

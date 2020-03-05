@@ -57,7 +57,7 @@
           <ul>
             <li><a href="{{ action('TopController@index') }}"><span class="link-title">ホーム</span></a></li>
             <li><a href="{{ action('HuntController@index') }}"><span class="link-title">ハント</span></a></li>
-            <li><a><span class="link-title">配信</span></a></li>
+            <li><a href="{{ action('StreamingController@index') }}"><span class="link-title">配信</span></a></li>
             <li><a href="{{ action('LibraryController@index') }}"><span class="link-title">音楽ライブラリ</span></a></li>
           </ul>
         </section>
