@@ -4,10 +4,10 @@
 @section('title', 'SignupForm')
 @section('style')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" href="{{asset('css/bootstrap-social-gh-pages/bootstrap-social.css')}}" />
-<link rel="stylesheet" href="{{asset('css/flame.css')}}" />
-<link rel="stylesheet" href="{{asset('css/login_header.css')}}" />
-<link rel="stylesheet" href="{{asset('css/signupForm.css')}}" />
+<link rel="stylesheet" href="{{asset('css/bootstrap-social-gh-pages/bootstrap-social.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/flame.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/login_header.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/signupForm.css',$is_production)}}" />
 @endsection
 @include('common.head')
 
@@ -17,7 +17,7 @@
 <!-- content -->
 @section('content')
 <div id="content">
-<form action="{{ url('/signup/form') }}" method="post">
+<form action="{{ url('/signup/form',null,$is_production) }}" method="post">
     {{ csrf_field() }}
     @if($errors)
         <p>{{$errors->first('postal_code')}}</p>

@@ -1,17 +1,17 @@
 
 <button class="play-btn"></button>
 <div class="playlist-img">
-  <img src="{{ asset('img/cheep-trick.jpg') }}" alt="">
-  <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
-  <img src="{{ asset('img/plus.jpg') }}" alt="">
-  <img src="{{ asset('img/sex-pistols.jpg') }}" alt="">
+  <img src="{{ asset('img/cheep-trick.jpg',$is_production) }}" alt="">
+  <img src="{{ asset('img/joan-jett.jpg',$is_production) }}" alt="">
+  <img src="{{ asset('img/plus.jpg',$is_production) }}" alt="">
+  <img src="{{ asset('img/sex-pistols.jpg',$is_production) }}" alt="">
 </div>
 <div class="playlist-value">
   
   <h2>Rock-HOT</h2>
   <div class="playlist-info">
     <div class="info">
-      <p><img src="{{ asset('img/joan-jett.jpg') }}" alt=""></p>
+      <p><img src="{{ asset('img/joan-jett.jpg',$is_production) }}" alt=""></p>
       <ul>
         <li>プレイリスト</li>
         <li><span>20</span>曲</li>
@@ -27,7 +27,7 @@
     <draggable tag="div" v-model="items" :options="{animation:300, handle:'.musicIcon'}">
       <div class="music-content" v-for="item in items" :key="item">
         <div class="musicIcon"></div>
-        <p><img src="{{ asset('img/sex-pistols.jpg') }}" alt=""></p>
+        <p><img src="{{ asset('img/sex-pistols.jpg',$is_production) }}" alt=""></p>
         <ul>
           <li class="title">@{{ item.title }}</li>
           <li class="artist">@{{ item.artist }}・@{{ item.time }}</li>

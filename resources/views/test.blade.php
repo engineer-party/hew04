@@ -3,12 +3,12 @@
 <!-- head -->
 @section('title', 'Hunt')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/link.css')}}" />
-<link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
+<link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
 
-<script src="{{ asset('js/audio.min.js') }}" defer></script>
-<script src="{{ asset('js/test.js') }}" defer></script>
-<script src="{{ asset('js/hbg.js') }}" defer></script>
+<script src="{{ asset('js/audio.min.js',$is_production) }}" defer></script>
+<script src="{{ asset('js/test.js',$is_production) }}" defer></script>
+<script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 @endsection
 @include('common.head')
 
@@ -23,9 +23,9 @@
 
 <div class="cd">
     <ol>
-        <li><a data-src="{{ asset('img/mp3/01.mp3') }}">Song 1</a></li>
-        <li><a data-src="{{ asset('img/mp3/02.mp3') }}">Song 2</a></li>
-        <li class="last"><a data-src="{{ asset('img/mp3/03.mp3') }}">Song 3</a></li>
+        <li><a data-src="{{ asset('img/mp3/01.mp3',$is_production) }}">Song 1</a></li>
+        <li><a data-src="{{ asset('img/mp3/02.mp3',$is_production) }}">Song 2</a></li>
+        <li class="last"><a data-src="{{ asset('img/mp3/03.mp3',$is_production) }}">Song 3</a></li>
     </ol>
 </div><!-- end of .cd -->
 
@@ -74,14 +74,14 @@
     height: 40px;
     background-size: cover;
     background-position: center;
-    background-image: url({{ asset('img/play-icon.png') }});
+    background-image: url({{ asset('img/play-icon.png',$is_production) }});
   }
   .audiojs .pause{
     width: 40px;
     height: 40px;
     background-size: cover;
     background-position: center;
-    background-image: url({{ asset('img/pause-icon.png') }});
+    background-image: url({{ asset('img/pause-icon.png',$is_production) }});
   }
   .audiojs .loading {
     width: 50px;
@@ -153,16 +153,16 @@
   }
   
   #link-list li:nth-child(1)::before{
-    background-image: url({{ asset('img/home.png') }});
+    background-image: url({{ asset('img/home.png',$is_production) }});
   }
   #link-list li:nth-child(2)::before{
-    background-image: url({{ asset('img/hunt-active.png') }});
+    background-image: url({{ asset('img/hunt-active.png',$is_production) }});
   }
   #link-list li:nth-child(3)::before{
-    background-image: url({{ asset('img/streaming.png') }});
+    background-image: url({{ asset('img/streaming.png',$is_production) }});
   }
   #link-list li:nth-child(4)::before{
-    background-image: url({{ asset('img/playlist.png') }});
+    background-image: url({{ asset('img/playlist.png',$is_production) }});
   }
   #link-list li:nth-child(2) {
     background: rgba(0, 0, 0, 0.1);

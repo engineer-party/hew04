@@ -3,14 +3,14 @@
 <!-- head -->
 @section('title', 'PlaylistMusics')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/link.css')}}" />
-<link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
-<link rel="stylesheet" href="{{asset('css/playlist-in.css')}}" />
-<link rel="stylesheet" href="{{asset('css/audio.css')}}" />
+<link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/playlist-in.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/audio.css',$is_production)}}" />
 
-<script src="{{ asset('js/audio.min.js') }}"></script>
-<script src="{{ asset('js/library.js') }}" defer type="application/javascript"></script>
-<script src="{{ asset('js/hbg.js') }}" defer></script>
+<script src="{{ asset('js/audio.min.js',$is_production) }}"></script>
+<script src="{{ asset('js/library.js',$is_production) }}" defer type="application/javascript"></script>
+<script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 
 @endsection
 @include('common.head')
@@ -52,7 +52,7 @@
   <div class="play-lists">
     @foreach ($musics as $music)
       <div class="music-content">
-<!--       <a data-src="{{ asset('img/mp3/03.mp3') }}">-->
+<!--       <a data-src="{{ asset('img/mp3/03.mp3',$is_production) }}">-->
         <p><img src="{{ Storage::disk('s3')->url('image/music/' . $music->img_url) }}" alt=""></p>
         <ul>
         <li class="title">{{ $music->name }}</li>
@@ -67,17 +67,17 @@
   
   <div class="cd">
     <ol>
-        <li><a data-src="{{ asset('img/mp3/01.mp3') }}">
+        <li><a data-src="{{ asset('img/mp3/01.mp3',$is_production) }}">
           <div class="infomate">
-            <img src="{{ asset('img/joan-jett.jpg') }}">
+            <img src="{{ asset('img/joan-jett.jpg',$is_production) }}">
             <ul>
               <li>i love</li>
               <li>joan jett</li>
             </ul>
           </div>
         </a></li>
-        <li><a data-src="{{ asset('img/mp3/02.mp3') }}"></a></li>
-        <li class="last"><a data-src="{{ asset('img/mp3/03.mp3') }}"></a></li>
+        <li><a data-src="{{ asset('img/mp3/02.mp3',$is_production) }}"></a></li>
+        <li class="last"><a data-src="{{ asset('img/mp3/03.mp3',$is_production) }}"></a></li>
     </ol>
   </div><!-- end of .cd -->
 
@@ -142,19 +142,19 @@
   }
 
   #link-list li:nth-child(1)::before {
-    background-image: url({{ asset('img/home.png')}});
+    background-image: url({{ asset('img/home.png',$is_production)}});
   }
   
   #link-list li:nth-child(2)::before {
-    background-image: url({{ asset('img/hunt.png')}});
+    background-image: url({{ asset('img/hunt.png',$is_production)}});
   }
   
   #link-list li:nth-child(3)::before {
-    background-image: url({{ asset('img/streaming.png')}});
+    background-image: url({{ asset('img/streaming.png',$is_production)}});
   }
   
   #link-list li:nth-child(4)::before {
-    background-image: url({{ asset('img/playlist-active.png')}});
+    background-image: url({{ asset('img/playlist-active.png',$is_production)}});
   }
   
   #app .search{

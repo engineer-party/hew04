@@ -3,13 +3,13 @@
 <!-- head -->
 @section('title', 'Top')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/top.css')}}" />
-<link rel="stylesheet" href="{{asset('css/top-header.css')}}" />
-<link rel="stylesheet" href="{{asset('css/link.css')}}" />
-<link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
+<link rel="stylesheet" href="{{asset('css/top.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/top-header.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
 
-<script src="{{ asset('js/top.js') }}" defer></script>
-<script src="{{ asset('js/hbg.js') }}" defer></script>
+<script src="{{ asset('js/top.js',$is_production) }}" defer></script>
+<script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 
 @endsection
 @include('common.head')
@@ -89,7 +89,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url({{ asset('img/streaming-bg.png') }});
+    background-image: url({{ asset('img/streaming-bg.png',$is_production) }});
   }
   #playlist-link .title,
   .campaign .title{
@@ -144,16 +144,16 @@
     color: #ff5757;
   }
   #link-list li:nth-child(1)::before{
-    background-image: url({{ asset('img/home-active.png') }});
+    background-image: url({{ asset('img/home-active.png',$is_production) }});
   }
   #link-list li:nth-child(2)::before{
-    background-image: url({{ asset('img/hunt.png') }});
+    background-image: url({{ asset('img/hunt.png',$is_production) }});
   }
   #link-list li:nth-child(3)::before{
-    background-image: url({{ asset('img/streaming.png') }});
+    background-image: url({{ asset('img/streaming.png',$is_production) }});
   }
   #link-list li:nth-child(4)::before{
-    background-image: url({{ asset('img/playlist.png') }});
+    background-image: url({{ asset('img/playlist.png',$is_production) }});
   }
   
 /*-----transition-----*/
