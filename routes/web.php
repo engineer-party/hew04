@@ -80,7 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Music 4.music詳細
     Route::get('detail/music/{music_id}', 'MusicController@index')->name('music');
-    Route::post('detail/music/{music_id}/buy', 'MusicController@musicBuy')->name('music_buy');
+    Route::post('detail/music/buy_point', 'MusicController@musicBuyPoint')->name('music_buy_point');
+    Route::post('detail/music/buy', 'MusicController@musicBuy')->name('music_buy');
     Route::get('music/rtmp', 'MusicController@rtmp')->name('rtmp');
 
     // Hunt 5.ハント

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Campaign;
 use App\Models\Music;
+use App\Models\User;
+use App\Models\BuyMusic;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
@@ -36,7 +38,31 @@ class MusicController extends Controller
         return view('music-detail',compact('music','point','image_path'));
     }
 
-    public function musicBuy(){
+    public function musicBuyPoint(Request $request){
+      try {
+
+        $point = Auth::user()->point - $request->value;
+
+        User::where('id',Auth::user()->id)->update([
+          'point' => $point,
+        ]);
+
+        $buy_music = new BuyMusic;
+        $buy_music->fill([
+          'user_id'  => Auth::user()->id,
+          'music_id' => $request->id,
+          'price'    => 0,
+          'point'    => $request->value,
+        ]);
+        $buy_music->save();
+
+        return redirect('detail/music/'.$request->id)->with('message', '購入完了');
+      } catch (\Throwable $ex) {
+        return $ex->getMessage();
+      }
+    }
+
+    public function musicBuy($music_id,Request $request){
     }
 
 
