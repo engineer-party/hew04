@@ -46,23 +46,50 @@ class MusicUploadController extends Controller
     $mp3 = new MpegAudio();
 
     //一旦ローカルに保存
-    $request->file('files')[0]->storeAs('public/music/', $mp3_file_name);
-    $request->file('files')[1]->storeAs('public/image/music/', $img_file_name);
-    $mp3->fromFile('storage/music/'.$mp3_file_name)->trim(10, 30)->saveFile('storage/sample/sample_'.$mp3_file_name);
-
-    //mp3から再生時間の取得
-    $getID3 = new getID3();
-    $getID3->setOption(array('encoding' => 'UTF-8'));
-    $music_info = $getID3->analyze('storage/music/' . $mp3_file_name);
-    getid3_lib::CopyTagsToComments($music_info);
+    //$request->file('files')[0]->storeAs('public/music/', $mp3_file_name);
 
     $id = Music::orderby('id', 'desc')->first()->id + 1;
+
+    //S3のパス
+    $mp3_storePath = $id . "." . $mp3_extension;
+    $img_storePath = "image/music/" . $id . "." . $img_extension;
+    $sample_storePath = "music/sample/sample_" . $id . "." . $mp3_extension;
+
+    //S3にぶち込む
+    $mp3_path = Storage::disk('s3')->putFileAs('music', $mp3_file, $mp3_storePath, 'public');
+
+    //dd($mp3_path);
+
+    //mp3から再生時間の取得
+    /*
+    $getID3 = new getID3();
+    $getID3->setOption(array('encoding' => 'UTF-8'));
+    $music_info = $getID3->analyze('https://leshu-firstbucket.s3-ap-northeast-1.amazonaws.com/'.$mp3_path);
+    getid3_lib::CopyTagsToComments($music_info);
+    */
+
+    $remotefilename = 'https://leshu-firstbucket.s3-ap-northeast-1.amazonaws.com/'.$mp3_path;
+    if ($fp_remote = fopen($remotefilename, 'rb')) {
+      $localtempfilename = @tempnam('/tmp', 'getID3');
+      if ($fp_local = fopen($localtempfilename, 'wb')) {
+        while ($buffer = fread($fp_remote, 8192)) {
+          fwrite($fp_local, $buffer);
+        }
+        fclose($fp_local);
+        // Initialize getID3 engine
+        $getID3 = new getID3;
+        $ThisFileInfo = $getID3->analyze($localtempfilename);
+        // Delete temporary file
+        unlink($localtempfilename);
+      }
+      fclose($fp_remote);
+    }
 
     //DBにぶち込む
     $music = Music::create([
       'artist_id'    => $request->artist,
       'name'         => $request->name,
-      'time'         => $music_info['playtime_string'],
+      'time'         => $ThisFileInfo['playtime_string'],
       'price'        => $request->price,
       'img_url'      => $id . "." . $img_extension,
       'music_url'    => $id . "." . $mp3_extension,
@@ -78,25 +105,26 @@ class MusicUploadController extends Controller
       $genre_music->save();
     }
 
-    //S3のパス
-    $mp3_storePath = "music/" . $music->id . "." . $mp3_extension;
-    $img_storePath = "image/music/" . $music->id . "." . $img_extension;
-    $sample_storePath = "music/sample/sample_" . $music->id . "." . $mp3_extension;
-
     //一旦ローカルに上げたファイルの読み込み
-    $mp3_storefile = Storage::get('public/music', $mp3_file_name);
-    $img_storefile = Storage::get('public/image/music/', $img_file_name);
-    $sample_storefile = Storage::get('public/sample/sample_'.$mp3_file_name);
+    //$mp3_storefile = Storage::get('public/music', $mp3_file_name);
 
-    //S3にぶち込む
-    Storage::disk('s3')->put($mp3_storePath, $mp3_storefile, 'public');
-    Storage::disk('s3')->put($img_storePath, $img_storefile, 'public');
+    // 画像を横幅は300px、縦幅はアスペクト比維持の自動サイズへリサイズ
+    $image = Image::make($img_file)
+      ->resize(300, null, function ($constraint) {
+        $constraint->aspectRatio();
+      });
+
+    Storage::disk('s3')->put($img_storePath, (string) $image->encode(), 'public');
+
+    $mp3->fromFile($remotefilename)->trim(10, 30)->saveFile('storage/sample/sample_' . $mp3_file_name);
+
+    $sample_storefile = Storage::get('public/sample/sample_' . $mp3_file_name);
+
     Storage::disk('s3')->put($sample_storePath, $sample_storefile, 'public');
 
     //一旦ローカルに上げたファイルの削除
-    File::delete('storage/music/' . $mp3_file_name);
-    File::delete('storage/image/music/' . $img_file_name);
-    File::delete('storage/sample/sample_' . $mp3_file_name);
+    //File::delete('storage/music/' . $mp3_file_name);
+    //File::delete('storage/sample/sample_' . $mp3_file_name);
 
     return redirect()->route('music_upload')->with('message', 'musicアップロード成功！');
   }
@@ -118,9 +146,8 @@ class MusicUploadController extends Controller
 
     $id = Artist::orderby('id', 'desc')->first()->id + 1;
 
-    $filename = 'artist_'.$id.'.'.$extension;
+    $filename = 'artist_' . $id . '.' . $extension;
     $artist = Artist::create([
-      'genre_id'    => $request->genre,
       'name'        => $request->name,
       'description' => $request->detail,
       'img_url'     => $filename,
@@ -135,7 +162,7 @@ class MusicUploadController extends Controller
       });
     // S3に保存。ファイル名は$storePathで定義したとおり
     Storage::disk('s3')->put($storePath, (string) $image->encode(), 'public');
-    
+
     return redirect()->route('music_upload')->with('message', 'アーティスト登録成功！');
   }
 }

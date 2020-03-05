@@ -3,13 +3,13 @@
 <!-- head -->
 @section('title', 'Top')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/top.css')}}" />
-<link rel="stylesheet" href="{{asset('css/top-header.css')}}" />
-<link rel="stylesheet" href="{{asset('css/link.css')}}" />
-<link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
+<link rel="stylesheet" href="{{asset('css/top.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/top-header.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
 
-<script src="{{ asset('js/top.js') }}" defer></script>
-<script src="{{ asset('js/hbg.js') }}" defer></script>
+<script src="{{ asset('js/top.js',$is_production) }}" defer></script>
+<script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 
 @endsection
 @include('common.head')
@@ -30,23 +30,7 @@
 </div>
 <!-- END -->
 
-<!-- キャンペーン -->
-<div class="campaign">
-  <button>
-    <h2 class="title">キャンペーンタイトル</h2>
-    <p class="detail">キャンペーン内容</p>
-  </button>
-</div>
-<!-- END -->
 
-<!-- キャンペーン -->
-<div class="campaign">
-  <button>
-    <h2 class="title">キャンペーンタイトル</h2>
-    <p class="detail">キャンペーン内容</p>
-  </button>
-</div>
-<!-- END -->
 
 
 @endsection
@@ -80,6 +64,7 @@
     width: 100%;
     height: 100vh;
     overflow-y: scroll;
+    background-color: #404040;
   }
   #app h1{
     display: none;
@@ -87,6 +72,9 @@
   #app .menu-trigger {
     top: 14px;
     left: 15px;
+  }
+  #playlist-link {
+    
   }
   #playlist-link button{
     background: none;
@@ -98,7 +86,10 @@
     text-align: left;
     width: 100%;
     height: 300px;
-    background-color: aqua;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url({{ asset('img/streaming-bg.png',$is_production) }});
   }
   #playlist-link .title,
   .campaign .title{
@@ -114,13 +105,14 @@
   .campaign .detail{
     width: calc(100% - 20px);
     position: relative;
-    color: gray;
+    color: white;
     top: 70px;
     left: 20px;
     font-size: 0.7em;
     letter-spacing: 2px;
   }
-  .campaign button{
+  .campaign button,
+  campaign button{
     background: none;
     border: none;
     padding: 0;
@@ -130,11 +122,20 @@
     text-align: left;
     width: 100%;
     height: 300px;
-    background-color: blueviolet;
+  }
+  .type1 {
+    background-color: #f8a8c5;
+  }
+  .type2 {
+    background-color: #fbd160;
+  }
+  .type3 {
+    background-color: #de5e97;
   }
   #form::placeholder {
     color: white;
   }
+  
   
   #link-list li:nth-child(1){
     background: rgba(0,0,0,0.1);
@@ -143,16 +144,16 @@
     color: #ff5757;
   }
   #link-list li:nth-child(1)::before{
-    background-image: url({{ asset('img/home-active.png') }});
+    background-image: url({{ asset('img/home-active.png',$is_production) }});
   }
   #link-list li:nth-child(2)::before{
-    background-image: url({{ asset('img/hunt.png') }});
+    background-image: url({{ asset('img/hunt.png',$is_production) }});
   }
   #link-list li:nth-child(3)::before{
-    background-image: url({{ asset('img/streaming.png') }});
+    background-image: url({{ asset('img/streaming.png',$is_production) }});
   }
   #link-list li:nth-child(4)::before{
-    background-image: url({{ asset('img/playlist.png') }});
+    background-image: url({{ asset('img/playlist.png',$is_production) }});
   }
   
 /*-----transition-----*/

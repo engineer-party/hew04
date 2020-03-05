@@ -5,6 +5,7 @@
   top: 0;
   left: 0;
   overflow-y: scroll;
+  padding-bottom: 50px;
 }
 .contents .img{
   height: 100vw;
@@ -12,6 +13,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 .contents .form-button{
   background: none;
@@ -24,7 +30,8 @@
   border-radius: 5px;
   padding: 10px 20px 10px 20px;
   margin-top: 20px;
-  margin-bottom: 20px;
+/*  margin-bottom: 20px;*/
+  margin-left: 20px;
 }
 .contents .form-button:hover{
   background: rgba(0,0,0,0.5);
@@ -43,10 +50,19 @@
   letter-spacing: 3px;
 }
 .text {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 100vw;
+/*  margin-bottom: 30px;*/
+/*  padding-top: 30px;*/
+  background-color: #FFEBE0;
+}
+.text ul{
   width: 90%;
   margin: 0 auto;
-/*  margin-top: 50px;*/
-  margin-bottom: 50px;
+}
+.text li:nth-child(1){
+  margin-top: 30px;
 }
 .text li{
   height: 75px;

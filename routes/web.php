@@ -53,6 +53,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // TOPページ
     Route::get('top', 'TopController@index')->name('top');
+  
+    //テスト
+    Route::get('test/', 'TopController@test')->name('test');
 
     // ログアウト
     Route::get('logout', 'AuthController@logout')->name('logout');
@@ -62,28 +65,33 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('userinformation/', 'UserInformationController@index')->name('information');
     Route::put('mypage/update','MyPageController@update')->name('update');
 
-    // PlayList 2.プレイリスト
-    Route::get('playlist/', 'PlaylistController@index')->name('playlist');
-
-    // Search 3.購入
+    // Search 3.検索・購入
     Route::post('search/', 'SearchController@index')->name('search');
     Route::get('search/genre/{genre_id}', 'SearchController@genre')->name('search');
+    Route::get('search/genre/more/{genre_id}', 'SearchController@genreMore')->name('search');
+    Route::get('search/artist/{req_name}', 'SearchController@artist')->name('search');
+    Route::get('search/artist_music/{req_id}', 'SearchController@artistMusic')->name('search');
+    Route::get('search/music/{req_name}', 'SearchController@music')->name('search');
+    
   
     //ポイント購入
     Route::get('point/', 'PointController@index')->name('point');
     Route::post('point/charge', 'PointController@charge')->name('charge');
 
-    // Music 4.再生
-    Route::get('music/', 'MusicController@index')->name('music');
-    Route::get('music/search', 'MusicController@search')->name('music_search');
-    Route::get('music/artist', 'MusicController@artist')->name('music_artist');
+    // Music 4.music詳細
+    Route::get('detail/music/{music_id}', 'MusicController@index')->name('music');
+    Route::get('music/rtmp', 'MusicController@rtmp')->name('rtmp');
 
     // Hunt 5.ハント
     Route::get('hunt/', 'HuntController@index')->name('hunt');
 
     // 音楽ライブラリ
     Route::get('library/', 'LibraryController@index')->name('library');
+    Route::post('library/add', 'LibraryController@add');
     Route::post('library/playlist', 'LibraryController@playlist');
+
+    // プレイリスト
+    Route::get('playlist/{playlist_id}', 'PlaylistController@index')->name('playlist');
 
     // Report 6.通報
     Route::get('report/', 'ReportController@index')->name('report');

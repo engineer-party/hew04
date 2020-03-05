@@ -3,16 +3,15 @@
 <!-- head -->
 @section('title', 'PlayList')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/link.css')}}" />
-<link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
-<link rel="stylesheet" href="{{asset('css/playlist.css')}}" />
-<link rel="stylesheet" href="{{asset('css/music.css')}}" />
-<link rel="stylesheet" href="{{asset('css/playlist-in.css')}}" />
+<link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/playlist.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/music.css',$is_production)}}" />
 
 
-
-<script src="{{ asset('js/library.js') }}" defer type="application/javascript"></script>
-<script src="{{ asset('js/hbg.js') }}" defer></script>
+<script src="{{ asset('js/library.js',$is_production) }}" defer type="application/javascript"></script>
+<!--<script src="{{ asset('js/test.js',$is_production) }}" defer type="application/javascript"></script>-->
+<script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 
 @endsection
 @include('common.head')
@@ -23,34 +22,39 @@
 <!-- content -->
 @section('content')
 <div id="contents">
-  <div class="add-playlist" @click="addPlaylist = true"></div>
-  <transition name="fade">
-    <div class="playlist-lists" v-if="playlistAdd">
-      <ul class="playlist-lists-in">
-        <li class="title">プレイリストに追加</li>
-        <li v-for="item in playlists">
-          <button type="button" :value="item.name">@{{ item.name }}</button>
-        </li>
-        <li class="cansel" @click="addCansel">キャンセル</li>
+  <form action="/library/add" method="POST" id="playlist-form">
+    {{ csrf_field() }}
+    <div class="add-playlist" @click="addPlaylist = true"></div>
+    <transition name="fade">
+      <div class="playlist-lists" v-if="playlistAdd">
+        <ul class="playlist-lists-in">
+          <li class="title">プレイリストに追加</li>
+          <li v-for="item in playlists">
+            <button type="submit" name="playlist_id" :value="item.id">@{{ item.name }}</button>
+          </li>
+          <li class="cansel" @click="addCansel">キャンセル</li>
+        </ul>
+      </div>
+    </transition>
+    <nav id="navber">
+      <ul>
+        <li v-for="item in links" :key="item.class"><a class="library-link" :class="{ active:item.active }" v-on:click='activetab(item.class)'>@{{ item.name }}</a></li>
       </ul>
-    </div>
-  </transition>
-  <nav id="navber">
-    <ul>
-      <li v-for="item in links" :key="item.class"><a class="library-link" :class="{ active:item.active }" v-on:click='activetab(item.class)'>@{{ item.name }}</a></li>
-    </ul>
-  </nav>
-  <transition name="bottom">
-    <div class="playlists" v-if="activePL">
-      @include('playlist')
-    </div>
-  </transition>
-  <transition name="bottom">
-    <div class="music" v-if="activeMusic">
-      @include('music')
-    </div>
-  </transition>
-  <p><img src="{{ asset('img/loading.gif') }}" alt="" class="loading"></p>
+    </nav>
+    <transition name="bottom">
+      <div class="playlists" v-if="activePL">
+        @include('playlist')
+      </div>
+    </transition>
+    <transition name="bottom">
+      <div class="music" v-if="activeMusic">
+        @include('music')
+      </div>
+    </transition>
+  </form>
+
+  <p><img src="{{ asset('img/loading.gif',$is_production) }}" alt="" class="loading"></p>
+  <!--
   <div class="playlist-in" :class="{activeplaylist:playlistInActive}">
     <div class="back" @click="playlistInActive = false">
       <div class="topLine line"></div>
@@ -58,15 +62,19 @@
       <div class="bottomLine line"></div>
     </div>
   </div>
+  -->
   <div class="add-playlist-bg" v-if="addPlaylist" @click="addPlaylist = false"></div>
   <transition name="fade">
     <div id="add-playlist" v-if="addPlaylist">
       <div class="add-playlist-in">
         <h3>新しいプレイリスト</h3>
         <form action="/library/playlist" method="POST" id="playlist-form">
-          <p><input type="text" name="name" placeholder="タイトル"></p>
+          <p><input type="text" name="playlist_name" placeholder="タイトル"></p>
+          @if($errors)
+            <p id="error">{{$errors->first('playlist_name')}}</p>
+          @endif
           <ul>
-            <li><button class="btn cancel-btn" @click="addPlaylist = false">キャンセル</button></li>
+            <li><button class="btn cancel-btn" type="button" @click="addPlaylist = false">キャンセル</button></li>
             <li><button class="btn add-btn" @click="addPlaylist = false">追加</button></li>
           </ul>
         </form>
@@ -108,6 +116,7 @@ data: function () {
     ],
     musics: [
       //id: 曲id, title: 曲タイトル, artist: アーティスト, img: 曲画像, time: 再生時間(分:秒)
+      
       @foreach ($musics as $music)
       {
         option:false,
@@ -118,6 +127,17 @@ data: function () {
         time: '{{ substr($music->time, 0, 5) }}',
       },
       @endforeach
+      
+      /*
+      {
+        option:false,
+        id: 12345,
+        title: "I LOVE ROCK'N ROLL",
+        artist: 'Joan Jett',
+        img: "{{ asset('img/joan-jett.jpg') }}",
+        time: '3:36',
+      },
+      */
     ],
     playlistInActive: false,
     activePL: true,
@@ -154,6 +174,17 @@ methods: {
   addCansel: function(){
     this.playlistAdd = false;
   }
+},
+mounted: function() {
+  /*
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+    console.log('clear');
+  });
+  */
+  $('').on('click',function(){
+    console.log('hey');
+  })
 }
 })
 
@@ -177,19 +208,19 @@ methods: {
   }
 
   #link-list li:nth-child(1)::before {
-    background-image: url({{ asset('img/home.png')}});
+    background-image: url({{ asset('img/home.png',$is_production)}});
   }
   
   #link-list li:nth-child(2)::before {
-    background-image: url({{ asset('img/hunt.png')}});
+    background-image: url({{ asset('img/hunt.png',$is_production)}});
   }
   
   #link-list li:nth-child(3)::before {
-    background-image: url({{ asset('img/streaming.png')}});
+    background-image: url({{ asset('img/streaming.png',$is_production)}});
   }
   
   #link-list li:nth-child(4)::before {
-    background-image: url({{ asset('img/playlist-active.png')}});
+    background-image: url({{ asset('img/playlist-active.png',$is_production)}});
   }
   
   #app .search{
@@ -354,18 +385,18 @@ methods: {
     width: 100%;
   }
   .add-playlist {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
     position: fixed;
-    top: 10px;
+    top: 12px;
     right: 20px;
     z-index: 55;
 /*    background-color: blueviolet;*/
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url({{ asset('img/playlist-add.png') }});
+    background-image: url({{ asset('img/playlist-add.png',$is_production) }});
   }
   #add-playlist {
     position: fixed;

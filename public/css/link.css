@@ -173,7 +173,7 @@
   font-size: 0.9em;
   text-decoration: none;
 }
-#link #point .point-icon{
+.point-icon{
     background-color: goldenrod;
 /*    width: 30px;*/
 /*    height: 30px;*/

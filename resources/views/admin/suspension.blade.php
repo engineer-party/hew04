@@ -3,7 +3,7 @@
 <!-- head -->
 @section('title', 'suspension')
 @section('style')
-<!-- <link rel="stylesheet" href="{{asset('css/admin.css')}}" /> -->
+<!-- <link rel="stylesheet" href="{{asset('css/admin.css',$is_production)}}" /> -->
 
 @endsection
 @include('common.admin_head')
@@ -40,7 +40,7 @@
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
             <td>{{ number_format($user->point) }} P</td>
-            <td>¥{{ number_format($user->musics->sum('price') + $user->buyPoints()->sum('price')) }}</td>
+            <td>¥{{ number_format($user->musics->sum('buy_price') + $user->buyPoints()->sum('price')) }}</td>
             <td><a href="/admin/report/show/{{ $user->id }}/6"> {{ $user->targetReports->count()  }}</a></td>
             <td><a href="/admin/report/show/{{ $user->id }}/7">{{ $user->sendReports->count()  }}</a></td>
             <td>{{ $user->deleted_at  }}</td>

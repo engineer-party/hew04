@@ -3,13 +3,13 @@
 <!-- head -->
 @section('title', 'PlayList')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/link.css')}}" />
-<link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
+<link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
 
 
 
-<script src="{{ asset('js/point.js') }}" defer></script>
-<script src="{{ asset('js/hbg.js') }}" defer></script>
+<script src="{{ asset('js/point.js',$is_production) }}" defer></script>
+<script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 
 @endsection
 @include('common.head')
@@ -35,8 +35,12 @@
   <label class="item.id">
     <input type="checkbox" :class="item.id" @click="buyEvent(item.id)" v-bind:value="item.value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}
   </label>
+  <transition name="fade">
+   <div class="point-buy-bg" v-if="bg"></div>
+    </transition>
   <transition :name="animate">
   <div class="point-buy" v-if="item.checked">
+  
     <h3>Hunc</h3>
     <ul>
       <li class="icon"></li>
@@ -44,8 +48,8 @@
       <li class="point-icon">P</li>
     </ul>
     <p class="pay-value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}</p>
-    <button class="btn back-btn" @click="item.checked = false">戻る</button>
-    <form method="post" action="{{ url('point/charge') }}">
+    <button class="btn back-btn" @click="downBuy(index)">キャンセル</button>
+    <form method="post" action="{{ url('point/charge',null,$is_production) }}">
     @csrf
       <div is="script"
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -84,11 +88,20 @@
         {id:6,checked:false,point:10000,value:10000,survice:3500}  //0.35  1.3  0.5
 
       ],
-      animate: 'bottom'
+      animate: 'bottom',
+      bg: false
     },
     methods: {
       buyEvent: function(index){
         this.values[index].checked = true;
+        this.bg = true;
+        this.values.splice();
+        console.log(this.values[index].checked);
+        console.log(index);
+      },
+      downBuy: function(index){
+        this.values[index].checked = false;
+        this.bg = false;
         this.values.splice();
         console.log(this.values[index].checked);
         console.log(index);
@@ -112,19 +125,19 @@
   }
 
   #link-list li:nth-child(1)::before {
-    background-image: url({{ asset('img/home.png')}});
+    background-image: url({{ asset('img/home.png',$is_production)}});
   }
   
   #link-list li:nth-child(2)::before {
-    background-image: url({{ asset('img/hunt.png')}});
+    background-image: url({{ asset('img/hunt.png',$is_production)}});
   }
   
   #link-list li:nth-child(3)::before {
-    background-image: url({{ asset('img/streaming.png')}});
+    background-image: url({{ asset('img/streaming.png',$is_production)}});
   }
   
   #link-list li:nth-child(4)::before {
-    background-image: url({{ asset('img/playlist-active.png')}});
+    background-image: url({{ asset('img/playlist-active.png',$is_production)}});
   }
   
   #app .search{
@@ -223,17 +236,16 @@
     bottom: 0;
     left: 0;
     background-color: white;
+    z-index: 2;
   }
-  .point .point-buy::before{
+  .point .point-buy-bg{
     width: 100%;
     height: 100vh;
     position: absolute;
-    top: -100vh;
+    top: 0;
     left: 0;
-/*    z-index: -1;*/
-    background: rgba(0,0,0,0.3);
-    display: block;
-    content: '';
+    z-index: 1;
+    background: rgba(0,0,0,0.2);
   }
   .point input{
     display: none;
@@ -286,7 +298,7 @@
     margin-top: 35px;
   }
   .point .point-buy .icon{
-    background-image: url({{ asset('img/Hunc02.png') }})
+    background-image: url({{ asset('img/Hunc02.png',$is_production) }})
   }
   .point .point-buy .pay-value{
     width: 100%;
@@ -318,6 +330,14 @@
 
 .bottom-enter, .bottom-leave-to {
   transform: translateX(0px) translateY(200vh);
+}
+  /* fade */
+.fade-enter-active, .fade-leave-active {
+  will-change: opacity;
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0
 }
 
 .stripe-button-el {

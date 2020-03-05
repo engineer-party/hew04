@@ -47,9 +47,9 @@
 
     <div id="link">
       <article id="link-in">
-        <a id="account" type="button" href="{{ action('MyPageController@index') }}">
+        <a id="account" href="{{ action('MyPageController@index') }}">
           <ul>
-          <li><img src="{{ Storage::disk('s3')->url('image/user/' . Auth::User()->img_url) }}" alt=""></li>
+          <li><img src="{{ Storage::disk('s3')->url('image/user/' . Auth::User()->img_url) }}" alt="アカウント画像"></li>
           <li>{{ Auth::User()->name }}</li>
           </ul>
         </a>

@@ -3,11 +3,11 @@
 <!-- head -->
 @section('title', 'Hunt')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/link.css')}}" />
-<link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
+<link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
 
-<script src="{{ asset('js/hunt.js') }}" defer></script>
-<script src="{{ asset('js/hbg.js') }}" defer></script>
+<script src="{{ asset('js/hunt.js',$is_production) }}" defer></script>
+<script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 @endsection
 @include('common.head')
 
@@ -23,8 +23,7 @@
   <div class="content">
     <p class="account"><span class="dot">・・・</span><span>アカウント名</span>さんが公開中<span class="dot">・・・</span></p>
     <div class="music">
-      <div class="musicIcon"></div>
-      <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
+      <p><img src="{{ asset('img/Hunc Logo.png',$is_production) }}" alt=""></p>
       <ul>
         <li class="title">title</li>
         <li class="artist">artist</li>
@@ -37,8 +36,7 @@
   <div class="content">
     <p class="account"><span class="dot">・・・</span><span>アカウント名</span>さんが公開中<span class="dot">・・・</span></p>
     <div class="music">
-      <div class="musicIcon"></div>
-      <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
+      <p><img src="{{ asset('img/Hunc Logo.png',$is_production) }}" alt=""></p>
       <ul>
         <li class="title">title</li>
         <li class="artist">artist</li>
@@ -51,8 +49,7 @@
   <div class="content">
     <p class="account"><span class="dot">・・・</span><span>アカウント名</span>さんが公開中<span class="dot">・・・</span></p>
     <div class="music">
-      <div class="musicIcon"></div>
-      <p><img src="{{ asset('img/Hunc Logo.png') }}" alt=""></p>
+      <p><img src="{{ asset('img/Hunc Logo.png',$is_production) }}" alt=""></p>
       <ul>
         <li class="title">title</li>
         <li class="artist">artist</li>
@@ -72,16 +69,16 @@
   }
   
   #link-list li:nth-child(1)::before{
-    background-image: url({{ asset('img/home.png') }});
+    background-image: url({{ asset('img/home.png',$is_production) }});
   }
   #link-list li:nth-child(2)::before{
-    background-image: url({{ asset('img/hunt-active.png') }});
+    background-image: url({{ asset('img/hunt-active.png',$is_production) }});
   }
   #link-list li:nth-child(3)::before{
-    background-image: url({{ asset('img/streaming.png') }});
+    background-image: url({{ asset('img/streaming.png',$is_production) }});
   }
   #link-list li:nth-child(4)::before{
-    background-image: url({{ asset('img/playlist.png') }});
+    background-image: url({{ asset('img/playlist.png',$is_production) }});
   }
   #link-list li:nth-child(2) {
     background: rgba(0, 0, 0, 0.1);

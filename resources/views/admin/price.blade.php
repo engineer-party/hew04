@@ -3,7 +3,7 @@
 <!-- head -->
 @section('title', 'Price')
 @section('style')
-<!-- <link rel="stylesheet" href="{{asset('css/admin.css')}}" /> -->
+<!-- <link rel="stylesheet" href="{{asset('css/admin.css',$is_production)}}" /> -->
 
 @endsection
 @include('common.admin_head')
@@ -33,6 +33,18 @@
           </select>
           @if($errors)
           <p class="help-block">{{$errors->first('artist')}}</p>
+          @endif
+        </div>
+        <div class="form-group">
+          <input type="name" name="name_artist" class="form-control" id="name_artist" value="{{ old ('name_artist') }}" placeholder="キャンペーン名" >
+          @if($errors)
+          <p class="help-block">{{$errors->first('name_artist')}}</p>
+          @endif
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" name="content_artist" id="content" placeholder="キャンペーン説明" rows="5">{{ old('content_artist') }}</textarea>
+          @if($errors)
+          <p class="help-block">{{$errors->first('content_artist')}}</p>
           @endif
         </div>
         <div class="form-group">
@@ -86,6 +98,18 @@
           </select>
           @if($errors)
           <p class="help-block">{{$errors->first('music')}}</p>
+          @endif
+        </div>
+        <div class="form-group">
+          <input type="name" name="name_music" class="form-control" id="name_music" value="{{ old ('name_music') }}" placeholder="キャンペーン名" >
+          @if($errors)
+          <p class="help-block">{{$errors->first('name_music')}}</p>
+          @endif
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" name="content_music" id="content" placeholder="キャンペーン説明" rows="5">{{ old('content_music') }}</textarea>
+          @if($errors)
+          <p class="help-block">{{$errors->first('content_music')}}</p>
           @endif
         </div>
         <div class="form-group">

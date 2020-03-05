@@ -15,6 +15,7 @@ class User extends Authenticatable implements \Illuminate\Contracts\Auth\Authent
         'email',
         'password',
         'point',
+        'img_url',
     ];
 
     protected $hidden = [
@@ -46,7 +47,7 @@ class User extends Authenticatable implements \Illuminate\Contracts\Auth\Authent
     public function musics()
     {
         return $this->belongsToMany('App\Models\Music','buy_musics')
-            ->withPivot('price','point','created_at','updated_at');
+            ->withPivot('price AS buy_price','point','created_at','updated_at');
     }
 
     /**

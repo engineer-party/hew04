@@ -17,25 +17,13 @@ class SearchController extends Controller
         $artists = Artist::where('name', 'LIKE', "%$req->search%")->take(4)->get();
         $musics = Music::where('name', 'LIKE', "%$req->search%")->take(5)->get();
 
-        // 割引適用処理
-        foreach ($musics as $music){
-            // この曲の割引情報が存在するか
-            if (Campaign::where('music_id',$music->id)->exists()) {
-                // キャンペーン情報を取得
-                $campaign = Campaign::where('music_id',$music->id)->first();
-                // キャンペーン期間中であるか
-                if ($campaign->end_date_time > Carbon::now()){
-                    $music->price -= round($music->price * ($campaign->discount / 100),-1);
-                }
-                // キャンペーンが終了している場合レコード物理削除
-                else {
-                    Campaign::where('music_id',$music->id)->delete();
-                }
-            }
+        if($req->search == null){
+            $req->search = 'ALL MUSICS';
         }
-        
 
-        return view('search',compact('musics','artists','req'))->with('like', true);;
+        $more = 'no';
+
+        return view('search',compact('musics','artists','req','more'));
     }
 
     public function genre($genre_id)
@@ -43,23 +31,53 @@ class SearchController extends Controller
         $musics = Genre::find($genre_id)->musics()->take(10)->get();
         $genre = Genre::find($genre_id)->first()->name;
 
-        // 割引適用処理
-        foreach ($musics as $music){
-            // この曲の割引情報が存在するか
-            if (Campaign::where('music_id',$music->id)->exists()) {
-                // キャンペーン情報を取得
-                $campaign = Campaign::where('music_id',$music->id)->first();
-                // キャンペーン期間中であるか
-                if ($campaign->end_date_time > Carbon::now()){
-                    $music->price -= round($music->price * ($campaign->discount / 100),-1);
-                }
-                // キャンペーンが終了している場合レコード物理削除
-                else {
-                    Campaign::where('music_id',$music->id)->delete();
-                }
-            }
+        $more = 'genre';
+
+        return view('search',compact('musics','genre','more','genre_id'));
+    }
+
+    public function genreMore($genre_id)
+    {
+        $musics = Genre::find($genre_id)->musics()->get();
+        $genre = Genre::find($genre_id)->first()->name;
+
+        $more = 'genreMore';
+
+        return view('search',compact('musics','genre','more'));
+    }
+
+    public function artist($name)
+    {
+        if (!$name = 'ALL MUSICS'){
+            $artists = Artist::where('name', 'LIKE', "%$name%")->get();
+        } else {
+            $artists = Artist::All();
         }
-        
-        return view('search_genre',compact('musics','genre'));
+
+        $more = 'artist';
+
+        return view('search',compact('artists','name','more'));
+    }
+
+    public function music($name)
+    {
+        if (!$name = 'ALL MUSICS'){
+            $musics = Music::where('name', 'LIKE', "%$name%")->get();
+        } else {
+            $musics = Music::All();
+        }
+
+        $more = 'music';
+
+        return view('search',compact('musics','name','more'));
+    }
+
+    public function artistMusic($artist_id)
+    {
+        $musics = Artist::find($artist_id)->musics()->get();
+        $name = Artist::find($artist_id)->first()->name;
+        $more = 'artist_music';
+
+        return view('search',compact('musics','name','more'));
     }
 }

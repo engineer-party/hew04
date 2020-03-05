@@ -39,7 +39,7 @@
     <div class="col-md-12">
       <div class="form-panel">
         <h1 class="mt-2 mb-2"><i class="fa fa-angle-right"></i> 楽曲登録</h1>
-        <form method="post" action="{{ url('admin/music_upload/music_store') }}" enctype="multipart/form-data">
+        <form method="post" action="{{ url('admin/music_upload/music_store',null,$is_production) }}" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
             <label>アーティスト</label>
@@ -120,7 +120,7 @@
     <div class="col-md-12">
       <div class="form-panel">
         <h1 class="mb-2 mt-2"><i class="fa fa-angle-right"></i> ジャンル登録</h1>
-        <form method="post" action="{{ url('admin/music_upload/genre_store') }}">
+        <form method="post" action="{{ url('admin/music_upload/genre_store',null,$is_production) }}">
           @csrf
           <div class="form-group">
             <label>ジャンル名</label>
@@ -154,16 +154,8 @@
     <div class="col-md-12">
       <div class="form-panel">
         <h1 class="mb-2 mt-2"><i class="fa fa-angle-right"></i> アーティスト登録</h1>
-        <form class="mb-2" method="post" action="{{ url('admin/music_upload/artist_store') }}" enctype="multipart/form-data">
+        <form class="mb-2" method="post" action="{{ url('admin/music_upload/artist_store',null,$is_production) }}" enctype="multipart/form-data">
           @csrf
-          <div class="form-group">
-            <label>ジャンル</label>
-            <select class="custom-select" name="genre">
-              @foreach($genres as $genre)
-              <option value="{{ $genre->id }}">{{ $genre->name }}</option>
-              @endforeach
-            </select>
-          </div>
           <div class="form-group">
             <label>アーティスト名</label>
             <input class="form-control" type="text" name="name" value="{{ old('name') }}">

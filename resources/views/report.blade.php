@@ -3,7 +3,7 @@
 <!-- head -->
 @section('title', 'Report')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/report.css')}}" />
+<link rel="stylesheet" href="{{asset('css/report.css',$is_production)}}" />
 
 @endsection
 @include('common.head')
