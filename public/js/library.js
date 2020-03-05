@@ -41,7 +41,7 @@ jQuery(function($){
  
     //クリックされた曲をロードして再生
     $('.play-btn').click(function(e) {
-//        clicked = $(this);
+        clicked = $('.cd li:eq(0)');
 //        e.preventDefault();
         $('div.track-details').html($('.cd li:eq(0)').closest('li').text()).appendTo($(this).closest('div')).fadeIn('slow');
         $('div.audiojs, div.track-details').appendTo($('.cd').closest('div')).fadeIn(200);

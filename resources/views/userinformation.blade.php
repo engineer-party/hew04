@@ -78,7 +78,7 @@
     position: fixed;
     width: 100%;
     height: 100vh;
-    background-color: aliceblue;
+    background-color: #FFEBE0;
   }
   #app #form {
     display: none;
