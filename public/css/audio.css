@@ -95,7 +95,7 @@
     font-size: 11px;
     line-height: 20px;
   }
-  .track-details:before { content: '';}
+  .track-details:before { content: 'hey music!!';}
 .infomate {
-  display: none;
+  display: block;
 }

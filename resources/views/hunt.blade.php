@@ -17,46 +17,22 @@
 <!-- content -->
 @section('content')
 <div id="contents">
-  <h2>ハント可能な楽曲</h2>
+  <h2>ハント可能なプレイリスト</h2>
   
   <!-- 曲 -->
+  <a>
   <div class="content">
-    <p class="account"><span class="dot">・・・</span><span>アカウント名</span>さんが公開中<span class="dot">・・・</span></p>
     <div class="music">
-      <p><img src="{{ asset('img/Hunc Logo.png',$is_production) }}" alt=""></p>
-      <ul>
-        <li class="title">title</li>
-        <li class="artist">artist</li>
-      </ul>
+     <ul>
+       <li class="account-img"><img src="{{ asset('img/Hunc Logo.png',$is_production) }}" alt=""></li>
+       <li class="account-name">アカウント名</li>
+     </ul>
+    <p class="account-title">プレイリスト名</p>
     </div>
   </div>
+  </a>
   <!-- END -->
-  
-  <!-- 曲 -->
-  <div class="content">
-    <p class="account"><span class="dot">・・・</span><span>アカウント名</span>さんが公開中<span class="dot">・・・</span></p>
-    <div class="music">
-      <p><img src="{{ asset('img/Hunc Logo.png',$is_production) }}" alt=""></p>
-      <ul>
-        <li class="title">title</li>
-        <li class="artist">artist</li>
-      </ul>
-    </div>
-  </div>
-  <!-- END -->
-  
-  <!-- 曲 -->
-  <div class="content">
-    <p class="account"><span class="dot">・・・</span><span>アカウント名</span>さんが公開中<span class="dot">・・・</span></p>
-    <div class="music">
-      <p><img src="{{ asset('img/Hunc Logo.png',$is_production) }}" alt=""></p>
-      <ul>
-        <li class="title">title</li>
-        <li class="artist">artist</li>
-      </ul>
-    </div>
-  </div>
-  <!-- END -->
+
 </div>
 @endsection
 
@@ -89,12 +65,12 @@
   }
   
 #wrapper {
-height: 100vh;
-width: 100%;
-position: fixed;
-top: 0;
-left: 0;
-background-color:aliceblue;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #FFEBE0;
   overflow-y: scroll;
 }
 #app #form {
@@ -124,10 +100,10 @@ letter-spacing: 4px;
 
 #contents {
   padding-top: 15%;
-width: 90%;
-height: 100vh;
-margin: 0 auto;
-background-color: white;
+  width: 95%;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: white;
 }
 #contents h2{
 color: #ff5757;
@@ -137,54 +113,48 @@ text-align: center;
 line-height: 70px;
 }
 .content .music{
-display: flex;
-width: 100%;
-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+  border-radius: 3px;
 }
-.content .musicIcon{
-/*position: relative;*/
-/*top: 21px;*/
-/*left: 15px;*/
-margin-top: 21px;
-margin-left: 15px;
-border-bottom: solid gray 2px;
-border-top: solid gray 2px;
-width: 15px;
-height: 8px;
-display: block;
-z-index: 2;
-}
-.content .account{
-width: 100%;
-font-size: 0.8em;
-color: gray;
-text-align: center;
-line-height: 40px;
-height: 40px;
-}
-.content .account .dot{
-margin-left: 10px;
-margin-right: 10px;
-letter-spacing: 5px;
-}
-.content img{
+.content .account-img img{
 width: 50px;
 height: 50px;
 /* border: solid black 1px;*/
 margin-left: 5px;
 }
 .content ul{
-margin-left: 10px;
-height: 50px;
+/*  margin-left: 10px;*/
+/*  background-color: aqua;*/
+  width: 55%;
+  height: 50px;
+  display: flex;
+/*  justify-content: space-b;*/
 }
-.content .title{
-font-size: 1.1em;
-line-height: 30px;
+.content .account-name{
+  font-size: 0.9em;
+  margin-left: 10px;
+  line-height: 50px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 /* background-color: aqua;*/
 }
-.content .artist{
-font-size: 0.8em;
-color: gray;
+.content .account-title{
+  font-size: 0.8em;
+  width: 40%;
+  height: 50px;
+  line-height: 50px;
+  text-align: right;
+  margin-right: 10px;
+  color: gray;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 /* line-height: 20px;*/
 /* background-color: aquamarine;*/
 }</style>

@@ -27,7 +27,7 @@
   <div class="text">
   <button class="form-button" v-on:click='formActive = true'>プロフィール編集</button>
     @if(session('message'))
-    <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
+    <div class="alert mt-4 success" role="alert"><strong>{{ session('message') }}</strong></div>
     @endif
     <span class="form-text text-danger">{{$errors->first('name')}}</span>
     <span class="form-text text-danger">{{$errors->first('email')}}</span>
@@ -141,5 +141,11 @@
     color: white;
     font-size: 1.2em;
     letter-spacing: 4px;
+  }
+  .success {
+    background-color: #ff5757;
+    color: white;
+    width: 90%;
+    margin: 0 auto;
   }
 </style>

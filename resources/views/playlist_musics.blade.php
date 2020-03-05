@@ -67,15 +67,10 @@
   
   <div class="cd">
     <ol>
-        <li><a data-src="{{ asset('img/mp3/01.mp3',$is_production) }}">
-          <div class="infomate">
-            <img src="{{ asset('img/joan-jett.jpg',$is_production) }}">
-            <ul>
-              <li>i love</li>
-              <li>joan jett</li>
-            </ul>
-          </div>
-        </a></li>
+       
+       <!--オーディオ繰り返し プレイリストの順番で-->
+       <!-- 最後の要素にclass="last"必ずいります -->
+        <li><a data-src="{{ asset('img/mp3/01.mp3',$is_production) }}"></a></li>
         <li><a data-src="{{ asset('img/mp3/02.mp3',$is_production) }}"></a></li>
         <li class="last"><a data-src="{{ asset('img/mp3/03.mp3',$is_production) }}"></a></li>
     </ol>

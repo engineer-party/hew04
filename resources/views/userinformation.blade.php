@@ -37,9 +37,36 @@
 @endsection
 
 <!-- footer -->
-<style type="text/css">
 @include('common.footer')
 {{--header--}}
+
+
+<style type="text/css">
+
+  #link-list li:nth-child(4) {
+/*    background: rgba(0, 0, 0, 0.1);*/
+  }
+
+  #link-list li:nth-child(4) .link-title {
+/*    color: #ff5757;*/
+  }
+
+  #link-list li:nth-child(1)::before {
+    background-image: url({{ asset('img/home.png',$is_production)}});
+  }
+  
+  #link-list li:nth-child(2)::before {
+    background-image: url({{ asset('img/hunt.png',$is_production)}});
+  }
+  
+  #link-list li:nth-child(3)::before {
+    background-image: url({{ asset('img/streaming.png',$is_production)}});
+  }
+  
+  #link-list li:nth-child(4)::before {
+    background-image: url({{ asset('img/playlist.png',$is_production)}});
+  }
+  
 * {
     margin: 0;
     padding: 0;
@@ -51,7 +78,7 @@
     position: fixed;
     width: 100%;
     height: 100vh;
-    background-color: aliceblue;
+    background-color: #FFEBE0;
   }
   #app #form {
     display: none;
@@ -75,5 +102,10 @@
     font-size: 1.2em;
     letter-spacing: 4px;
   }
-  {{--end_header--}}
+  ol, ul {
+     padding-left: 0px!important;
+  }
+  address, dl, fieldset, figure, ol, p, pre, ul {
+/*     margin: 0px!important;*/
+  }
   </style>

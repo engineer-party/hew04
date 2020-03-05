@@ -60,7 +60,7 @@
           </div>
           <div v-for="(select, index) in selects">
             <div class="form-group">
-              <select v-bind:id="index+1" class="custom-select" name="genre[]" @change="selectChange">
+              <select v-bind:id="index+1" class="custom-select" name="genres[]" @change="selectChange">
                 <option value="0">選択してください</option>
                 @foreach($genres as $genre)
                 <option value="{{ $genre->id }}">{{ $genre->name }}</option>
