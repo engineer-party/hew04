@@ -62,7 +62,7 @@
 
 <style type="text/css">
   #content{
-    margin-bottom: 50px;
+    margin-bottom: 50px !important;
   }
   footer {
     position: absolute;
