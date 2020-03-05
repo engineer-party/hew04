@@ -24,10 +24,10 @@
     <p id="error">{{$errors->first('id')}}</p>
     @endif
     <label>通報ユーザーID</label>
-    <p><input type="tel" name="id" value="{{ old('id') }}" class="form-control" placeholder="通報するユーザーのID"></p>
+    <p><input type="tel" name="id" value="{{ empty($user_id) ? old('id') :$user_id }}" class="form-control" placeholder="通報するユーザーのID"></p>
 
     @if($errors)
-    <p id="error">{{$errors->first('category')}}</p>
+        <p id="error">{{$errors->first('category')}}</p>
     @endif
     <label>通報の分類</label>
     <p>
