@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Validator;
 
 class ReportController extends Controller
 {
-    public function index()
+    public function index($user_id)
     {
         $categories = ReportCategory::All();
-        return view('report',compact('categories'));
+        return view('report',compact('categories','user_id'));
     }
 
     // 通報をDBに保存

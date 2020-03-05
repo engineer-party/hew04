@@ -86,6 +86,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Hunt 5.ハント
     Route::get('hunt/', 'HuntController@index')->name('hunt');
+  
+    //配信
+    Route::get('streaming/', 'StreamingController@index')->name('streaming');
 
     // 音楽ライブラリ
     Route::get('library/', 'LibraryController@index')->name('library');
@@ -96,7 +99,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('playlist/{playlist_id}', 'PlaylistController@index')->name('playlist');
 
     // Report 6.通報
-    Route::get('report/', 'ReportController@index')->name('report');
+    Route::get('report/{user_id}', 'ReportController@index')->name('report');
     Route::post('report/store', 'ReportController@store')->name('report_store');
 
 
