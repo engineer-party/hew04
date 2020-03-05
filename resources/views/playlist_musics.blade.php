@@ -49,8 +49,8 @@
       <div class="music-content">
         <p><img src="{{ Storage::disk('s3')->url('image/music/' . $music->img_url) }}" alt=""></p>
         <ul>
-        <li class="title">{{ $music->name }}}}</li>
-        <li class="artist">{{ $music->artist()->first()->name }}・{{ $music->time }}</li>
+        <li class="title">{{ $music->name }}</li>
+        <li class="artist">{{ $music->artist()->first()->name }}・{{ substr($music->time, 0, 5) }}</li>
         </ul>
       </div>
     @endforeach
