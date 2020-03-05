@@ -19,7 +19,7 @@ class MusicController extends Controller
     public function index($music_id)
     {
       $music = Music::where('id',$music_id)->first();
-      $userMusics = User::find(Auth::user()->id)->first()->musics()->get();
+      $userMusics = User::find(Auth::user()->id)->musics()->get();
       $flag = false;
       if ($userMusics->contains('id',$music->id)){
         $flag = true;
