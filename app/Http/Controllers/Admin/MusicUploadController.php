@@ -97,12 +97,14 @@ class MusicUploadController extends Controller
     ]);
 
     foreach ($request->genres as $genre) {
-      $genre_music = new GenreMusicTable;
-      $genre_music->fill([
-        'music_id' => $music->id,
-        'genre_id' => $genre,
-      ]);
-      $genre_music->save();
+      if ($genre != 0) {
+        $genre_music = new GenreMusicTable;
+        $genre_music->fill([
+          'music_id' => $music->id,
+          'genre_id' => $genre,
+        ]);
+        $genre_music->save();
+      }
     }
 
     //一旦ローカルに上げたファイルの読み込み
@@ -144,7 +146,7 @@ class MusicUploadController extends Controller
     // アップロードされた拡張子を取得
     $extension = File::extension($imagefile->getClientOriginalName());
 
-    $id = Artist::count()+ 1;
+    $id = Artist::count() + 1;
 
     $filename = 'artist_' . $id . '.' . $extension;
     $artist = Artist::create([
