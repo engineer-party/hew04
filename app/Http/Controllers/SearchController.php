@@ -80,4 +80,16 @@ class SearchController extends Controller
 
         return view('search',compact('musics','name','more'));
     }
+
+    public function campaign($campaign_name)
+    {
+        $musics = Music::whereHas('Campaign', function($q)use($campaign_name){
+            $q->where('name', $campaign_name);
+        })->get();
+        
+        $name = $campaign_name;
+        $more = 'campaign_music';
+
+        return view('search',compact('musics','name','more'));
+    }
 }

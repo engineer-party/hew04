@@ -33,32 +33,34 @@
     <li><span class="value">{{ substr($music->time, 0, 5) }}</span><br><span class="text-in">再生時間</span></li>
     </ul>
   </div>
-  @if($point >= $music->price)
-  <form method="post" action="{{ url('detail/music/buy_point',null,$is_production) }}">
-    @csrf
-    <input type="hidden" name="id" value="{{ $music->id }}">
-    <input type="hidden" name="value" value="{{ $music->price }}">
-    <button class="btn buy-btn2"><span class="point-icon">P</span>{{ $music->price }}</button>
-  </form>
-  @else
-  <form method="post" action="{{ url('detail/music/buy',null,$is_production) }}">
-    @csrf
-      <script
-        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="{{ env('STRIPE_KEY') }}"
-        data-amount="{{ $music->price - $point }}"
-        data-name="Hunting Music"
-        data-label="購入"
-        data-description="楽曲の購入"
-        data-image="{{ $image_path }}"
-        data-locale="auto"
-        data-currency="JPY">
-      </script>
-      <input type="hidden" name="id" value="{{ $music->id }}">
-      <input type="hidden" name="pay" value="{{ $music->price - $point }}">
-      <input type="hidden" name="value" value="{{ $music->price }}">
-      <button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
-    </form>
+  @if (!$flag)
+    @if($point >= $music->price)
+      <form method="post" action="{{ url('detail/music/buy_point',null,$is_production) }}">
+        @csrf
+        <input type="hidden" name="id" value="{{ $music->id }}">
+        <input type="hidden" name="value" value="{{ $music->price }}">
+        <button class="btn buy-btn2"><span class="point-icon">P</span>{{ $music->price }}</button>
+      </form>
+      @else
+      <form method="post" action="{{ url('detail/music/buy',null,$is_production) }}">
+        @csrf
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="{{ env('STRIPE_KEY') }}"
+          data-amount="{{ $music->price - $point }}"
+          data-name="Hunting Music"
+          data-label="購入"
+          data-description="楽曲の購入"
+          data-image="{{ $image_path }}"
+          data-locale="auto"
+          data-currency="JPY">
+        </script>
+        <input type="hidden" name="id" value="{{ $music->id }}">
+        <input type="hidden" name="pay" value="{{ $music->price - $point }}">
+        <input type="hidden" name="value" value="{{ $music->price }}">
+        <button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
+      </form>
+    @endif
   @endif
   </div>
 </article>

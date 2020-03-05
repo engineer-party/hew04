@@ -45,7 +45,7 @@
     </section>
   @endif
 
-  @if($more == 'no' || $more == 'genre' || $more == 'music' || $more == 'genreMore' || $more == 'artist_music')
+  @if($more == 'no' || $more == 'genre' || $more == 'music' || $more == 'genreMore' || $more == 'artist_music' || $more == 'campaign_music')
     <section id="music">
       <ul class="contents-head">
         <li>曲</li>
