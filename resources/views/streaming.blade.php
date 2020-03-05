@@ -82,9 +82,6 @@ let streaming = new Vue({
       this.tests.splice();
     },
     formClose: function(index){
-      //      this.tests[index].option = false;
-      //      this.tests.splice();
-      //      console.log(this.playlists[index].option);
     },
   }
 })
