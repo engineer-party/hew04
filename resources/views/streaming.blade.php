@@ -65,16 +65,18 @@ let streaming = new Vue({
   el: '#playlist',
   data: {
     tests: [
+      @foreach ($playlists as $playlist)
       {
         //name: プレイリスト名,img1.2.3.4:ランダムな画像4つ
-        id: 1234,
-        name: 'Rock-Hot',
+        id:{{ $playlist->id }},
+        name: '{{ $playlist->name }}',
         option: false,
-        img1: "{{ asset('img/sex-pistols.jpg',$is_production) }}",
-        img2: "{{ asset('img/sex-pistols.jpg',$is_production) }}",
-        img3: "{{ asset('img/sex-pistols.jpg',$is_production) }}",
-        img4: "{{ asset('img/sex-pistols.jpg',$is_production) }}",
+        img1: "{{ $playlist->img1 }}",
+        img2: "{{ $playlist->img2 }}",
+        img3: "{{ $playlist->img3 }}",
+        img4: "{{ $playlist->img4 }}",
       },
+      @endforeach
     ]
   },
   methods: {

@@ -16,6 +16,9 @@
         case 'report':
           echo "通報";
           break;
+        case 'streaming':
+          echo "配信";
+          break;
         case 'point':
           echo "ポイント購入";
           break;
