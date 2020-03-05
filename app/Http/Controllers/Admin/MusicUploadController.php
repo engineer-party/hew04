@@ -48,7 +48,7 @@ class MusicUploadController extends Controller
     //一旦ローカルに保存
     //$request->file('files')[0]->storeAs('public/music/', $mp3_file_name);
 
-    $id = Music::orderby('id', 'desc')->first()->id + 1;
+    $id = Music::count() + 1;
 
     //S3のパス
     $mp3_storePath = $id . "." . $mp3_extension;
@@ -144,7 +144,7 @@ class MusicUploadController extends Controller
     // アップロードされた拡張子を取得
     $extension = File::extension($imagefile->getClientOriginalName());
 
-    $id = Artist::orderby('id', 'desc')->first()->id + 1;
+    $id = Artist::count()+ 1;
 
     $filename = 'artist_' . $id . '.' . $extension;
     $artist = Artist::create([
