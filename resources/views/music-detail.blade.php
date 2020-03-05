@@ -31,7 +31,7 @@
     <li><span class="value">{{ substr($music->time, 0, 5) }}</span><br><span class="text-in">再生時間</span></li>
     </ul>
   </div>
-<button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
+<button class="btn buy-btn"><span class="point-icon">P</span>{{ number_format($music->price) }}</button>
   </div>
 </article>
 @endsection

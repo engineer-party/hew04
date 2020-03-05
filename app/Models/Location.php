@@ -9,6 +9,16 @@ class Location extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'lat',
+        'lng',
+        'user_id',
+        'playlist_id',
+        'deleted_at',
+    ];
+
+    protected $table = 'locations';
+
     /**
      * この位置情報を所有するユーザー情報を取得
      */
