@@ -119,4 +119,7 @@
     top: 20px;
     left: 75%;
   }
+  #signup{
+    margin-bottom:20px;
+  }
 </style>
