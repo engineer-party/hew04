@@ -61,7 +61,9 @@
 </div>
 
 <style type="text/css">
-  
+  #content{
+    margin-bottom: 50px !important;
+  }
   footer {
     position: absolute;
     bottom: 0;
