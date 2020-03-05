@@ -15,7 +15,7 @@ class TopController extends Controller
         $campaigns = Campaign::All();
         foreach ($campaigns as $campaign){
             if ($campaign->end_date_time < Carbon::now()) {
-                $campaign->delete();
+                Campaign::where('music_id',$campaign->music_id)->delete();
             }
         } 
         $campaigns = $campaigns->unique('name');
