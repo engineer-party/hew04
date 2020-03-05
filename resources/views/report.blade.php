@@ -18,40 +18,68 @@
 <!-- content -->
 @section('content')
 <div id="contents">
-<h1 id="title">通報フォーム</h1>
+<!--<h1 id="title">通報フォーム</h1>-->
 @if(session('message'))
     <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
 @endif
-<form action="/report/store" method="POST" id="report-form">
+<form action="/report/store" method="POST" id="report-form" class="report-form">
     {{ csrf_field() }}
 
     @if($errors)
     <p id="error">{{$errors->first('id')}}</p>
     @endif
-    <label>通報ユーザーID</label>
-    <p><input type="tel" name="id" value="{{ empty($user_id) ? old('id') :$user_id }}" class="form-control" placeholder="通報するユーザーのID"></p>
-
+    <h2>ID: 12345 さん<h2>
+<!--    <p><input type="tel" name="id" value="{{ old('id') }}" class="form-control user-id" placeholder="通報するユーザーのID"></p>-->
     @if($errors)
         <p id="error">{{$errors->first('category')}}</p>
     @endif
-    <label>通報の分類</label>
-    <p>
+    <h3></h3>
+    <ul class="report-category">
+      <li><label class="report-btn">
+        <input type="radio" name="category" value=""><span class="title">画像</span><br>
+        <span class="detail">不適切な画像</span></label></li>
+      <li><label class="report-btn">
+        <input type="radio" name="category" value=""><span class="title">名前</span><br>
+        <span class="detail">不適切な名前</span></label></li>
+      <li><label class="report-btn">
+        <input type="radio" name="category" value=""><span class="title">データ</span><br>
+        <span class="detail">データを改ざん</span></label></li>
+      <li><label class="report-btn">
+        <input type="radio" name="category" value=""><span class="title">GPS</span><br>
+        <span class="detail">位置情報を改ざん</span></label></li>
+      <li><label class="report-btn">
+        <input type="radio" name="category" value=""><span class="title">その他</span><br>
+        <span class="detail">その他の迷惑行為</span></label></li>
+    </ul>
+       
+<!--
         <select name="category">
             <option value="">-</option>
             @foreach ($categories as $category)
             <option value="{{ $category->id }}" @if(old('category')==$category->id) selected  @endif>{{ $category->name }}</option>
             @endforeach
         </select>
-    </p>
+-->
 
-    <label>詳細</label>
-    <p><textarea name="detail" rows="6" placeholder="詳細な説明（任意）例）位置情報を不正取得している。">{{ old('detail') }}</textarea></p>
+    <p><textarea name="detail" rows="6" placeholder="詳細な説明（任意）例）位置情報を不正取得している。" class="text-area">{{ old('detail') }}</textarea></p>
 
-    <a href=""><button type="submit" class="btn btn-danger">通報する</button></a>
+    <a href=""><button type="submit" class="btn report-action">通報する</button></a>
 </form>
 </div>
 <script>
   let headOpen = false;
+  
+  $(function(){
+    $('label').each(function(index){
+      let e = index;
+      $(this).hammer().on('tap',function(){
+        $('.title').removeClass('active');
+        $('.report-btn').removeClass('active-label');
+        $('.title').eq(e).addClass('active');
+        $('.report-btn').eq(e).addClass('active-label');
+      });
+    });
+  });
 </script>
 @endsection
 
@@ -135,6 +163,84 @@
     top: 0;
     left: 0;
     overflow-y: scroll;
-    padding-top: 100px;
+    padding-top: 80px;
   }
+  .user-id {
+    display: none;
+  }
+  .report-form h2{
+    width: 100vw;
+    height: 30px;
+    line-height: 50px;
+    text-align: center;
+/*    background-color: aqua;*/
+    font-size: 1.1em;
+    color: red;
+  }
+  .report-category input{
+    display: none;
+  }
+  .report-category {
+    margin: 0 auto;
+/*    background-color: white;*/
+    width: 90%;
+    height: auto;
+    display: grid;
+    grid-gap: 5px 6px;
+    grid-template-columns: calc(100% / 3 - 4px) calc(100% / 3 - 4px) calc(100% / 3 - 4px);
+  }
+
+  .report-btn{
+    border-radius: 4px;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    border: solid black 1px;
+    background: white;
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1) 0s;
+  }
+  
+  .report-category span{
+/*    width: 100%;*/
+    margin: 0 auto;
+  }
+  .report-category .title{
+/*    display: none;*/
+    line-height: 100px;
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1) 0s;
+
+  }
+  .report-category .detail{
+    font-size: 0.7em;
+    line-height: 70px;
+  }
+  .text-area {
+    width: 90%;
+/*    margin: 0 auto;*/
+    position: relative;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%);
+    margin-bottom: 100px;
+  }
+  .report-action {
+    width: 90%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    height: 50px;
+    line-height: 50px;
+    background-color: #ff5757;
+    color: white;
+  }
+  .active{
+    display: none;
+  }
+  .active-label{
+    background-color: #404040;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    color: #ff5757;
+  }
+  
 </style>
