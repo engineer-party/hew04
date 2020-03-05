@@ -12,4 +12,9 @@ class TopController extends Controller
     {
         return view('top');
     }
+  
+    public function test()
+    {
+        return view('test');
+    }
 }
