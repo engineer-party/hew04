@@ -31,7 +31,28 @@
     <li><span class="value">{{ substr($music->time, 0, 5) }}</span><br><span class="text-in">再生時間</span></li>
     </ul>
   </div>
-<button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
+  <div v-if="{{ $point }} > {{ $music->price }}">
+    <form method="post" action="{{ url('music/buy') }}">
+      @csrf
+        <div is="script"
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="{{ env('STRIPE_KEY') }}"
+          data-amount="{{ $music->price }}"
+          data-name="Hunting Music"
+          data-label="購入"
+          data-description="ポイントの購入"
+          data-image="{{ $image_path }}"
+          data-locale="auto"
+          data-currency="JPY">
+        </div>
+        <input type="hidden" name="value" value="">
+        <button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
+      </form>
+  </div>
+  <div v-else>
+
+  </div>
+    <button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
   </div>
 </article>
 @endsection

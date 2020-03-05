@@ -29,7 +29,11 @@ class MusicController extends Controller
 
         $music->img_url = Storage::disk('s3')->url('image/music/' . $music->img_url);
 
-        return view('music-detail',compact('music'));
+        $point = Auth::user()->point;
+
+        $image_path = 'https://leshu-firstbucket.s3-ap-northeast-1.amazonaws.com/Hunc+Logo.png';
+
+        return view('music-detail',compact('music','point','image_path'));
     }
   
     public function rtmp()
