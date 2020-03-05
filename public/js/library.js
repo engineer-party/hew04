@@ -3,6 +3,61 @@ let linkOpen = false;
 let startValue = 0;
 
 
+$(function(){
+  $('.btn-audio').on('click',function(){
+    console.log('hey');
+  });
+/*
+    var clicked;  //クリックされた li 要素を格納する変数
+    var a = audiojs.createAll({
+        //曲が終了した時の処理
+        trackEnded: function() {
+            //クリックして再生した曲の li 要素のクラスが「last」の場合、終了して非表示に
+            if($('.audio li.playing', clicked.closest('div.audio')).hasClass('last')){
+                $('div.audiojs, div.track-details').fadeOut('slow');
+                $('.audio li.playing').removeClass('playing');
+                return;
+           }
+           //次の曲を設定
+           var next = $('.audio li.playing', clicked.closest('div.audio')).next();
+           if (!next.length) next = $('.audio li', clicked.closest('div.audio')).first();
+           next.addClass('playing').siblings().removeClass('playing');
+           //曲名を「div.track-details」に表示
+           $('div.track-details').html(next.closest('li').text());
+           //プレイヤー（再生バー）をリストの後に追加（appendTo）して表示
+           $('div.audiojs, div.track-details').appendTo(next.closest('div')).fadeIn('slow');
+           //プレイヤーをリストの直後に入れる場合はinsertAfterで
+           //$('div.audiojs, div.track-details').insertAfter(next.closest('div').find('ol')).fadeIn('slow');
+           //曲を再生
+           audio.load($('a', next).attr('data-src'));
+           audio.play();
+        }
+    });
+        
+    // 最初の曲をロード
+    var audio = a[0];
+    first = $('.audio a').attr('data-src');
+    $('.audio li').first().addClass('playing');
+    audio.load(first);
+    
+    // プレイヤー（再生バー）と曲の情報は最初は非表示に  
+    $('div.audiojs, div.track-details').css('display', 'none');
+ 
+    //クリックされた曲をロードして再生
+    $('.audio-btn').click(function(e) {
+        console.log('hey');
+        clicked = $(this);
+        e.preventDefault();
+        $('div.track-details').html($(this).closest('li').text()).appendTo($(this).closest('div')).fadeIn('slow');
+        $('div.audiojs, div.track-details').appendTo($(this).closest('div')).fadeIn('slow');
+         //プレイヤーをリストの直後に入れる場合
+         //$('div.audiojs, div.track-details').insertAfter(next.closest('div').find('ol')).fadeIn('slow');
+        $(this).addClass('playing').siblings().removeClass('playing');
+        audio.load($('a', this).attr('data-src'));
+        audio.play();
+    });
+    */
+});
 
 /*
 $(function () {
@@ -83,6 +138,7 @@ $(function () {
       $('.loading').fadeOut(50);
     }, 400);
   });
+  
 });
 
 /*

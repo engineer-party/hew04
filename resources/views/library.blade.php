@@ -7,10 +7,12 @@
 <link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
 <link rel="stylesheet" href="{{asset('css/playlist.css')}}" />
 <link rel="stylesheet" href="{{asset('css/music.css')}}" />
+<link rel="stylesheet" href="{{asset('css/audio.css')}}" />
 
 
-
+<script src="{{ asset('js/audio.min.js') }}"></script>
 <script src="{{ asset('js/library.js') }}" defer type="application/javascript"></script>
+<!--<script src="{{ asset('js/test.js') }}" defer type="application/javascript"></script>-->
 <script src="{{ asset('js/hbg.js') }}" defer></script>
 
 @endsection
@@ -116,6 +118,7 @@ data: function () {
     ],
     musics: [
       //id: 曲id, title: 曲タイトル, artist: アーティスト, img: 曲画像, time: 再生時間(分:秒)
+      
       @foreach ($musics as $music)
       {
         option:false,
@@ -126,6 +129,17 @@ data: function () {
         time: '{{ substr($music->time, 0, 5) }}',
       },
       @endforeach
+      
+      /*
+      {
+        option:false,
+        id: 12345,
+        title: "I LOVE ROCK'N ROLL",
+        artist: 'Joan Jett',
+        img: "{{ asset('img/joan-jett.jpg') }}",
+        time: '3:36',
+      },
+      */
     ],
     playlistInActive: false,
     activePL: true,
@@ -162,6 +176,17 @@ methods: {
   addCansel: function(){
     this.playlistAdd = false;
   }
+},
+mounted: function() {
+  /*
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+    console.log('clear');
+  });
+  */
+  $('').on('click',function(){
+    console.log('hey');
+  })
 }
 })
 

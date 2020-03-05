@@ -1,13 +1,6 @@
 let headOpen = false;
 let linkOpen = false;
 
-/*
-$(function(){
-  audiojs.events.ready(function() {
-    var as = audiojs.createAll();
-  });
-});
-*/
 
 jQuery(function($){
     var clicked;  //クリックされた li 要素を格納する変数
@@ -49,8 +42,7 @@ jQuery(function($){
     $('ol li').click(function(e) {
         clicked = $(this);
         e.preventDefault();
-        $('div.track-details').html($(this).closest('li').text()).appendTo($(this).closest('div')).fadeIn('slow');
-      
+        $('div.track-details').html($(this).closest('li').text()).appendTo($(this).closest('div')).fadeIn('slow');  
         $('div.audiojs, div.track-details').appendTo($(this).closest('div')).fadeIn('slow');
          //プレイヤーをリストの直後に入れる場合
          //$('div.audiojs, div.track-details').insertAfter(next.closest('div').find('ol')).fadeIn('slow');

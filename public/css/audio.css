@@ -1,0 +1,95 @@
+/*　プレイヤー（再生バー）の高さ、幅、背景色の指定　*/
+  .audiojs {
+    height: 55px;
+    background: #ffff;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+/*    left: 0;*/
+  }
+  /*　再生・停止ボタンの高さ、幅、パディングの指定　*/
+  .audiojs .play-pause {
+    width: 40px;
+    height: 40px;
+    padding: 0px 8px 0px 0px;
+    display: block;
+    background-color: transparent;
+    color: black;
+    border: none;
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+  }
+  /*　再生・停止ボタンなどの p 要素　*/
+  .audiojs p {
+    width: 50px;
+    height: 50px;
+    color: black;
+  }
+  .audiojs .play{
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../img/play-icon.png);
+  }
+  .audiojs .pause{
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../img/pause-icon.png);
+  }
+  .audiojs .loading {
+    width: 50px;
+    height: 50px;
+    background-image: none;
+  }
+  /*　進行状態・ロードの状態を表示する部分　*/
+  .audiojs .scrubber{
+    background-color: white;
+    width: 100%;
+    height: 5px;
+    margin-left: 0px;
+    margin-top: 0px;
+    border: none;
+    background: #ffff;
+  }
+  /*　進行状態を表示するバーの部分　*/
+  .audiojs .progress {
+    height: 10px;
+    width: 0px;
+    background-color: red;
+    background: #ff5757;
+    border-radius: 0px;
+  }
+  /*　ロード状態を表示するバーの部分　*/
+  .audiojs .loaded {
+    height: 10px;
+    display: none;
+  }
+  /*　再生時間の部分　*/
+  .audiojs .time {
+    height: 25px;
+    line-height: 25px;
+    background-color: aqua;
+    display: none;
+  }
+  .audiojs .error-message {
+    height: 24px;
+    line-height: 24px;
+    color: black;
+  }
+  /*　再生している曲の情報　*/
+  .track-details {
+    clear: both;
+    height: 20px;
+    width: 280px;
+    padding: 1px 6px;
+    background-color: #eee;
+    color: #222;
+    font-size: 11px;
+    line-height: 20px;
+  }
+  .track-details:before { content: '';}
+  

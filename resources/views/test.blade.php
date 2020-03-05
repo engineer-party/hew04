@@ -37,72 +37,62 @@
 
 <style type="text/css">
   
-  
+  html, body {
+/*    scroll-padding-bottom: 65px;*/
+  }
    
   /*　プレイヤー（再生バー）の高さ、幅、背景色の指定　*/
   .audiojs {
-    height: 60px;
+    height: 55px;
     background: #ffff;
     width: 100%;
     position: absolute;
     bottom: 0;
-    left: 0;
+/*    left: 0;*/
   }
   /*　再生・停止ボタンの高さ、幅、パディングの指定　*/
   .audiojs .play-pause {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     padding: 0px 8px 0px 0px;
     display: block;
     background-color: transparent;
     color: black;
     border: none;
-/*    position: relative;*/
-/*    top: 10px;*/
     position: absolute;
     bottom: 5px;
     right: 20px;
-/*    transform: translate(-50%,-50%);*/
   }
   /*　再生・停止ボタンなどの p 要素　*/
   .audiojs p {
     width: 50px;
     height: 50px;
-/*    margin: -3px 0px 0px -1px;*/
     color: black;
-/*    background-color: black;*/
   }
   .audiojs .play{
-/*    display: none;*/
-/*    position: ;*/
-/*    top: 45px;*/
-/*    left: 50%;*/
-    width: 50px;
-    height: 50px;
-/*    background-color: aqua;*/
-/*    border: 20px solid transparent;*/
-/*    border-left: 30px solid #ff5757;*/
-/*    margin-left: 10px;*/
+    width: 40px;
+    height: 40px;
     background-size: cover;
     background-position: center;
     background-image: url({{ asset('img/play-icon.png') }});
   }
   .audiojs .pause{
-/*    display: none*/
-/*    margin-top: -50px;*/
-    width: 50px;
-    height: 50px;
-/*    background-color: blueviolet;*/
-/*    border-radius: 20px;*/
+    width: 40px;
+    height: 40px;
     background-size: cover;
     background-position: center;
     background-image: url({{ asset('img/pause-icon.png') }});
+  }
+  .audiojs .loading {
+    width: 50px;
+    height: 50px;
+    background-image: none;
   }
   /*　進行状態・ロードの状態を表示する部分　*/
   .audiojs .scrubber{
     background-color: white;
     width: 100%;
-    height: 6px;
+    height: 5px;
     margin-left: 0px;
     margin-top: 0px;
 /*    position: relative;*/
@@ -189,7 +179,6 @@ position: fixed;
 top: 0;
 left: 0;
 background-color:aliceblue;
-  overflow-y: scroll;
 }
 #app #form {
 display: none;
@@ -216,6 +205,13 @@ font-size: 1.2em;
 letter-spacing: 4px;
 }
   #contents {
-    padding-top: 140px;
+    padding-top: 100px;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    overflow-y: scroll;
   }
 </style>
