@@ -22,7 +22,7 @@
 <form action="/report/store" method="POST" id="report-form" class="report-form">
     {{ csrf_field() }}
 
-    <h2>ID: {{ $user_id }} さん<h2>
+    <h2>ID: {{ $user->name }} さん<h2>
 <!--    <p><input type="tel" name="id" value="{{ old('id') }}" class="form-control user-id" placeholder="通報するユーザーのID"></p>-->
     @if($errors)
         <p id="error">{{$errors->first('category')}}</p>
@@ -48,15 +48,6 @@
         <input type="radio" name="category" value="5"><span class="title">その他</span><br>
         <span class="detail">その他の迷惑行為</span></label></li>
     </ul>
-       
-<!--
-        <select name="category">
-            <option value="">-</option>
-            @foreach ($categories as $category)
-            <option value="{{ $category->id }}" @if(old('category')==$category->id) selected  @endif>{{ $category->name }}</option>
-            @endforeach
-        </select>
--->
 
     <p><textarea name="detail" rows="6" placeholder="詳細な説明（任意）例）位置情報を不正取得している。" class="text-area">{{ old('detail') }}</textarea></p>
     <input type="hidden" name="id" value="{{ $user_id }}">
@@ -220,6 +211,7 @@
     left: 50%;
     transform: translate(-50%);
     margin-bottom: 100px;
+    padding: 5px;
   }
   .report-action {
     width: 90%;
