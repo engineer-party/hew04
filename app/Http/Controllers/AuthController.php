@@ -76,7 +76,7 @@ class AuthController extends Controller
             'email'    => $req->email,
             'password' => $password,
             'point'    => 0,
-            'img_url'  => 0,
+            'img_url'  => '0.png',
         ]);
 
         // ログイン処理
