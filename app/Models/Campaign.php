@@ -11,6 +11,6 @@ class Campaign extends Model
      */
     public function music()
     {
-        return $this->hasOne('App\Music');
+        return $this->hasOne('App\Models\Music');
     }
 }

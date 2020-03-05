@@ -49,7 +49,12 @@ class AdminController extends Controller
 
     // パーセント計算
     public function funcNumPar($num,$total){
-        $par = round(($num / $total) * 100);
+        if (!$total == 0){
+            $par = round(($num / $total) * 100);
+        }
+        else {
+            $par = 0;
+        }
         return $par;
     }
 

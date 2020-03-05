@@ -120,6 +120,7 @@ class MusicUploadController extends Controller
 
     $sample_storefile = Storage::get('public/sample/sample_' . $mp3_file_name);
 
+
     Storage::disk('s3')->put($sample_storePath, $sample_storefile, 'public');
 
     //一旦ローカルに上げたファイルの削除

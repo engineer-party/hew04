@@ -32,14 +32,16 @@
 <!-- END -->
 
 <!-- キャンペーン -->
-<a href="{{ action('HuntController@index') }}">
-<div class="campaign type1">
+@foreach ($campaigns as $campaign)
+<a href="/search/campaign/{{ $campaign->name }}">
+<div class="campaign type{{ $loop->iteration % 3 }}">
   <ul>
-    <li class="title">キャンペーンタイトル</li>
-    <li class="detail">キャンペーン詳細</li>
+  <li class="title">{{ $campaign->name }}</li>
+  <li class="detail">{{ $campaign->content }}</li>
   </ul>
 </div>
 </a>
+@endforeach
 <!-- END -->
 
 
@@ -134,7 +136,7 @@
   .type2 {
     background-color: #fbd160;
   }
-  .type3 {
+  .type0 {
     background-color: #de5e97;
   }
   #form::placeholder {

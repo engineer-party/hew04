@@ -50,7 +50,7 @@ class Music extends Model
      */
     public function campaign()
     {
-        return $this->hasOne('App\Campaign');
+        return $this->hasOne('App\Models\Campaign');
     }
 
     /**
