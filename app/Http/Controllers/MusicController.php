@@ -35,9 +35,17 @@ class MusicController extends Controller
 
         return view('music-detail',compact('music','point','image_path'));
     }
-  
+
+    public function musicBuy(){
+    }
+
+
+    /*
+    負の遺産
+    必ずリベンジしますbyさとう
     public function rtmp()
     {
       return view('rtmp');
     }
+    */
 }

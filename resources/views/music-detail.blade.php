@@ -31,7 +31,7 @@
     <li><span class="value">{{ substr($music->time, 0, 5) }}</span><br><span class="text-in">再生時間</span></li>
     </ul>
   </div>
-  @if($point >= $music->price)
+  @if($point <= $music->price)
   <form method="post" action="{{ url('music/buy') }}">
     @csrf
       <script
@@ -45,11 +45,11 @@
         data-locale="auto"
         data-currency="JPY">
       </script>
-      <input type="hidden" name="value" value="">
+      <input type="hidden" name="value" value="{{ $music->price }}">
       <button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
     </form>
   @else
-    <button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
+    <button class="btn buy-btn2"><span class="point-icon">P</span>{{ $music->price }}　ポイントがたりません</button>
   @endif
   </div>
 </article>
@@ -151,6 +151,20 @@
     font-size: 1.0em;
     top: -50px;
     z-index: 2;
+  }
+
+  .buy-btn2 {
+    width: 90%;
+/*    margin: 0 auto;*/
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    line-height: 50px;
+    height: 50px;
+    color: #ff5757;
+    background-color: white;
+    font-size: 1.0em;
+    margin-top: 50px;
   }
   
   .text {
