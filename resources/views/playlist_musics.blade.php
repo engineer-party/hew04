@@ -6,7 +6,9 @@
 <link rel="stylesheet" href="{{asset('css/link.css')}}" />
 <link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
 <link rel="stylesheet" href="{{asset('css/playlist-in.css')}}" />
+<link rel="stylesheet" href="{{asset('css/audio.css')}}" />
 
+<script src="{{ asset('js/audio.min.js') }}"></script>
 <script src="{{ asset('js/library.js') }}" defer type="application/javascript"></script>
 <script src="{{ asset('js/hbg.js') }}" defer></script>
 
@@ -27,6 +29,8 @@
      <img src="{{ $playlist['img4'] }}" alt="">
   </div>
   
+  <div class="play-btn"></div>
+  
   <div class="playlist-value">
   
   <h2>{{ $playlist->name }}</h2>
@@ -44,19 +48,40 @@
       <div></div>
     </div>
   </div>
-  <div id="play-lists">
+  
+  <div class="play-lists">
     @foreach ($musics as $music)
       <div class="music-content">
+<!--       <a data-src="{{ asset('img/mp3/03.mp3') }}">-->
         <p><img src="{{ Storage::disk('s3')->url('image/music/' . $music->img_url) }}" alt=""></p>
         <ul>
         <li class="title">{{ $music->name }}}}</li>
         <li class="artist">{{ $music->artist()->first()->name }}・{{ $music->time }}</li>
         </ul>
+<!--        </a>-->
       </div>
     @endforeach
   </div>
 
   </div>
+  
+  <div class="cd">
+    <ol>
+        <li><a data-src="{{ asset('img/mp3/01.mp3') }}">
+          <div class="infomate">
+            <img src="{{ asset('img/joan-jett.jpg') }}">
+            <ul>
+              <li>i love</li>
+              <li>joan jett</li>
+            </ul>
+          </div>
+        </a></li>
+        <li><a data-src="{{ asset('img/mp3/02.mp3') }}"></a></li>
+        <li class="last"><a data-src="{{ asset('img/mp3/03.mp3') }}"></a></li>
+    </ol>
+  </div><!-- end of .cd -->
+
+  
 </section>
 <script>
   /*

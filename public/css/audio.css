@@ -5,7 +5,7 @@
     width: 100%;
     position: absolute;
     bottom: 0;
-/*    left: 0;*/
+    left: 0;
   }
   /*　再生・停止ボタンの高さ、幅、パディングの指定　*/
   .audiojs .play-pause {
@@ -82,6 +82,10 @@
   }
   /*　再生している曲の情報　*/
   .track-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
     clear: both;
     height: 20px;
     width: 280px;
@@ -92,4 +96,6 @@
     line-height: 20px;
   }
   .track-details:before { content: '';}
-  
+.infomate {
+  display: none;
+}

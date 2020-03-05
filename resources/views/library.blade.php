@@ -7,10 +7,8 @@
 <link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
 <link rel="stylesheet" href="{{asset('css/playlist.css')}}" />
 <link rel="stylesheet" href="{{asset('css/music.css')}}" />
-<link rel="stylesheet" href="{{asset('css/audio.css')}}" />
 
 
-<script src="{{ asset('js/audio.min.js') }}"></script>
 <script src="{{ asset('js/library.js') }}" defer type="application/javascript"></script>
 <!--<script src="{{ asset('js/test.js') }}" defer type="application/javascript"></script>-->
 <script src="{{ asset('js/hbg.js') }}" defer></script>
