@@ -67,6 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('search/genre/{genre_id}', 'SearchController@genre')->name('search');
     Route::get('search/genre/more/{genre_id}', 'SearchController@genreMore')->name('search');
     Route::get('search/artist/{req_name}', 'SearchController@artist')->name('search');
+    Route::get('search/artist_music/{req_id}', 'SearchController@artistMusic')->name('search');
     Route::get('search/music/{req_name}', 'SearchController@music')->name('search');
     
   
@@ -86,7 +87,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('library/add', 'LibraryController@add');
     Route::post('library/playlist', 'LibraryController@playlist');
 
-    Route::get('playlist/', 'PlaylistController@index')->name('playlist');
+    // プレイリスト
+    Route::get('playlist/{playlist_id}', 'PlaylistController@index')->name('playlist');
 
     // Report 6.通報
     Route::get('report/', 'ReportController@index')->name('report');

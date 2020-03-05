@@ -33,7 +33,7 @@
 
       <!--繰り返し要素・アーティスト ※最初の4つ-->
       @foreach ($artists as $artist)
-      <a href="">
+      <a href="search/artist_music/{{ $artist->id }}">
         <div class="artist-content">
           <div class="artist-img"><img src="{{ Storage::disk('s3')->url('image/artist/' . $artist->img_url) }}" alt=""></div>
         <h3>{{ $artist->name }}</h3>
@@ -45,7 +45,7 @@
     </section>
   @endif
 
-  @if($more == 'no' || $more == 'genre' || $more == 'music' || $more == 'genreMore')
+  @if($more == 'no' || $more == 'genre' || $more == 'music' || $more == 'genreMore' || $more == 'artist_music')
     <section id="music">
       <ul class="contents-head">
         <li>曲</li>

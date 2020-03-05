@@ -36,6 +36,12 @@
           @endif
         </div>
         <div class="form-group">
+          <input type="name" name="name_artist" class="form-control" id="name_artist" value="{{ old ('name_artist') }}" placeholder="キャンペーン名" >
+          @if($errors)
+          <p class="help-block">{{$errors->first('name_artist')}}</p>
+          @endif
+        </div>
+        <div class="form-group">
           <select name="artist_discount" class="form-control">
             <option value="">割引率選択</option>
             @foreach ($pars as $par)
@@ -86,6 +92,12 @@
           </select>
           @if($errors)
           <p class="help-block">{{$errors->first('music')}}</p>
+          @endif
+        </div>
+        <div class="form-group">
+          <input type="name" name="name_music" class="form-control" id="name_music" value="{{ old ('name_music') }}" placeholder="キャンペーン名" >
+          @if($errors)
+          <p class="help-block">{{$errors->first('name_music')}}</p>
           @endif
         </div>
         <div class="form-group">

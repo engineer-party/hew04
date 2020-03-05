@@ -72,9 +72,11 @@ class AuthController extends Controller
 
         $password = bcrypt($req->password);
         $user = User::create([
-            'name'           => $req->name,
-            'email'          => $req->email,
-            'password'       => $password,
+            'name'     => $req->name,
+            'email'    => $req->email,
+            'password' => $password,
+            'point'    => 0,
+            'img_url'  => 0,
         ]);
 
         // ログイン処理

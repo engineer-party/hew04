@@ -1,12 +1,14 @@
 <div id="playlist">
   <!-- プレイリスト -->
   <div class="playlist-content" v-for="(item,index) in playlists" :key="item.id">
-    <div class="img" @click="playlistInActive = true">
-      <img :src="item.img1" alt="">
-      <img :src="item.img2" alt="">
-      <img :src="item.img3" alt="">
-      <img :src="item.img4" alt="">
-    </div>
+    <a v-bind:href="`/playlist/${item.id}`">
+      <div class="img" @click="playlistInActive = true">
+        <img :src="item.img1" alt="">
+        <img :src="item.img2" alt="">
+        <img :src="item.img3" alt="">
+        <img :src="item.img4" alt="">
+      </div>
+    </a>
     <div class="text">
       <p class="title">@{{ item.name }}</p>
       <div class="info-btn" @click="playlistActive(index)">
