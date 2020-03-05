@@ -166,7 +166,7 @@
     },
     methods: {
       selectChange(e){
-        if(!this.selects.some(item => item === e.target.value) && e.target.value !== "0"){
+        if(!this.selects.some(item => item === e.target.value) && e.target.value !== "0" && e.target.value !== "all"){
           this.selects.splice(e.target.id,1,e.target.value);
         }
       }
