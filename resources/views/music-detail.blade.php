@@ -3,12 +3,12 @@
 <!-- head -->
 @section('title', 'MusicDeail')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/mypage.css')}}" />
-<link rel="stylesheet" href="{{asset('css/link.css')}}" />
-<link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
+<link rel="stylesheet" href="{{asset('css/mypage.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
 
-<script src="{{ asset('js/music.js') }}" defer></script>
-<script src="{{ asset('js/hbg.js') }}" defer></script>
+<script src="{{ asset('js/music.js',$is_production) }}" defer></script>
+<script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 
 
 @endsection
@@ -66,16 +66,16 @@
 <style>
   
   #link-list li:nth-child(1)::before{
-    background-image: url({{ asset('img/home.png') }});
+    background-image: url({{ asset('img/home.png',$is_production) }});
   }
   #link-list li:nth-child(2)::before{
-    background-image: url({{ asset('img/hunt.png') }});
+    background-image: url({{ asset('img/hunt.png',$is_production) }});
   }
   #link-list li:nth-child(3)::before{
-    background-image: url({{ asset('img/streaming.png') }});
+    background-image: url({{ asset('img/streaming.png',$is_production) }});
   }
   #link-list li:nth-child(4)::before{
-    background-image: url({{ asset('img/playlist.png') }});
+    background-image: url({{ asset('img/playlist.png',$is_production) }});
   }
   #app .search{
     display: none;

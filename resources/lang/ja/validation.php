@@ -156,6 +156,10 @@ return [
         'music_discount' => '割引率',
         'music_period' => 'キャンペーン期間選択',
         'playlist_name' => 'プレイリスト名',
+        'name_artist' => 'キャンペーン名',
+        'name_music' => 'キャンペーン名',
+        'content_artist' => 'キャンペーン説明',
+        'content_music' => 'キャンペーン説明',
     ],
 
 ];

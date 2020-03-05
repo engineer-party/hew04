@@ -3,13 +3,13 @@
 <!-- head -->
 @section('title', 'Search')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/link.css')}}" />
-<link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
-<link rel="stylesheet" href="{{asset('css/top-header.css')}}" />
-<link rel="stylesheet" href="{{asset('css/search.css')}}" />
+<link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/top-header.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/search.css',$is_production)}}" />
 
-<script src="{{ asset('js/search.js') }}" defer></script>
-<script src="{{ asset('js/hbg.js') }}" defer></script>
+<script src="{{ asset('js/search.js',$is_production) }}" defer></script>
+<script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 
 
 @endsection
@@ -88,7 +88,7 @@
 @endphp
 <style type="text/css">
   #artist .artist-content .artist-img{
-    background-image: url({{ asset('img/joan-jett.jpg') }});
+    background-image: url({{ asset('img/joan-jett.jpg',$is_production) }});
   }
 </style>
 
