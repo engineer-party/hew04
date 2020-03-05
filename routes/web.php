@@ -67,6 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('search/genre/{genre_id}', 'SearchController@genre')->name('search');
     Route::get('search/genre/more/{genre_id}', 'SearchController@genreMore')->name('search');
     Route::get('search/artist/{req_name}', 'SearchController@artist')->name('search');
+    Route::get('search/artist_music/{req_id}', 'SearchController@artistMusic')->name('search');
     Route::get('search/music/{req_name}', 'SearchController@music')->name('search');
     
   
@@ -74,10 +75,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('point/', 'PointController@index')->name('point');
     Route::post('point/charge', 'PointController@charge')->name('charge');
 
-    // Music 4.再生
-    Route::get('music/', 'MusicController@index')->name('music');
-    Route::get('music/search', 'MusicController@search')->name('music_search');
-    Route::get('music/artist', 'MusicController@artist')->name('music_artist');
+    // Music 4.music詳細
+    Route::get('detail/music/{music_id}', 'MusicController@index')->name('music');
     Route::get('music/rtmp', 'MusicController@rtmp')->name('rtmp');
 
     // Hunt 5.ハント
@@ -88,14 +87,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('library/add', 'LibraryController@add');
     Route::post('library/playlist', 'LibraryController@playlist');
 
-    Route::get('playlist/', 'PlaylistController@index')->name('playlist');
+    // プレイリスト
+    Route::get('playlist/{playlist_id}', 'PlaylistController@index')->name('playlist');
 
     // Report 6.通報
     Route::get('report/', 'ReportController@index')->name('report');
     Route::post('report/store', 'ReportController@store')->name('report_store');
-
-    // 音楽詳細
-    Route::get('music-detail/', 'MusicController@detail')->name('music-detail');
 
 
     // Admin 7.管理
