@@ -21,13 +21,25 @@
 @section('content')
 
 <!-- 付近のプレイリスト（配信） -->
-
+<a href="{{ action('HuntController@index') }}">
 <div id="playlist-link">
- <button type="button">
-   <h2 class="title">近くでライブ中</h2>
-   <p class="detail">付近で配信中のプレイリストを表示</p>
- </button>
+  <ul>
+    <li class="title">近くでライブ中</li>
+    <li class="detail">付近で配信中のプレイリストを表示</li>
+  </ul>
 </div>
+</a>
+<!-- END -->
+
+<!-- キャンペーン -->
+<a href="{{ action('HuntController@index') }}">
+<div class="campaign type1">
+  <ul>
+    <li class="title">キャンペーンタイトル</li>
+    <li class="detail">キャンペーン詳細</li>
+  </ul>
+</div>
+</a>
 <!-- END -->
 
 
@@ -76,13 +88,7 @@
   #playlist-link {
     
   }
-  #playlist-link button{
-    background: none;
-    border: none;
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    outline: none;
+  #playlist-link{
     text-align: left;
     width: 100%;
     height: 300px;
@@ -91,34 +97,33 @@
     background-position: center;
     background-image: url({{ asset('img/streaming-bg.png',$is_production) }});
   }
+  #playlist-link ul,
+  .campaign ul{
+    position: relative;
+    top: 60%;
+    left: 20px;
+  }
   #playlist-link .title,
   .campaign .title{
     width: calc(100% - 20px);
-    position: relative;
-    top: 60px;
-    left: 20px;
+/*    position: relative;*/
+/*    top: 50%;*/
+/*    left: 20px;*/
     color: white;
+    margin-bottom: 20px;
     font-size: 1.5em;
     font-weight: 600;
   }
   #playlist-link .detail,
   .campaign .detail{
     width: calc(100% - 20px);
-    position: relative;
     color: white;
-    top: 70px;
-    left: 20px;
+
     font-size: 0.7em;
     letter-spacing: 2px;
   }
-  .campaign button,
-  campaign button{
-    background: none;
-    border: none;
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    outline: none;
+  .campaign,
+  campaign{
     text-align: left;
     width: 100%;
     height: 300px;

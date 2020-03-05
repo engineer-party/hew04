@@ -35,7 +35,7 @@
       <li><span class="value">{{ $user->name }}</span><br><span class="text-in">表示名</span></li>
       <li><span class="value">{{ $user->email }}</span><br><span class="text-in">メール</span></li>
       {{-- <li><span class="value">パスワード</span><br><span class="text-in">パスワード</span></li> --}}
-      <li><span class="value">{{ $user->point }} P</span><br><span class="text-in">ポイント残高</span></li>
+      <li><span class="value">{{ number_format($user->point) }} P</span><br><span class="text-in">ポイント残高</span></li>
     </ul>
   </div>
 </div>
