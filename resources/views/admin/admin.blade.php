@@ -3,7 +3,7 @@
 <!-- head -->
 @section('title', 'Admin')
 @section('style')
-<!-- <link rel="stylesheet" href="{{asset('css/admin.css')}}" /> -->
+<!-- <link rel="stylesheet" href="{{asset('css/admin.css',$is_production)}}" /> -->
 
 @endsection
 @include('common.admin_head')

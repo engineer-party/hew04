@@ -3,13 +3,13 @@
 <!-- head -->
 @section('title', 'PlayList')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/link.css')}}" />
-<link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
+<link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
 
 
 
-<script src="{{ asset('js/point.js') }}" defer></script>
-<script src="{{ asset('js/hbg.js') }}" defer></script>
+<script src="{{ asset('js/point.js',$is_production) }}" defer></script>
+<script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 
 @endsection
 @include('common.head')
@@ -49,7 +49,7 @@
     </ul>
     <p class="pay-value">¥@{{ String( item.value ).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' ) }}</p>
     <button class="btn back-btn" @click="downBuy(index)">キャンセル</button>
-    <form method="post" action="{{ url('point/charge') }}">
+    <form method="post" action="{{ url('point/charge',null,$is_production) }}">
     @csrf
       <div is="script"
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -125,19 +125,19 @@
   }
 
   #link-list li:nth-child(1)::before {
-    background-image: url({{ asset('img/home.png')}});
+    background-image: url({{ asset('img/home.png',$is_production)}});
   }
   
   #link-list li:nth-child(2)::before {
-    background-image: url({{ asset('img/hunt.png')}});
+    background-image: url({{ asset('img/hunt.png',$is_production)}});
   }
   
   #link-list li:nth-child(3)::before {
-    background-image: url({{ asset('img/streaming.png')}});
+    background-image: url({{ asset('img/streaming.png',$is_production)}});
   }
   
   #link-list li:nth-child(4)::before {
-    background-image: url({{ asset('img/playlist-active.png')}});
+    background-image: url({{ asset('img/playlist-active.png',$is_production)}});
   }
   
   #app .search{
@@ -298,7 +298,7 @@
     margin-top: 35px;
   }
   .point .point-buy .icon{
-    background-image: url({{ asset('img/Hunc02.png') }})
+    background-image: url({{ asset('img/Hunc02.png',$is_production) }})
   }
   .point .point-buy .pay-value{
     width: 100%;

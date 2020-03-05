@@ -4,9 +4,9 @@
 @section('title', 'Login')
 @section('style')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" href="{{asset('css/bootstrap-social-gh-pages/bootstrap-social.css')}}" />
-<link rel="stylesheet" href="{{asset('css/flame.css')}}" />
-<link rel="stylesheet" href="{{asset('css/login_header.css')}}" />
+<link rel="stylesheet" href="{{asset('css/bootstrap-social-gh-pages/bootstrap-social.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/flame.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/login_header.css',$is_production)}}" />
 @endsection
 @include('common.head')
 
@@ -19,7 +19,7 @@
 <div id="content">
 
 
-<form id="login" action="{{ url('/login')}}" method="post">
+<form id="login" action="{{ url('/login',null,$is_production)}}" method="post">
     {{ csrf_field() }}
     @if(session('message'))
         <p>{{ session('message') }}</p>
@@ -40,8 +40,8 @@
 <div id="applogin">
   <h2>お持ちのアカウントでログイン</h2>
   <ul>
-    <li><a href="/login/google"><span class="comment">google</span><img src="{{ asset('img/google.png') }}" alt="google"></a></li>
-    <li><a href="/login/twitter"><span class="comment">twitter</span><img src="{{ asset('img/twitter.png') }}" alt="twitter"></a></li>
+    <li><a href="/login/google"><span class="comment">google</span><img src="{{ asset('img/google.png',$is_production) }}" alt="google"></a></li>
+    <li><a href="/login/twitter"><span class="comment">twitter</span><img src="{{ asset('img/twitter.png',$is_production) }}" alt="twitter"></a></li>
   </ul>
 </div>
 

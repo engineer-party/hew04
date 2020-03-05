@@ -7,7 +7,7 @@
       <p><img :src="item.img" alt=""></p>
       <div class="audio">
        <ul>
-        <li class="title last"><a data-src="{{ asset('img/mp3/03.mp3') }}">@{{ item.title }}</a></li>
+        <li class="title last"><a data-src="{{ asset('img/mp3/03.mp3',$is_production) }}">@{{ item.title }}</a></li>
         <li class="artist">@{{ item.artist }}<span class="time">・@{{item.time}}</span></li>
       </ul>
       </div>
