@@ -41,7 +41,7 @@
     <button class="btn buy-btn2"><span class="point-icon">P</span>{{ $music->price }}</button>
   </form>
   @else
-  <form method="post" action="{{ url('music/buy',null,$is_production) }}">
+  <form method="post" action="{{ url('detail/music/buy',null,$is_production) }}">
     @csrf
       <script
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -55,6 +55,7 @@
         data-currency="JPY">
       </script>
       <input type="hidden" name="id" value="{{ $music->id }}">
+      <input type="hidden" name="pay" value="{{ $music->price - $point }}">
       <input type="hidden" name="value" value="{{ $music->price }}">
       <button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
     </form>

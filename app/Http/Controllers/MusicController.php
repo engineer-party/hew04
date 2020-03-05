@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Stripe\Stripe;
+use Stripe\Customer;
+use Stripe\Charge;
 use App\Models\Campaign;
 use App\Models\Music;
 use App\Models\User;
@@ -62,7 +65,38 @@ class MusicController extends Controller
       }
     }
 
-    public function musicBuy($music_id,Request $request){
+    public function musicBuy(Request $request){
+      try {
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $customer = Customer::create(array(
+          'email' => $request->stripeEmail,
+          'source' => $request->stripeToken
+        ));
+
+        $charge = Charge::create(array(
+          'customer' => $customer->id,
+          'amount' => $request->value,
+          'currency' => 'jpy'
+        ));
+
+        User::where('id',Auth::user()->id)->update([
+          'point' => 0,
+        ]);
+
+        $buy_music = new BuyMusic;
+        $buy_music->fill([
+          'user_id'  => Auth::user()->id,
+          'music_id' => $request->id,
+          'price'    => $request->pay,
+          'point'    => $request->value - $request->pay,
+        ]);
+        $buy_music->save();
+
+        return redirect('detail/music/'.$request->id)->with('message', '購入完了');
+      } catch (\Throwable $ex) {
+        return $ex->getMessage();
+      }
     }
 
 
