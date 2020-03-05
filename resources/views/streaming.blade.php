@@ -19,12 +19,13 @@
 <div id="contents">
   <h2>配信するプレイリストを選択</h2>
 <div id="playlist">
- <form>
+ 
   <!-- プレイリスト -->
   <label
    class="playlist-content"
    v-for="(item,index) in tests"
    for="stream">
+   <form>
     <div @click="streamPlaylist(index)">
       <div class="img">
         <img :src="item.img1" alt="">
@@ -49,11 +50,12 @@
       </ul>
     </div>
     </transition>
+  </form>
   </label>
   <!-- END -->
   
   
-  </form>
+  
 </div>
 </div>
 
@@ -233,4 +235,5 @@ display: none;
   .stream-form {
     
   }
+
 </style>
