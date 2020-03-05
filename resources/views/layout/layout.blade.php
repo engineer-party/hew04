@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <div id="wrapper">
+    <div id="wrapper" style="margin-bottom:200px">
         @yield('header')
         @yield('content')
         @yield('footer')

@@ -69,7 +69,9 @@
 </div>
 
 <style type="text/css">
-  
+  #content{
+    margin-bottom: 50px !important;
+  }
   footer {
     position: absolute;
     bottom: 0;
@@ -157,5 +159,8 @@
     letter-spacing: 2px;
     color: rgba(0,0,0,0.3);
     font-family: 'Allerta Stencil', sans-serif;
+  }
+  #signup{
+    margin-bottom:20px;
   }
 </style>

@@ -68,7 +68,7 @@ class MusicUploadController extends Controller
     getid3_lib::CopyTagsToComments($music_info);
     */
 
-    $remotefilename = 'https://leshu-firstbucket.s3-ap-northeast-1.amazonaws.com/'.$mp3_path;
+    $remotefilename = 'https://leshu-firstbucket.s3-ap-northeast-1.amazonaws.com/' . $mp3_path;
     if ($fp_remote = fopen($remotefilename, 'rb')) {
       $localtempfilename = @tempnam('/tmp', 'getID3');
       if ($fp_local = fopen($localtempfilename, 'wb')) {
@@ -97,12 +97,14 @@ class MusicUploadController extends Controller
     ]);
 
     foreach ($request->genres as $genre) {
-      $genre_music = new GenreMusicTable;
-      $genre_music->fill([
-        'music_id' => $music->id,
-        'genre_id' => $genre,
-      ]);
-      $genre_music->save();
+      if ($genre != 0) {
+        $genre_music = new GenreMusicTable;
+        $genre_music->fill([
+          'music_id' => $music->id,
+          'genre_id' => $genre,
+        ]);
+        $genre_music->save();
+      }
     }
 
     //一旦ローカルに上げたファイルの読み込み
@@ -119,6 +121,7 @@ class MusicUploadController extends Controller
     $mp3->fromFile($remotefilename)->trim(10, 30)->saveFile('storage/sample/sample_' . $mp3_file_name);
 
     $sample_storefile = Storage::get('public/sample/sample_' . $mp3_file_name);
+
 
     Storage::disk('s3')->put($sample_storePath, $sample_storefile, 'public');
 
@@ -144,7 +147,7 @@ class MusicUploadController extends Controller
     // アップロードされた拡張子を取得
     $extension = File::extension($imagefile->getClientOriginalName());
 
-    $id = Artist::count()+ 1;
+    $id = Artist::count() + 1;
 
     $filename = 'artist_' . $id . '.' . $extension;
     $artist = Artist::create([

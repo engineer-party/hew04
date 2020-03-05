@@ -24,20 +24,21 @@
   <label
    class="playlist-content"
    v-for="(item,index) in tests"
-   for="stream"
-   @click="streamPlaylist(index)">
-    <div class="img">
-      <img :src="item.img1" alt="">
-      <img :src="item.img2" alt="">
-      <img :src="item.img3" alt="">
-      <img :src="item.img4" alt="">
-    </div>
-    <div class="text">
-      <p class="title">@{{ item.name }}</p>
+   for="stream">
+    <div @click="streamPlaylist(index)">
+      <div class="img">
+        <img :src="item.img1" alt="">
+        <img :src="item.img2" alt="">
+        <img :src="item.img3" alt="">
+        <img :src="item.img4" alt="">
+      </div>
+      <div class="text">
+        <p class="title">@{{ item.name }}</p>
+      </div>
     </div>
     <input type="checkbox" id="stream" :value="item.name">
-<!--    <button type="button"class="play-btn"></button>-->
     <div class="stream-form-bg" v-if="item.option" @click="item.option = false"></div>
+    
     <transition name="fade">
     <div class="stream-form" :class="index" v-if="item.option">
       <h3>プレイリストを配信します</h3>
@@ -64,16 +65,18 @@ let streaming = new Vue({
   el: '#playlist',
   data: {
     tests: [
+      @foreach ($playlists as $playlist)
       {
         //name: プレイリスト名,img1.2.3.4:ランダムな画像4つ
-        id: 1234,
-        name: 'Rock-Hot',
+        id:{{ $playlist->id }},
+        name: '{{ $playlist->name }}',
         option: false,
-        img1: "{{ asset('img/sex-pistols.jpg',$is_production) }}",
-        img2: "{{ asset('img/sex-pistols.jpg',$is_production) }}",
-        img3: "{{ asset('img/sex-pistols.jpg',$is_production) }}",
-        img4: "{{ asset('img/sex-pistols.jpg',$is_production) }}",
+        img1: "{{ $playlist->img1 }}",
+        img2: "{{ $playlist->img2 }}",
+        img3: "{{ $playlist->img3 }}",
+        img4: "{{ $playlist->img4 }}",
       },
+      @endforeach
     ]
   },
   methods: {

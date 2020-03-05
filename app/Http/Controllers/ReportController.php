@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\ReportCategory;
 use App\Models\Report;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -14,7 +15,8 @@ class ReportController extends Controller
     public function index($user_id)
     {
         $categories = ReportCategory::All();
-        return view('report',compact('categories','user_id'));
+        $user = User::find($user_id);
+        return view('report',compact('categories','user_id','user'));
     }
 
     // 通報をDBに保存
@@ -38,6 +40,6 @@ class ReportController extends Controller
         $report->detail = $req->detail;
         $report->save();
 
-        return redirect()->route('report')->with('message', '通報完了');
+        return redirect('report/'.$req->id)->with('message', '通報完了');
     }
 }

@@ -29,7 +29,7 @@ class SearchController extends Controller
     public function genre($genre_id)
     {
         $musics = Genre::find($genre_id)->musics()->take(10)->get();
-        $genre = Genre::find($genre_id)->first()->name;
+        $genre = Genre::find($genre_id)->name;
 
         $more = 'genre';
 
@@ -39,7 +39,7 @@ class SearchController extends Controller
     public function genreMore($genre_id)
     {
         $musics = Genre::find($genre_id)->musics()->get();
-        $genre = Genre::find($genre_id)->first()->name;
+        $genre = Genre::find($genre_id)->name;
 
         $more = 'genreMore';
 
@@ -75,8 +75,20 @@ class SearchController extends Controller
     public function artistMusic($artist_id)
     {
         $musics = Artist::find($artist_id)->musics()->get();
-        $name = Artist::find($artist_id)->first()->name;
+        $name = Artist::find($artist_id)->name;
         $more = 'artist_music';
+
+        return view('search',compact('musics','name','more'));
+    }
+
+    public function campaign($campaign_name)
+    {
+        $musics = Music::whereHas('Campaign', function($q)use($campaign_name){
+            $q->where('name', $campaign_name);
+        })->get();
+        
+        $name = $campaign_name;
+        $more = 'campaign_music';
 
         return view('search',compact('musics','name','more'));
     }

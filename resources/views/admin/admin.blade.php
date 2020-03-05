@@ -21,7 +21,7 @@
           <span style="font-size:0.9em;">({{ date('m月d日H時i分',strtotime("-6 hour")). '~' . date('m月d日H時i分',strtotime("-10 minute")) }})</span>
         </h4>
           <div class="panel-body text-center" id="canvasBox">
-            <canvas id="line" height="300" width="800" style=" text-align: center;"></canvas>
+            <canvas id="line" height="300" width="700" style=" text-align: center;"></canvas>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
           <canvas id="serverstatus01" height="120" width="120"></canvas>
           <script>
             var doughnutData = [{
-                value: {{ $buyPointGraph['totalBuyPointPrice'] }},
+                value: {{ $buyPointGraph['totalBuyPoint'] }},
                 color: "#FF6B6B"
               },
               {
@@ -75,7 +75,7 @@
           </script>
           <div class="row">
             <div class="col-sm-6 col-xs-6 goleft">
-              <p>サービス割合 :</p>
+              <p>サービス率:</p>
             </div>
             <div class="col-sm-6 col-xs-6">
               <h2>{{ $buyPointGraph['buyPointPar'] }}%</h2>
@@ -88,7 +88,7 @@
       <div class="col-md-4 col-sm-4 mb">
         <div class="darkblue-panel pn">
           <div class="darkblue-header">
-            <h5>支払方法割合</h5>
+            <h5>購入時支払方法割合</h5>
           </div>
           <canvas id="serverstatus02" height="120" width="120"></canvas>
           <script>

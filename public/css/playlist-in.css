@@ -21,7 +21,10 @@
 }
 
 .playlist-img img{
-  width: 100%;
+  overflow: hidden;
+  width: 187px;
+  height: 187px;
+  position: relative;
 }
 .playlist-in .play-btn{
   background: none;

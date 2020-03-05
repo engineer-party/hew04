@@ -72,6 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('search/artist/{req_name}', 'SearchController@artist')->name('search');
     Route::get('search/artist_music/{req_id}', 'SearchController@artistMusic')->name('search');
     Route::get('search/music/{req_name}', 'SearchController@music')->name('search');
+    Route::get('search/campaign/{campaign_name}', 'SearchController@campaign')->name('search');
     
   
     //ポイント購入
