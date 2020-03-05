@@ -23,15 +23,43 @@
 <div class="contents">
   <div class="img">
   </div>
-  
   <div class="text">
     <ul>
+      @if(session('message'))
+      <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
+      @endif
     <li><span class="value">{{ $music->name }}</span><br><span class="text-in">タイトル</span></li>
     <li><span class="value">{{ $music->artist()->first()->name }}</span><br><span class="text-in">アーティスト</span></li>
     <li><span class="value">{{ substr($music->time, 0, 5) }}</span><br><span class="text-in">再生時間</span></li>
     </ul>
   </div>
-<button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
+  @if($point >= $music->price)
+  <form method="post" action="{{ url('detail/music/buy_point',null,$is_production) }}">
+    @csrf
+    <input type="hidden" name="id" value="{{ $music->id }}">
+    <input type="hidden" name="value" value="{{ $music->price }}">
+    <button class="btn buy-btn2"><span class="point-icon">P</span>{{ $music->price }}</button>
+  </form>
+  @else
+  <form method="post" action="{{ url('detail/music/buy',null,$is_production) }}">
+    @csrf
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="{{ env('STRIPE_KEY') }}"
+        data-amount="{{ $music->price - $point }}"
+        data-name="Hunting Music"
+        data-label="購入"
+        data-description="楽曲の購入"
+        data-image="{{ $image_path }}"
+        data-locale="auto"
+        data-currency="JPY">
+      </script>
+      <input type="hidden" name="id" value="{{ $music->id }}">
+      <input type="hidden" name="pay" value="{{ $music->price - $point }}">
+      <input type="hidden" name="value" value="{{ $music->price }}">
+      <button class="btn buy-btn"><span class="point-icon">P</span>{{ $music->price }}</button>
+    </form>
+  @endif
   </div>
 </article>
 @endsection
@@ -129,12 +157,97 @@
     height: 50px;
     color: #ff5757;
     background-color: white;
-    margin-top: 50px;
     font-size: 1.0em;
+    top: -50px;
+    z-index: 2;
+  }
+
+  .buy-btn2 {
+    width: 90%;
+/*    margin: 0 auto;*/
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    line-height: 50px;
+    height: 50px;
+    color: #ff5757;
+    background-color: white;
+    font-size: 1.0em;
+    margin-top: 50px;
   }
   
   .text {
     padding-top: 10px;
   }
   
+  .stripe-button-el {
+  display: inline-block !important;
+  cursor: pointer !important;
+  width: 90% !important;
+  height: 50px !important;
+  background-color: white !important;
+  color: #ff5757 !important;
+  border-radius: 0px !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  border: 1px solid transparent !important;
+  padding: .375rem .75rem !important;
+  font-size: .9rem !important;
+  line-height: 50px !important;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out !important;
+  background-image: none !important;
+  background: white !important;
+  font-weight: normal !important;
+  text-shadow: none !important;
+  font-size: 1.0em !important;
+  background-image: -webkit-linear-gradient(#ff5757) !important;
+  background-image: linear-gradient(#ff5757) !important;
+  z-index: 1 !important;
+  position:relative !important;
+  left: 50% !important;
+  transform: translate(-50%) !important;
+  margin-top: 50px !important;
+}
+
+.stripe-button-el > span {
+  display: inline-block !important;
+  cursor: pointer !important;
+  width: 90% !important;
+  height: 50px !important;
+  background-color: white !important;
+  color: #ff5757 !important;
+  border-radius: 0px !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  border: 1px solid transparent !important;
+  padding: .375rem .75rem !important;
+  font-size: .9rem !important;
+  line-height: 50px !important;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out !important;
+  background-image: none !important;
+  background: white !important;
+  font-weight: normal !important;
+  text-shadow: none !important;
+  font-size: 1.0em !important;
+  background-image: -webkit-linear-gradient(#ff5757) !important;
+  background-image: linear-gradient(#ff5757) !important;
+  z-index: 1 !important;
+  position:relative !important;
+  box-shadow: none !important;
+  left: 50% !important;
+  transform: translate(-50%) !important;
+  margin-top: 50px !important;
+}
 </style>

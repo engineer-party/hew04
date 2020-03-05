@@ -35,7 +35,7 @@
       @foreach ($artists as $artist)
       <a href="search/artist_music/{{ $artist->id }}">
         <div class="artist-content">
-          <div class="artist-img"><img src="{{ Storage::disk('s3')->url('image/artist/' . $artist->img_url) }}" alt=""></div>
+          <div class="artist-img"><img src="{{ Storage::disk('s3')->url('artist/image/' . $artist->img_url) }}" alt=""></div>
         <h3>{{ $artist->name }}</h3>
         </div>
       </a>

@@ -26,12 +26,12 @@
     @endif
     <div class="form-group">
        <p>メールアドレス</p>
-        <input type="text" id="mail" class="form-control" placeholder="メールアドレス" value="{{ old('email') }}haltaro@gmail.com" name="email">
+        <input type="text" id="mail" class="form-control" placeholder="メールアドレス" value="{{ old('email') }}" name="email">
         <span class="form-text text-danger">{{$errors->first('email')}}</span>
     </div>
     <div class="form-group">
         <p>パスワード<a href="#">パスワードをお忘れの方</a></p>
-        <input type="password" id="pass" class="form-control" placeholder="パスワード(8文字以上)" value="secretboy" name="password">
+        <input type="password" id="pass" class="form-control" placeholder="パスワード(8文字以上)" value="" name="password">
         <span class="form-text text-danger">{{$errors->first('password')}}</span>
     </div>
     <p id="login-btn"><button type="submit" class="btn btn-danger">ログイン</button></p>

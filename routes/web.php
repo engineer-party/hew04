@@ -80,6 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Music 4.music詳細
     Route::get('detail/music/{music_id}', 'MusicController@index')->name('music');
+    Route::post('detail/music/buy_point', 'MusicController@musicBuyPoint')->name('music_buy_point');
+    Route::post('detail/music/buy', 'MusicController@musicBuy')->name('music_buy');
     Route::get('music/rtmp', 'MusicController@rtmp')->name('rtmp');
 
     // Hunt 5.ハント
@@ -97,7 +99,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('playlist/{playlist_id}', 'PlaylistController@index')->name('playlist');
 
     // Report 6.通報
-    Route::get('report/', 'ReportController@index')->name('report');
+    Route::get('report/{user_id}', 'ReportController@index')->name('report');
     Route::post('report/store', 'ReportController@store')->name('report_store');
 
 

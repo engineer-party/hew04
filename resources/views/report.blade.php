@@ -30,9 +30,8 @@
     @endif
     <h2>ID: 12345 さん<h2>
 <!--    <p><input type="tel" name="id" value="{{ old('id') }}" class="form-control user-id" placeholder="通報するユーザーのID"></p>-->
-
     @if($errors)
-    <p id="error">{{$errors->first('category')}}</p>
+        <p id="error">{{$errors->first('category')}}</p>
     @endif
     <h3></h3>
     <ul class="report-category">
