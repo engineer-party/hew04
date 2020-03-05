@@ -16,7 +16,7 @@
 @if(session('message'))
   <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
 @endif
-<div class="row mt">
+<div id="app" class="row mt">
   <div class="col-lg-6 col-md-6 col-sm-6">
     <div class="form-panel">
       <h4 class="title">アーティスト名</h4>
@@ -87,15 +87,27 @@
       <div id="message"></div>
       <form class="contact-form php-mail-form" role="form" action="price/music" method="POST">
         <div class="form-group">
-          <select name="music" class="form-control">
-            <option value="">楽曲名選択</option>
+          <select id="0" class="custom-select" name="musics[]" @change="selectChange">
+            <option value="0">楽曲名選択</option>
             <option value="{{ 'all' }}" @if(old('music')=='all') selected  @endif>#ALL　全ての楽曲</option>
-            @foreach ($musics as $music)
+            @foreach($musics as $music)
             <option value="{{ $music->id }}" @if(old('music')==$music->id || session('music_id') == $music->id) selected  @endif>
               {{ '#' . $music->id . '　' . $music->name }}
             </option>
             @endforeach
           </select>
+          <div v-for="(select, index) in selects">
+            <div class="form-group mt-3">
+              <select v-bind:id="index+1" class="custom-select" name="musics[]" @change="selectChange">
+                <option value="0">選択してください</option>
+                @foreach($musics as $music)
+                <option value="{{ $music->id }}" @if(old('music')==$music->id || session('music_id') == $music->id) selected  @endif>
+                  {{ '#' . $music->id . '　' . $music->name }}
+                </option>
+                @endforeach
+              </select>
+            </div>
+          </div>
           @if($errors)
           <p class="help-block">{{$errors->first('music')}}</p>
           @endif
@@ -146,6 +158,21 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  new Vue({
+    el: '#app',
+    data: {
+      selects:[],
+    },
+    methods: {
+      selectChange(e){
+        if(!this.selects.some(item => item === e.target.value) && e.target.value !== "0"){
+          this.selects.splice(e.target.id,1,e.target.value);
+        }
+      }
+    }
+  });
+</script>
 <!-- /row -->
 @endsection
 

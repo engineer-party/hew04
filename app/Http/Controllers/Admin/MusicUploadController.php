@@ -68,7 +68,7 @@ class MusicUploadController extends Controller
     getid3_lib::CopyTagsToComments($music_info);
     */
 
-    $remotefilename = 'https://leshu-firstbucket.s3-ap-northeast-1.amazonaws.com/'.$mp3_path;
+    $remotefilename = 'https://leshu-firstbucket.s3-ap-northeast-1.amazonaws.com/' . $mp3_path;
     if ($fp_remote = fopen($remotefilename, 'rb')) {
       $localtempfilename = @tempnam('/tmp', 'getID3');
       if ($fp_local = fopen($localtempfilename, 'wb')) {
