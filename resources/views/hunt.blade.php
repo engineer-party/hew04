@@ -20,6 +20,7 @@
   <h2>ハント可能なプレイリスト</h2>
   
   <!-- 曲 -->
+  <a>
   <div class="content">
     <div class="music">
      <ul>
@@ -29,6 +30,7 @@
     <p class="account-title">プレイリスト名</p>
     </div>
   </div>
+  </a>
   <!-- END -->
 
 </div>
@@ -117,6 +119,7 @@ line-height: 70px;
   display: flex;
   justify-content: space-between;
   box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+  border-radius: 3px;
 }
 .content .account-img img{
 width: 50px;
