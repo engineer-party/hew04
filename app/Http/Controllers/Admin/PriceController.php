@@ -34,6 +34,8 @@ class PriceController extends Controller
     {
         $validator = Validator::make($req->all(), [
             'artist' => 'required',
+            'name_artist' => 'required',
+            'content_artist' => 'required',
             'artist_discount' => 'required',
             'artist_period' => 'required',
         ]);
@@ -57,6 +59,8 @@ class PriceController extends Controller
             }
             $campaign = new Campaign;
             $campaign->music_id = $music->id;
+            $campaign->name = $req->name_artist;
+            $campaign->content = $req->content_artist;
             $campaign->discount = $req->artist_discount;
             $campaign->end_date_time = $end_date_time;
             $campaign->save();
@@ -69,6 +73,8 @@ class PriceController extends Controller
     {
         $validator = Validator::make($req->all(), [
             'music' => 'required',
+            'name_music' => 'required',
+            'content_music' => 'required',
             'music_discount' => 'required',
             'music_period' => 'required',
         ]);
@@ -94,6 +100,8 @@ class PriceController extends Controller
 
             $campaign = new Campaign;
             $campaign->music_id = $music->id;
+            $campaign->name = $req->name_music;
+            $campaign->content = $req->content_music;
             $campaign->discount = $req->music_discount;
             $campaign->end_date_time = $end_date_time;
             $campaign->save();
@@ -108,6 +116,8 @@ class PriceController extends Controller
 
                     $campaign = new Campaign;
                     $campaign->music_id = $music->id;
+                    $campaign->name = $req->name_music;
+                    $campaign->content = $req->content_music;
                     $campaign->discount = $req->music_discount;
                     $campaign->end_date_time = $end_date_time;
                     $campaign->save();

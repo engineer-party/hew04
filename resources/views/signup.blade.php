@@ -22,7 +22,7 @@
 <h2>方法をお選びください</h2>
 <div id="signup">
    <ul>
-     <li><a href="signup/form"><img src="{{ asset('img/mail.svg') }}" alt="mail"><span>mail</span></a></li>
+     <li><a href="signup/form"><img src="{{ asset('img/svg-icon/mail.svg') }}" alt="mail"><span>mail</span></a></li>
      <li><a href="login/google"><img src="{{ asset('img/google.png') }}" alt="google"><span>google</span></a></li>
      <li><a href="login/twitter"><img src="{{ asset('img/twitter.png') }}" alt="twitter"><span>twitter</span></a></li>
    </ul>

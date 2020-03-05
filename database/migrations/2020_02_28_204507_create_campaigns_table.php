@@ -15,6 +15,8 @@ class CreateCampaignsTable extends Migration
     {
         Schema::create('campaigns', function (Blueprint $table) {
             $table->unsignedBigInteger('music_id');
+            $table->string('name');
+            $table->string('content');
             $table->integer('discount');
             $table->dateTime('end_date_time');
             $table->timestamps();

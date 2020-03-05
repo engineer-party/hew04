@@ -15,6 +15,7 @@ class User extends Authenticatable implements \Illuminate\Contracts\Auth\Authent
         'email',
         'password',
         'point',
+        'img_url',
     ];
 
     protected $hidden = [

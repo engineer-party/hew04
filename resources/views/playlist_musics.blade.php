@@ -21,21 +21,21 @@
 <section class="playlist-in">
  
   <div class="playlist-img">
-     <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
-     <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
-     <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
-     <img src="{{ asset('img/joan-jett.jpg') }}" alt="">
+     <img src="{{ $playlist['img1'] }}" alt="">
+     <img src="{{ $playlist['img2'] }}" alt="">
+     <img src="{{ $playlist['img3'] }}" alt="">
+     <img src="{{ $playlist['img4'] }}" alt="">
   </div>
   
   <div class="playlist-value">
   
-  <h2>Rock-HOT</h2>
+  <h2>{{ $playlist->name }}</h2>
   <div class="playlist-info">
     <div class="info">
-      <p><img src="{{ asset('img/joan-jett.jpg') }}" alt=""></p>
+      <p><img src="{{ Storage::disk('s3')->url('image/user/' . $playlist->user()->first()->img_url) }}" alt=""></p>
       <ul>
         <li>プレイリスト</li>
-        <li><span>20</span>曲</li>
+      <li><span>{{ $playlist->musics()->count() }}</span>曲</li>
       </ul>
     </div>
     <div class="info-btn">
@@ -45,32 +45,15 @@
     </div>
   </div>
   <div id="play-lists">
-<!--    <draggable tag="div" v-model="items" :options="{animation:300, handle:'.musicIcon'}">-->
-<!--      <div class="music-content" v-for="item in items" :key="item">-->
+    @foreach ($musics as $music)
       <div class="music-content">
-        <p><img src="{{ asset('img/sex-pistols.jpg') }}" alt=""></p>
+        <p><img src="{{ Storage::disk('s3')->url('image/music/' . $music->img_url) }}" alt=""></p>
         <ul>
-          <li class="title">Anarchy In THE U.K</li>
-          <li class="artist">Sex Pistols・3:36</li>
+        <li class="title">{{ $music->name }}}}</li>
+        <li class="artist">{{ $music->artist()->first()->name }}・{{ $music->time }}</li>
         </ul>
       </div>
-      
-      <div class="music-content">
-        <p><img src="{{ asset('img/sex-pistols.jpg') }}" alt=""></p>
-        <ul>
-          <li class="title">Anarchy In THE U.K</li>
-          <li class="artist">Sex Pistols・3:36</li>
-        </ul>
-      </div>
-      
-      <div class="music-content">
-        <p><img src="{{ asset('img/sex-pistols.jpg') }}" alt=""></p>
-        <ul>
-          <li class="title">Anarchy In THE U.K</li>
-          <li class="artist">Sex Pistols・3:36</li>
-        </ul>
-      </div>
-<!--    </draggable>-->
+    @endforeach
   </div>
 
   </div>
@@ -120,6 +103,10 @@
 
 
 <style type="text/css">
+
+  h1{
+    display: none;
+  }
   
   #link-list li:nth-child(4) {
     background: rgba(0, 0, 0, 0.1);
