@@ -19,36 +19,33 @@
 @section('content')
 <div id="contents">
 <!--<h1 id="title">通報フォーム</h1>-->
-@if(session('message'))
-    <div class="alert alert-success mt-4" role="alert"><strong>{{ session('message') }}</strong></div>
-@endif
 <form action="/report/store" method="POST" id="report-form" class="report-form">
     {{ csrf_field() }}
 
-    @if($errors)
-    <p id="error">{{$errors->first('id')}}</p>
-    @endif
-    <h2>ID: 12345 さん<h2>
+    <h2>ID: {{ $user_id }} さん<h2>
 <!--    <p><input type="tel" name="id" value="{{ old('id') }}" class="form-control user-id" placeholder="通報するユーザーのID"></p>-->
     @if($errors)
         <p id="error">{{$errors->first('category')}}</p>
     @endif
+    @if(session('message'))
+      <div class="success"><strong>{{ session('message') }}</strong></div>
+    @endif
     <h3></h3>
-    <ul class="report-category">
+    <ul class="report-category mt-4">
       <li><label class="report-btn">
-        <input type="radio" name="category" value=""><span class="title">画像</span><br>
+        <input type="radio" name="category" value="1"><span class="title">画像</span><br>
         <span class="detail">不適切な画像</span></label></li>
       <li><label class="report-btn">
-        <input type="radio" name="category" value=""><span class="title">名前</span><br>
+        <input type="radio" name="category" value="2"><span class="title">名前</span><br>
         <span class="detail">不適切な名前</span></label></li>
       <li><label class="report-btn">
-        <input type="radio" name="category" value=""><span class="title">データ</span><br>
+        <input type="radio" name="category" value="3"><span class="title">データ</span><br>
         <span class="detail">データを改ざん</span></label></li>
       <li><label class="report-btn">
-        <input type="radio" name="category" value=""><span class="title">GPS</span><br>
+        <input type="radio" name="category" value="4"><span class="title">GPS</span><br>
         <span class="detail">位置情報を改ざん</span></label></li>
       <li><label class="report-btn">
-        <input type="radio" name="category" value=""><span class="title">その他</span><br>
+        <input type="radio" name="category" value="5"><span class="title">その他</span><br>
         <span class="detail">その他の迷惑行為</span></label></li>
     </ul>
        
@@ -62,7 +59,7 @@
 -->
 
     <p><textarea name="detail" rows="6" placeholder="詳細な説明（任意）例）位置情報を不正取得している。" class="text-area">{{ old('detail') }}</textarea></p>
-
+    <input type="hidden" name="id" value="{{ $user_id }}">
     <a href=""><button type="submit" class="btn report-action">通報する</button></a>
 </form>
 </div>
