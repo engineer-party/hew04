@@ -98,7 +98,7 @@ letter-spacing: 4px;
 
 #contents {
   padding-top: 15%;
-  width: 90%;
+  width: 95%;
   height: 100vh;
   margin: 0 auto;
   background-color: white;
@@ -127,7 +127,7 @@ margin-left: 5px;
 .content ul{
 /*  margin-left: 10px;*/
 /*  background-color: aqua;*/
-  width: 60%;
+  width: 55%;
   height: 50px;
   display: flex;
 /*  justify-content: space-b;*/
@@ -136,6 +136,9 @@ margin-left: 5px;
   font-size: 0.9em;
   margin-left: 10px;
   line-height: 50px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 /* background-color: aqua;*/
 }
 .content .account-title{
@@ -145,7 +148,10 @@ margin-left: 5px;
   line-height: 50px;
   text-align: right;
   margin-right: 10px;
-color: gray;
+  color: gray;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 /* line-height: 20px;*/
 /* background-color: aquamarine;*/
 }</style>
