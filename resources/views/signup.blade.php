@@ -4,10 +4,10 @@
 @section('title', 'Signup')
 @section('style')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" href="{{asset('css/bootstrap-social-gh-pages/bootstrap-social.css')}}" />
-<link rel="stylesheet" href="{{asset('css/flame.css')}}" />
-<link rel="stylesheet" href="{{asset('css/signup.css')}}" />
-<link rel="stylesheet" href="{{asset('css/login_header.css')}}" />
+<link rel="stylesheet" href="{{asset('css/bootstrap-social-gh-pages/bootstrap-social.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/flame.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/signup.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/login_header.css',$is_production)}}" />
 @endsection
 @include('common.head')
 
@@ -22,9 +22,9 @@
 <h2>方法をお選びください</h2>
 <div id="signup">
    <ul>
-     <li><a href="signup/form"><img src="{{ asset('img/svg-icon/mail.svg') }}" alt="mail"><span>mail</span></a></li>
-     <li><a href="login/google"><img src="{{ asset('img/google.png') }}" alt="google"><span>google</span></a></li>
-     <li><a href="login/twitter"><img src="{{ asset('img/twitter.png') }}" alt="twitter"><span>twitter</span></a></li>
+     <li><a href="signup/form"><img src="{{ asset('img/svg-icon/mail.svg',$is_production) }}" alt="mail"><span>mail</span></a></li>
+     <li><a href="login/google"><img src="{{ asset('img/google.png',$is_production) }}" alt="google"><span>google</span></a></li>
+     <li><a href="login/twitter"><img src="{{ asset('img/twitter.png',$is_production) }}" alt="twitter"><span>twitter</span></a></li>
    </ul>
 </div>
 </div>

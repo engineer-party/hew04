@@ -3,15 +3,15 @@
 <!-- head -->
 @section('title', 'PlayList')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/link.css')}}" />
-<link rel="stylesheet" href="{{asset('css/hbg.css')}}" />
-<link rel="stylesheet" href="{{asset('css/playlist.css')}}" />
-<link rel="stylesheet" href="{{asset('css/music.css')}}" />
+<link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/playlist.css',$is_production)}}" />
+<link rel="stylesheet" href="{{asset('css/music.css',$is_production)}}" />
 
 
-
-<script src="{{ asset('js/library.js') }}" defer type="application/javascript"></script>
-<script src="{{ asset('js/hbg.js') }}" defer></script>
+<script src="{{ asset('js/library.js',$is_production) }}" defer type="application/javascript"></script>
+<!--<script src="{{ asset('js/test.js',$is_production) }}" defer type="application/javascript"></script>-->
+<script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 
 @endsection
 @include('common.head')
@@ -53,7 +53,7 @@
     </transition>
   </form>
 
-  <p><img src="{{ asset('img/loading.gif') }}" alt="" class="loading"></p>
+  <p><img src="{{ asset('img/loading.gif',$is_production) }}" alt="" class="loading"></p>
   <!--
   <div class="playlist-in" :class="{activeplaylist:playlistInActive}">
     <div class="back" @click="playlistInActive = false">
@@ -116,6 +116,7 @@ data: function () {
     ],
     musics: [
       //id: 曲id, title: 曲タイトル, artist: アーティスト, img: 曲画像, time: 再生時間(分:秒)
+      
       @foreach ($musics as $music)
       {
         option:false,
@@ -126,6 +127,17 @@ data: function () {
         time: '{{ substr($music->time, 0, 5) }}',
       },
       @endforeach
+      
+      /*
+      {
+        option:false,
+        id: 12345,
+        title: "I LOVE ROCK'N ROLL",
+        artist: 'Joan Jett',
+        img: "{{ asset('img/joan-jett.jpg') }}",
+        time: '3:36',
+      },
+      */
     ],
     playlistInActive: false,
     activePL: true,
@@ -162,6 +174,17 @@ methods: {
   addCansel: function(){
     this.playlistAdd = false;
   }
+},
+mounted: function() {
+  /*
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+    console.log('clear');
+  });
+  */
+  $('').on('click',function(){
+    console.log('hey');
+  })
 }
 })
 
@@ -185,19 +208,19 @@ methods: {
   }
 
   #link-list li:nth-child(1)::before {
-    background-image: url({{ asset('img/home.png')}});
+    background-image: url({{ asset('img/home.png',$is_production)}});
   }
   
   #link-list li:nth-child(2)::before {
-    background-image: url({{ asset('img/hunt.png')}});
+    background-image: url({{ asset('img/hunt.png',$is_production)}});
   }
   
   #link-list li:nth-child(3)::before {
-    background-image: url({{ asset('img/streaming.png')}});
+    background-image: url({{ asset('img/streaming.png',$is_production)}});
   }
   
   #link-list li:nth-child(4)::before {
-    background-image: url({{ asset('img/playlist-active.png')}});
+    background-image: url({{ asset('img/playlist-active.png',$is_production)}});
   }
   
   #app .search{
@@ -373,7 +396,7 @@ methods: {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url({{ asset('img/playlist-add.png') }});
+    background-image: url({{ asset('img/playlist-add.png',$is_production) }});
   }
   #add-playlist {
     position: fixed;

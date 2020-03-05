@@ -18,19 +18,19 @@
     </section>
     <!-- js placed at the end of the document so the pages load faster -->
 
-    <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script class="include" type="text/javascript" src="{{ asset('lib/jquery.dcjqaccordion.2.7.js') }}"></script>
-    <script src="{{ asset('lib/jquery.scrollTo.min.js') }}"></script>
-    <script src="{{ asset('lib/jquery.nicescroll.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('lib/jquery.sparkline.js') }}"></script>
+    <script src="{{ asset('lib/jquery/jquery.min.js',$is_production) }}"></script>
+    <script src="{{ asset('lib/bootstrap/js/bootstrap.min.js',$is_production) }}"></script>
+    <script class="include" type="text/javascript" src="{{ asset('lib/jquery.dcjqaccordion.2.7.js',$is_production) }}"></script>
+    <script src="{{ asset('lib/jquery.scrollTo.min.js',$is_production) }}"></script>
+    <script src="{{ asset('lib/jquery.nicescroll.js',$is_production) }}" type="text/javascript"></script>
+    <script src="{{ asset('lib/jquery.sparkline.js',$is_production) }}"></script>
     <!--common script for all pages-->
-    <script src="{{ asset('lib/common-scripts.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('lib/gritter/js/jquery.gritter.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('lib/gritter-conf.js') }}"></script>
+    <script src="{{ asset('lib/common-scripts.js',$is_production) }}"></script>
+    <script type="text/javascript" src="{{ asset('lib/gritter/js/jquery.gritter.js',$is_production) }}"></script>
+    <script type="text/javascript" src="{{ asset('lib/gritter-conf.js',$is_production) }}"></script>
     <!--script for this page-->
-    <script src="{{ asset('lib/sparkline-chart.js') }}"></script>
-    <script src="{{ asset('lib/zabuto_calendar.js') }}"></script>
+    <script src="{{ asset('lib/sparkline-chart.js',$is_production) }}"></script>
+    <script src="{{ asset('lib/zabuto_calendar.js',$is_production) }}"></script>
 
     {{-- <script src="{{ asset('lib/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('lib/flotchart-conf.js') }}"></script> --}}

@@ -53,6 +53,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // TOPページ
     Route::get('top', 'TopController@index')->name('top');
+  
+    //テスト
+    Route::get('test/', 'TopController@test')->name('test');
 
     // ログアウト
     Route::get('logout', 'AuthController@logout')->name('logout');
