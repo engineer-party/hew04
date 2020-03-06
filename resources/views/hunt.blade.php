@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{asset('css/link.css',$is_production)}}" />
 <link rel="stylesheet" href="{{asset('css/hbg.css',$is_production)}}" />
 
-<script src="{{ asset('js/hunt.js',$is_production) }}" defer></script>
+<!--<script src="{{ asset('js/hunt.js',$is_production) }}" defer></script>-->
 <script src="{{ asset('js/hbg.js',$is_production) }}" defer></script>
 @endsection
 @include('common.head')
@@ -34,6 +34,10 @@
   <!-- END -->
 
 </div>
+<script>
+  let headOpen = false;
+  console.log('hey');
+</script>
 @endsection
 
 <!-- footer -->

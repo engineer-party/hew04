@@ -7,6 +7,10 @@
 <link rel="stylesheet" href="{{asset('css/bootstrap-social-gh-pages/bootstrap-social.css',$is_production)}}" />
 <link rel="stylesheet" href="{{asset('css/flame.css',$is_production)}}" />
 <link rel="stylesheet" href="{{asset('css/login_header.css',$is_production)}}" />
+<link href="https://fonts.googleapis.com/css?family=Allerta+Stencil&display=swap" rel="stylesheet">
+
+<script src="{{ asset('js/login.js',$is_production) }}" defer></script>
+
 @endsection
 @include('common.head')
 
@@ -16,6 +20,10 @@
 
 <!-- content -->
 @section('content')
+<div id="page-top">
+  <p class="logo"><img src="{{ asset('img/Hunc-Logo.png',$is_production) }}" alt=""></p>
+  <p class="text">Hunc</p>
+</div>
 <div id="content">
 
 
@@ -120,6 +128,37 @@
     position: relative;
     top: 20px;
     left: 75%;
+  }
+  #page-top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    background-color: white;
+  }
+  #page-top img{
+    width: 200px;
+  }
+  #page-top .logo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+/*    width: 100%;*/
+/*    margin: 0 auto;*/
+  }
+  #page-top .text{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 3.0em;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: rgba(0,0,0,0.3);
+    font-family: 'Allerta Stencil', sans-serif;
   }
   #signup{
     margin-bottom:20px;
