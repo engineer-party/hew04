@@ -1,3 +1,6 @@
+
+
+
 $('#form').hammer().on('tap', function () {
   if (headOpen == false) {
     headOpen = true;
